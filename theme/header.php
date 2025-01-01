@@ -15,7 +15,15 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="profile" href="https://gmpg.org/xfn/11">	
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/custom.css">
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	
 	<?php wp_head(); ?>
 </head>
 
@@ -23,24 +31,5 @@
 
 <?php wp_body_open(); ?>
 
-<div id="page">
-	<a href="#content" class="sr-only"><?php esc_html_e( 'Skip to content', 'watch_block' ); ?></a>
 
-	<?php get_template_part( 'template-parts/layout/header', 'content' ); ?>
-
-	<div id="content">
-
-	<ul class="list-disc">
-  <li>Now this is a story all about how, my life got flipped-turned upside down</li>
-  <!-- ... -->
-</ul>
-
-<ol class="list-decimal">
-  <li>Now this is a story all about how, my life got flipped-turned upside down</li>
-  <!-- ... -->
-</ol>
-
-<ul class="list-none">
-  <li>Now this is a story all about how, my life got flipped-turned upside down</li>
-  <!-- ... -->
-</ul>
+<?php get_template_part( 'template-parts/layout/header', 'content' ); ?>

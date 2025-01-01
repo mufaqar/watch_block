@@ -1,47 +1,71 @@
-<?php
-/**
- * Template part for displaying the header content
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package watch_block
- */
 
-?>
 
-<header id="masthead">
-
-	<div>
-		<?php
-		if ( is_front_page() ) :
-			?>
-			<h1><?php bloginfo( 'name' ); ?></h1>
-			<?php
-		else :
-			?>
-			<p><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-		endif;
-
-		$watch_block_description = get_bloginfo( 'description', 'display' );
-		if ( $watch_block_description || is_customize_preview() ) :
-			?>
-			<p><?php echo $watch_block_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-		<?php endif; ?>
+<header class=" py-4 sm:py-5 md:py-6 lg:py-[32px] absolute w-full z-50 top-0">
+	<div class="pl-3 sm:pl-4 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
+		<a href="#">
+			<img src="<?php echo get_template_directory_uri(); ?>/public/logo.svg" alt="watch-blocks" class="min-w-[120px]"/>
+		</a>
+		<div class="bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
+			<div class="hidden lg:block">
+				<?php wp_nav_menu( array( 
+					'theme_location' => 'main', 
+					'container'      => 'nav',
+					'container_class'=> 'flex header-menu flex-col space-y-4',
+					'add_li_class'    => 'menu-item',
+					'menu_class'     => 'flex sm:flex-row flex-col sm:items-center md:gap-[3vw] gap-5',
+				));?>
+			</div>
+			<div class="flex items-center gap-2">
+				<div class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
+					<input placeholder="Search Watches" class="bg-transparent py-3 outline-none border-none w-full focus:border-none text-[#A1A1A1]" />
+					<img src="<?php echo get_template_directory_uri(); ?>/public/svg/search-icon.svg" alt="" class="">
+				</div>
+				<div class="md:flex item-center gap-2 hidden">
+					<a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+						<img src="<?php echo get_template_directory_uri(); ?>/public/svg/save.svg" alt="" class="w-[14px] h-[20px]">
+					</a>
+					<a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+						<img src="<?php echo get_template_directory_uri(); ?>/public/svg/cart.svg" alt="" class="w-[17px] h-[17px]">
+					</a>
+					<a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+						<img src="<?php echo get_template_directory_uri(); ?>/public/svg/person.svg" alt="" class="w-[17px] h-[16px]">
+					</a>
+				</div>
+				<button id="menu-button" class="bg-white w-[48px] h-[48px] md:w-[66px] flex rounded-full lg:hidden flex-col justify-center items-center shadow">
+					<img src="<?php echo get_template_directory_uri(); ?>/public/svg/menu.svg" alt="" class="w-[17px] h-[16px]">
+				</button>
+			</div>
+		</div>
 	</div>
+</header>
 
-	<nav id="site-navigation" aria-label="<?php esc_attr_e( 'Main Navigation', 'watch_block' ); ?>">
-		<button aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'watch_block' ); ?></button>
+<!-- Mobile Header  -->
 
-		<?php
-		wp_nav_menu(
-			array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s" aria-label="submenu">%3$s</ul>',
-			)
-		);
-		?>
-	</nav><!-- #site-navigation -->
-
-</header><!-- #masthead -->
+<nav id="nav-menu" class="bg-black text-white hidden lg:hidden absolute w-full z-[1]">
+	<div>
+		<?php wp_nav_menu( array( 
+			'theme_location' => 'main', 
+			'container'      => 'div',
+			'container_class'=> 'flex header-menu flex-col space-y-4',
+			'add_li_class'    => 'menu-item',
+			'menu_class'     => 'flex sm:flex-row flex-col sm:items-center md:gap-[3vw] gap-5',
+		));?>
+	</div>
+	<div class="flex flex-col items-center gap-2 px-4">
+		<div class="px-4 items-center gap-3 bg-white shadow-sm lg:max-w-[260px] w-full flex rounded-full">
+			<input placeholder="Search Watches" class="bg-transparent py-3 outline-none border-none w-full focus:border-none text-[#A1A1A1]" />
+			<img src="<?php echo get_template_directory_uri(); ?>/public/svg/search-icon.svg" alt="" class="">
+		</div>
+		<div class="flex item-center gap-2 my-5">
+			<a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+				<img src="<?php echo get_template_directory_uri(); ?>/public/svg/save.svg" alt="" class="w-[14px] h-[20px]">
+			</a>
+			<a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+				<img src="<?php echo get_template_directory_uri(); ?>/public/svg/cart.svg" alt="" class="w-[17px] h-[17px]">
+			</a>
+			<a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+				<img src="<?php echo get_template_directory_uri(); ?>/public/svg/person.svg" alt="" class="w-[17px] h-[16px]">
+			</a>
+		</div>
+	</div>
+</nav>

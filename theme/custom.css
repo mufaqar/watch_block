@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body, html, *{
+    font-family: "Montserrat", serif;
+}
+
+.mfont,a,p,h1,h2,h3,h4,h5,h6, ul, li{
+    font-family: "Montserrat", serif !important;
+}
+
+nav ul{
+    display: flex;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    gap: 16px;
+    color: black;
+    align-items: center;
+}
+
+#nav-menu ul li a{
+    color: #fff !important;
+}
+#nav-menu ul{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid #3d3d3d;
+    padding-top: 4rem;
+}
+
+li.current_page_item a{
+    color: #B6E22E !important;
+}
+
+#nav-menu ul li.current_page_item a{
+    color: #B6E22E !important;
+}
+#nav-menu ul li a:hover{
+    color: #B6E22E !important;
+}
+
+.tab-button.active{
+    border-bottom: 2px solid black !important;
+}
+
+.inverRounded::before{
+    position: absolute;
+    content: "";
+    width: 1rem;
+    height: 2rem;
+    top: -2rem;
+    border-bottom-right-radius: 30px;
+    right: 0px;
+    box-shadow: 30px;
+    box-shadow: 0 20px 0 0 #fff;
+}
+
+.inverRounded::after{
+    position: absolute;
+    content: "";
+    width: 1rem;
+    height: 2rem;
+    bottom: -2rem;
+    border-top-right-radius: 30px;
+    right: 0px;
+    box-shadow: 30px;
+    box-shadow: 0 -20px 0 0 #fff;
+}
+.hidden {
+    display: none;
+}
+.active {
+    border-bottom: 2px solid black;
+}
+
+.article_thumbnil img{
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+    color: #2B2B2B;
+    font-size: 16px;
+}
+.faq-answer.open {
+    display: block;
+}
+
+.faq-answer{
+    display: none;
+}
+.faq-item.open{
+    background-color: #F9F9F9;
+    margin-top: 8px;
+}
+.faq-item.open button{
+    color: #A8A8A8;
+}
+.faq-item.open button img{
+    rotate: 90deg;
+}
+.open .faq-answer{
+    display: block !important;
+}
+#menu-footer-menu li a{
+    color: #fff !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    text-transform: capitalize !important;
+}

@@ -195,3 +195,10 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/menu-function.php';
+
+
+function enqueue_custom_scripts() {
+    wp_enqueue_script('custom-menu-toggle', get_template_directory_uri() . '/js/script.js', array(), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
