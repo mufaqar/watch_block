@@ -80,8 +80,8 @@ if ( ! function_exists( 'watch_block_setup' ) ) :
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus(
 			array(
-				'menu-1' => __( 'Primary', 'watch_block' ),
-				'menu-2' => __( 'Footer Menu', 'watch_block' ),
+				'main' => __( 'Primary', 'watch_block' ),
+				'footer' => __( 'Footer Menu', 'watch_block' ),
 			)
 		);
 
