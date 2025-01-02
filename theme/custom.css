@@ -183,13 +183,23 @@ button.active_dashbord_page{
     margin-bottom: 30px !important;
 }
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
-    margin: 0 !important;
+    /* margin: 0 !important; */
 }
 
 .woocommerce ul.products{
-    
+    display: flex;
 }
 
 .woocommerce.columns-3 ul.products li.product{
-    width: 33% !important;
+    /* width: 33% !important; */
+}
+
+@media (max-width: 768px){
+    .woocommerce ul.products{
+        flex-wrap: wrap;
+        
+    }
+    .woocommerce.columns-3 ul.products li.product{
+        margin-right: 7px !important;
+    }
 }
