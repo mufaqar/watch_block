@@ -148,9 +148,9 @@ button.active_dashbord_page{
     background-color: #B6E22E !important;
 }
 .faq-item > p{
-    display: none;
+    display: none !important;
 }
 .faq-item.open > p{
-    display: none;
+    display: none !important;
 }
 
