@@ -38,7 +38,7 @@ $terms = get_terms(array(
                                     <button class="faq-question flex justify-between items-center text-left font-bold text-lg border-b-[2px] border-[#111111] pb-4 w-full">' . get_the_title() . '
                                     <img class="transition-all duration-100 ease-linear" src="'. get_template_directory_uri().'/public/svg/chevron.svg" alt=""/>
                                     </button>
-                                    <p class="faq-answer pt-4 text-[18px]">' . the_content() . '</p>
+                                    <p class="faq-answer pt-4 text-[18px]">' . get_the_excerpt() . '</p>
                                 </div>
                             </li>';
                         }
