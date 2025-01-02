@@ -26,14 +26,10 @@
 	<!-- Slick Slider CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-	
-	<!-- jQuery CDN -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	<!-- Slick Slider JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 	<?php wp_head(); ?>
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -42,3 +38,4 @@
 
 
 <?php get_template_part( 'template-parts/layout/header', 'content' ); ?>
+
