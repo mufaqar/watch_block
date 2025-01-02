@@ -46,7 +46,7 @@ $terms = get_terms([
                                         />
                                     </button>
                                     <p class="faq-answer pt-4 text-[18px]">
-                                        <?php the_excerpt(); ?> 123
+                                        <?php the_excerpt(); ?>
                                     </p>
                                 </div>
                             </li>

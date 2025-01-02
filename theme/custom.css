@@ -147,10 +147,10 @@ li.current_page_item a{
 button.active_dashbord_page{
     background-color: #B6E22E !important;
 }
-.faq-item p{
+.faq-item > p{
     display: hidden;
 }
-.faq-item.open p{
+.faq-item.open > p{
     display: block;
 }
 
