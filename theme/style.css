@@ -4,7 +4,7 @@ Theme URI: https://watchblock
 Author: Mufaqar
 Author URI: https://underscoretw.com/
 Description: Watch Block Custom Theme
-Version: 1.0.0
+Version: 0.1.0
 Tested up to: 6.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -45,7 +45,9 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
 /*! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
 */
 
-
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
 *,
@@ -1362,9 +1364,19 @@ body {
   z-index: 1;
 }
 
+.mx-\[5px\] {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .my-5 {
@@ -1377,31 +1389,6 @@ body {
   margin-bottom: 2.25rem;
 }
 
-.mx-1 {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.mx-\[\] {
-  margin-left: ;
-  margin-right: ;
-}
-
-.mx-\[5px\] {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -1412,6 +1399,10 @@ body {
 
 .mb-14 {
   margin-bottom: 3.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-20 {
@@ -1458,28 +1449,16 @@ body {
   margin-top: 140px;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
-.mt-3 {
-  margin-top: 0.75rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .block {
   display: block;
 }
 
-.flex {
-  display: flex;
-}
-
 .\!flex {
   display: flex !important;
+}
+
+.flex {
+  display: flex;
 }
 
 .grid {
@@ -1518,36 +1497,12 @@ body {
   height: 48px;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.h-\[\] {
-  height: ;
-}
-
-.h-\[100px\] {
-  height: 100px;
-}
-
-.h-\[80px\] {
-  height: 80px;
-}
-
-.h-\[90px\] {
-  height: 90px;
-}
-
 .h-\[75px\] {
   height: 75px;
 }
 
-.h-\[40px\] {
-  height: 40px;
-}
-
-.h-\[30px\] {
-  height: 30px;
+.h-full {
+  height: 100%;
 }
 
 .w-3 {
@@ -1566,20 +1521,16 @@ body {
   width: 17px;
 }
 
+.w-\[26px\] {
+  width: 26px;
+}
+
 .w-\[2px\] {
   width: 2px;
 }
 
-.w-\[35\%\] {
-  width: 35%;
-}
-
 .w-\[48px\] {
   width: 48px;
-}
-
-.w-\[65\%\] {
-  width: 65%;
 }
 
 .w-\[66px\] {
@@ -1590,40 +1541,16 @@ body {
   width: 100%;
 }
 
-.w-\[20px\] {
-  width: 20px;
-}
-
-.w-\[px\] {
-  width: px;
-}
-
-.w-\[40px\] {
-  width: 40px;
-}
-
-.w-\[80px\] {
-  width: 80px;
-}
-
-.w-\[26px\] {
-  width: 26px;
-}
-
-.w-\[1px\] {
-  width: 1px;
-}
-
-.w-\[3px\] {
-  width: 3px;
-}
-
 .min-w-\[120px\] {
   min-width: 120px;
 }
 
 .max-w-\[1280px\] {
   max-width: 1280px;
+}
+
+.max-w-\[250px\] {
+  max-width: 250px;
 }
 
 .max-w-\[260px\] {
@@ -1644,18 +1571,6 @@ body {
 
 .max-w-none {
   max-width: none;
-}
-
-.max-w-\[140px\] {
-  max-width: 140px;
-}
-
-.max-w-\[200px\] {
-  max-width: 200px;
-}
-
-.max-w-\[250px\] {
-  max-width: 250px;
 }
 
 .-translate-x-20 {
@@ -1754,18 +1669,6 @@ body {
   border-radius: 9999px;
 }
 
-.rounded-md {
-  border-radius: 0.375rem;
-}
-
-.rounded {
-  border-radius: 0.25rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
 .rounded-xl {
   border-radius: 0.75rem;
 }
@@ -1790,12 +1693,12 @@ body {
   border-width: 1px;
 }
 
-.border-b-\[2px\] {
-  border-bottom-width: 2px;
-}
-
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-b-\[2px\] {
+  border-bottom-width: 2px;
 }
 
 .border-l-\[2px\] {
@@ -1815,27 +1718,14 @@ body {
   border-color: rgb(17 17 17 / var(--tw-border-opacity));
 }
 
-.border-\[\] {
-  border-color: ;
-}
-
 .border-\[\#B6E22E\] {
   --tw-border-opacity: 1;
   border-color: rgb(182 226 46 / var(--tw-border-opacity));
 }
 
-.border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-}
-
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
-.border-r-\[\] {
-  border-right-color: ;
 }
 
 .bg-\[\#000000\] {
@@ -1873,9 +1763,9 @@ body {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-gray-500 {
+.bg-gray-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
@@ -1885,26 +1775,6 @@ body {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-gray-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-
-.bg-gray-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
-
-.bg-gray-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 
 .bg-cover {
@@ -1929,16 +1799,16 @@ body {
      object-fit: cover;
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
 
 .p-\[33px\] {
   padding: 33px;
-}
-
-.p-2 {
-  padding: 0.5rem;
 }
 
 .px-2 {
@@ -1954,6 +1824,11 @@ body {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .px-\[9px\] {
@@ -2016,21 +1891,6 @@ body {
   padding-bottom: 86px;
 }
 
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -2069,10 +1929,6 @@ body {
 
 .pt-\[21px\] {
   padding-top: 21px;
-}
-
-.pb-1 {
-  padding-bottom: 0.25rem;
 }
 
 .text-left {
@@ -2260,10 +2116,6 @@ body {
 
 .text-white\/80 {
   color: rgb(255 255 255 / 0.8);
-}
-
-.text-\[\] {
-  color: ;
 }
 
 .shadow {
@@ -2469,16 +2321,16 @@ body {
     display: none;
   }
 
+  .lg\:w-\[35\%\] {
+    width: 35%;
+  }
+
   .lg\:w-\[40\%\] {
     width: 40%;
   }
 
   .lg\:w-\[60\%\] {
     width: 60%;
-  }
-
-  .lg\:w-\[35\%\] {
-    width: 35%;
   }
 
   .lg\:w-\[65\%\] {
