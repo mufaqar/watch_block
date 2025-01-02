@@ -194,6 +194,15 @@ button.active_dashbord_page{
     /* width: 33% !important; */
 }
 
+.woocommerce span.onsale{
+    border-radius: 12px !important;
+    min-height: 50px !important;
+    min-width: 148px !important;
+    color: #111111 !important;
+    font-size: 24px !important;
+    font-weight: 400px;
+}
+
 @media (max-width: 768px){
     .woocommerce ul.products{
         flex-wrap: wrap;
