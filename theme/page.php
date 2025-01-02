@@ -2,39 +2,34 @@
 /**
  * The template for displaying all pages
  *
- * This is the template that displays all pages by default. Please note that
- * this is the WordPress construct of pages: specifically, posts with a post
- * type of `page`.
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package watch_block
+ * @package tp_theme
  */
 
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				get_template_part( 'template-parts/content/content', 'page' );
-
-				// If comments are open, or we have at least one comment, load
-				// the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
-
-			endwhile; // End of the loop.
-			?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
+<section class="">
+    <h2 class="uppercase text-center text-4xl mb-5 sm:text-5xl md:text-[64px] font-semibold text-[#2B2B2B] mt-[125px]">
+        <?php the_title()?></h2>
+</section>
+<section class="">
+    <div class="w-full py-6 max-w-[1280px] px-3 mx-auto">
+        <?php
+        while ( have_posts() ) :
+        the_post();
+        the_content();
+        endwhile; // End of the loop.
+        ?>
+    </div>
+</section>
 
 <?php
+
 get_footer();

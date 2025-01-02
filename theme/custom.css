@@ -154,3 +154,11 @@ button.active_dashbord_page{
     display: block;
 }
 
+
+
+/* Woo CSS */
+.woocommerce span.onsale{
+ background: #B6E22E !important;
+}
+
+
