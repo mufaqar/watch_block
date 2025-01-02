@@ -1,7 +1,7 @@
 <header class=" py-4 sm:py-5 md:py-6 lg:py-[32px] absolute w-full z-50 top-0">
     <div class="pl-3 sm:pl-4 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
         <a href="<?php bloginfo('url'); ?>">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/<?php echo ( is_home() || is_front_page() ) ? 'logo.svg' : 'logo_dark.svg'; ?>"
+            <img src="<?php echo get_template_directory_uri(); ?>/public/<?php echo ( is_home() || is_front_page() ) ? 'logo.svg' : 'logo-dark.svg'; ?>"
                 alt="watch-blocks" class="min-w-[120px]">
         </a>
         <div
