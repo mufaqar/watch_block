@@ -23,20 +23,20 @@
 
   <!-- Add content for "Shop by Brand" -->
   <div class="tab-content mt-10 mb-12 hidden" id="new">
-      <?php echo do_shortcode('[products limit="4" ]'); ?>
+      <?php echo do_shortcode('[products limit="3" columns="3"]'); ?>
   </div>
 
   <!-- Product Card -->
   <div class="tab-content mt-10 mb-12 hidden" id="featured">
     <div>
-    <?php echo do_shortcode('[featured_products]'); ?>
+    <?php echo do_shortcode('[featured_products limit="3" columns="3"]'); ?>
     </div>
   </div>
 
   <!-- Add content for "Shop by Brand" -->
   <div class="tab-content mt-10 mb-12 hidden" id="brand">
     <div class="mt-10">
-    <?php echo do_shortcode('[top_rated_products]'); ?>
+    <?php echo do_shortcode('[top_rated_products limit="3" columns="3"]'); ?>
     </div>
   </div>
 </div>
