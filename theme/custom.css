@@ -195,12 +195,14 @@ button.active_dashbord_page{
 }
 
 .woocommerce span.onsale{
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     min-height: 50px !important;
     min-width: 148px !important;
     color: #111111 !important;
     font-size: 24px !important;
-    font-weight: 400px;
+    font-weight: 400 !important;
+    line-height: 1.736 !important;
+    text-transform: uppercase !important;
 }
 
 @media (max-width: 768px){
