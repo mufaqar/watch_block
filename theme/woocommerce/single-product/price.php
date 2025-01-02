@@ -20,6 +20,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
+$rating_count = $product->get_rating_count();
+$review_count = $product->get_review_count();
+$average      = $product->get_average_rating();
+
+
 
 ?>
-<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); ?></p>
+
+<div class="flex flex-col mb-2 md:flex-row justify-between gap-2 border-b pb-3 md:pb-1">
+    <div>
+        <h2 class="text-2xl font-bold"><?php the_title()?></h2>
+        <div class="flex justify-between gap-4 items-center max-w-[250px] my-2">
+            <img src="<?php echo get_template_directory_uri(); ?>/public/svg/star-bar.svg" alt="" />
+            <p><?php echo $review_count ?> Reviews</p>
+        </div>
+    </div>
+    <div class="flex items-center gap-4">
+        <h4 class="text-[28px] sm:text-[36px] font-bold"><?php echo $product->get_price_html(); ?></h4>
+        <button class="border-l-[2px] px-4 border-r-[2px] border-gray-300">
+            <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                <img src="<?php echo get_template_directory_uri(); ?>/public/svg/heart2.svg" alt=""
+                    class="w-[26px] h-[16px]">
+            </a>
+        </button>
+        <a href="#">
+            <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-3 py-1.5 rounded-[8px]">Follow</span>
+        </a>
+    </div>
+</div>

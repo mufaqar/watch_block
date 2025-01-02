@@ -10,40 +10,29 @@
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-				get_template_part( 'template-parts/content/content', 'single' );
 
-				if ( is_singular( 'post' ) ) {
-					// Previous/next post navigation.
-					the_post_navigation(
-						array(
-							'next_text' => '<span aria-hidden="true">' . __( 'Next Post', 'watch_block' ) . '</span> ' .
-								'<span class="sr-only">' . __( 'Next post:', 'watch_block' ) . '</span> <br/>' .
-								'<span>%title</span>',
-							'prev_text' => '<span aria-hidden="true">' . __( 'Previous Post', 'watch_block' ) . '</span> ' .
-								'<span class="sr-only">' . __( 'Previous post:', 'watch_block' ) . '</span> <br/>' .
-								'<span>%title</span>',
-						)
-					);
-				}
+<section class="">
+    <div class="w-full py-6 max-w-[1280px] px-3 mx-auto">
+        <?php
+        /* Start the Loop */
+        while ( have_posts() ) :  the_post();
 
-				// If comments are open, or we have at least one comment, load
-				// the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
+            if ( is_singular( 'post' ) ) {
+                get_template_part( 'template-parts/content/content', 'single' );                
+            } elseif ( is_singular( 'product' ) ) {
+                // Template for single product
+                get_template_part( 'template-parts/content/content', 'product' );
+            }
 
-				// End the loop.
-			endwhile;
-			?>
+            // Load comments if open or available
+            if ( comments_open() || get_comments_number() ) {
+             //   comments_template();
+            }
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+        endwhile;
+        ?>
+    </main><!-- #main -->
+</section><!-- #primary -->
 
 <?php
 get_footer();
