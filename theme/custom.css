@@ -120,16 +120,6 @@ li.current_page_item a{
 
 .js .slider-single.slick-initialized > div:nth-child(1n+2) { display: block }
 
-h3 {
-	background: #f0f0f0;
-	color: #3498db;
-	font-size: 2.25rem;
-	margin: .5rem;
-	padding: 2%;
-	position: relative;
-	text-align: center;
-}
-
 .slider-single h3 {
 	line-height: 10rem;
 }

@@ -6,6 +6,7 @@
 * @subpackage Twenty_Fourteen
 * @since Twenty Fourteen 1.0
 */
+$sizes = ["16mm", "18mm", "20mm", "22mm"];
 
 get_header(); ?>
 
@@ -67,6 +68,18 @@ get_header(); ?>
         </div>
         <div class="">
             <h4 class="text-xl font-medium">Registry Number</h4>
+            <div class="flex gap-6 py-[14px]">
+                <p class="text-[#676767]">#4564655</p>
+                <img src="<?php echo get_template_directory_uri(); ?>/public/svg/barcode.svg" alt="" srcset="">
+            </div>
+            <h4 class="text-xl font-medium">Colors available</h4>
+            <div class="py-[14px]"></div>
+            <h4 class="text-xl font-medium">Choose size:</h4>
+            <div>
+                <?php foreach ($sizes as $size) {
+                        echo " <button>{$size}</button>";
+                }?>
+            </div>
         </div>
     </div>
 </main>
