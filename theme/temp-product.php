@@ -7,6 +7,7 @@
 * @since Twenty Fourteen 1.0
 */
 $sizes = ["16mm", "18mm", "20mm", "22mm"];
+$color = ["silver", "golden"];
 
 get_header(); ?>
 
@@ -66,28 +67,169 @@ get_header(); ?>
                 </a>
             </div>
         </div>
-        <div class="">
+
+        <div class="border-b pb-4">
             <h4 class="text-xl font-medium">Registry Number</h4>
             <div class="flex gap-6 py-[14px]">
                 <p class="text-[#676767]">#4564655</p>
                 <img src="<?php echo get_template_directory_uri(); ?>/public/svg/barcode.svg" alt="" srcset="">
             </div>
             <h4 class="text-xl font-medium">Colors available</h4>
-            <div class="py-[14px]"></div>
+            <div class="py-[14px]">
+                <div class=" flex gap-2 flex-wrap">
+                    <?php foreach ($color as $clr) { ?>
+                        <div class="bg-[#EAEAEA] px-[2px] pt-[2px] pb-[5px] rounded-[10px]">
+                            <figure class="bg-white p-1 rounded-[8px]">
+                                <img src="<?php echo get_template_directory_uri(); ?>/public/images/demo-watch.png" class="w-[50px] object-contain h-[50px]" alt=""/>
+                            </figure>
+                            <p class="capitalize text-center mt-1 text-[#676767] text-xs font-medium"><?php echo $clr; ?></p>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
             <h4 class="text-xl font-medium">Choose size:</h4>
-            <div>
+            <div class="mt-2 flex gap-2 flex-wrap">
                 <?php foreach ($sizes as $size) {
-                        echo " <button>{$size}</button>";
+                    echo " <button class='bg-[#F0F0F0] py-[9.5px] rounded-full px-6 text-black/60'>{$size}</button>";
                 }?>
             </div>
         </div>
+        
+        <div class="mt-[14px] flex gap-6 md:gap-3 flex-wrap items-center">
+            <div class="bg-[#F0F0F0] inline-flex p-[14px] items-center rounded-full justify-between gap-9">
+                <button>
+                    <img src="<?php echo get_template_directory_uri(); ?>/public/svg/menus.svg" alt=""/>
+                </button>
+                1
+                <button>
+                    <img src="<?php echo get_template_directory_uri(); ?>/public/svg/plus.svg" alt=""/>
+                </button>
+            </div>
+            <a href="#">                
+                <span class="bg-[#B6E22E] text-black uppercase font-semibold text-2xl px-6 py-3 rounded-[14px]">ADD TO CART</span>
+            </a>
+            <a href="#">                
+                <span class="bg-[#B6E22E] text-black uppercase font-semibold text-2xl px-6 py-3 rounded-[14px]">COMPARE PRODUCT</span>
+            </a>
+        </div>
+
+        <div class="mt-6 md:mt-4">
+            <h4 class="text-xl font-medium pb-[10px]">Description</h4>
+            <ul class="text-[#676767] list-disc pl-5">
+                <li>Manufacture Date:</li>
+                <li>Crafted in [Year] at the renowned [Manufacturer] in [Country]. This watch is part of a limited production run, showcasing the brand’s commitment to precision and quality.</li>
+                <li>Original Purchase:</li>
+                <li>First purchased on [Date] by [First Owner’s Name], this watch was originally sold at [Store Name], located in [City, Country]. It has since been carefully maintained and appreciated for its timeless design.</li>
+                <li>Service and Maintenance:</li>
+                <li>[Date]: Full service at [Authorized Service Center], including movement calibration, pressure testing...</li>
+            </ul>
+        </div>
+
     </div>
 </main>
 
+<section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Watch Details</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Regular Price</h6>
+                <p class="text-black/70 text-sm mt-1">$149,199.86</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Brand</h6>
+                <a class="text-black underline text-sm mt-1 capitalize">Rolex</a>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Model Name</h6>
+                <a class="text-black underline text-sm mt-1 capitalize">Submariner</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Case</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
+                <p class="text-black/70 text-sm mt-1">White Gold</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Crystal</h6>
+                <p class="text-black/70 text-sm mt-1">Sapphire</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Size</h6>
+                <p class="text-black/70 text-sm mt-1">40mm</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
+                <p class="text-black/70 text-sm mt-1">18k White Gold Diamond</p>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Movement</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Calibre</h6>
+                <p class="text-black/70 text-sm mt-1">3135</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
+                <p class="text-black/70 text-sm mt-1">Automatic</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
+                <p class="text-black/70 text-sm mt-1">Unidirectional</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Complication</h6>
+                <p class="text-black/70 text-sm mt-1">Date</p>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Bracelet</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
+                <p class="text-black/70 text-sm mt-1">White Gold</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
+                <p class="text-black/70 text-sm mt-1">Oyster</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Clasp</h6>
+                <p class="text-black/70 text-sm mt-1">Glidelock</p>
+            </li>
+        </ul>
+    </div>
+</section>
 
+<section class="max-w-[1280px] px-3 mx-auto mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+    </div>
+    <div class="flex justify-center">
+        <a href="#" class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-6 py-3 rounded-[14px]">see all</a>
+    </div>
+</section>
 
-
-
+<!-- YOU MAY ALSO LIKE -->
+<section class="bg-[#F2F2F2] py-14 pb-28">
+    <div class="max-w-[1280px] px-3 mx-auto">
+        <h2 class="uppercase font-semibold text-[#2B2B2B] text-center text-3xl sm:text-5xl md:text-[64px]">YOU MAY ALSO LIKE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 gap-[52px]">
+            <?php get_template_part('template-parts/product/product', 'card' ); ?>
+            <?php get_template_part('template-parts/product/product', 'card' ); ?>
+            <?php get_template_part('template-parts/product/product', 'card' ); ?>
+        </div>
+    </div>
+</section>
 
 
 
