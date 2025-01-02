@@ -183,3 +183,16 @@ function add_product_excerpt() {
         echo '<div class="product-excerpt">' . wp_kses_post(get_the_excerpt()) . '</div>';
     }
 }
+
+
+function get_custom_limited_content( $limit = 50 ) {
+    $content = get_the_content();
+    $content = wp_strip_all_tags( $content ); // Remove HTML tags
+    $words   = explode( ' ', $content );
+
+    if ( count( $words ) > $limit ) {
+        $content = implode( ' ', array_slice( $words, 0, $limit ) ) . '...';
+    }
+
+    return $content;
+}
