@@ -148,10 +148,10 @@ button.active_dashbord_page{
     background-color: #B6E22E !important;
 }
 .faq-item p{
-    display: hidden;
+    display: none !important;
 }
 .faq-item.open p{
-    display: block;
+    display: none !important;
 }
 
 

@@ -23,25 +23,20 @@
 
   <!-- Add content for "Shop by Brand" -->
   <div class="tab-content mt-10 mb-12 hidden" id="new">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-[52px]">
-      <?php get_template_part('template-parts/product/product', 'card' ); ?>
-      <?php get_template_part('template-parts/product/product', 'card' ); ?>
-      <?php get_template_part('template-parts/product/product', 'card' ); ?>
-      <!-- Repeat Product Cards as needed -->
-    </div>
+      <?php echo do_shortcode('[products limit="4" ]'); ?>
   </div>
 
   <!-- Product Card -->
   <div class="tab-content mt-10 mb-12 hidden" id="featured">
     <div>
-        <p>Content for "Shop by Featured" goes here.</p>
+    <?php echo do_shortcode('[featured_products]'); ?>
     </div>
   </div>
 
   <!-- Add content for "Shop by Brand" -->
   <div class="tab-content mt-10 mb-12 hidden" id="brand">
     <div class="mt-10">
-    <p>Content for "Shop by Brand" goes here.</p>
+    <?php echo do_shortcode('[top_rated_products]'); ?>
     </div>
   </div>
 </div>
