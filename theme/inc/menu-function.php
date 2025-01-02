@@ -166,10 +166,10 @@ add_action( 'init', 'cptui_register_my_taxes' );
 
 
 
-add_filter('loop_shop_columns', 'set_custom_columns');
-function set_custom_columns($columns) {
-    return 3; // Set the number of columns to 4
-}
+// add_filter('loop_shop_columns', 'set_custom_columns');
+// function set_custom_columns($columns) {
+//     return 3; 
+// }
 
 
 // Add excerpt below the product title
@@ -177,8 +177,6 @@ add_action('watch_block_product_desc', 'add_product_excerpt', 5);
 
 function add_product_excerpt() {
     global $post;
-
-    // Check if the excerpt exists
     if (has_excerpt($post->ID)) {
         echo '<div class="product-excerpt">' . wp_kses_post(get_the_excerpt()) . '</div>';
     }
