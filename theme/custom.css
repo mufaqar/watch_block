@@ -160,5 +160,36 @@ button.active_dashbord_page{
 .woocommerce span.onsale{
  background: #B6E22E !important;
 }
+.product img{
+    background: #fff;
+    padding: 14px;
+    margin-bottom: 0 !important;
+}
+.woocommerce-loop-product__title{
+    font-weight: 400 !important;
+    font-size: 24px !important;
+    text-transform: uppercase !important;
+    color: #111 !important;
+    margin-bottom: 30px !important;
+    letter-spacing: 4px;
+}
+.price .woocommerce-Price-amount.amount{
+    font-size: 24px !important;
+    font-weight: 400 !important;
+    color: #111 !important;
+    letter-spacing: 6px;
+}
+.product-excerpt{
+    margin-bottom: 30px !important;
+}
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+    margin: 0 !important;
+}
 
+.woocommerce ul.products{
+    
+}
 
+.woocommerce.columns-3 ul.products li.product{
+    width: 33% !important;
+}
