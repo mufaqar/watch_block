@@ -46,7 +46,7 @@ $terms = get_terms([
                                         />
                                     </button>
                                     <p class="faq-answer pt-4 text-[18px]">
-                                        <?php the_excerpt(); ?>
+                                        <?php the_excerpt(); ?> 123
                                     </p>
                                 </div>
                             </li>
@@ -55,7 +55,6 @@ $terms = get_terms([
                 <?php else : ?>
                     <p>No posts available under this category.</p>
                 <?php endif; ?>
-
                 <?php wp_reset_postdata(); ?>
             <?php endforeach; ?>
         <?php else : ?>
