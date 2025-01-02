@@ -14,7 +14,6 @@
 
 get_header();
 ?>
-
 <section class="">
     <h2 class="uppercase text-center text-4xl mb-5 sm:text-5xl md:text-[64px] font-semibold text-[#2B2B2B] mt-[125px]">
         <?php the_title()?></h2>
