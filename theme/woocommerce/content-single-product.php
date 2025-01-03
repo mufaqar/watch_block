@@ -82,4 +82,108 @@ if ( post_password_required() ) {
 	</main>
 </div>
 
+<section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Watch Details</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Regular Price</h6>
+                <p class="text-black/70 text-sm mt-1">$149,199.86</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Brand</h6>
+                <a class="text-black underline text-sm mt-1 capitalize">Rolex</a>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Model Name</h6>
+                <a class="text-black underline text-sm mt-1 capitalize">Submariner</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Case</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
+                <p class="text-black/70 text-sm mt-1">White Gold</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Crystal</h6>
+                <p class="text-black/70 text-sm mt-1">Sapphire</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Size</h6>
+                <p class="text-black/70 text-sm mt-1">40mm</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
+                <p class="text-black/70 text-sm mt-1">18k White Gold Diamond</p>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Movement</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Calibre</h6>
+                <p class="text-black/70 text-sm mt-1">3135</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
+                <p class="text-black/70 text-sm mt-1">Automatic</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
+                <p class="text-black/70 text-sm mt-1">Unidirectional</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Complication</h6>
+                <p class="text-black/70 text-sm mt-1">Date</p>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Bracelet</h4>
+        <ul>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
+                <p class="text-black/70 text-sm mt-1">White Gold</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
+                <p class="text-black/70 text-sm mt-1">Oyster</p>
+            </li>
+            <li class="py-3 border-b">
+                <h6 class="text-sm uppercase text-black/90 font-semibold">Clasp</h6>
+                <p class="text-black/70 text-sm mt-1">Glidelock</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="max-w-[1280px] px-3 mx-auto mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+    </div>
+    <div class="flex justify-center">
+        <a href="#" class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-6 py-3 rounded-[14px]">see all</a>
+    </div>
+</section>
+
+<!-- YOU MAY ALSO LIKE -->
+<section class="bg-[#F2F2F2] py-14 pb-28">
+    <div class="max-w-[1280px] px-3 mx-auto">
+        <h2 class="uppercase font-semibold text-[#2B2B2B] text-center text-3xl sm:text-5xl md:text-[64px]">YOU MAY ALSO LIKE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 gap-[52px]">
+            <?php get_template_part('template-parts/product/product', 'card' ); ?>
+            <?php get_template_part('template-parts/product/product', 'card' ); ?>
+            <?php get_template_part('template-parts/product/product', 'card' ); ?>
+        </div>
+    </div>
+</section>
+
+
 <?php do_action( 'woocommerce_after_single_product' ); ?>
