@@ -16,22 +16,27 @@
 				));?>
             </div>
             <div class="flex items-center gap-2">
+            <form role="search" method="get" class="" action="<?php echo home_url('/'); ?>">
                 <div
                     class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
-                    <input placeholder="Search Watches"
+                    
+                    <input placeholder="Search Watches" value="<?php echo get_search_query(); ?>"  type="search" 
+                    name="s" 
                         class="bg-transparent py-3 outline-none border-none w-full focus:border-none text-[#A1A1A1]" />
                     <img src="<?php echo get_template_directory_uri(); ?>/public/svg/search-icon.svg" alt="" class="">
+                   
                 </div>
+                </form>
                 <div class="md:flex item-center gap-2 hidden">
-                    <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                    <a  href="#" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/save.svg" alt=""
                             class="w-[14px] h-[20px]">
                     </a>
-                    <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                    <a href="<?php echo wc_get_cart_url(); ?>" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/cart.svg" alt=""
                             class="w-[17px] h-[17px]">
                     </a>
-                    <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                    <a href="<?php echo wc_get_page_permalink('myaccount'); ?>" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/person.svg" alt=""
                             class="w-[17px] h-[16px]">
                     </a>
