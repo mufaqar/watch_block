@@ -12,18 +12,44 @@
 get_header(); ?>
 
 
-<section class="mt-28 ">
-    <div class="bg-[#2B2B2B] p-12">
-        <h3 class="text-white">Request a call</h3>
-        <p>Give us some info so the right person can get back to you</p>
-        <div>
-            <input type="text" placeholder="First Name" class=""/>
-            <input type="text" placeholder="Job Title" class=""/>
-            <input type="email" placeholder="Email" class=""/>
-            <input type="number" placeholder="Email" class=""/>
+<section class="mt-28 max-w-[1280px] grid gap-5 grid-cols-1 md:grid-cols-2 px-3 mx-auto mb-12">
+    <div class="bg-[#2B2B2B] p-8 md:p-5 lg:p-12">
+        <h3 class="text-white text-3xl sm:text-[48px] sm:leading-[55px] font-semibold">Request a call</h3>
+        <p class="mt-4 text-xl font-light text-white">Give us some info so the right person can get back to you</p>
+        <div class="flex flex-col mt-8 gap-4">
+            <input type="text" placeholder="First Name" class="px-4 py-3 bg-white text-[#70776F] border-[#C0C0C0] border rounded-md"/>
+            <input type="text" placeholder="Job Title" class="px-4 py-3 bg-white text-[#70776F] border-[#C0C0C0] border rounded-md"/>
+            <input type="email" placeholder="Email" class="px-4 py-3 bg-white text-[#70776F] border-[#C0C0C0] border rounded-md"/>
+            <input type="number" placeholder="Phone" class="px-4 py-3 bg-white text-[#70776F] border-[#C0C0C0] border rounded-md"/>
+            <input type="text" placeholder="Country/Region" class="px-4 py-3 bg-white text-[#70776F] border-[#C0C0C0] border rounded-md"/>
+            <button class="bg-[#B6E22E] p-[14px] text-black w-full rounded-md text-center">Send Request</button>
         </div>
     </div>
-    <div></div>
+    <div class="flex flex-col gap-5">
+        <div class="bg-[#F2F2F2] py-8 px-16 flex-1">
+            <h2 class="font-semibold text-[35px] mb-5">Contact us at</h2>
+            <p class="text-xl font-light">Need help with Watchblock? Contact us below, and we’ll get back to you within 24 hours.</p>
+            <div class="mt-6">
+                <ul class="flex flex-col gap-5">
+                    <li class="flex items-center gap-4">
+                        <img src="<?php echo get_template_directory_uri(); ?>/public/svg/phone.svg" alt=""/>
+                        <a href="mailto:sprinkautopilot@gmail.com">sprinkautopilot@gmail.com</a>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <img src="<?php echo get_template_directory_uri(); ?>/public/svg/envlop.svg" alt=""/>
+                        <a href="tel:+552890123409">+552 890123409</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-[#F2F2F2] py-8 px-16 flex-1">
+            <h2 class="font-semibold text-[35px] mb-5">Leave us some feedback</h2>
+            <p class="text-xl font-light">Need help with Watchblock? Contact us below, and we’ll get back to you within 24 hours.</p>
+            <div class="mt-6">
+                <a class="bg-[#B6E22E] py-[14px] px-[25px]">Send Feedback</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 

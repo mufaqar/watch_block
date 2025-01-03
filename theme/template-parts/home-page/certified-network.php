@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div>
-                <img src="<?php echo get_template_directory_uri(); ?>/public/svg/network-map.svg" alt="" class="w-full"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/public/images/map.png" alt="" class="w-full"/>
             </div>
         </div>
     </div>
