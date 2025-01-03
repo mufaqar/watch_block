@@ -10,14 +10,19 @@
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
-
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
+<main class="max-w-[1280px] mx-auto px-3 z-[1]">
+    <img src="<?php echo get_template_directory_uri(); ?>/public/images/timepiece.png" alt="" class="h-[300px] w-full object-cover mt-24 rounded-[16px]"/>
+</main>
+<header class="page-header">
 				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
 			</header><!-- .page-header -->
+
+
+
+
+			<div class="max-w-[1280px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto px-3 mb-28">
+
+		<?php if ( have_posts() ) : ?>			
 
 			<?php
 			// Start the Loop.
@@ -29,7 +34,7 @@ get_header();
 			endwhile;
 
 			// Previous/next page navigation.
-			watch_block_the_posts_navigation();
+		//	watch_block_the_posts_navigation();
 
 		else :
 
@@ -38,7 +43,7 @@ get_header();
 
 		endif;
 		?>
-		</main><!-- #main -->
+	
 	</section><!-- #primary -->
 
 <?php
