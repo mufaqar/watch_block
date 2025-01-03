@@ -187,7 +187,7 @@ button.active_dashbord_page{
 }
 
 .woocommerce ul.products{
-    display: flex;
+    /* display: flex; */
 }
 
 .woocommerce.columns-3 ul.products li.product{
