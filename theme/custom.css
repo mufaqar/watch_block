@@ -217,3 +217,14 @@ button.active_dashbord_page{
         margin-right: 7px !important;
     }
 }
+
+.postExcerpt p{
+    font-size: 24px;
+    color: #797979;
+}
+
+@media (min-width: 768px){
+    .postExcerpt p{
+        font-size: 16px !important;
+    }
+}
