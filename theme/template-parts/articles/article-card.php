@@ -8,6 +8,7 @@
                 }
             ?></a>
         </div>
+        
     <div>
         <div class="mb-8">
             <h2 class="text-[26px] font-semibold leading-[29px] mt-2.5 mb-8"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
