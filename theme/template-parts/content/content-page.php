@@ -1,60 +1,39 @@
 <?php
 /**
- * Template part for displaying pages
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package watch_block
+ * @package tp_theme
  */
 
+get_header();
 ?>
+<section class="py-24 bg-[#6041BB]">
+    <div class="container mx-auto px-4">
+        <h1 class="sm:text-5xl text-4xl leading-normal font-extrabold text-white text-center"><?php the_title()?></h1>
+    </div>
+</section>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-	<header class="entry-header">
+<section class="py-16">
+    <div class="container mx-auto px-4">
 		<?php
-		if ( ! is_front_page() ) {
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		} else {
-			the_title( '<h2 class="entry-title">', '</h2>' );
-		}
+		while ( have_posts() ) :
+			the_post();
+			the_content();
+		endwhile; // End of the loop.
 		?>
-	</header><!-- .entry-header -->
+	</div>
+</section>
 
-	<?php watch_block_post_thumbnail(); ?>
+<?php
 
-	<div <?php watch_block_content_class( 'entry-content' ); ?>>
-		<?php
-		the_content();
+get_footer();
 
-		wp_link_pages(
-			array(
-				'before' => '<div>' . __( 'Pages:', 'watch_block' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
 
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
-			edit_post_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers. */
-						__( 'Edit <span class="sr-only">%s</span>', 'watch_block' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
