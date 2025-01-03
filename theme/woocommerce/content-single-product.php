@@ -69,18 +69,18 @@ if ( post_password_required() ) {
 		
 
         <?php
-	/**
-	 * Hook: woocommerce_after_single_product_summary.
-	 *
-	 * @hooked woocommerce_output_product_data_tabs - 10
-	 * @hooked woocommerce_upsell_display - 15
-	 * @hooked woocommerce_output_related_products - 20
-	 */
-	//do_action( 'woocommerce_after_single_product_summary' );
-	?>
-	</div>
+        /**
+         * Hook: woocommerce_after_single_product_summary.
+         *
+         * @hooked woocommerce_output_product_data_tabs - 10
+         * @hooked woocommerce_upsell_display - 15
+         * @hooked woocommerce_output_related_products - 20
+         */
+        //do_action( 'woocommerce_after_single_product_summary' );
+        ?>
+	
 	</main>
-</div>
+
 
 <section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
     <div>
@@ -167,18 +167,14 @@ if ( post_password_required() ) {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
 	<?php do_action('watch_block_single_reviews'); ?>
     </div>
-  </section>
+</section>
+
+<?php do_action( 'woocommerce_after_single_product' ); ?>
+</div>
 
 
-
-
-<!-- YOU MAY ALSO LIKE -->
 <section class="bg-[#F2F2F2] py-14 pb-28">
     <div class="max-w-[1280px] px-3 mx-auto">
-     
 		<?php do_action('watch_block_related_products'); ?>
     </div>
 </section>
-
-
-<?php do_action( 'woocommerce_after_single_product' ); ?>

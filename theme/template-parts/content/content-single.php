@@ -9,6 +9,7 @@
 
 ?>
 
+<div class="w-full py-6 max-w-[1280px] px-3 mx-auto">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
    
         <main class="max-w-[1280px] mx-auto px-3 z-[1]">
@@ -31,3 +32,4 @@
     
 
 </article><!-- #post-${ID} -->
+            </div>
