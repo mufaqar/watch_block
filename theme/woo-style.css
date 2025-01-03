@@ -38,6 +38,7 @@ body, html, *{
 }
 .woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link{
     width: 100%;
+    margin-bottom: 2px;
 }
 .woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link:hover{
     background-color: #B6E22E;
