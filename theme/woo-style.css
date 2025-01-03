@@ -32,12 +32,11 @@ body, html, *{
     color: #111111;
 }
 .woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link a{
-    padding: 18px 0;
+    padding: 18px 30px;
     width: 100%;
-    /* padding-right: 100px; */
+    display: block;
 }
 .woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link{
-    padding: 18px 30px;
     width: 100%;
 }
 .woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link:hover{
