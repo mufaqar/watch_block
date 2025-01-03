@@ -223,6 +223,7 @@ button.active_dashbord_page{
     color: #797979;
 }
 
+
 @media (min-width: 768px){
     .postExcerpt p{
         font-size: 16px !important;
