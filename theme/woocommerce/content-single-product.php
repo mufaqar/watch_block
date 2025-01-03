@@ -161,17 +161,13 @@ if ( post_password_required() ) {
     </div>
 </section>
 
+
+
 <section class="max-w-[1280px] px-3 mx-auto mb-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+	<?php do_action('watch_block_single_reviews'); ?>
     </div>
-    <div class="flex justify-center">
-        <a href="#" class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-6 py-3 rounded-[14px]">see all</a>
-    </div>
-</section>
+  </section>
 
 <!-- YOU MAY ALSO LIKE -->
 <section class="bg-[#F2F2F2] py-14 pb-28">

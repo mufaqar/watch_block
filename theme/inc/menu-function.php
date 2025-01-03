@@ -1,4 +1,7 @@
 <?php
+
+include_once 'woo.php';
+
 function add_menu_link_class($classes, $item, $args) {
     if(isset($args->add_li_class)) {
         $classes[] = $args->add_li_class;
@@ -163,6 +166,36 @@ function cptui_register_my_taxes() {
 	register_taxonomy( "cat_faqs", [ "faqs" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes' );
+
+
+function custom_register_brands_taxonomy() {
+    $labels = array(
+        'name'              => _x('Brands', 'taxonomy general name', 'watche_block'),
+        'singular_name'     => _x('Brand', 'taxonomy singular name', 'watche_block'),
+        'search_items'      => __('Search Brands', 'watche_block'),
+        'all_items'         => __('All Brands', 'watche_block'),
+        'parent_item'       => __('Parent Brand', 'watche_block'),
+        'parent_item_colon' => __('Parent Brand:', 'watche_block'),
+        'edit_item'         => __('Edit Brand', 'watche_block'),
+        'update_item'       => __('Update Brand', 'watche_block'),
+        'add_new_item'      => __('Add New Brand', 'watche_block'),
+        'new_item_name'     => __('New Brand Name', 'watche_block'),
+        'menu_name'         => __('Brands', 'watche_block'),
+    );
+
+    $args = array(
+        'hierarchical'      => true, // Make it behave like categories.
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'brand'),
+    );
+
+    register_taxonomy('brand', array('product'), $args);
+}
+add_action('init', 'custom_register_brands_taxonomy');
+
 
 
 
