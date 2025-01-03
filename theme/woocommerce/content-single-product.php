@@ -169,15 +169,14 @@ if ( post_password_required() ) {
     </div>
   </section>
 
+
+
+
 <!-- YOU MAY ALSO LIKE -->
 <section class="bg-[#F2F2F2] py-14 pb-28">
     <div class="max-w-[1280px] px-3 mx-auto">
-        <h2 class="uppercase font-semibold text-[#2B2B2B] text-center text-3xl sm:text-5xl md:text-[64px]">YOU MAY ALSO LIKE</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 gap-[52px]">
-            <?php get_template_part('template-parts/product/product', 'card' ); ?>
-            <?php get_template_part('template-parts/product/product', 'card' ); ?>
-            <?php get_template_part('template-parts/product/product', 'card' ); ?>
-        </div>
+     
+		<?php do_action('watch_block_related_products'); ?>
     </div>
 </section>
 
