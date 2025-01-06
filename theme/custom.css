@@ -17,6 +17,14 @@ nav ul{
     color: black;
     align-items: center;
 }
+.woocommerce-orders-table tbody{
+    background-color: #fff;
+}
+.woocommerce-orders-table__cell-order-status{
+    /* background-color: #11111133 !important; */
+    color: #111 ;
+    font-weight: 500 !important;
+}
 
 #nav-menu ul li a{
     color: #fff !important;
@@ -241,7 +249,7 @@ button.active_dashbord_page{
 }
 .woocommerce-button.button.woocommerce-form-login__submit{
     background-color: #B6E22E;
-    padding: 10px 2rem;
+    padding: 12px 2rem;
     border-radius: 10px;
 }
 .woocommerce-form-row em{
@@ -253,7 +261,21 @@ button.active_dashbord_page{
     margin-top: 1rem;
     padding: 0 1rem;
 }
+.woocommerce table.shop_table td{
+    /* padding: 8px 12px !important; */
+    text-align: center;
+    margin: 10px !important;
+}
+.woocommerce table.my_account_orders th{
+    text-align: center;
+}
 
+.woocommerce-orders-table__cell-order-actions a{
+    background-color: #B6E22E;
+    font-weight: 500 !important;
+    padding: 5.5px 9px;
+    border-radius: 8px !important;
+}
 .woocommerce-form{
     margin-top: 10px !important;
 }
