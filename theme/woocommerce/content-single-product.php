@@ -69,18 +69,18 @@ if ( post_password_required() ) {
 		
 
         <?php
-	/**
-	 * Hook: woocommerce_after_single_product_summary.
-	 *
-	 * @hooked woocommerce_output_product_data_tabs - 10
-	 * @hooked woocommerce_upsell_display - 15
-	 * @hooked woocommerce_output_related_products - 20
-	 */
-	//do_action( 'woocommerce_after_single_product_summary' );
-	?>
-	</div>
+        /**
+         * Hook: woocommerce_after_single_product_summary.
+         *
+         * @hooked woocommerce_output_product_data_tabs - 10
+         * @hooked woocommerce_upsell_display - 15
+         * @hooked woocommerce_output_related_products - 20
+         */
+        //do_action( 'woocommerce_after_single_product_summary' );
+        ?>
+	
 	</main>
-</div>
+
 
 <section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
     <div>
@@ -161,29 +161,20 @@ if ( post_password_required() ) {
     </div>
 </section>
 
+
+
 <section class="max-w-[1280px] px-3 mx-auto mb-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-    </div>
-    <div class="flex justify-center">
-        <a href="#" class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-6 py-3 rounded-[14px]">see all</a>
+	<?php do_action('watch_block_single_reviews'); ?>
     </div>
 </section>
-
-<!-- YOU MAY ALSO LIKE -->
-<section class="bg-[#F2F2F2] py-14 pb-28">
-    <div class="max-w-[1280px] px-3 mx-auto">
-        <h2 class="uppercase font-semibold text-[#2B2B2B] text-center text-3xl sm:text-5xl md:text-[64px]">YOU MAY ALSO LIKE</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 gap-[52px]">
-            <?php get_template_part('template-parts/product/product', 'card' ); ?>
-            <?php get_template_part('template-parts/product/product', 'card' ); ?>
-            <?php get_template_part('template-parts/product/product', 'card' ); ?>
-        </div>
-    </div>
-</section>
-
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
+</div>
+
+
+<section class="bg-[#F2F2F2] py-14 pb-28">
+    <div class="max-w-[1280px] px-3 mx-auto">
+		<?php do_action('watch_block_related_products'); ?>
+    </div>
+</section>

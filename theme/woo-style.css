@@ -1,92 +1,113 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-body, html, *{
-    font-family: "Montserrat", serif;
-}
-
-.mfont,a,p,h1,h2,h3,h4,h5,h6, ul, li{
-    font-family: "Montserrat", serif !important;
+body,
+html,
+* {
+	font-family: "Montserrat", serif;
 }
 
+.mfont,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+	font-family: "Montserrat", serif !important;
+}
 
-.woocommerce{
-    background-color: #F2F2F2 !important;
-    padding: 10px;
-    border-radius: 30px;
+.woocommerce-account .woocommerce {
+	background-color: #f2f2f2 !important;
+	padding: 10px;
+	border-radius: 30px;
 }
-.woocommerce-MyAccount-navigation{
-    background: white;
-    padding: 12px;
-    border-radius: 21px;
+
+.single-product .woocommerce {
+	background-color: #fff !important;
+	border: none;
+	border-radius: none;
 }
-.woocommerce-MyAccount-navigation ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 0;
+
+.woocommerce-MyAccount-navigation {
+	background: white;
+	padding: 12px;
+	border-radius: 21px;
 }
-.woocommerce-MyAccount-navigation ul li a{
-    font-weight: 700;
-    font-size: 14px;
-    color: #111111;
+.woocommerce-MyAccount-navigation ul {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0;
 }
-.woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link a{
-    padding: 18px 30px;
-    width: 100%;
-    display: block;
+.woocommerce-MyAccount-navigation ul li a {
+	font-weight: 700;
+	font-size: 14px;
+	color: #111111;
 }
-.woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link{
-    width: 100%;
-    margin-bottom: 2px;
+.woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link a {
+	padding: 18px 30px;
+	width: 100%;
+	display: block;
 }
-.woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link:hover{
-    background-color: #B6E22E;
-    border-radius: 12px;
+.woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link {
+	width: 100%;
+	margin-bottom: 2px;
 }
-.woocommerce-MyAccount-navigation ul .is-active{
-    background-color: #B6E22E;
-    border-radius: 12px;
+.woocommerce-MyAccount-navigation
+	ul
+	.woocommerce-MyAccount-navigation-link:hover {
+	background-color: #b6e22e;
+	border-radius: 12px;
 }
-.woocommerce-MyAccount-content p{
-    padding-bottom: .5rem;
-    font-size: 18px;
+.woocommerce-MyAccount-navigation ul .is-active {
+	background-color: #b6e22e;
+	border-radius: 12px;
+}
+.woocommerce-MyAccount-content p {
+	padding-bottom: 0.5rem;
+	font-size: 18px;
 }
 .woocommerce-Addresses,
-.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
-.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100% !important;
-    padding-right: 1rem;
-} 
-.woocommerce-Addresses .woocommerce-Address header{
-    font-weight: 700;
-    font-size: 20px;
+.woocommerce .col2-set .col-1,
+.woocommerce-page .col2-set .col-1,
+.woocommerce .col2-set .col-2,
+.woocommerce-page .col2-set .col-2 {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100% !important;
+	padding-right: 1rem;
 }
-.woocommerce-Addresses .woocommerce-Address header a{
-    color: #B6E22E;
+.woocommerce-Addresses .woocommerce-Address header {
+	font-weight: 700;
+	font-size: 20px;
 }
-.woocommerce-orders-table{
-    border-radius: 21px !important;
-    overflow: hidden;
-    border-spacing : 0;
-    margin-bottom: 0 !important;
+.woocommerce-Addresses .woocommerce-Address header a {
+	color: #b6e22e;
 }
-.woocommerce-orders-table thead{
-    background-color: #B6E22E;
+.woocommerce-orders-table {
+	border-radius: 21px !important;
+	overflow: hidden;
+	border-spacing: 0;
+	margin-bottom: 0 !important;
 }
-.woocommerce-orders-table thead tr th{
-    padding: 1rem !important;
+.woocommerce-orders-table thead {
+	background-color: #b6e22e;
 }
-.woocommerce-orders-table tbody td{
-    padding: 16px !important;
+.woocommerce-orders-table thead tr th {
+	padding: 1rem !important;
+}
+.woocommerce-orders-table tbody td {
+	padding: 16px !important;
 }
 
-
-@media(max-width: 768px){
-    .woocommerce-MyAccount-navigation{
-        margin-bottom: 1rem;
-    }
+@media (max-width: 768px) {
+	.woocommerce-MyAccount-navigation {
+		margin-bottom: 1rem;
+	}
 }
