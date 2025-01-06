@@ -223,7 +223,43 @@ button.active_dashbord_page{
     color: #797979;
 }
 
+.woocommerce-EditAccountForm.edit-account input,
+.woocommerce-Input.woocommerce-Input--text.input-text, input{
+    padding: 0.8rem !important;
+    border: 1px solid #7979794f;
+    border-radius: 4px;
+    background: #fff important;
+}
+.woocommerce form .show-password-input, .woocommerce-page form .show-password-input{
+    top: 0.9rem !important;
+}
+.woocommerce-Button.button{
+    background-color: #B6E22E;
+    margin-top: 1.2rem;
+    padding: 10px 2rem;
+    border-radius: 10px;
+}
+.woocommerce-button.button.woocommerce-form-login__submit{
+    background-color: #B6E22E;
+    padding: 10px 2rem;
+    border-radius: 10px;
+}
+.woocommerce-form-row em{
+    font-size: 14px;
+}
+.woocommerce h2{
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 1rem;
+    padding: 0 1rem;
+}
 
+.woocommerce-form{
+    margin-top: 10px !important;
+}
+.woocommerce form.login, .woocommerce form.register{
+    margin: 1rem !important;
+}
 @media (min-width: 768px){
     .postExcerpt p{
         font-size: 16px !important;
