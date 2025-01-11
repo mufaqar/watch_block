@@ -17,6 +17,14 @@ nav ul{
     color: black;
     align-items: center;
 }
+.woocommerce-orders-table tbody{
+    background-color: #fff;
+}
+.woocommerce-orders-table__cell-order-status{
+    /* background-color: #11111133 !important; */
+    color: #111 ;
+    font-weight: 500 !important;
+}
 
 #nav-menu ul li a{
     color: #fff !important;
@@ -223,7 +231,90 @@ button.active_dashbord_page{
     color: #797979;
 }
 
+.woocommerce-EditAccountForm.edit-account input,
+.woocommerce-Input.woocommerce-Input--text.input-text, input{
+    padding: 0.8rem !important;
+    border: 1px solid #7979794f;
+    border-radius: 4px;
+    background: #fff important;
+}
+.woocommerce form .show-password-input, .woocommerce-page form .show-password-input{
+    top: 0.9rem !important;
+}
+.woocommerce-Button.button{
+    background-color: #B6E22E;
+    margin-top: 1.2rem;
+    padding: 10px 2rem;
+    border-radius: 10px;
+}
+.woocommerce-button.button.woocommerce-form-login__submit{
+    background-color: #B6E22E;
+    padding: 12px 2rem;
+    border-radius: 10px;
+}
+.woocommerce-form-row em{
+    font-size: 14px;
+}
+.woocommerce h2{
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 1rem;
+    padding: 0 1rem;
+}
+.woocommerce table.shop_table td{
+    /* padding: 8px 12px !important; */
+    text-align: center;
+    margin: 10px !important;
+}
+.woocommerce table.my_account_orders th{
+    text-align: center;
+}
 
+.woocommerce-orders-table__cell-order-actions a{
+    background-color: #B6E22E;
+    font-weight: 500 !important;
+    padding: 5.5px 9px;
+    border-radius: 8px !important;
+}
+.woocommerce-form{
+    margin-top: 10px !important;
+}
+.woocommerce form.login, .woocommerce form.register{
+    margin: 1rem !important;
+}
+
+.blog_contnet h2{
+    font-size: 26px;
+    font-weight: 600;
+    margin: 8px 0;
+}
+.blog_contnet h3{
+    font-size: 22px;
+    font-weight: 600;
+    margin: 8px 0;
+    text-transform: capitalize;
+}
+.blog_contnet h4, .blog_contnet h5, .blog_contnet h5{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 8px 0;
+    text-transform: capitalize;
+}
+.blog_contnet ul{
+    list-style: circle;
+    padding-left: 1.4rem;
+    font-size: 18px;
+}
+.blog_contnet p{
+    font-size: 18px;
+}
+.blog_contnet a {
+    color: rgb(97, 97, 255);
+}
+
+.blog_contnet img {
+    width: 100%;
+}
 @media (min-width: 768px){
     .postExcerpt p{
         font-size: 16px !important;
