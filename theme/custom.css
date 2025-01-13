@@ -163,6 +163,46 @@ button.active_dashbord_page{
 }
 
 
+/* Mini cart*/
+
+/* Wrapper styles */
+.mini-cart-wrapper {
+    position: relative;
+}
+
+/* Mini-cart styles */
+.mini-cart {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* Open state */
+.mini-cart.open {
+    right: 0;
+}
+
+/* Close button styles */
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+
+
 
 /* Woo CSS */
 .woocommerce span.onsale{

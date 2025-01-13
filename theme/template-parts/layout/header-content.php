@@ -1,4 +1,4 @@
-<header class=" py-4 sm:py-5 md:py-6 lg:py-[32px] absolute w-full z-50 top-0">
+<header class=" py-4 sm:py-5 md:py-6 lg:py-[32px] sticky w-full z-50 top-0">
     <div class="pl-3 sm:pl-4 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
         <a href="<?php bloginfo('url'); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/public/<?php echo ( is_home() || is_front_page() ) ? 'logo.svg' : 'logo-dark.svg'; ?>"
@@ -32,10 +32,10 @@
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/save.svg" alt=""
                             class="w-[14px] h-[20px]">
                     </a>
-                    <a href="<?php echo wc_get_cart_url(); ?>" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                    <button class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow" id="open-cart">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/cart.svg" alt=""
                             class="w-[17px] h-[17px]">
-                    </a>
+                    </button>
                     <a href="<?php echo wc_get_page_permalink('myaccount'); ?>" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/person.svg" alt=""
                             class="w-[17px] h-[16px]">
@@ -53,7 +53,7 @@
 
 <!-- Mobile Header  -->
 
-<nav id="nav-menu" class="bg-black text-white hidden lg:hidden absolute w-full z-[1]">
+<nav id="nav-menu" class="bg-black text-white hidden lg:hidden sticky w-full z-[1]">
     <div>
         <?php wp_nav_menu( array( 
 			'theme_location' => 'main', 
@@ -74,10 +74,12 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/public/svg/save.svg" alt=""
                     class="w-[14px] h-[20px]">
             </a>
-            <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+            <button class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow" id="open-cart">
                 <img src="<?php echo get_template_directory_uri(); ?>/public/svg/cart.svg" alt=""
                     class="w-[17px] h-[17px]">
-            </a>
+
+            </button>
+        
             <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                 <img src="<?php echo get_template_directory_uri(); ?>/public/svg/person.svg" alt=""
                     class="w-[17px] h-[16px]">

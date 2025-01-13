@@ -199,8 +199,34 @@ require get_template_directory() . '/inc/menu-function.php';
 
 
 function enqueue_custom_scripts() {
-    wp_enqueue_script('custom-menu-toggle', get_template_directory_uri() . '/js/script.js', array(), '1.0', true);
+    wp_enqueue_script('custom-menu-toggle', get_template_directory_uri() . '/js/script.js', array(), '1.0', true);	
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
+
+
+
+function enqueue_custom_minicart_script() {
+    // Enqueue WooCommerce cart fragments for dynamic updates
+    wp_enqueue_script('wc-cart-fragments');
+
+    // Enqueue custom script
+    wp_enqueue_script(
+        'custom-minicart-script', 
+        get_stylesheet_directory_uri() . '/js/woo.js', 
+        ['jquery', 'wc-cart-fragments'], 
+        null, 
+        true
+    );
+
+    // Pass WooCommerce AJAX URL to the script
+    wp_localize_script('custom-minicart-script', 'wc_cart_fragments_params', [
+        'wc_ajax_url' => WC_AJAX::get_endpoint('%%endpoint%%'),
+    ]);
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_minicart_script');
+
+
+
+
 
 
