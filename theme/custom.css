@@ -355,6 +355,45 @@ button.active_dashbord_page{
 .blog_contnet img {
     width: 100%;
 }
+.woocommerce-mini-cart-item figure img{
+    width: auto !important;
+}
+.widget_shopping_cart_content{
+    height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.woocommerce-mini-cart__total{
+    font-size: 22px;
+}
+.woocommerce-mini-cart__total span {
+    color: #B6E22E
+}
+.woocommerce-mini-cart__buttons{
+    display: flex;
+    gap: 20px;
+}
+.woocommerce-mini-cart__buttons .button {
+    background: #B6E22E !important;
+    color: #111111 !important;
+    flex: 1;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 12px !important;
+    height: 52px;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.woocommerce-mini-cart__buttons .checkout {
+    font-weight: 500 !important;
+}
+
 @media (min-width: 768px){
     .postExcerpt p{
         font-size: 16px !important;

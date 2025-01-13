@@ -38,3 +38,27 @@ function custom_output_related_products() {
 }
 
 
+add_action( 'wp_ajax_woocommerce_update_cart_quantity', 'update_cart_quantity' );
+add_action( 'wp_ajax_nopriv_woocommerce_update_cart_quantity', 'update_cart_quantity' );
+
+function update_cart_quantity() {
+    $cart_item_key = sanitize_text_field( $_POST['cart_item_key'] );
+    $quantity = intval( $_POST['quantity'] );
+
+    if ( $cart_item_key && $quantity >= 1 ) {
+        WC()->cart->set_quantity( $cart_item_key, $quantity, true );
+        WC()->cart->calculate_totals();
+
+        ob_start();
+        woocommerce_mini_cart();
+        $mini_cart = ob_get_clean();
+
+        wp_send_json_success([
+            'fragments' => [
+                'div.widget_shopping_cart_content' => $mini_cart
+            ]
+        ]);
+    } else {
+        wp_send_json_error();
+    }
+}

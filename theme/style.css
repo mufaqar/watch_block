@@ -1324,6 +1324,10 @@ body {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .-right-\[1px\] {
   right: -1px;
 }
@@ -1332,8 +1336,16 @@ body {
   left: 0.75rem;
 }
 
+.left-auto {
+  left: auto;
+}
+
 .right-0 {
   right: 0px;
+}
+
+.right-4 {
+  right: 1rem;
 }
 
 .top-0 {
@@ -1342,6 +1354,10 @@ body {
 
 .top-1\/2 {
   top: 50%;
+}
+
+.top-14 {
+  top: 3.5rem;
 }
 
 .top-2 {
@@ -1401,6 +1417,10 @@ body {
 .my-9 {
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
+}
+
+.\!mt-9 {
+  margin-top: 2.25rem !important;
 }
 
 .-mt-10 {
@@ -1531,6 +1551,10 @@ body {
   margin-top: 14px;
 }
 
+.-mt-1 {
+  margin-top: -0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1639,8 +1663,16 @@ body {
   height: 100%;
 }
 
+.max-h-\[124px\] {
+  max-height: 124px;
+}
+
 .max-h-\[280px\] {
   max-height: 280px;
+}
+
+.\!w-full {
+  width: 100% !important;
 }
 
 .w-12 {
@@ -1711,12 +1743,21 @@ body {
   width: 90%;
 }
 
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .w-full {
   width: 100%;
 }
 
 .min-w-\[120px\] {
   min-width: 120px;
+}
+
+.max-w-\[124px\] {
+  max-width: 124px;
 }
 
 .max-w-\[1280px\] {
@@ -1753,6 +1794,10 @@ body {
 
 .max-w-\[715px\] {
   max-width: 715px;
+}
+
+.max-w-\[771px\] {
+  max-width: 771px;
 }
 
 .max-w-full {
@@ -1963,6 +2008,10 @@ body {
   border-right-width: 2px;
 }
 
+.border-t {
+  border-top-width: 1px;
+}
+
 .border-none {
   border-style: none;
 }
@@ -1995,6 +2044,10 @@ body {
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-black\/10 {
+  border-color: rgb(0 0 0 / 0.1);
 }
 
 .\!bg-white {
@@ -2118,6 +2171,10 @@ body {
 
 .p-3 {
   padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .p-5 {
@@ -2318,6 +2375,14 @@ body {
   padding-bottom: 9.5px;
 }
 
+.\!pl-6 {
+  padding-left: 1.5rem !important;
+}
+
+.\!pr-14 {
+  padding-right: 3.5rem !important;
+}
+
 .pb-28 {
   padding-bottom: 7rem;
 }
@@ -2378,8 +2443,8 @@ body {
   padding-top: 2px;
 }
 
-.pt-10 {
-  padding-top: 2.5rem;
+.pt-\[50px\] {
+  padding-top: 50px;
 }
 
 .text-left {
