@@ -7,7 +7,7 @@ $terms = get_terms(array(
     'taxonomy'   => $taxonomy,
     'hide_empty' => true, 
     'orderby'    => 'menu_order', 
-    'order'      => 'ASC'
+    'order'      => 'DESC'
 ));
 
 ?>
