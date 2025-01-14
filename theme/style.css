@@ -3079,6 +3079,10 @@ body {
     font-size: 67.27px;
   }
 
+  .md\:text-\[46px\] {
+    font-size: 46px;
+  }
+
   .md\:leading-\[70px\] {
     line-height: 70px;
   }

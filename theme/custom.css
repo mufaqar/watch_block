@@ -259,7 +259,6 @@ button.active_dashbord_page{
 @media (max-width: 768px){
     .woocommerce ul.products{
         flex-wrap: wrap;
-        
     }
     .woocommerce.columns-3 ul.products li.product{
         margin-right: 7px !important;
