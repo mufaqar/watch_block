@@ -5,7 +5,9 @@ $post_type = 'faqs'; // Your post type slug.
 // Get all terms in the taxonomy.
 $terms = get_terms(array(
     'taxonomy'   => $taxonomy,
-    'hide_empty' => true, // Change to false if you want to show terms with no posts.
+    'hide_empty' => true, 
+    'orderby'    => 'menu_order', 
+    'order'      => 'ASC'
 ));
 
 ?>
