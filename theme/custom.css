@@ -264,6 +264,9 @@ button.active_dashbord_page{
     .woocommerce.columns-3 ul.products li.product{
         margin-right: 7px !important;
     }
+    li.product{
+        width: 100% !important;
+    }
 }
 
 .postExcerpt p{
@@ -397,9 +400,7 @@ button.active_dashbord_page{
 .woocommerce-account .account {
     background: #B6E22E;
 }
-li.product{
-    width: 100% !important;
-}
+
 
 
 @media (min-width: 768px){
