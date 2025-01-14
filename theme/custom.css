@@ -397,6 +397,9 @@ button.active_dashbord_page{
 .woocommerce-account .account {
     background: #B6E22E;
 }
+li.product{
+    width: 100% !important;
+}
 
 
 @media (min-width: 768px){
