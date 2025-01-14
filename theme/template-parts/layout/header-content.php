@@ -36,7 +36,7 @@
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/cart.svg" alt=""
                             class="w-[17px] h-[17px]">
                     </button>
-                    <a href="<?php echo wc_get_page_permalink('myaccount'); ?>" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                    <a href="<?php echo wc_get_page_permalink('myaccount'); ?>" class="bg-white account w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/person.svg" alt=""
                             class="w-[17px] h-[16px]">
                     </a>

@@ -394,7 +394,10 @@ button.active_dashbord_page{
     font-weight: 500 !important;
 }
 
-.woocommerce-account {}
+.woocommerce-account .account {
+    background: #B6E22E;
+}
+
 
 @media (min-width: 768px){
     .postExcerpt p{
