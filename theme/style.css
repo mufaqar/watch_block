@@ -1667,6 +1667,14 @@ body {
   max-height: 280px;
 }
 
+.min-h-\[\] {
+  min-height: ;
+}
+
+.min-h-\[89\.2px\] {
+  min-height: 89.2px;
+}
+
 .\!w-full {
   width: 100% !important;
 }
