@@ -394,6 +394,8 @@ button.active_dashbord_page{
     font-weight: 500 !important;
 }
 
+.woocommerce-account {}
+
 @media (min-width: 768px){
     .postExcerpt p{
         font-size: 16px !important;

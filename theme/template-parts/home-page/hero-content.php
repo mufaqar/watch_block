@@ -5,7 +5,7 @@
             <p>Each WatchBlock timepiece comes with its own NFT.</p>
             <p>This blockchain-backed proof of ownership protects your watch and unlocks a world of benefits.</p>
         </div>
-        <a class="bg-[#B6E22E] text-[38px] mfont text-black font-semibold py-2 px-4 rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
+        <a href="/shop" class="bg-[#B6E22E] text-[38px] mfont text-black font-semibold py-2 px-4 rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
             SHOP NOW
         </a>
     </div>
