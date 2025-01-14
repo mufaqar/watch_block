@@ -3083,6 +3083,10 @@ body {
     font-size: 46px;
   }
 
+  .md\:\!text-\[46px\] {
+    font-size: 46px !important;
+  }
+
   .md\:leading-\[70px\] {
     line-height: 70px;
   }
