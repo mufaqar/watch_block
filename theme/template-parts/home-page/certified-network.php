@@ -20,22 +20,22 @@
         <div class="flex flex-col items-center text-center">
             <img src="<?php echo get_template_directory_uri(); ?>/public/svg/sheild.svg" alt=""/>
             <h2 class="py-4 font-semibold text-lg uppercase">100% AUTHENTIC</h2>
-            <p class="font-light text-white/80">All our watches are verifie for authenticity in person.</p>
+            <p class="font-light text-white/80">All our watches are verifie<br/> for authenticity in person.</p>
         </div>
         <div class="flex flex-col items-center text-center">
             <img src="<?php echo get_template_directory_uri(); ?>/public/svg/sheild.svg" alt=""/>
             <h2 class="py-4 font-semibold text-lg uppercase">FULL TRANSPARENCY</h2>
-            <p class="font-light text-white/80">We honor fair market value of all products.</p>
+            <p class="font-light text-white/80">We honor fair market value <br/>of all products.</p>
         </div>
         <div class="flex flex-col items-center text-center">
             <img src="<?php echo get_template_directory_uri(); ?>/public/svg/sheild.svg" alt=""/>
             <h2 class="py-4 font-semibold text-lg uppercase">REAL TIME INVENTORY</h2>
-            <p class="font-light text-white/80">Every watch on our website is in stock and ready for sale.</p>
+            <p class="font-light text-white/80">Every watch on our website <br/>is in stock and ready for sale.</p>
         </div>
         <div class="flex flex-col items-center text-center">
             <img src="<?php echo get_template_directory_uri(); ?>/public/svg/sheild.svg" alt=""/>
             <h2 class="py-4 font-semibold text-lg uppercase">SECURE SHIPPING</h2>
-            <p class="font-light text-white/80">We only ship with the best carriers in the industry.</p>
+            <p class="font-light text-white/80">We only ship with the best <br/>carriers in the industry.</p>
         </div>
     </div>
 </section>
