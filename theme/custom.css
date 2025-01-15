@@ -400,7 +400,11 @@ button.active_dashbord_page{
     background: #B6E22E;
 }
 
-
+.PageContent h2{
+    font-size: 24px;
+    font-weight: 700;
+    margin: .7rem 0;
+}
 
 @media (min-width: 768px){
     .postExcerpt p{

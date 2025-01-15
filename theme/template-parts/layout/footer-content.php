@@ -40,9 +40,9 @@
 	<div class="text-white flex items-center px-3 text-center justify-center flex-wrap pb-3 gap-4">
 			<p>@2024 VOOKUM. All rights reserved</p>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
-			<a href="/term-and-condition">Terms & Conditions</a>
+			<a href="<?php echo home_url('/terms-and-condition') ?>">Terms & Conditions</a>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
-			<a href="/tercm-and-condition">Privacy Policy</a>
+			<a href="<?php echo home_url('/privacy-policy') ?>">Privacy Policy</a>
 		</div>
 </footer>
 

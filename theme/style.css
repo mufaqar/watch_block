@@ -1409,6 +1409,11 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.my-40 {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -1555,6 +1560,18 @@ body {
   margin-top: 14px;
 }
 
+.mt-40 {
+  margin-top: 10rem;
+}
+
+.mb-40 {
+  margin-bottom: 10rem;
+}
+
+.mt-60 {
+  margin-top: 15rem;
+}
+
 .block {
   display: block;
 }
@@ -1665,10 +1682,6 @@ body {
 
 .max-h-\[280px\] {
   max-height: 280px;
-}
-
-.min-h-\[\] {
-  min-height: ;
 }
 
 .min-h-\[89\.2px\] {
@@ -2543,10 +2556,6 @@ body {
   font-size: 41px;
 }
 
-.text-\[46px\] {
-  font-size: 46px;
-}
-
 .text-\[4vw\] {
   font-size: 4vw;
 }
@@ -3035,6 +3044,10 @@ body {
     padding-bottom: 0.25rem;
   }
 
+  .md\:\!text-\[46px\] {
+    font-size: 46px !important;
+  }
+
   .md\:text-\[115\.42px\] {
     font-size: 115.42px;
   }
@@ -3077,14 +3090,6 @@ body {
 
   .md\:text-\[67\.27px\] {
     font-size: 67.27px;
-  }
-
-  .md\:text-\[46px\] {
-    font-size: 46px;
-  }
-
-  .md\:\!text-\[46px\] {
-    font-size: 46px !important;
   }
 
   .md\:leading-\[70px\] {
@@ -3175,10 +3180,6 @@ body {
 
   .lg\:gap-\[46px\] {
     gap: 46px;
-  }
-
-  .lg\:gap-\[\] {
-    gap: ;
   }
 
   .lg\:gap-\[50px\] {
