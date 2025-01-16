@@ -212,7 +212,7 @@ button.active_dashbord_page{
 .woocommerce span.onsale{
  background: #B6E22E !important;
 }
-.product img{
+.product1 img{
     background: #fff;
     padding: 14px;
     margin-bottom: 0 !important;
@@ -418,3 +418,7 @@ button.active_dashbord_page{
         font-size: 16px !important;
     }
 }
+
+
+
+

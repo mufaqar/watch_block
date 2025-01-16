@@ -4,7 +4,7 @@ Theme URI: https://watchblock
 Author: Mufaqar
 Author URI: https://underscoretw.com/
 Description: Watch Block Custom Theme
-Version: 1.0.0
+Version: 0.1.0
 Tested up to: 6.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1264,31 +1264,111 @@ body {
  * https://make.wordpress.org/core/2021/06/29/on-layout-and-content-width-in-wordpress-5-8/
  */
 
-.page-content > *,
-.entry-content > * {
+.page-content>*,
+.entry-content>* {
   /* Content width from the `theme.json` file */
   margin-left: auto;
   margin-right: auto;
   max-width: 40rem;
 }
 
-.entry-content > .alignwide {
+.entry-content>.alignwide {
   /* Wide width from the `theme.json` file */
   max-width: 60rem;
 }
 
-.entry-content > .alignfull {
+.entry-content>.alignfull {
   max-width: none;
 }
 
-.entry-content > .alignleft {
+.entry-content>.alignleft {
   float: left;
   margin-right: 2rem;
 }
 
-.entry-content > .alignright {
+.entry-content>.alignright {
   float: right;
   margin-left: 2rem;
+}
+
+#size-buttons {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.size-button {
+  border-radius: 9999px;
+  border-width: 1px;
+  border-color: transparent;
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 240 240 / var(--tw-bg-opacity));
+  padding-top: 9.5px;
+  padding-bottom: 9.5px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  color: rgb(0 0 0 / 0.6);
+}
+
+#color-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.color-button {
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: transparent;
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 234 234 / var(--tw-bg-opacity));
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.color_lable {
+  margin-top: 0.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(103 103 103 / var(--tw-text-opacity));
+}
+
+.watch_options {
+  margin-bottom: 13px;
+  border-bottom-width: 1px;
+  padding-bottom: 13px;
+}
+
+.watch_options .active {
+  border-width: 1px;
+  border-style: dashed;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.add_cart_btn {
+  border-radius: 14px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(182 226 46 / var(--tw-bg-opacity));
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 /**
@@ -1514,6 +1594,10 @@ body {
 
 .mb-\[73px\] {
   margin-bottom: 73px;
+}
+
+.mt-0 {
+  margin-top: 0px;
 }
 
 .mt-1 {
@@ -1989,10 +2073,6 @@ body {
   overflow-x: hidden;
 }
 
-.rounded-\[10px\] {
-  border-radius: 10px;
-}
-
 .rounded-\[12px\] {
   border-radius: 12px;
 }
@@ -2176,11 +2256,6 @@ body {
   background-color: rgb(182 226 46 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#EAEAEA\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 234 234 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#F0EEED\] {
   --tw-bg-opacity: 1;
   background-color: rgb(240 238 237 / var(--tw-bg-opacity));
@@ -2345,11 +2420,6 @@ body {
   padding-right: 25px;
 }
 
-.px-\[2px\] {
-  padding-left: 2px;
-  padding-right: 2px;
-}
-
 .px-\[30px\] {
   padding-left: 30px;
   padding-right: 30px;
@@ -2470,11 +2540,6 @@ body {
   padding-bottom: 86px;
 }
 
-.py-\[9\.5px\] {
-  padding-top: 9.5px;
-  padding-bottom: 9.5px;
-}
-
 .\!pl-6 {
   padding-left: 1.5rem !important;
 }
@@ -2501,10 +2566,6 @@ body {
 
 .pb-\[10px\] {
   padding-bottom: 10px;
-}
-
-.pb-\[5px\] {
-  padding-bottom: 5px;
 }
 
 .pl-16 {
@@ -2549,10 +2610,6 @@ body {
 
 .pt-\[21px\] {
   padding-top: 21px;
-}
-
-.pt-\[2px\] {
-  padding-top: 2px;
 }
 
 .pt-\[50px\] {
@@ -2835,10 +2892,6 @@ body {
 
 .text-black\/30 {
   color: rgb(0 0 0 / 0.3);
-}
-
-.text-black\/60 {
-  color: rgb(0 0 0 / 0.6);
 }
 
 .text-black\/65 {

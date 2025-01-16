@@ -74,26 +74,7 @@ get_header(); ?>
                 <p class="text-[#676767]">#4564655</p>
                 <img src="<?php echo get_template_directory_uri(); ?>/public/svg/barcode.svg" alt="" srcset="">
             </div>
-            <h4 class="text-xl font-medium">Colors available</h4>
-            <div class="py-[14px]">
-                <div class=" flex gap-2 flex-wrap">
-                    <?php foreach ($color as $clr) { ?>
-                        <div class="bg-[#EAEAEA] px-[2px] pt-[2px] pb-[5px] rounded-[10px]">
-                            <figure class="bg-white p-1 rounded-[8px]">
-                                <img src="<?php echo get_template_directory_uri(); ?>/public/images/demo-watch.png" class="w-[50px] object-contain h-[50px]" alt=""/>
-                            </figure>
-                            <p class="capitalize text-center mt-1 text-[#676767] text-xs font-medium"><?php echo $clr; ?></p>
-                        </div>
-                    <?php } ?>
-                </div>
             </div>
-            <h4 class="text-xl font-medium">Choose size:</h4>
-            <div class="mt-2 flex gap-2 flex-wrap">
-                <?php foreach ($sizes as $size) {
-                    echo " <button class='bg-[#F0F0F0] py-[9.5px] rounded-full px-6 text-black/60'>{$size}</button>";
-                }?>
-            </div>
-        </div>
         
         <div class="mt-[14px] flex gap-6 md:gap-3 flex-wrap items-center">
             <div class="bg-[#F0F0F0] inline-flex p-[14px] items-center rounded-full justify-between gap-9">
