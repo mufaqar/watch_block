@@ -422,3 +422,16 @@ button.active_dashbord_page{
 .woocommerce-account .personIcon{
     stroke: #111;
 }
+
+
+.single_add_to_cart_button{
+    background:  #B6E22E !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    font-size: 24px !important;
+    padding: 12px 24px !important;
+    border-radius: 14px !important;
+    color: #000 !important;
+    line-height: 2rem !important;
+    margin-right: 10px !important;
+}

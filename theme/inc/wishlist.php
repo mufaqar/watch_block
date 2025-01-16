@@ -21,7 +21,7 @@ function add_wishlist_button() {
     global $product;
     echo '<button class="add-to-wishlist" data-product-id="' . $product->get_id() . '">Add to Wishlist</button>';
 }
-add_action('woocommerce_before_add_to_cart_button', 'add_wishlist_button');
+//add_action('woocommerce_before_add_to_cart_button', 'add_wishlist_button');
 
 function handle_add_to_wishlist() {
     global $wpdb;

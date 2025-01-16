@@ -64,6 +64,18 @@ function update_cart_quantity() {
 }
 
 
+// Add a custom button after the "Add to Cart" button
+add_action('woocommerce_after_add_to_cart_button', 'add_custom_button_after_add_to_cart');
+function add_custom_button_after_add_to_cart() {
+    global $product;
+
+    // Display the custom button
+    echo '<button type="button" class="add_cart_btn" onclick="customButtonAction()">
+           COMPARE PRODUCT
+          </button>';
+}
+
+
 
 /* Extra Options */
 
