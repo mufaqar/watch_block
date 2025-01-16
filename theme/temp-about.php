@@ -106,7 +106,7 @@ get_header();
                                 alt="<?php the_title(); ?> Image" />
                             </div>
                             <div class="px-4 md:px-6 text-center py-4 text-black">
-                                <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
+                                <h5 class="text-lg md:text-[22px] font-semibold uppercase">
                                     <?php the_content(); ?>
                                 </h5>
                                 <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
