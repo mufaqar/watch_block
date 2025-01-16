@@ -14,7 +14,7 @@ get_header();
 <main>
     <!-- Hero Section -->
     <div class="bg-black h-96 w-full flex items-center justify-center">
-        <h1 class="text-center text-white text-[14vw] md:text-[115.42px] font-[600] container mx-auto">ABOUT US</h1>
+        <h1 class="text-center text-white text-[14vw] md:text-[115.42px] font-[600] container mx-auto"><?php the_title()?></h1>
     </div>
 
     <!-- Content Section -->
@@ -29,7 +29,8 @@ get_header();
                <div>
                     <h2 class="text-[6vw] md:text-[64px] font-[600] text-[#2B2B2B]">ABOUT US</h2>
                     <p class="text-[4vw] md:text-[18px] font-[500] text-[#676767] py-3 leading-relaxed ">
-                    Lorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque lectus pharetra egestas eleifend. Varius velit accumsan massa dolor. Sem pharetra tempor vel ut pretium ut eget bibendum arcu. Pellentesque tincidunt amet nam volutpat sit sagittis integer nunc. Sed enim egestas pharetra aliquam diam lacus. Id eget ullamcorper in enim elit convallis. IpsLorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque lectus pharetra egestas eleifend. VariusLorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque lectus pharetra egestas eleifend. Varius velit accumsan massa dolor. Sem pharetra tempor vel ut pretium ut eget bibendum arcu. Pellentesque tincidunt amet nam volutpat sit sagittis integer nunc. Sed enim egestas pharetra aliquam diam lacus. Id eget ullamcorper in enim elit convallis.
+                   
+                    <?php the_field('about_details'); ?>
                     </p>
                     <div class="mt-6">
                         <a href="#" class="bg-[#B6E22E] px-6 md:px-10 py-3 md:py-4 font-[500] text-[4vw] md:text-[18px] rounded-[12px] inline-block">SEE MORE</a>
