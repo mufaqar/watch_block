@@ -146,3 +146,5 @@ $('.slider-nav').on('click', '.slick-slide', function(event) {
 
   $('.slider-single').slick('slickGoTo', goToSingleSlide);
 });
+
+
