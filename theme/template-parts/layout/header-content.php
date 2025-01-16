@@ -1,8 +1,19 @@
+<?php 
+    $header_color = get_field('header_color');        
+    if($header_color == 'White')
+    {
+        $logo = "logo.svg";
+    }
+    else {
+        $logo = "logo-dark.svg";
+    }
+
+?>
+
 <header class="py-4 sm:py-5 md:py-6 lg:py-[32px] absolute w-full z-50 top-0">
     <div class="pl-3 sm:pl-4 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
         <a href="<?php bloginfo('url'); ?>">
-            <img src="<?php echo get_template_directory_uri(); ?>/public/<?php echo ( is_home() || is_front_page() ) ? 'logo.svg' : 'logo-dark.svg'; ?>"
-                alt="watch-blocks" class="min-w-[120px]">
+            <img src="<?php echo get_template_directory_uri(); ?>/public/<?php echo $logo?>"  alt="<?php bloginfo('name'); ?>" class="min-w-[120px]">
         </a>
         <div
             class="bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
