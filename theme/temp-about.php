@@ -90,7 +90,6 @@ get_header();
 <section class="container mx-auto px-4">
     <h2 class="text-[67.27px] font-[600] text-center text-black">OUR TEAM</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center">
-        <div class="bg-[#F2F2F2]">
             <?php
                 $args = array(
                     'post_type' => 'team',  
@@ -100,7 +99,7 @@ get_header();
                 if ( $team_query->have_posts() ) : 
                     while ( $team_query->have_posts() ) : $team_query->the_post(); ?>
                     
-                        <div class="team-member">
+                        <div class="team-member bg-[#F2F2F2]">
                             <div>
                                 <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" 
                                 class="h-auto w-full md:h-[300px] lg:h-[454px]" 
@@ -122,7 +121,6 @@ get_header();
                     echo '<p>No teams found.</p>';
                 endif;
             ?>
-        </div>
     </div>
 </section>
     
