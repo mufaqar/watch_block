@@ -35,6 +35,7 @@ if ( post_password_required() ) {
 
     <main class="max-w-[1280px] flex flex-col lg:flex-row mx-auto px-3 gap-10 mt-[140px] mb-12">
         <div class="lg:w-[35%]">
+         
             <?php
 				/**
 				 * Hook: woocommerce_before_single_product_summary.

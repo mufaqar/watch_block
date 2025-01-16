@@ -17,8 +17,10 @@ get_header();
 
 
 <?php if (is_shop()): ?>
-    <main class="bg-black h-96 w-full flex items-center justify-center">
-    <h1 class="text-center text-white text-[14vw] md:text-[115.42px] uppercase font-[600] max-w-[1280px] mx-auto"><?php the_title(); ?></h1>
+    <main class="h-96 w-full !bg-top bg-no-repeat bg-cover px-3 sm:px-4 lg:px-8 2xl:px-[64px] flex flex-col justify-center text-white py-20" style="background-image: url('<?php echo get_template_directory_uri(); ?>/public/images/main.jpg')">
+    <div class="max-w-[450px] pt-20">
+        <h1 class="md:text-[64px] font-semibold text-5xl mfont md:leading-[70px]"> </h1>
+    </div>
 </main>
 
 <?php else: ?>
