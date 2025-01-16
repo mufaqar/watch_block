@@ -14,10 +14,22 @@
 
 get_header();
 ?>
-<section class="">
-    <h2 class="uppercase text-center text-4xl mb-5 sm:text-5xl md:text-[64px] font-semibold text-[#2B2B2B] mt-[125px]">
-        <?php the_title()?></h2>
-</section>
+
+
+<?php if (is_shop()): ?>
+    <main class="bg-black h-96 w-full flex items-center justify-center">
+    <h1 class="text-center text-white text-[14vw] md:text-[115.42px] uppercase font-[600] max-w-[1280px] mx-auto"><?php the_title(); ?></h1>
+</main>
+
+<?php else: ?>
+    <section class="page_title">
+        <h2 class="uppercase text-center text-4xl mb-5 sm:text-5xl md:text-[64px] font-semibold text-[#2B2B2B] mt-[125px]">
+            <?php the_title(); ?>
+        </h2>
+    </section>
+<?php endif; ?>
+
+
 <section class="PageContent">
     <div class="w-full py-6 max-w-[1280px] px-3 mx-auto">
         <?php
