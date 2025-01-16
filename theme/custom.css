@@ -534,3 +534,11 @@ input {
     background-color: #B6E22E;
     border-color: #B6E22E;
 }
+
+.woocommerce-shop .PageContent{
+    background-color: #F2F2F2;
+}
+.attachment-woocommerce_thumbnail{
+    background-color: #fff;
+    padding: 1rem;
+}

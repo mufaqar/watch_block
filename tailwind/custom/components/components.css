@@ -85,3 +85,7 @@
 .add_cart_btn {
 	@apply bg-[#B6E22E] text-black uppercase font-semibold text-2xl px-6 py-3 rounded-[14px];
 }
+
+.filter_button{
+	@apply text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full
+}
