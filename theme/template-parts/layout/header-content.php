@@ -27,7 +27,7 @@
 				));?>
             </div>
             <div class="flex items-center gap-2">
-            <form role="search" method="get" class="" action="<?php echo home_url('/'); ?>">
+            <!-- <form role="search" method="get" class="" action="<?php echo home_url('/'); ?>">
                 <div
                     class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
                     
@@ -37,7 +37,31 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/public/svg/search-icon.svg" alt="" class="">
                    
                 </div>
-                </form>
+                </form> -->
+
+                <form role="search" method="get" class="" action="<?php echo esc_url(home_url('/')); ?>">
+    <div
+        class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
+        
+        <label for="search-field" class="sr-only">Search Watches</label>
+        <input 
+            id="search-field" 
+            placeholder="Search Watches" 
+            value="<?php echo esc_attr(get_search_query()); ?>"  
+            type="search" 
+            name="s" 
+            class="bg-transparent py-3 outline-none border-none w-full focus:border-none text-[#A1A1A1]" 
+        />
+        <input type="hidden" name="post_type" value="product" />        
+        <button type="submit" class="focus:outline-none">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/public/svg/search-icon.svg" alt="Search" />
+        </button>
+       
+    </div>
+</form>
+
+
+
                 <div class="md:flex item-center gap-2 hidden">
                     <a  href="#" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/save.svg" alt=""
