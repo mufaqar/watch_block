@@ -2695,6 +2695,11 @@ body {
   line-height: 1rem;
 }
 
+.\!text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
 .font-\[400\] {
   font-weight: 400;
 }
@@ -2733,6 +2738,10 @@ body {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.\!font-semibold {
+  font-weight: 600 !important;
 }
 
 .uppercase {
@@ -3199,6 +3208,10 @@ body {
 
   .md\:text-\[67\.27px\] {
     font-size: 67.27px;
+  }
+
+  .md\:\!text-\[22px\] {
+    font-size: 22px !important;
   }
 
   .md\:leading-\[70px\] {
