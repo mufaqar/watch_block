@@ -27,40 +27,25 @@
 				));?>
             </div>
             <div class="flex items-center gap-2">
-            <!-- <form role="search" method="get" class="" action="<?php echo home_url('/'); ?>">
-                <div
-                    class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
-                    
-                    <input placeholder="Search Watches" value="<?php echo get_search_query(); ?>"  type="search" 
-                    name="s" 
-                        class="bg-transparent py-3 outline-none border-none w-full focus:border-none text-[#A1A1A1]" />
-                    <img src="<?php echo get_template_directory_uri(); ?>/public/svg/search-icon.svg" alt="" class="">
-                   
-                </div>
-                </form> -->
-
                 <form role="search" method="get" class="" action="<?php echo esc_url(home_url('/')); ?>">
-    <div
-        class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
-        
-        <label for="search-field" class="sr-only">Search Watches</label>
-        <input 
-            id="search-field" 
-            placeholder="Search Watches" 
-            value="<?php echo esc_attr(get_search_query()); ?>"  
-            type="search" 
-            name="s" 
-            class="bg-transparent py-3 outline-none border-none w-full focus:border-none text-[#A1A1A1]" 
-        />
-        <input type="hidden" name="post_type" value="product" />        
-        <button type="submit" class="focus:outline-none">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/public/svg/search-icon.svg" alt="Search" />
-        </button>
-       
-    </div>
-</form>
-
-
+                    <div
+                        class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
+                        
+                        <label for="search-field" class="sr-only">Search Watches</label>
+                        <input 
+                            id="search-field" 
+                            placeholder="Search Watches" 
+                            value="<?php echo esc_attr(get_search_query()); ?>"  
+                            type="search" 
+                            name="s" 
+                            class="bg-transparent py-3 outline-none border-none w-full focus:border-none text-[#A1A1A1]" 
+                        />
+                        <input type="hidden" name="post_type" value="product" />        
+                        <button type="submit" class="focus:outline-none">
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/public/svg/search-icon.svg" alt="Search" />
+                        </button>
+                    </div>
+                </form>
 
                 <div class="md:flex item-center gap-2 hidden">
                     <a  href="#" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
@@ -72,8 +57,9 @@
                             class="w-[17px] h-[17px]">
                     </button>
                     <a href="<?php echo wc_get_page_permalink('myaccount'); ?>" class="bg-white account w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
-                        <img src="<?php echo get_template_directory_uri(); ?>/public/svg/person.svg" alt=""
-                            class="w-[17px] h-[16px]">
+                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="personIcon" d="M10.3088 12.806C13.5558 12.806 16.1879 10.1738 16.1879 6.92692C16.1879 3.68 13.5558 1.04785 10.3088 1.04785C7.06192 1.04785 4.42977 3.68 4.42977 6.92692C4.42977 10.1738 7.06192 12.806 10.3088 12.806ZM10.3088 12.806C6.50122 12.806 3.26957 14.8756 1.49023 17.9502M10.3088 12.806C14.1165 12.806 17.3481 14.8756 19.1274 17.9502" stroke="#A2A2A2" stroke-width="1.46977" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                 </div>
                 <button id="menu-button"

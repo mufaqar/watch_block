@@ -90,55 +90,43 @@ get_header();
 <section class="container mx-auto px-4">
     <h2 class="text-[67.27px] font-[600] text-center text-black">OUR TEAM</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center">
-    <div class="bg-[#F2F2F2]     ">
-    <div>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/img1.png" 
-            class="h-auto w-full md:h-[300px] lg:h-[454px] " 
-            alt="About Us Image" />
+        <div class="bg-[#F2F2F2]">
+            <?php
+                $args = array(
+                    'post_type' => 'team',  
+                    'posts_per_page' => 3, 
+                );
+                $team_query = new WP_Query( $args );
+                if ( $team_query->have_posts() ) : 
+                    while ( $team_query->have_posts() ) : $team_query->the_post(); ?>
+                    
+                        <div class="team-member">
+                            <div>
+                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" 
+                                class="h-auto w-full md:h-[300px] lg:h-[454px]" 
+                                alt="<?php the_title(); ?> Image" />
+                            </div>
+                            <div class="px-4 md:px-6 text-center py-4 text-black">
+                                <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
+                                    <?php the_content(); ?>
+                                </h5>
+                                <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
+                                    <?php the_title(); ?>
+                                </h3>
+                            </div>
+                        </div>
+
+                    <?php endwhile;
+                    wp_reset_postdata(); 
+                else :
+                    echo '<p>No teams found.</p>';
+                endif;
+            ?>
+        </div>
     </div>
-    <div class="px-4 md:px-6 text-center py-4 text-black">
-        <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
-            Lorem ipsum dolor sit amet
-        </h5>
-        <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
-            Lorem ipsum <br> dolor sit amet
-        </h3>
-    </div>
-</div>
-       
-       <div class="bg-[#F2F2F2]   ">
-    <div>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/img2.png" 
-            class="h-auto w-full md:h-[300px] lg:h-[454px] " 
-            alt="About Us Image" />
-    </div>
-    <div class="px-4 md:px-6 text-center py-4 text-black">
-        <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
-            Lorem ipsum dolor sit amet
-        </h5>
-        <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
-            Lorem ipsum <br> dolor sit amet
-        </h3>
-    </div>
-</div>
-       
-       <div class="bg-[#F2F2F2]   ">
-    <div>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/img3.png" 
-            class="h-auto w-full md:h-[300px] lg:h-[454px] " 
-            alt="About Us Image" />
-    </div>
-    <div class="px-4 md:px-6 text-center py-4 text-black">
-        <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
-            Lorem ipsum dolor sit amet
-        </h5>
-        <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
-            Lorem ipsum <br> dolor sit amet
-        </h3>
-    </div>
-</div>  
 </section>
     
+
 <section class="container mx-auto px-4 py-10 mt-10">
     <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center text-black uppercase">Testimonials</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 mt-8 items-center">
