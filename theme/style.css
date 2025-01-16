@@ -1949,9 +1949,6 @@ body {
   min-width: 150px;
 }
 
-.min-w-\[\] {
-  min-width: ;
-}
 
 .min-w-\[201px\] {
   min-width: 201px;
@@ -2714,15 +2711,6 @@ body {
   padding-bottom: 86px;
 }
 
-.py-\[\] {
-  padding-top: ;
-  padding-bottom: ;
-}
-
-.px-\[\] {
-  padding-left: ;
-  padding-right: ;
-}
 
 .px-\[15px\] {
   padding-left: 15px;
@@ -2810,13 +2798,6 @@ body {
   padding-top: 50px;
 }
 
-.pl-\[\] {
-  padding-left: ;
-}
-
-.pr-\[\] {
-  padding-right: ;
-}
 
 .pr-\[33\.66px\] {
   padding-right: 33.66px;
@@ -3170,9 +3151,6 @@ body {
   color: rgb(201 196 196 / var(--tw-text-opacity));
 }
 
-.text-\[\] {
-  color: ;
-}
 
 .underline {
   text-decoration-line: underline;
@@ -3286,10 +3264,6 @@ body {
 .hover\:bg-\[\#B6E22E\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(182 226 46 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-\[\]:hover {
-  background-color: ;
 }
 
 .hover\:bg-\[B6E22E\]:hover {
