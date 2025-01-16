@@ -31,18 +31,18 @@
 			<?php endif; ?>
 		</div>
 		<div class="my-9 flex items-center gap-4 sm:gap-[30px]">
-			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/x.svg" alt="" /></a>
-			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/yt.svg" alt="" /></a>
-			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/fb.svg" alt="" /></a>
-			<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/cloud.svg" alt="" /></a>
+			<a href="https://x.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/x.svg" alt="" /></a>
+			<a href="https://youtube.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/yt.svg" alt="" /></a>
+			<a href="https://www.google.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/fb.svg" alt="" /></a>
+			<a href="https://cloud.google.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/cloud.svg" alt="" /></a>
 		</div>
 	</div>
 	<div class="text-white flex items-center px-3 text-center justify-center flex-wrap pb-3 gap-4">
 			<p>@2024 VOOKUM. All rights reserved</p>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
-			<a href="/term-and-condition">Terms & Conditions</a>
+			<a href="<?php echo home_url('/terms-and-condition') ?>">Terms & Conditions</a>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
-			<a href="/tercm-and-condition">Privacy Policy</a>
+			<a href="<?php echo home_url('/privacy-policy') ?>">Privacy Policy</a>
 		</div>
 </footer>
 

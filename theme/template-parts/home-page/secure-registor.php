@@ -2,7 +2,7 @@
     <div class="relative">
         <img src="<?php echo get_template_directory_uri(); ?>/public/images/secure-registr-bg.png" class="w-full"/>
         <div class="absolute -right-[1px] top-1/2 -translate-y-1/2 ">
-            <div class="pl-[36px] inverRounded relative text-[46px] font-semibold text-[#111111] py-6 bg-white rounded-tl-full rounded-bl-full">
+            <div class="pl-[36px] inverRounded relative text-3xl md:!text-[46px] font-semibold text-[#111111] py-6 bg-white rounded-tl-full rounded-bl-full">
                 WATCHBLOCK
             </div>
         </div>

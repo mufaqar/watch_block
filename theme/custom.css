@@ -263,10 +263,12 @@ button.active_dashbord_page{
 @media (max-width: 768px){
     .woocommerce ul.products{
         flex-wrap: wrap;
-        
     }
     .woocommerce.columns-3 ul.products li.product{
         margin-right: 7px !important;
+    }
+    li.product{
+        width: 100% !important;
     }
 }
 
@@ -402,6 +404,14 @@ button.active_dashbord_page{
     background: #B6E22E;
 }
 
+.PageContent h2{
+    font-size: 24px;
+    font-weight: 700;
+    margin: .7rem 0;
+}
+.escrow_list_dot_border{
+    box-shadow:  4px 0 12px 0 rgba(0, 0, 0, 0.1)
+}
 
 @media (min-width: 768px){
     .postExcerpt p{
