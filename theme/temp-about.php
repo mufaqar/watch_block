@@ -90,123 +90,84 @@ get_header();
 <section class="container mx-auto px-4">
     <h2 class="text-[67.27px] font-[600] text-center text-black">OUR TEAM</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center">
-    <div class="bg-[#F2F2F2]     ">
-    <div>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/img1.png" 
-            class="h-auto w-full md:h-[300px] lg:h-[454px] " 
-            alt="About Us Image" />
+            <?php
+                $args = array(
+                    'post_type' => 'team',  
+                    'posts_per_page' => 3, 
+                );
+                $team_query = new WP_Query( $args );
+                if ( $team_query->have_posts() ) : 
+                    while ( $team_query->have_posts() ) : $team_query->the_post(); ?>
+                    
+                        <div class="team-member bg-[#F2F2F2]">
+                            <div>
+                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" 
+                                class="h-auto w-full md:h-[300px] lg:h-[454px]" 
+                                alt="<?php the_title(); ?> Image" />
+                            </div>
+                            <div class="px-4 md:px-6 text-center py-4 text-black">
+                                <h5 class="!text-lg md:!text-[22px] !font-semibold uppercase">
+                                    <?php the_content(); ?>
+                                </h5>
+                                <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
+                                    <?php the_title(); ?>
+                                </h3>
+                            </div>
+                        </div>
+
+                    <?php endwhile;
+                    wp_reset_postdata(); 
+                else :
+                    echo '<p>No teams found.</p>';
+                endif;
+            ?>
     </div>
-    <div class="px-4 md:px-6 text-center py-4 text-black">
-        <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
-            Lorem ipsum dolor sit amet
-        </h5>
-        <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
-            Lorem ipsum <br> dolor sit amet
-        </h3>
-    </div>
-</div>
-       
-       <div class="bg-[#F2F2F2]   ">
-    <div>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/img2.png" 
-            class="h-auto w-full md:h-[300px] lg:h-[454px] " 
-            alt="About Us Image" />
-    </div>
-    <div class="px-4 md:px-6 text-center py-4 text-black">
-        <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
-            Lorem ipsum dolor sit amet
-        </h5>
-        <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
-            Lorem ipsum <br> dolor sit amet
-        </h3>
-    </div>
-</div>
-       
-       <div class="bg-[#F2F2F2]   ">
-    <div>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/img3.png" 
-            class="h-auto w-full md:h-[300px] lg:h-[454px] " 
-            alt="About Us Image" />
-    </div>
-    <div class="px-4 md:px-6 text-center py-4 text-black">
-        <h5 class="text-[5vw] md:text-[22px] font-[400] uppercase">
-            Lorem ipsum dolor sit amet
-        </h5>
-        <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
-            Lorem ipsum <br> dolor sit amet
-        </h3>
-    </div>
-</div>  
 </section>
     
+
 <section class="container mx-auto px-4 py-10 mt-10">
     <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center text-black uppercase">Testimonials</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 mt-8 items-center">
         <!-- Testimonial Card -->
-        <div class="flex flex-col ">
-            <div class="bg-[#F2F2F2]  p-6 pb-28 ">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/“.png" 
+        <?php
+            $args = array(
+                'post_type' => 'reviews', 
+                'posts_per_page' => 3, 
+            );
+            $reviews_query = new WP_Query( $args );
+            if ( $reviews_query->have_posts() ) : 
+                while ( $reviews_query->have_posts() ) : $reviews_query->the_post(); ?>
+                    <div class="flex flex-col">
+                        <div class="bg-[#F2F2F2] p-6 pb-28">
+                            <!-- Display Review Icon (replace with dynamic content if needed) -->
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/“.png" 
                     class="h-auto w-[64px] md:w-[50px] lg:w-[64px]  mb-3" 
                     alt="Testimonial Icon" />
-                <p class="py-3 text-[16px] md:text-[18px]  leading-relaxed">
-                    Lorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque.
-                </p>   
-            </div>
-            <div class="bg-black  h-28 text-center flex flex-col items-center justify-center -mt-14 ">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/Rectangle.jpg" 
-                    class="h-auto w-[80px] md:w-[60px] lg:w-[80px] rounded-full   -mt-14" 
-                    alt="Profile Picture" />
-                <h3 class="text-white text-[4vw] md:text-[22px] font-[600] mt-4 pb-4">
-                    Lorem ipsum dolor
-                </h3>
-            </div>
-        </div>
-        <!-- ///////// card 2 -->
-        <div class="flex flex-col ">
-            <div class="bg-[#F2F2F2] p-6 pb-28 ">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/“.png" 
-                    class="h-auto w-[64px] md:w-[50px] lg:w-[64px]  mb-3" 
-                    alt="Testimonial Icon" />
-                <p class="py-3 text-[16px] md:text-[18px]  leading-relaxed">
-                    Lorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque.
-                </p>   
-            </div>
-            <div class="bg-black  h-28 text-center flex flex-col items-center justify-center -mt-14 ">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/Rectangle.jpg" 
-                    class="h-auto w-[80px] md:w-[60px] lg:w-[80px] rounded-full   -mt-14" 
-                    alt="Profile Picture" />
-                <h3 class="text-white text-[4vw] md:text-[22px] font-[600] mt-4 pb-4">
-                    Lorem ipsum dolor
-                </h3>
-            </div>
-        </div>
-        <!-- //////////// card 3 -->
-        <div class="flex flex-col ">
-            <div class="bg-[#F2F2F2] p-6 pb-28 ">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/“.png" 
-                    class="h-auto w-[64px] md:w-[50px] lg:w-[64px]  mb-3" 
-                    alt="Testimonial Icon" />
-                <p class="py-3 text-[16px] md:text-[18px]  leading-relaxed">
-                    Lorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque.
-                </p>   
-            </div>
-            <div class="bg-black  h-28 text-center flex flex-col items-center justify-center -mt-14 ">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/Rectangle.jpg" 
-                    class="h-auto w-[80px] md:w-[60px] lg:w-[80px] rounded-full   -mt-14" 
-                    alt="Profile Picture" />
-                <h3 class="text-white text-[4vw] md:text-[22px] font-[600] mt-4 pb-4">
-                    Lorem ipsum dolor
-                </h3>
-            </div>
-        </div>
+                            <!-- Display Review Content -->
+                            <p class="py-3 text-[16px] md:text-[18px] leading-relaxed">
+                                <?php the_content(); ?> <!-- Display review content -->
+                            </p>   
+                        </div>
+                        <div class="bg-black h-28 text-center flex flex-col items-center justify-center -mt-14">
+                            <!-- Display Profile Image (use featured image for review if available) -->
+                            <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>" 
+                                class="h-auto w-[80px] md:w-[60px] lg:w-[80px] rounded-full -mt-14" 
+                                alt="<?php the_title(); ?> Profile Picture" />
+                            <!-- Display Reviewer's Name (use the title or custom field for name) -->
+                            <h3 class="text-white text-[4vw] md:text-[22px] font-[600] mt-4 pb-4">
+                                <?php the_title(); ?> <!-- Display the reviewer's name -->
+                            </h3>
+                        </div>
+                    </div>
 
-        
-        
+                <?php endwhile;
+                wp_reset_postdata(); 
+            else :
+                echo '<p>No reviews found.</p>';
+            endif; 
+        ?>
     </div>
 </section>
-
-
-
 
 
 </main>

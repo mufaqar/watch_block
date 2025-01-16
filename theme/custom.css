@@ -419,6 +419,6 @@ button.active_dashbord_page{
     }
 }
 
-
-
-
+.woocommerce-account .personIcon{
+    stroke: #111;
+}
