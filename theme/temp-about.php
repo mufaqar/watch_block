@@ -28,9 +28,8 @@ get_header();
                <div class="mx-auto justify-center align-middle items-center flex ">
                <div>
                     <h2 class="text-[6vw] md:text-[64px] font-[600] text-[#2B2B2B]">ABOUT US</h2>
-                    <p class="text-[4vw] md:text-[18px] font-[500] text-[#676767] py-3 leading-relaxed ">
-                   
-                    <?php the_field('about_details'); ?>
+                    <p class="text-[4vw] md:text-[18px] font-[500] text-[#676767] py-3 leading-relaxed ">                   
+                      <?php the_field('about_details'); ?>
                     </p>
                     <div class="mt-6">
                         <a href="#" class="bg-[#B6E22E] px-6 md:px-10 py-3 md:py-4 font-[500] text-[4vw] md:text-[18px] rounded-[12px] inline-block">SEE MORE</a>
@@ -52,9 +51,8 @@ get_header();
     <!-- Overlapping Light Gray Content Section -->
     <div class="bg-[#F2F2F2] w-[1028px] max-w-full relative -mt-16 z-10 container mx-auto ">
         <div class="p-6 md:p-8 w-[90%] lg:w-[1028px] mx-auto">
-            <p class="text-[4vw] md:text-[19.5px] text-[#2B2B2B] leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque lectus pharetra egestas eleifend. Varius velit accumsan massa dolor. Sem pharetra tempor vel ut pretium ut eget bibendum arcu. Pellentesque tincidunt amet nam volutpat sit sagittis integer nunc. Sed enim egestas pharetra aliquam diam lacus. Id eget ullamcorper in enim elit convallis. IpsLorem ipsum dolor sit amet consectetur. Risus porttitor tempor adipiscing vestibulum non sed arcu. Potenti consectetur pellentesque lectus pharetra egestas eleifend. 
-            </p>
+            <div class="text-[4vw] md:text-[19.5px] text-[#2B2B2B] leading-relaxed">
+            <?php the_field('our_mission'); ?>  </div>
         </div>
     </div>
 
