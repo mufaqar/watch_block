@@ -186,3 +186,22 @@ function add_custom_attributes_to_order($item, $cart_item_key, $values, $order) 
     }
 }
 
+
+/*shop Page*/
+
+
+
+add_action('woocommerce_before_shop_loop', 'add_custom_filter_before_result_count', 15);
+function add_custom_filter_before_result_count() {
+    // Your custom filter HTML
+    echo '<div class="custom-filter-container">';
+    echo '<label for="custom-filter" class="mr-2">Filter by:</label>';
+    echo '<select id="custom-filter" class="custom-filter">
+            <option value="">Select an option</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>';
+    echo '</div>';
+}
+

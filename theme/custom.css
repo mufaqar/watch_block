@@ -4,15 +4,27 @@ Version: 2.1.0
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-body, html, *{
+body,
+html,
+* {
     font-family: "Montserrat", serif;
 }
 
-.mfont,a,p,h1,h2,h3,h4,h5,h6, ul, li{
+.mfont,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
     font-family: "Montserrat", serif !important;
 }
 
-nav ul{
+nav ul {
     display: flex;
     font-weight: 600;
     font-size: 16px;
@@ -21,19 +33,22 @@ nav ul{
     color: black;
     align-items: center;
 }
-.woocommerce-orders-table tbody{
+
+.woocommerce-orders-table tbody {
     background-color: #fff;
 }
-.woocommerce-orders-table__cell-order-status{
+
+.woocommerce-orders-table__cell-order-status {
     /* background-color: #11111133 !important; */
-    color: #111 ;
+    color: #111;
     font-weight: 500 !important;
 }
 
-#nav-menu ul li a{
+#nav-menu ul li a {
     color: #fff !important;
 }
-#nav-menu ul{
+
+#nav-menu ul {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -43,22 +58,23 @@ nav ul{
     padding-top: 4rem;
 }
 
-li.current_page_item a{
+li.current_page_item a {
     color: #B6E22E !important;
 }
 
-#nav-menu ul li.current_page_item a{
-    color: #B6E22E !important;
-}
-#nav-menu ul li a:hover{
+#nav-menu ul li.current_page_item a {
     color: #B6E22E !important;
 }
 
-.tab-button.active{
+#nav-menu ul li a:hover {
+    color: #B6E22E !important;
+}
+
+.tab-button.active {
     border-bottom: 2px solid black !important;
 }
 
-.inverRounded::before{
+.inverRounded::before {
     position: absolute;
     content: "";
     width: 1rem;
@@ -70,7 +86,7 @@ li.current_page_item a{
     box-shadow: 0 20px 0 0 #fff;
 }
 
-.inverRounded::after{
+.inverRounded::after {
     position: absolute;
     content: "";
     width: 1rem;
@@ -81,14 +97,16 @@ li.current_page_item a{
     box-shadow: 30px;
     box-shadow: 0 -20px 0 0 #fff;
 }
+
 .hidden {
     display: none;
 }
+
 .active {
     border-bottom: 2px solid black;
 }
 
-.article_thumbnil img{
+.article_thumbnil img {
     width: 100%;
     height: 450px;
     object-fit: cover;
@@ -100,27 +118,33 @@ li.current_page_item a{
     color: #2B2B2B;
     font-size: 16px;
 }
+
 .faq-answer.open {
     display: block;
 }
 
-.faq-answer{
+.faq-answer {
     display: none;
 }
-.faq-item.open{
+
+.faq-item.open {
     background-color: #F9F9F9;
     margin-top: 8px;
 }
-.faq-item.open button{
+
+.faq-item.open button {
     color: #A8A8A8;
 }
-.faq-item.open button img{
+
+.faq-item.open button img {
     rotate: 90deg;
 }
-.open .faq-answer{
+
+.open .faq-answer {
     display: block !important;
 }
-#menu-footer-menu li a{
+
+#menu-footer-menu li a {
     color: #fff !important;
     font-weight: 400 !important;
     font-size: 16px !important;
@@ -128,41 +152,49 @@ li.current_page_item a{
 }
 
 
-.js .slider-single > div:nth-child(1n+2) { display: none }
+.js .slider-single>div:nth-child(1n+2) {
+    display: none
+}
 
-.js .slider-single.slick-initialized > div:nth-child(1n+2) { display: block }
+.js .slider-single.slick-initialized>div:nth-child(1n+2) {
+    display: block
+}
 
 .slider-single h3 {
-	line-height: 10rem;
+    line-height: 10rem;
 }
 
 .slider-nav h3::before {
-	content: "";
-	display: block;
-	padding-top: 75%;
+    content: "";
+    display: block;
+    padding-top: 75%;
 }
 
 .slider-nav h3 span {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.slider-nav .slick-slide { cursor: pointer; }
+.slider-nav .slick-slide {
+    cursor: pointer;
+}
 
 .slick-slide.is-active h3 {
-	color: #c00;
-	background-color: #fff
+    color: #c00;
+    background-color: #fff
 }
 
-button.active_dashbord_page{
+button.active_dashbord_page {
     background-color: #B6E22E !important;
 }
-.faq-item p{
+
+.faq-item p {
     display: none !important;
 }
-.faq-item.open p{
+
+.faq-item.open p {
     display: none !important;
 }
 
@@ -209,15 +241,17 @@ button.active_dashbord_page{
 
 
 /* Woo CSS */
-.woocommerce span.onsale{
- background: #B6E22E !important;
+.woocommerce span.onsale {
+    background: #B6E22E !important;
 }
-.product1 img{
+
+.product1 img {
     background: #fff;
     padding: 14px;
     margin-bottom: 0 !important;
 }
-.woocommerce-loop-product__title{
+
+.woocommerce-loop-product__title {
     font-weight: 400 !important;
     font-size: 24px !important;
     text-transform: uppercase !important;
@@ -225,28 +259,32 @@ button.active_dashbord_page{
     margin-bottom: 30px !important;
     letter-spacing: 4px;
 }
-.price .woocommerce-Price-amount.amount{
+
+.price .woocommerce-Price-amount.amount {
     font-size: 24px !important;
     font-weight: 400 !important;
     color: #111 !important;
     letter-spacing: 6px;
 }
-.product-excerpt{
+
+.product-excerpt {
     margin-bottom: 30px !important;
 }
-.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
     /* margin: 0 !important; */
 }
 
-.woocommerce ul.products{
+.woocommerce ul.products {
     /* display: flex; */
 }
 
-.woocommerce.columns-3 ul.products li.product{
+.woocommerce.columns-3 ul.products li.product {
     /* width: 33% !important; */
 }
 
-.woocommerce span.onsale{
+.woocommerce span.onsale {
     border-radius: 8px !important;
     min-height: 50px !important;
     min-width: 110px !important;
@@ -260,100 +298,121 @@ button.active_dashbord_page{
     left: 18px !important;
 }
 
-@media (max-width: 768px){
-    .woocommerce ul.products{
+@media (max-width: 768px) {
+    .woocommerce ul.products {
         flex-wrap: wrap;
     }
-    .woocommerce.columns-3 ul.products li.product{
+
+    .woocommerce.columns-3 ul.products li.product {
         margin-right: 7px !important;
     }
-    li.product{
+
+    li.product {
         width: 100% !important;
     }
 }
 
-.postExcerpt p{
+.postExcerpt p {
     font-size: 24px;
     color: #797979;
 }
 
 .woocommerce-EditAccountForm.edit-account input,
-.woocommerce-Input.woocommerce-Input--text.input-text, input{
+.woocommerce-Input.woocommerce-Input--text.input-text,
+input {
     padding: 0.8rem !important;
     border: 1px solid #7979794f;
     border-radius: 4px;
     background: #fff important;
 }
-.woocommerce form .show-password-input, .woocommerce-page form .show-password-input{
+
+.woocommerce form .show-password-input,
+.woocommerce-page form .show-password-input {
     top: 0.9rem !important;
 }
-.woocommerce-Button.button{
+
+.woocommerce-Button.button {
     background-color: #B6E22E;
     margin-top: 1.2rem;
     padding: 10px 2rem;
     border-radius: 10px;
 }
-.woocommerce-button.button.woocommerce-form-login__submit{
+
+.woocommerce-button.button.woocommerce-form-login__submit {
     background-color: #B6E22E;
     padding: 12px 2rem;
     border-radius: 10px;
 }
-.woocommerce-form-row em{
+
+.woocommerce-form-row em {
     font-size: 14px;
 }
-.woocommerce h2{
+
+.woocommerce h2 {
     font-size: 24px;
     font-weight: 600;
     margin-top: 1rem;
     padding: 0 1rem;
 }
-.woocommerce table.shop_table td{
+
+.woocommerce table.shop_table td {
     /* padding: 8px 12px !important; */
     text-align: center;
     margin: 10px !important;
 }
-.woocommerce table.my_account_orders th{
+
+.woocommerce table.my_account_orders th {
     text-align: center;
 }
 
-.woocommerce-orders-table__cell-order-actions a{
+.woocommerce-orders-table__cell-order-actions a {
     background-color: #B6E22E;
     font-weight: 500 !important;
     padding: 5.5px 9px;
     border-radius: 8px !important;
 }
-.woocommerce-form{
+
+.woocommerce-form {
     margin-top: 10px !important;
 }
-.woocommerce form.login, .woocommerce form.register{
+
+.woocommerce form.login,
+.woocommerce form.register {
     margin: 1rem !important;
 }
 
-.blog_contnet h2{
+.blog_contnet h2 {
     font-size: 26px;
     font-weight: 600;
     margin: 8px 0;
 }
-.blog_contnet h3{
+
+.blog_contnet h3 {
     font-size: 22px;
     font-weight: 600;
     margin: 8px 0;
     text-transform: capitalize;
 }
-.blog_contnet h4, .blog_contnet h5, .blog_contnet h5{
+
+.blog_contnet h4,
+.blog_contnet h5,
+.blog_contnet h5 {
     font-size: 20px;
     font-weight: 600;
     margin: 8px 0;
     text-transform: capitalize;
 }
-.blog_contnet ul{
+
+.blog_contnet ul {
     list-style: circle;
     padding-left: 1.4rem;
     font-size: 18px;
 }
-.blog_contnet p{
+
+.blog_contnet p {
     font-size: 18px;
 }
+
 .blog_contnet a {
     color: rgb(97, 97, 255);
 }
@@ -361,26 +420,32 @@ button.active_dashbord_page{
 .blog_contnet img {
     width: 100%;
 }
-.woocommerce-mini-cart-item figure img{
+
+.woocommerce-mini-cart-item figure img {
     width: auto !important;
 }
-.widget_shopping_cart_content{
+
+.widget_shopping_cart_content {
     height: calc(100% - 80px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
 }
-.woocommerce-mini-cart__total{
+
+.woocommerce-mini-cart__total {
     font-size: 22px;
 }
+
 .woocommerce-mini-cart__total span {
     color: #B6E22E
 }
-.woocommerce-mini-cart__buttons{
+
+.woocommerce-mini-cart__buttons {
     display: flex;
     gap: 20px;
 }
+
 .woocommerce-mini-cart__buttons .button {
     background: #B6E22E !important;
     color: #111111 !important;
@@ -396,6 +461,7 @@ button.active_dashbord_page{
     justify-content: center;
     align-items: center;
 }
+
 .woocommerce-mini-cart__buttons .checkout {
     font-weight: 500 !important;
 }
@@ -404,28 +470,29 @@ button.active_dashbord_page{
     background: #B6E22E;
 }
 
-.PageContent h2{
+.PageContent h2 {
     font-size: 24px;
     font-weight: 700;
     margin: .7rem 0;
 }
-.escrow_list_dot_border{
-    box-shadow:  4px 0 12px 0 rgba(0, 0, 0, 0.1)
+
+.escrow_list_dot_border {
+    box-shadow: 4px 0 12px 0 rgba(0, 0, 0, 0.1)
 }
 
-@media (min-width: 768px){
-    .postExcerpt p{
+@media (min-width: 768px) {
+    .postExcerpt p {
         font-size: 16px !important;
     }
 }
 
-.woocommerce-account .personIcon{
+.woocommerce-account .personIcon {
     stroke: #111;
 }
 
 
-.single_add_to_cart_button{
-    background:  #B6E22E !important;
+.single_add_to_cart_button {
+    background: #B6E22E !important;
     text-transform: uppercase !important;
     font-weight: 600 !important;
     font-size: 24px !important;
