@@ -502,3 +502,35 @@ input {
     line-height: 2rem !important;
     margin-right: 10px !important;
 }
+
+
+
+.form-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .form-select {
+    position: relative;
+  }
+
+  .form-select:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+    background-image: url('./public/svg/ChevronDown.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.condition-button.selected, 
+.condition-button_for_price.selected {
+    background-color: #B6E22E;
+    border-color: #B6E22E;
+}

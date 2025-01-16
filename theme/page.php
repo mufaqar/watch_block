@@ -21,7 +21,7 @@ get_header();
     <div class="max-w-[450px] pt-20">
         <h1 class="md:text-[64px] font-semibold text-5xl mfont md:leading-[70px]"> </h1>
     </div>
-</main>
+    </main>
 
 <?php else: ?>
     <section class="page_title">
