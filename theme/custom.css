@@ -565,3 +565,6 @@ ol.flex-control-nav li{
     max-height: 415px !important;
     object-fit: cover;
 }
+.related.products h2{
+    margin-bottom: 50px !important;
+}
