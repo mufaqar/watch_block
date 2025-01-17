@@ -542,3 +542,26 @@ input {
     background-color: #fff;
     padding: 1rem;
 }
+.woocommerce-product-gallery{
+    width: 100% !important;
+}
+ol.flex-control-nav{
+    margin-top: 4rem !important;
+    padding: 0 2rem !important;
+    gap: 10px !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+ol.flex-control-nav li{
+    border: 2px solid #B6E22E;
+    padding: 12px;
+    border-radius: 9px;
+    background-color: #EAEAEA;
+    width: 100% !important;
+}
+.woocommerce-product-gallery .flex-viewport,
+.woocommerce-product-gallery .flex-viewport img{
+    max-height: 415px !important;
+    object-fit: cover;
+}
