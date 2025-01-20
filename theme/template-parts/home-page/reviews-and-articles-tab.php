@@ -57,7 +57,7 @@ $query = new WP_Query($args);
 
     <!-- Tab Content -->
     <div class="ra_tab-content mt-10 mb-12 hidden" id="REVIEWS">
-      <div class="grid grid-cols-1 md:grid-cols-2 mt-10 gap-[52px]">
+      <div class="grid grid-cols-1 md:grid-cols-2 mt-10 gap-5">
         <?php
             if ($review->have_posts()) {
                 while ($review->have_posts()) {
