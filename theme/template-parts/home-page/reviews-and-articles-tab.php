@@ -67,7 +67,7 @@ $query = new WP_Query($args);
                 <?php }
                 wp_reset_postdata();
             } else {
-                echo '<p>No posts found.</p>';
+                echo '<p>No Review found.</p>';
             }
         ?>  
     
@@ -88,7 +88,7 @@ $query = new WP_Query($args);
                 <?php }
                 wp_reset_postdata();
             } else {
-                echo '<p>No posts found.</p>';
+                echo '<p>No Posts found.</p>';
             }
         ?>
       </div>
@@ -105,7 +105,7 @@ $query = new WP_Query($args);
                   <?php }
                   wp_reset_postdata();
               } else {
-                  echo '<p>No posts found.</p>';
+                  echo '<p>No Press found.</p>';
               }
           ?>
         </div>
