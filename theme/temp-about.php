@@ -125,7 +125,7 @@ get_header();
 </section>
     
 
-<section class="container mx-auto px-4 py-10 mt-10">
+<section class="container mx-auto px-4 py-10 mt-10 mb-[150px]">
     <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center text-black uppercase">Testimonials</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 mt-8 items-center">
         <!-- Testimonial Card -->

@@ -1708,6 +1708,14 @@ body {
   margin-top: 213px;
 }
 
+.mb-\[\] {
+  margin-bottom: ;
+}
+
+.mb-\[150px\] {
+  margin-bottom: 150px;
+}
+
 .block {
   display: block;
 }
