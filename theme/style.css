@@ -1632,6 +1632,10 @@ body {
   margin-top: 3.5rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -1702,10 +1706,6 @@ body {
 
 .mt-\[213px\] {
   margin-top: 213px;
-}
-
-.mt-16 {
-  margin-top: 4rem;
 }
 
 .block {
@@ -2814,11 +2814,6 @@ body {
   vertical-align: middle;
 }
 
-.\!text-lg {
-  font-size: 1.125rem !important;
-  line-height: 1.75rem !important;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2941,10 +2936,6 @@ body {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.\!font-semibold {
-  font-weight: 600 !important;
 }
 
 .font-\[400\] {
@@ -3442,10 +3433,6 @@ body {
     padding-bottom: 0.25rem;
   }
 
-  .md\:\!text-\[22px\] {
-    font-size: 22px !important;
-  }
-
   .md\:\!text-\[46px\] {
     font-size: 46px !important;
   }
@@ -3599,6 +3586,11 @@ body {
 
   .lg\:p-12 {
     padding: 3rem;
+  }
+
+  .lg\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .lg\:px-10 {

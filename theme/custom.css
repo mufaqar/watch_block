@@ -572,3 +572,8 @@ ol.flex-control-nav li{
 #REVIEWS .review-card{
     background-color: #fff !important;
 }
+
+.faq-item.open > div{
+    padding-left: 24px;
+    padding-right: 24px;
+}

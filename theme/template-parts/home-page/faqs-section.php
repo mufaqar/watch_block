@@ -13,7 +13,7 @@ $terms = get_terms(array(
 ?>
 
 <section class="py-14">
-    <div class="max-w-[1280px] px-3 mx-auto">
+    <div class="max-w-[1280px] px-3 lg:px-0 mx-auto">
         <h2 class="text-center text-[40px] font-semibold text-[#2B2B2B] md:text-[64px] mb-28">FAQ’s</h2>
         <?php
             if (!empty($terms) && !is_wp_error($terms)) {
@@ -36,7 +36,7 @@ $terms = get_terms(array(
                         while ($query->have_posts()) {
                             $query->the_post();
                             echo '<li class="faq-item">
-                                <div class="p-6">
+                                <div class="py-6">
                                     <button class="faq-question flex justify-between items-center text-left font-bold text-lg border-b-[2px] border-[#111111] pb-4 w-full">' . get_the_title() . '
                                     <img class="transition-all duration-100 ease-linear" src="'. get_template_directory_uri().'/public/svg/chevron.svg" alt=""/>
                                     </button>
