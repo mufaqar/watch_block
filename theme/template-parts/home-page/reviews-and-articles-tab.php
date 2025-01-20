@@ -5,15 +5,15 @@ $args = array(
     'orderby'        => 'date', // Order by date
     'order'          => 'DESC', // Latest first
 );
-// $args = array(
-//     'post_type'      => 'post',
-//     'posts_per_page' => 3,
-//     'orderby'        => 'date', // Order by date
-//     'order'          => 'DESC', // Latest first
-// );
 
-// $query = new WP_Query($args);
+$review_args = array(
+    'post_type'      => 'reviews',
+    'posts_per_page' => 4,
+    'orderby'        => 'date', // Order by date
+    'order'          => 'DESC', // Latest first
+);
 
+$review = new WP_Query($review_args);
 $query = new WP_Query($args);
 
 
@@ -43,10 +43,19 @@ $query = new WP_Query($args);
     <!-- Tab Content -->
     <div class="ra_tab-content mt-10 mb-12 hidden" id="REVIEWS">
       <div class="grid grid-cols-1 md:grid-cols-2 mt-10 gap-[52px]">
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
-        <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+        <?php
+            if ($review->have_posts()) {
+                while ($review->have_posts()) {
+                    $review->the_post();
+                ?>
+                    <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
+                <?php }
+                wp_reset_postdata();
+            } else {
+                echo '<p>No posts found.</p>';
+            }
+        ?>  
+    
       </div>
       <div class="flex justify-center mt-16">
         <a href="#" class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-6 py-3 rounded-[14px]">see all</a>
