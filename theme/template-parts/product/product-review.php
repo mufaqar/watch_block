@@ -4,6 +4,6 @@
         <?php the_title() ?>
         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/green-checks.svg" alt=""/>
     </h5>
-    <p class="mt-3 text-[#676767]">"<?php the_content() ?>"</p>
+    <p class="mt-3 text-[#676767]"><?php the_content() ?></p>
     <p class="mt-6 text-[#676767]">Posted on <?php echo get_the_date('F j, Y'); ?></p>
 </section>
