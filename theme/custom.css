@@ -580,6 +580,7 @@ ol.flex-control-nav li{
 .faq-item .faq-question{
     padding-left: 20px;
 }
+
 .faq-item.open .faq-question{
     padding-left: 0px;
 }
