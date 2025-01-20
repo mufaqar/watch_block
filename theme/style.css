@@ -3497,6 +3497,14 @@ body {
   .md\:leading-\[70px\] {
     line-height: 70px;
   }
+
+  .md\:leading-\[\] {
+    line-height: ;
+  }
+
+  .md\:leading-\[40px\] {
+    line-height: 40px;
+  }
 }
 
 @media (min-width: 1024px) {

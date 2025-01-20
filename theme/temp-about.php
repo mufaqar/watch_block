@@ -109,7 +109,7 @@ get_header();
                             <h5 class="text-lg md:text-[22px] font-semibold uppercase">
                                 <?php echo esc_html(get_the_content()); ?>
                             </h5>
-                            <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
+                            <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase md:leading-[40px]">
                                 <?php echo esc_html(get_the_title()); ?>
                             </h3>
                         </div>
