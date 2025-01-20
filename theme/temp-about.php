@@ -58,7 +58,7 @@ get_header();
 
 </section>
 
-<section class="container mx-auto pt-10 px-4">
+<section class="container mx-auto py-10 px-4">
     <h2 class="text-[8vw] md:text-[67.27px] font-[600]   text-center text-black">
         WHY CHOOSE US
     </h2>
