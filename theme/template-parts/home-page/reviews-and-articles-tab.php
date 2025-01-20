@@ -80,9 +80,20 @@ $query = new WP_Query($args);
     </div>
 
     <div class="ra_tab-content mt-10 mb-12 hidden" id="PRESS">
-      <div>
-        <p>Press Content</p>
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[26px]">
+        <?php
+              if ($query->have_posts()) {
+                  while ($query->have_posts()) {
+                      $query->the_post();
+                  ?>
+                      <?php get_template_part( 'template-parts/articles/article', 'card' ); ?>
+                  <?php }
+                  wp_reset_postdata();
+              } else {
+                  echo '<p>No posts found.</p>';
+              }
+          ?>
+        </div>
     </div>
   </div>
 </section>
