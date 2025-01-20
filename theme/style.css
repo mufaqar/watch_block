@@ -1716,6 +1716,26 @@ body {
   margin-bottom: 150px;
 }
 
+.mt-\[\] {
+  margin-top: ;
+}
+
+.mt-\[60px\] {
+  margin-top: 60px;
+}
+
+.mt-\[106px\] {
+  margin-top: 106px;
+}
+
+.mb-\[177px\] {
+  margin-bottom: 177px;
+}
+
+.mb-\[50px\] {
+  margin-bottom: 50px;
+}
+
 .block {
   display: block;
 }

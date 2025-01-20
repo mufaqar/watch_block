@@ -59,10 +59,10 @@ get_header();
 </section>
 
 <section class="container mx-auto py-10 px-4">
-    <h2 class="text-[8vw] md:text-[67.27px] font-[600]   text-center text-black">
+    <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center text-black">
         WHY CHOOSE US
     </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-[60px]">
         <!-- Card 1 -->
         <div class="bg-[#F2F2F2] p-6 md:p-8 ">
             <div class="bg-white rounded-full w-12 h-12 mb-4 flex items-center justify-center"></div>
@@ -125,9 +125,9 @@ get_header();
 </section>
     
 
-<section class="container mx-auto px-4 py-10 mt-10 mb-[150px]">
-    <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center text-black uppercase">Testimonials</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 mt-8 items-center">
+<section class="container mx-auto px-4 mt-[106px] mb-[177px]">
+    <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center mb-[50px] text-black uppercase">Testimonials</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
         <!-- Testimonial Card -->
         <?php
             $args = array(
