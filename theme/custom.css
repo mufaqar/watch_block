@@ -542,51 +542,29 @@ input {
     background-color: #fff;
     padding: 1rem;
 }
-
-
-
-body .wpex-quantity-btns {
-    position: static;
-    top: auto;
-    right: auto;
-    width: auto;
-    border: 0;
+.woocommerce-product-gallery{
+    width: 100% !important;
+}
+ol.flex-control-nav{
+    margin-top: 4rem !important;
+    padding: 0 2rem !important;
+    gap: 10px !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.woocommerce .quantity .wpex-quantity-btns .plus,
-.woocommerce .quantity .wpex-quantity-btns .minus {
-    position: absolute;
-    top: 0;
-    width: 30px;
-    border: 1px solid #e4e4e4;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+ol.flex-control-nav li{
+    border: 2px solid #B6E22E;
+    padding: 12px;
+    border-radius: 9px;
+    background-color: #EAEAEA;
+    width: 100% !important;
 }
-
-.woocommerce .quantity .wpex-quantity-btns .plus {
-    right: 0;
-    border-left: 0;
+.woocommerce-product-gallery .flex-viewport,
+.woocommerce-product-gallery .flex-viewport img{
+    max-height: 415px !important;
+    object-fit: cover;
 }
-
-.woocommerce .quantity .wpex-quantity-btns .plus::after {
-    display: none;
-}
-
-.woocommerce .quantity .wpex-quantity-btns .minus {
-   left: 0;
-   border-right: 0;
-}
-
-.woocommerce .quantity {
-    position: relative;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.woocommerce .quantity.buttons_added input[type=number] {
-    margin-right: 0;
-    margin-left: 0;
+.related.products h2{
+    margin-bottom: 50px !important;
 }
