@@ -1,4 +1,4 @@
-<section class="bg-[#F2F2F2] py-[28px] rounded-[20px] px-[32px]">
+<section class="bg-[#F2F2F2] py-[28px] rounded-[20px] px-[32px] review-card">
     <img src="<?php echo get_template_directory_uri(); ?>/public/svg/rating-star.svg" alt=""/>
     <h5 class="flex text-xl items-center gap-1 mt-4">
         Samantha D.

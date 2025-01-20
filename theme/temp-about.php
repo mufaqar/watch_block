@@ -90,37 +90,37 @@ get_header();
 <section class="container mx-auto px-4">
     <h2 class="text-[67.27px] font-[600] text-center text-black">OUR TEAM</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center">
-            <?php
-                $args = array(
-                    'post_type' => 'team',  
-                    'posts_per_page' => 3, 
-                );
-                $team_query = new WP_Query( $args );
-                if ( $team_query->have_posts() ) : 
-                    while ( $team_query->have_posts() ) : $team_query->the_post(); ?>
-                    
-                        <div class="team-member bg-[#F2F2F2]">
-                            <div>
-                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" 
-                                class="h-auto w-full md:h-[300px] lg:h-[454px]" 
-                                alt="<?php the_title(); ?> Image" />
-                            </div>
-                            <div class="px-4 md:px-6 text-center py-4 text-black">
-                                <h5 class="text-lg md:text-[22px] font-semibold uppercase">
-                                    <?php echo get_the_content(); ?>
-                                </h5>
-                                <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
-                                    <?php the_title(); ?>
-                                </h3>
-                            </div>
+        <?php
+            $args = array(
+                'post_type' => 'team',
+                'posts_per_page' => 3,
+            );
+            $team_query = new WP_Query($args);
+            if ($team_query->have_posts()) :
+                while ($team_query->have_posts()) : $team_query->the_post(); ?>
+                
+                    <article class="team-member bg-[#F2F2F2]">
+                        <div>
+                            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full') ?: 'default-image-path.jpg'); ?>" 
+                                 class="h-auto w-full md:h-[300px] lg:h-[454px] object-cover" 
+                                 alt="<?php echo esc_attr(get_the_title()); ?> Image" />
                         </div>
+                        <div class="px-4 md:px-6 text-center py-4 text-black">
+                            <h5 class="text-lg md:text-[22px] font-semibold uppercase">
+                                <?php echo esc_html(get_the_content()); ?>
+                            </h5>
+                            <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase">
+                                <?php echo esc_html(get_the_title()); ?>
+                            </h3>
+                        </div>
+                    </article>
 
-                    <?php endwhile;
-                    wp_reset_postdata(); 
-                else :
-                    echo '<p>No teams found.</p>';
-                endif;
-            ?>
+                <?php endwhile;
+                wp_reset_postdata();
+            else :
+                echo '<p>No team members found.</p>';
+            endif;
+        ?>
     </div>
 </section>
     

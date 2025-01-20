@@ -340,9 +340,4 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
 </section>
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b293ebd025ad908db09877ce47ab01bab074cbf2
 <?php get_footer();

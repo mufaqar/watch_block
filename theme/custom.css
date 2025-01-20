@@ -568,3 +568,7 @@ ol.flex-control-nav li{
 .related.products h2{
     margin-bottom: 50px !important;
 }
+
+#REVIEWS .review-card{
+    background-color: #fff !important;
+}
