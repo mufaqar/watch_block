@@ -2810,6 +2810,18 @@ body {
   padding-top: 50px;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
+.pt-\[\] {
+  padding-top: ;
+}
+
+.pt-\[150px\] {
+  padding-top: 150px;
+}
+
 .text-left {
   text-align: left;
 }
