@@ -23,7 +23,7 @@
 					'container'      => 'nav',
 					'container_class'=> 'flex header-menu flex-col space-y-4',
 					'add_li_class'    => 'menu-item',
-					'menu_class'     => 'flex sm:flex-row flex-col sm:items-center md:gap-[3vw] gap-5',
+					'menu_class'     => 'flex sm:flex-row flex-col sm:items-center md:gap-4 gap-5',
 				));?>
             </div>
             <div class="flex items-center gap-2">

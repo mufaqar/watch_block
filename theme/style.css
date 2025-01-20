@@ -3401,6 +3401,10 @@ body {
     gap: 43px;
   }
 
+  .md\:gap-4 {
+    gap: 1rem;
+  }
+
   .md\:p-5 {
     padding: 1.25rem;
   }
