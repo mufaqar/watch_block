@@ -166,9 +166,9 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
             <div class="flex items-center gap-4">
                 <h4 class="text-[28px] sm:text-[36px] font-bold">$ 99.99</h4>
                 <button class="border-l-[2px] px-4 border-r-[2px] border-gray-300">
-                    <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                    <span class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/heart2.svg" alt="" class="w-[26px] h-[16px]">
-                    </a>
+                    </span>
                 </button>
                 <a href="#">                
                     <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-3 py-1.5 rounded-[8px]">Follow</span>

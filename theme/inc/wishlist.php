@@ -17,11 +17,22 @@ function watch_block_wishlist_table() {
 }
 add_action('after_setup_theme', 'watch_block_wishlist_table');
 
-function add_wishlist_button() {
-    global $product;
-    echo '<button class="add-to-wishlist" data-product-id="' . $product->get_id() . '">Add to Wishlist</button>';
+function get_custom_wishlist_button($product_id = null) {
+    if (!$product_id) {
+        global $product;
+        $product_id = $product->get_id();
+    }
+
+    $button_html = '
+    <button class="border-l-[2px] px-4 border-r-[2px] border-gray-300 add-to-wishlist" data-product-id="' . esc_attr($product_id) . '">
+        <span class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+            <img src="' . esc_url(get_template_directory_uri() . '/public/svg/heart2.svg') . '" alt="Wishlist Icon" class="w-[26px] h-[16px]">
+        </span>
+    </button>';
+
+    return $button_html;
 }
-//add_action('woocommerce_before_add_to_cart_button', 'add_wishlist_button');
+
 
 function handle_add_to_wishlist() {
     global $wpdb;
@@ -56,7 +67,7 @@ add_action('wp_ajax_nopriv_add_to_wishlist', 'handle_add_to_wishlist');
 
 
 function enqueue_wishlist_scripts() {
-    wp_enqueue_script('wishlist-script', get_template_directory_uri() . '/wishlist.js', ['jquery'], null, true);
+    wp_enqueue_script('wishlist-script', get_template_directory_uri() . '/js/wishlist.js', ['jquery'], null, true);
     wp_localize_script('wishlist-script', 'wishlist_params', [
         'ajax_url' => admin_url('admin-ajax.php'),
     ]);
