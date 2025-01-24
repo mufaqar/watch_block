@@ -48,7 +48,7 @@
                 </form>
 
                 <div class="md:flex item-center gap-2 hidden">
-                    <a  href="#" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
+                    <a  href="<?php echo home_url('/wishlist'); ?>" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/public/svg/save.svg" alt=""
                             class="w-[14px] h-[20px]">
                     </a>
