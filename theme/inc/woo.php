@@ -84,7 +84,6 @@ function add_custom_button_after_add_to_cart() {
 add_action('woocommerce_before_add_to_cart_form', 'add_custom_color_size_nft_fields');
 function add_custom_color_size_nft_fields() {
     global $product;
-    echo "TEst";
 
     if ($product->get_type() == 'simple') {
         $colors = $product->get_attribute('watches_colors'); 
