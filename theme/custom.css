@@ -608,3 +608,10 @@ ol.flex-control-nav li {
     top: 16px;
     right: 30px;
 }
+
+.options_product {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}

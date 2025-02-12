@@ -1291,7 +1291,7 @@ body {
   margin-left: 2rem;
 }
 
-#size-buttons {
+#size-buttons , #nft-buttons {
   margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;

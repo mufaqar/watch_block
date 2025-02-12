@@ -111,32 +111,36 @@ function add_custom_color_size_nft_fields() {
             }
             echo '</div>';
         }
+        echo "<div class='options_product'>";
 
         // Size Selection
+       
         if (!empty($size_options)) {
+            echo '<div id="size-wrap">';
             echo '<label class="text-xl font-medium">Choose Size:</label>';
             echo '<div id="size-buttons">';
             foreach ($size_options as $size) {
                 echo '<button type="button" class="size-button" data-size="' . esc_attr(trim($size)) . '">' . esc_html(trim($size)) . '</button>';
             }
-            echo '</div>';
+            echo '</div> </div>';
         }
 
         // NFT Selection
         if (!empty($nft_options)) {
+            echo '<div id="nft-wrap">';
             echo '<label class="text-xl font-medium">Select NFT:</label>';
             echo '<div id="nft-buttons">';
             foreach ($nft_options as $nft) {
                 echo '<button type="button" class="nft-button" data-nft="' . esc_attr(trim($nft)) . '">' . esc_html(trim($nft)) . '</button>';
             }
-            echo '</div>';
+            echo '</div> </div>';
         }
 
         // Hidden input fields
         echo '<input type="hidden" name="custom_color" id="custom_color" value="" />';
         echo '<input type="hidden" name="custom_size" id="custom_size" value="" />';
         echo '<input type="hidden" name="custom_nft" id="custom_nft" value="" />';
-        echo '</div>';
+        echo '</div> </div>';
     }
 }
 
@@ -205,6 +209,5 @@ function add_custom_filter_before_result_count() {
 
 
 
-    <?php
+<?php
 }
-
