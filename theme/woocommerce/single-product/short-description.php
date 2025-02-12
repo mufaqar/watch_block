@@ -49,7 +49,7 @@ $attributes = $product->get_attributes();
             <img src="<?php echo get_template_directory_uri(); ?>/public/svg/barcode.svg" alt="" srcset="">
         </div>            
     </div>
-<!-- <div class="woocommerce-product-details__short-description">
+
 	
-	<?php //echo $short_description; // WPCS: XSS ok. ?>
-</div> -->
+	<?php add_custom_color_size_nft_fields(); ?>
+
