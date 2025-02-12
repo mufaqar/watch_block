@@ -85,7 +85,7 @@ add_action('woocommerce_before_add_to_cart_form', 'add_custom_color_size_nft_fie
 function add_custom_color_size_nft_fields() {
     global $product;
 
-    if ($product->get_type() == 'simple') {
+   
         $colors = $product->get_attribute('watches_colors'); 
         $sizes = $product->get_attribute('watches_size'); 
         $nfts = $product->get_attribute('watches_nft'); 
@@ -141,7 +141,7 @@ function add_custom_color_size_nft_fields() {
         echo '<input type="hidden" name="custom_size" id="custom_size" value="" />';
         echo '<input type="hidden" name="custom_nft" id="custom_nft" value="" />';
         echo '</div> </div>';
-    }
+    
 }
 
 // Save custom fields to cart data
