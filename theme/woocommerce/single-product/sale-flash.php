@@ -25,8 +25,13 @@ global $post, $product;
 <?php if ( $product->is_on_sale() ) : ?>
 
 	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Popular', 'woocommerce' ) . '</span>', $post, $product ); ?>
-
+	
 	<?php
 endif;
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
+?>
+<div class="wishlist-button">
+        <?php //echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+    </div>
+

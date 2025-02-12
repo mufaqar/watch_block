@@ -509,43 +509,46 @@ input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-  }
-  
-  .form-select {
-    position: relative;
-  }
+}
 
-  .form-select:before {
+.form-select {
+    position: relative;
+}
+
+.form-select:before {
     content: '';
     position: absolute;
     top: 50%;
     right: 20px;
     width: 16px;
     height: 16px;
-    background-image: url('./public/svg/ChevronDown.svg'); 
+    background-image: url('./public/svg/ChevronDown.svg');
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
     transform: translateY(-50%);
 }
 
-.condition-button.selected, 
+.condition-button.selected,
 .condition-button_for_price.selected {
     background-color: #B6E22E;
     border-color: #B6E22E;
 }
 
-.woocommerce-shop .PageContent{
+.woocommerce-shop .PageContent {
     background-color: #F2F2F2;
 }
-.attachment-woocommerce_thumbnail{
+
+.attachment-woocommerce_thumbnail {
     background-color: #fff;
     padding: 1rem;
 }
-.woocommerce-product-gallery{
+
+.woocommerce-product-gallery {
     width: 100% !important;
 }
-ol.flex-control-nav{
+
+ol.flex-control-nav {
     margin-top: 4rem !important;
     padding: 0 2rem !important;
     gap: 10px !important;
@@ -553,35 +556,55 @@ ol.flex-control-nav{
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-ol.flex-control-nav li{
+ol.flex-control-nav li {
     border: 2px solid #B6E22E;
     padding: 12px;
     border-radius: 9px;
     background-color: #EAEAEA;
     width: 100% !important;
 }
+
 .woocommerce-product-gallery .flex-viewport,
-.woocommerce-product-gallery .flex-viewport img{
+.woocommerce-product-gallery .flex-viewport img {
     max-height: 415px !important;
     object-fit: cover;
 }
-.related.products h2{
+
+.related.products h2 {
     margin-bottom: 50px !important;
 }
 
-#REVIEWS .review-card{
+#REVIEWS .review-card {
     background-color: #fff !important;
 }
 
-.faq-item.open > div{
+.faq-item.open>div {
     padding-left: 24px;
     padding-right: 24px;
 }
-.faq-item .faq-question{
+
+.faq-item .faq-question {
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.faq-item.open .faq-question{
+.faq-item.open .faq-question {
     padding-left: 0px;
+}
+
+
+.yith-wcwl-add-to-wishlist a span {
+    display: none !important;
+}
+
+
+.yith-wcwl-add-to-wishlist a span,
+.yith-wcwl-add-to-wishlist-button__label {
+    display: none !important;
+}
+
+.yith-add-to-wishlist-button-block {
+    position: absolute !important;
+    top: 16px;
+    right: 30px;
 }

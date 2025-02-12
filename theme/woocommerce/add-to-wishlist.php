@@ -46,9 +46,11 @@ global $product;
 >
 	<?php if ( ! $ajax_loading ) : ?>
 		<?php if ( ! $disable_wishlist || is_user_logged_in() ) : ?>
+
 			<!-- ADD TO WISHLIST -->
 			<?php yith_wcwl_get_template( 'add-to-wishlist-' . $template_part . '.php', $var ); ?>
 
+			<!-- COUNT TEXT -->
 			<?php
 			if ( $show_count ) :
 				echo wp_kses_post( yith_wcwl_get_count_text( $product_id ) );
@@ -64,6 +66,7 @@ global $product;
 				),
 				get_permalink( wc_get_page_id( 'myaccount' ) )
 			);
+			echo apply_filters( 'yith_wcwl_add_to_wishlist_label', $button_text, $product_id, $exists );
 			?>
 			<div class="yith-wcwl-add-button">
 				<a
