@@ -81,7 +81,7 @@ function add_custom_button_after_add_to_cart() {
 
 
 // Add custom color, size, and NFT fields before the add-to-cart button
-add_action('woocommerce_before_add_to_cart_button', 'add_custom_color_size_nft_fields', 20);
+add_action('woocommerce_before_add_to_cart_form', 'add_custom_color_size_nft_fields');
 function add_custom_color_size_nft_fields() {
     global $product;
     echo "TEst";

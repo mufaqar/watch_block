@@ -51,5 +51,5 @@ $attributes = $product->get_attributes();
     </div>
 
 	
-	<?php add_custom_color_size_nft_fields(); ?>
+	<?php //add_custom_color_size_nft_fields(); ?>
 
