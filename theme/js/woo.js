@@ -46,6 +46,7 @@ jQuery(document).ready(function($) {
     // Store selected color and size values
     let selectedColor = '';
     let selectedSize = '';
+    let selectedNFT = '';
 
     // Handle color button clicks
     $('#color-buttons .color-button').on('click', function() {
@@ -75,5 +76,12 @@ jQuery(document).ready(function($) {
 
         // Set the selected size value in the hidden input field
         $('#custom_size').val(selectedSize);
+    });
+    // Handle NFT button clicks
+    $('#nft-buttons .nft-button').on('click', function () {
+        $('#nft-buttons .nft-button').removeClass('active'); // Remove active class
+        $(this).addClass('active'); // Add active class to clicked button
+        selectedNFT = $(this).data('nft'); // Get selected NFT
+        $('#custom_nft').val(selectedNFT); // Set value in hidden input
     });
 });

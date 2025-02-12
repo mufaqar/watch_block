@@ -1298,7 +1298,7 @@ body {
   gap: 0.5rem;
 }
 
-.size-button {
+.size-button , .nft-button {
   border-radius: 9999px;
   border-width: 1px;
   border-color: transparent;

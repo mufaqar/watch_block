@@ -80,109 +80,116 @@ function add_custom_button_after_add_to_cart() {
 /* Extra Options */
 
 
-// Add custom color and size fields (buttons with icons) before the add-to-cart button for simple products
-// Add custom color and size fields (buttons with icons) before the add-to-cart button for simple products
-add_action('woocommerce_before_add_to_cart_button', 'add_custom_color_and_size_fields', 10);
-function add_custom_color_and_size_fields() {
+// Add custom color, size, and NFT fields before the add-to-cart button
+add_action('woocommerce_before_add_to_cart_button', 'add_custom_color_size_nft_fields', 10);
+function add_custom_color_size_nft_fields() {
     global $product;
 
     if ($product->get_type() == 'simple') {
-        // Get color options from product attributes (assuming it's a taxonomy or simple options)
-        $colors = $product->get_attribute('watches_colors'); // Assuming 'watches_colors' is a product attribute
-        $sizes = $product->get_attribute('watches_size'); // Assuming 'watches_size' is a product attribute
+        $colors = $product->get_attribute('watches_colors'); 
+        $sizes = $product->get_attribute('watches_size'); 
+        $nfts = $product->get_attribute('watches_nft'); 
 
-        // Check if colors and sizes are set and not empty
-        if ($colors) {
-            $color_options = explode(',', $colors); // Assuming colors are comma-separated
-        }
+        $color_options = $colors ? explode(',', $colors) : [];
+        $size_options = $sizes ? explode(',', $sizes) : [];
+        $nft_options = $nfts ? explode(',', $nfts) : [];
 
-        if ($sizes) {
-            $size_options = explode(',', $sizes); // Assuming sizes are comma-separated
-        }
-
-        // Color Selection (Buttons with Icons)
         echo '<div class="watch_options">';
-        echo '<label for="custom_color" class="text-xl font-medium">Color Available:</label>';
-        echo '<div id="color-buttons" class="py-[14px] mt-0">';
-        
-        // Loop through color options and generate buttons
-        if (isset($color_options)) {
+
+        // Color Selection
+        if (!empty($color_options)) {
+            echo '<label class="text-xl font-medium">Color Available:</label>';
+            echo '<div id="color-buttons" class="py-[14px] mt-0">';
             foreach ($color_options as $color) {
                 echo '<button type="button" class="color-button" data-color="' . esc_attr(trim($color)) . '">
-        <figure class="bg-white p-1 rounded-[8px]">
-          
-            <img decoding="async" src="' . esc_url(get_template_directory_uri() . '/public/images/demo-watch.png') . '" 
-                 class="w-[50px] object-contain h-[50px]" alt="' . esc_attr($color) . '">
-        </figure>
-        <p class="color_lable">' . esc_html(trim($color)) . '</p>
-      </button>';
-
+                    <figure class="bg-white p-1 rounded-[8px]">
+                        <img decoding="async" src="' . esc_url(get_template_directory_uri() . '/public/images/demo-watch.png') . '" 
+                            class="w-[50px] object-contain h-[50px]" alt="' . esc_attr($color) . '">
+                    </figure>
+                    <p class="color_label">' . esc_html(trim($color)) . '</p>
+                </button>';
             }
+            echo '</div>';
         }
 
-        echo '</div>'; // Close color buttons container
-
-        // Size Selection (Buttons)
-        echo '<label for="custom_size" class="text-xl font-medium">Choose Size:</label>';
-        echo '<div id="size-buttons">';
-        
-        // Loop through size options and generate buttons
-        if (isset($size_options)) {
+        // Size Selection
+        if (!empty($size_options)) {
+            echo '<label class="text-xl font-medium">Choose Size:</label>';
+            echo '<div id="size-buttons">';
             foreach ($size_options as $size) {
                 echo '<button type="button" class="size-button" data-size="' . esc_attr(trim($size)) . '">' . esc_html(trim($size)) . '</button>';
             }
+            echo '</div>';
         }
 
-        echo '</div>'; // Close size buttons container
+        // NFT Selection
+        if (!empty($nft_options)) {
+            echo '<label class="text-xl font-medium">Select NFT:</label>';
+            echo '<div id="nft-buttons">';
+            foreach ($nft_options as $nft) {
+                echo '<button type="button" class="nft-button" data-nft="' . esc_attr(trim($nft)) . '">' . esc_html(trim($nft)) . '</button>';
+            }
+            echo '</div>';
+        }
 
-        // Hidden input for color and size values
+        // Hidden input fields
         echo '<input type="hidden" name="custom_color" id="custom_color" value="" />';
         echo '<input type="hidden" name="custom_size" id="custom_size" value="" />';
+        echo '<input type="hidden" name="custom_nft" id="custom_nft" value="" />';
         echo '</div>';
     }
 }
 
-
-
-// Save custom color and size attributes when adding product to cart
+// Save custom fields to cart data
 add_filter('woocommerce_add_cart_item_data', 'save_custom_attributes_to_cart', 10, 2);
 function save_custom_attributes_to_cart($cart_item_data, $product_id) {
-    if (isset($_POST['custom_color']) && isset($_POST['custom_size'])) {
-        // Save the custom color and size to cart item data
+    if (!empty($_POST['custom_color'])) {
         $cart_item_data['custom_color'] = sanitize_text_field($_POST['custom_color']);
+    }
+    if (!empty($_POST['custom_size'])) {
         $cart_item_data['custom_size'] = sanitize_text_field($_POST['custom_size']);
+    }
+    if (!empty($_POST['custom_nft'])) {
+        $cart_item_data['custom_nft'] = sanitize_text_field($_POST['custom_nft']);
     }
     return $cart_item_data;
 }
 
-
-// Display custom color and size attributes in the cart page
-// Display custom color and size attributes in the cart page
+// Display custom fields in the cart page
 add_filter('woocommerce_get_item_data', 'display_custom_attributes_in_cart', 10, 2);
 function display_custom_attributes_in_cart($item_data, $cart_item) {
-    if (isset($cart_item['custom_color'])) {
+    if (!empty($cart_item['custom_color'])) {
         $item_data[] = array(
             'name' => 'Color',
             'value' => ucfirst($cart_item['custom_color']),
         );
     }
-    if (isset($cart_item['custom_size'])) {
+    if (!empty($cart_item['custom_size'])) {
         $item_data[] = array(
             'name' => 'Size',
             'value' => ucfirst($cart_item['custom_size']),
         );
     }
+    if (!empty($cart_item['custom_nft'])) {
+        $item_data[] = array(
+            'name' => 'NFT',
+            'value' => ucfirst($cart_item['custom_nft']),
+        );
+    }
     return $item_data;
 }
 
-// Display custom color and size attributes in the order details
+// Save custom fields in order meta
 add_action('woocommerce_checkout_create_order_line_item', 'add_custom_attributes_to_order', 10, 4);
 function add_custom_attributes_to_order($item, $cart_item_key, $values, $order) {
-    if (isset($values['custom_color'])) {
+    if (!empty($values['custom_color'])) {
         $item->add_meta_data('Color', ucfirst($values['custom_color']), true);
     }
-    if (isset($values['custom_size'])) {
+    if (!empty($values['custom_size'])) {
         $item->add_meta_data('Size', ucfirst($values['custom_size']), true);
+    }
+    if (!empty($values['custom_nft'])) {
+        $item->add_meta_data('NFT', ucfirst($values['custom_nft']), true);
     }
 }
 
