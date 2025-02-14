@@ -1,4 +1,4 @@
-<main class="xl:min-h-screen w-full !bg-top bg-no-repeat bg-cover px-3 sm:px-4 lg:px-8 2xl:px-[64px] flex flex-col justify-center text-white py-20" style="background-image: url('<?php echo get_template_directory_uri(); ?>/public/images/main.jpg')">
+<main class="xl:min-h-screen w-full !bg-top bg-no-repeat bg-cover px-3 sm:px-4 lg:px-8 2xl:px-[64px] flex flex-col justify-center text-white py-20 !mt-[-140px]" style="background-image: url('<?php echo get_template_directory_uri(); ?>/public/images/main.jpg')">
     <div class="max-w-[450px] pt-20">
         <h1 class="md:text-[64px] font-semibold text-5xl mfont md:leading-[70px]"> BUY WITH CONFIDENCE </h1>
         <div class="text-[white] font-light text-[26px] mfont mt-5 mb-10">

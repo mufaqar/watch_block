@@ -13,7 +13,7 @@ get_header();
 
 <main>
     <!-- Hero Section -->
-    <div class="bg-black h-96 w-full flex items-center justify-center">
+    <div class="bg-black h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px]">
         <h1 class="text-center text-white text-[14vw] md:text-[115.42px] font-[600] container mx-auto"><?php the_title()?></h1>
     </div>
 

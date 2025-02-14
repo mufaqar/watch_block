@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 
-    <main class="max-w-[1280px] flex flex-col lg:flex-row mx-auto px-3 gap-10 mt-[140px] mb-12">
+    <main class="max-w-[1280px] flex flex-col lg:flex-row mx-auto px-3 gap-10 mt-[20px] mb-12">
         <div class="lg:w-[35%]">
          
             <?php

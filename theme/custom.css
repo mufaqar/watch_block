@@ -298,6 +298,11 @@ button.active_dashbord_page {
     left: 18px !important;
 }
 
+.single-product .woocommerce span.onsale {
+    position:  relative !important;
+    
+}
+
 @media (max-width: 768px) {
     .woocommerce ul.products {
         flex-wrap: wrap;
@@ -624,4 +629,11 @@ ol.flex-control-nav li {
     flex-direction: row;
     gap: 20px;
     align-items: center;
+}
+
+.woocommerce-message {
+   
+    max-width: 1250px;
+    margin: 0px auto !important;
+    margin-bottom: 20px !important;
 }

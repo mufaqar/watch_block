@@ -4,7 +4,7 @@ Theme URI: https://watchblock
 Author: Mufaqar
 Author URI: https://underscoretw.com/
 Description: Watch Block Custom Theme
-Version: 1.0.1
+Version: 0.1.0
 Tested up to: 6.2
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1291,14 +1291,14 @@ body {
   margin-left: 2rem;
 }
 
-#size-buttons , #nft-buttons {
+#size-buttons {
   margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.size-button , .nft-button {
+.size-button {
   border-radius: 9999px;
   border-width: 1px;
   border-color: transparent;
@@ -1540,6 +1540,10 @@ body {
   margin-top: 2.25rem !important;
 }
 
+.\!mt-\[-140px\] {
+  margin-top: -140px !important;
+}
+
 .-mt-1 {
   margin-top: -0.25rem;
 }
@@ -1606,6 +1610,14 @@ body {
 
 .mb-9 {
   margin-bottom: 2.25rem;
+}
+
+.mb-\[177px\] {
+  margin-bottom: 177px;
+}
+
+.mb-\[50px\] {
+  margin-bottom: 50px;
 }
 
 .mb-\[73px\] {
@@ -1688,6 +1700,10 @@ body {
   margin-top: 102px;
 }
 
+.mt-\[106px\] {
+  margin-top: 106px;
+}
+
 .mt-\[10px\] {
   margin-top: 10px;
 }
@@ -1704,36 +1720,24 @@ body {
   margin-top: 14px;
 }
 
+.mt-\[20px\] {
+  margin-top: 20px;
+}
+
 .mt-\[213px\] {
   margin-top: 213px;
-}
-
-.mb-\[\] {
-  margin-bottom: 0px;
-}
-
-.mb-\[150px\] {
-  margin-bottom: 150px;
-}
-
-.mt-\[\] {
-  margin-top:  0px;
 }
 
 .mt-\[60px\] {
   margin-top: 60px;
 }
 
-.mt-\[106px\] {
-  margin-top: 106px;
+.mt-\[-140px\] {
+  margin-top: -140px;
 }
 
-.mb-\[177px\] {
-  margin-bottom: 177px;
-}
-
-.mb-\[50px\] {
-  margin-bottom: 50px;
+.mt-\[\] {
+  margin-top: ;
 }
 
 .block {
@@ -2802,6 +2806,10 @@ body {
   padding-right: 0.75rem;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
 .pt-12 {
   padding-top: 3rem;
 }
@@ -2818,6 +2826,10 @@ body {
   padding-top: 1.25rem;
 }
 
+.pt-\[150px\] {
+  padding-top: 150px;
+}
+
 .pt-\[21px\] {
   padding-top: 21px;
 }
@@ -2830,16 +2842,12 @@ body {
   padding-top: 50px;
 }
 
-.pt-10 {
-  padding-top: 2.5rem;
+.pt-\[140px\] {
+  padding-top: 140px;
 }
 
-.pt-\[\] {
-  padding-top: 0;
-}
-
-.pt-\[150px\] {
-  padding-top: 150px;
+.pt-\[140\] {
+  padding-top: 140;
 }
 
 .text-left {
@@ -2944,10 +2952,6 @@ body {
 
 .text-\[50px\] {
   font-size: 50px;
-}
-
-.text-\[67\.27px\] {
-  font-size: 67.27px;
 }
 
 .text-\[6vw\] {
@@ -3429,6 +3433,10 @@ body {
     gap: 0.75rem;
   }
 
+  .md\:gap-4 {
+    gap: 1rem;
+  }
+
   .md\:gap-6 {
     gap: 1.5rem;
   }
@@ -3439,10 +3447,6 @@ body {
 
   .md\:gap-\[43px\] {
     gap: 43px;
-  }
-
-  .md\:gap-4 {
-    gap: 1rem;
   }
 
   .md\:p-5 {
@@ -3534,16 +3538,12 @@ body {
     font-size: 67.27px;
   }
 
-  .md\:leading-\[70px\] {
-    line-height: 70px;
-  }
-
-  .md\:leading-\[\] {
-    line-height:0 ;
-  }
-
   .md\:leading-\[40px\] {
     line-height: 40px;
+  }
+
+  .md\:leading-\[70px\] {
+    line-height: 70px;
   }
 }
 
