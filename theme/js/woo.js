@@ -42,46 +42,21 @@ jQuery(document).ready(function ($) {
 
 
 
-jQuery(document).ready(function($) {
-    // Store selected color and size values
-    let selectedColor = '';
-    let selectedSize = '';
-    let selectedNFT = '';
+jQuery(document).ready(function ($) {
+    $(".variation-buttons .variation-button").on("click", function () {
+        let parent = $(this).closest(".variation-wrapper");
+        let attributeName = parent.find(".variation-buttons").data("attribute");
+        let selectedValue = $(this).data("value");
 
-    // Handle color button clicks
-    $('#color-buttons .color-button').on('click', function() {
-        // Remove active class from all color buttons
-        $('#color-buttons .color-button').removeClass('active');
-        
-        // Add active class to clicked color button
-        $(this).addClass('active');
-        
-        // Get the selected color value
-        selectedColor = $(this).data('color');
+        parent.find(".variation-button").removeClass("active");
+        $(this).addClass("active");
 
-        // Set the selected color value in the hidden input field
-        $('#custom_color').val(selectedColor);
+        $("#attribute_" + attributeName).val(selectedValue).trigger("change");
     });
 
-    // Handle size button clicks
-    $('#size-buttons .size-button').on('click', function() {
-        // Remove active class from all size buttons
-        $('#size-buttons .size-button').removeClass('active');
-        
-        // Add active class to clicked size button
-        $(this).addClass('active');
-        
-        // Get the selected size value
-        selectedSize = $(this).data('size');
-
-        // Set the selected size value in the hidden input field
-        $('#custom_size').val(selectedSize);
-    });
-    // Handle NFT button clicks
-    $('#nft-buttons .nft-button').on('click', function () {
-        $('#nft-buttons .nft-button').removeClass('active'); // Remove active class
-        $(this).addClass('active'); // Add active class to clicked button
-        selectedNFT = $(this).data('nft'); // Get selected NFT
-        $('#custom_nft').val(selectedNFT); // Set value in hidden input
+    $(".reset_variations").on("click", function (e) {
+        e.preventDefault();
+        $(".variation-button").removeClass("active");
+        $(".variation-wrapper input[type='hidden']").val("").trigger("change");
     });
 });

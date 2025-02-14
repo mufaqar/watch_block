@@ -80,12 +80,12 @@ function add_custom_button_after_add_to_cart() {
 /* Extra Options */
 
 
-// Add custom color, size, and NFT fields before the add-to-cart button
-add_action('woocommerce_before_add_to_cart_form', 'add_custom_color_size_nft_fields');
+// Add custom color, size, and NFT fields inside the add-to-cart form
+//add_action('woocommerce_before_add_to_cart_button', 'add_custom_color_size_nft_fields');
 function add_custom_color_size_nft_fields() {
     global $product;
 
-   
+    if ($product->is_type('variable')) { // Ensure it's a variable product
         $colors = $product->get_attribute('watches_colors'); 
         $sizes = $product->get_attribute('watches_size'); 
         $nfts = $product->get_attribute('watches_nft'); 
@@ -114,7 +114,6 @@ function add_custom_color_size_nft_fields() {
         echo "<div class='options_product'>";
 
         // Size Selection
-       
         if (!empty($size_options)) {
             echo '<div id="size-wrap">';
             echo '<label class="text-xl font-medium">Choose Size:</label>';
@@ -136,12 +135,12 @@ function add_custom_color_size_nft_fields() {
             echo '</div> </div>';
         }
 
-        // Hidden input fields
+        // Hidden input fields (inside the form)
         echo '<input type="hidden" name="custom_color" id="custom_color" value="" />';
         echo '<input type="hidden" name="custom_size" id="custom_size" value="" />';
         echo '<input type="hidden" name="custom_nft" id="custom_nft" value="" />';
         echo '</div> </div>';
-    
+    }
 }
 
 // Save custom fields to cart data
