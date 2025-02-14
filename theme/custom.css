@@ -299,8 +299,8 @@ button.active_dashbord_page {
 }
 
 .single-product .woocommerce span.onsale {
-    position:  relative !important;
-    
+    position: relative !important;
+
 }
 
 @media (max-width: 768px) {
@@ -618,9 +618,9 @@ ol.flex-control-nav li {
     position: relative !important;
     top: 0;
     right: 0;
-    border-left: 2px solid #d1d5db; 
+    border-left: 2px solid #d1d5db;
     border-right: 2px solid #d1d5db;
-    padding-left: 1rem; 
+    padding-left: 1rem;
     padding-right: 1rem;
 }
 
@@ -632,7 +632,7 @@ ol.flex-control-nav li {
 }
 
 .woocommerce-message {
-   
+
     max-width: 1250px;
     margin: 0px auto !important;
     margin-bottom: 20px !important;

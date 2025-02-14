@@ -55,11 +55,11 @@
 	@apply float-right ml-8;
 }
 
-#size-buttons {
+#size-buttons , #nft-buttons {
 	@apply mt-2 flex gap-2 flex-wrap;
 }
 
-.size-button {
+.size-button , .nft-button {
 	@apply bg-[#F0F0F0] py-[9.5px] rounded-full px-6 text-black/60 border border-transparent;
 }
 

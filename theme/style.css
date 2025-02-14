@@ -1291,14 +1291,14 @@ body {
   margin-left: 2rem;
 }
 
-#size-buttons {
+#size-buttons , #nft-buttons {
   margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.size-button {
+.size-button , .nft-button {
   border-radius: 9999px;
   border-width: 1px;
   border-color: transparent;
@@ -1696,6 +1696,10 @@ body {
   margin-top: 2rem;
 }
 
+.mt-\[-140px\] {
+  margin-top: -140px;
+}
+
 .mt-\[102px\] {
   margin-top: 102px;
 }
@@ -1730,14 +1734,6 @@ body {
 
 .mt-\[60px\] {
   margin-top: 60px;
-}
-
-.mt-\[-140px\] {
-  margin-top: -140px;
-}
-
-.mt-\[\] {
-  margin-top: ;
 }
 
 .block {
@@ -2826,6 +2822,10 @@ body {
   padding-top: 1.25rem;
 }
 
+.pt-\[140px\] {
+  padding-top: 140px;
+}
+
 .pt-\[150px\] {
   padding-top: 150px;
 }
@@ -2840,14 +2840,6 @@ body {
 
 .pt-\[50px\] {
   padding-top: 50px;
-}
-
-.pt-\[140px\] {
-  padding-top: 140px;
-}
-
-.pt-\[140\] {
-  padding-top: 140;
 }
 
 .text-left {
