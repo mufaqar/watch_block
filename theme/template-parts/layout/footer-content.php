@@ -15,20 +15,10 @@
 			<img src="<?php echo get_template_directory_uri(); ?>/public/logo.svg" alt="watch-blocks" class="min-w-[120px]"/>
 		</a>
 		<p class="text-white mt-[10px] mb-14">Lorem ipsum dolor sit amet consectetur. Semper ipsum elementum in ipsum fringilla id. Elit velit id maecenas tortor euismod.</p>
-		<div class="text-white capitalize font-normal">
-			<?php if ( has_nav_menu( 'menu-2' ) ) : ?>
-				<nav aria-label="<?php esc_attr_e( 'Footer Menu', 'watch_block' ); ?>">
-					<?php
-						wp_nav_menu(
-							array(
-								'theme_location' => 'menu-2',
-								'menu_class'     => 'footer-menu',
-								'depth'          => 1,
-							)
-						);
-						?>
-				</nav>
-			<?php endif; ?>
+		<div class="text-white capitalize flex items-center gap-4 flex-wrap font-normal">
+			<a href="<?php echo home_url('/blogs') ?>">Blogs</a>
+			<button id="stolen-report">Report Stolen Watch</button>
+			<a href="<?php echo home_url('/contact-us') ?>">Contact us</a>
 		</div>
 		<div class="my-9 flex items-center gap-4 sm:gap-[30px]">
 			<a href="https://x.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/public/svg/x.svg" alt="" /></a>
@@ -47,8 +37,19 @@
 </footer>
 
 
-<footer id="colophon" >
+<?php get_template_part( 'template-parts/layout/stolen', 'model' ); ?>
 
-	
 
-</footer><!-- #colophon -->
+<script>
+	document.getElementById("stolen-report").addEventListener("click", function () {
+		document.getElementById("modal").style.display = "block";
+	});
+	document.querySelector(".close").addEventListener("click", function () {
+		document.getElementById("modal").style.display = "none";
+	});
+	window.addEventListener("click", function (event) {
+		if (event.target === document.getElementById("modal")) {
+			document.getElementById("modal").style.display = "none";
+		}
+	});
+</script>
