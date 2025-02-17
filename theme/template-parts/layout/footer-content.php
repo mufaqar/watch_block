@@ -16,7 +16,7 @@
 		</a>
 		<p class="text-white mt-[10px] mb-14">Lorem ipsum dolor sit amet consectetur. Semper ipsum elementum in ipsum fringilla id. Elit velit id maecenas tortor euismod.</p>
 		<div class="text-white capitalize flex items-center gap-4 flex-wrap font-normal">
-			<a href="<?php echo home_url('/blogs') ?>">Blogs</a>
+			<a href="<?php echo home_url('/blog') ?>">Blog</a>
 			<button id="stolen-report">Report Stolen Watch</button>
 			<a href="<?php echo home_url('/contact-us') ?>">Contact us</a>
 		</div>
