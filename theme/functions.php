@@ -285,6 +285,19 @@ add_action('pre_get_posts', function($query) {
 
 
 
+function custom_enqueue_scripts() {
+    if (is_product()) {
+		wp_dequeue_script('wc-add-to-cart-variation'); // Remove WooCommerce default variation script
+        wp_enqueue_script('custom-variation-js', get_stylesheet_directory_uri() . '/js/custom-variation.js', array('jquery'), null, true);
+    }
+}
+add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
+
+
+
+
+
+
 
 
 

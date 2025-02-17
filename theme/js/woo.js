@@ -42,21 +42,3 @@ jQuery(document).ready(function ($) {
 
 
 
-jQuery(document).ready(function ($) {
-    $(".variation-buttons .variation-button").on("click", function () {
-        let parent = $(this).closest(".variation-wrapper");
-        let attributeName = parent.find(".variation-buttons").data("attribute");
-        let selectedValue = $(this).data("value");
-
-        parent.find(".variation-button").removeClass("active");
-        $(this).addClass("active");
-
-        $("#attribute_" + attributeName).val(selectedValue).trigger("change");
-    });
-
-    $(".reset_variations").on("click", function (e) {
-        e.preventDefault();
-        $(".variation-button").removeClass("active");
-        $(".variation-wrapper input[type='hidden']").val("").trigger("change");
-    });
-});
