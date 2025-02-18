@@ -2057,6 +2057,10 @@ body {
   max-width: 450px;
 }
 
+.max-w-\[550px\] {
+  max-width: 550px;
+}
+
 .max-w-\[612px\] {
   max-width: 612px;
 }
@@ -3059,10 +3063,6 @@ body {
 
 .font-\[600\] {
   font-weight: 600;
-}
-
-.font-black {
-  font-weight: 900;
 }
 
 .font-bold {
