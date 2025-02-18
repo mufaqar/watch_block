@@ -127,7 +127,7 @@ function add_custom_color_size_nft_fields1() {
         // NFT Selection
         if (!empty($nft_options)) {
             echo '<div id="nft-wrap">';
-            echo '<label class="text-xl font-medium">Select NFT:</label>';
+            echo '<label class="text-xl font-medium">select an item:</label>';
             echo '<div id="nft-buttons">';
             foreach ($nft_options as $nft) {
                 echo '<button type="button" class="nft-button" data-nft="' . esc_attr(trim($nft)) . '">' . esc_html(trim($nft)) . '</button>';
@@ -263,7 +263,7 @@ function add_custom_color_size_nft_fields() {
         // NFT Selection
         if (!empty($nft_options)) {
             echo '<div id="nft-wrap">';
-            echo '<label class="text-xl font-medium">Select NFT:</label>';
+            echo '<label class="text-xl font-medium">select an item:</label>';
             echo '<div id="nft-buttons">';
             foreach ($nft_options as $nft) {
                 $size_slug = str_replace(' ', '-', strtolower(trim($nft)));

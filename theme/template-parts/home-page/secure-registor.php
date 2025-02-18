@@ -8,8 +8,8 @@
         </div>
     </div>
     <div>
-        <h2 class="text-[50px] text-[#111111] font-medium leading-[56px]">A SECURE REGISTRY FOR YOUR WATCH</h2>
-        <p class="text-xl font-light mb-5">Each watchblock watch comes with its own Registry. This blockchain-backed proof of ownership protects your watch and unlocks a world of benefits.</p>
+        <h2 class="text-[50px] text-[#111111] font-medium leading-[56px]">A Secure Registry for Your Watch</h2>
+        <p class="text-xl font-light mb-5">Every WatchBlock timepiece is registered on the blockchain, giving you indisputable proof of ownership and unlocking exclusive perks. Protect your investment and elevate your collection with WatchBlock.</p>
         <a class="bg-[#B6E22E] text-[24px] mfont text-[#111111] font-semibold py-[10px] px-[9px] rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
             GET WATCHBLOCK REGISTRY
         </a>
