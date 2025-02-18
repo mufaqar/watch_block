@@ -40,8 +40,7 @@ get_header();
 				// End the loop.
 			endwhile;
 
-			// Previous/next page navigation.
-			watch_block_the_posts_navigation();
+		
 
 		else :
 
