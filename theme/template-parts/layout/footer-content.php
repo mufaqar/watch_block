@@ -14,7 +14,7 @@
 		<a href="#">
 			<img src="<?php echo get_template_directory_uri(); ?>/public/logo.svg" alt="watch-blocks" class="min-w-[120px]"/>
 		</a>
-		<p class="text-white mt-[10px] mb-14">Lorem ipsum dolor sit amet consectetur. Semper ipsum elementum in ipsum fringilla id. Elit velit id maecenas tortor euismod.</p>
+		<p class="text-white mt-[10px] mb-14">YOUR PERFECT WATCH IS STILL HERE – GRAB YOURS BEFORE IT'S GONE!</p>
 		<div class="text-white capitalize flex items-center gap-4 flex-wrap font-normal">
 			<a href="<?php echo home_url('/blog') ?>">Blog</a>
 			<button id="stolen-report">Report Stolen Watch</button>
