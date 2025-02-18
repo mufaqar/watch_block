@@ -1744,6 +1744,10 @@ body {
   margin-top: 60px;
 }
 
+.mt-40 {
+  margin-top: 10rem;
+}
+
 .block {
   display: block;
 }
