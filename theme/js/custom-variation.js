@@ -1,34 +1,55 @@
-jQuery(document).ready(function ($) {
-    var $form = $('form.variations_form');
+document.addEventListener("DOMContentLoaded", function () {
+    let selectedAttributes = {}; 
 
-    // Initialize WooCommerce variation form
-    if ($form.length > 0 && $.fn.wc_variation_form) {
-        $form.wc_variation_form();
+    function updateSelectedAttributes(attribute, value) {
+        selectedAttributes[attribute] = value;
+        findMatchingVariation();
     }
 
-    // Handle radio button selection
-    $('.variation-radios input[type="radio"]').on('change', function () {
-       
-        var $this = $(this);
-       
-        var attributeName = $this.closest('.variation-radios').data('attribute-name');
-        var attributeValue = $this.val();
+    function findMatchingVariation() {
+        
+        if (!window.product_variations) return;
 
-    
 
-        // Update WooCommerce's variation selection dropdown (hidden)
-        var $select = $('select[name="attribute_' + attributeName + '"]');
-        if ($select.length) {
-            $select.val(attributeValue).trigger('change');
+        let matchingVariation = window.product_variations.find(variation => {
+            console.log(selectedAttributes);
+            console.log(variation);
+
+            return Object.keys(selectedAttributes).every(attr => {
+                return variation.attributes["attribute_pa_" + attr] === selectedAttributes[attr];
+                
+            });
+        });
+
+        console.log(matchingVariation);
+
+        if (matchingVariation) {
+            let priceElement = document.getElementById("selected-price");
+
+            if (matchingVariation.display_price) {
+                priceElement.innerHTML = `₨ ${matchingVariation.display_price}`;
+            } else {
+                priceElement.innerHTML = "Unavailable";
+            }
+
+            // Update hidden input for variation ID (optional, useful for checkout)
+            document.querySelector('input[name="variation_id"]').value = matchingVariation.variation_id;
+          
         }
+    }
 
-        // Update the hidden input field for form submission
-        $('input[name="attribute_' + attributeName + '"]').val(attributeValue);
+    document.querySelectorAll(".color-button, .size-button, .nft-button").forEach(button => {
+        button.addEventListener("click", function () {
+            let attribute = this.getAttribute("data-attribute");
+            let value = this.getAttribute("data-value");
 
-        // Trigger WooCommerce's variation update
-        $form.trigger('check_variations');
+            updateSelectedAttributes(attribute, value);
+
+            // Highlight selected button
+            document.querySelectorAll(`[data-attribute="${attribute}"]`).forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+              // Enable Add to Cart button when a valid variation is selected
+              document.querySelector('.single_add_to_cart_button').classList.remove('disabled');
+        });
     });
-
-    // Ensure variations update on page load
-    $form.trigger('check_variations');
 });
