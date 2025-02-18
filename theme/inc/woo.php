@@ -273,7 +273,7 @@ function add_custom_color_size_nft_fields() {
         }
 
         // Price Display
-        echo '<div class="price_display text-xl font-bold mt-4">Price: <span id="selected-price">' . wc_price($product->get_price()) . '</span></div>';
+        echo '<div class="price_display text-xl font-bold mt-4"><span id="selected-price">' . wc_price($product->get_price()) . '</span></div>';
 
         // Hidden input fields
         echo '<input type="hidden" name="custom_color" id="custom_color" value="" />';

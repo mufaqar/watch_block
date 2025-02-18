@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let priceElement = document.getElementById("selected-price");
 
             if (matchingVariation.display_price) {
-                priceElement.innerHTML = `₨ ${matchingVariation.display_price}`;
+                priceElement.innerHTML = `$ ${matchingVariation.display_price}`;
             } else {
                 priceElement.innerHTML = "Unavailable";
             }
