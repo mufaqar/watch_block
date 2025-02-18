@@ -124,7 +124,7 @@ get_header(); ?>
                                 ?>
                             </p>
                         </div>
-                        <h2 class="text-[22px] font-black leading-[22px] mb-5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                        <h2 class="text-[22px] font-medium leading-[22px] mb-5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                         <div class="postExcerpt"><?php the_excerpt(); ?></div>
                         <div class="flex items-center gap-2 mt-6">
                             <img src="<?php echo get_template_directory_uri(); ?>/public/svg/calandar.svg" alt="" class="w-[42px]" />
