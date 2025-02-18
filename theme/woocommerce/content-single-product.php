@@ -82,22 +82,21 @@ if ( post_password_required() ) {
 	
 	</main>
 
-
-<section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
+    <section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
     <div>
         <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Watch Details</h4>
         <ul>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Regular Price</h6>
-                <p class="text-black/70 text-sm mt-1">$149,199.86</p>
+                <p class="text-black/70 text-sm mt-1"><?php the_field('regular_price'); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Brand</h6>
-                <a class="text-black underline text-sm mt-1 capitalize">Rolex</a>
+                <a class="text-black underline text-sm mt-1 capitalize">Brand1</a>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Model Name</h6>
-                <a class="text-black underline text-sm mt-1 capitalize">Submariner</a>
+                <a class="text-black underline text-sm mt-1 capitalize">123456</a>
             </li>
         </ul>
     </div>
@@ -106,11 +105,11 @@ if ( post_password_required() ) {
         <ul>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
-                <p class="text-black/70 text-sm mt-1">White Gold</p>
+                <p class="text-black/70 text-sm mt-1"><?php the_field('material'); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Crystal</h6>
-                <p class="text-black/70 text-sm mt-1">Sapphire</p>
+                <p class="text-black/70 text-sm mt-1"><?php the_field('crystal'); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Size</h6>
@@ -135,11 +134,11 @@ if ( post_password_required() ) {
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
-                <p class="text-black/70 text-sm mt-1">Unidirectional</p>
+                <p class="text-black/70 text-sm mt-1"><?php the_field('bezel'); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Complication</h6>
-                <p class="text-black/70 text-sm mt-1">Date</p>
+                <p class="text-black/70 text-sm mt-1"><?php the_field('complication'); ?></p>
             </li>
         </ul>
     </div>
@@ -156,12 +155,11 @@ if ( post_password_required() ) {
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Clasp</h6>
-                <p class="text-black/70 text-sm mt-1">Glidelock</p>
+                <p class="text-black/70 text-sm mt-1"><?php the_field('clasp'); ?></p>
             </li>
         </ul>
     </div>
 </section>
-
 
 
 <section class="max-w-[1280px] px-3 mx-auto mb-12">
