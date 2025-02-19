@@ -119,12 +119,16 @@ get_header();
                         alt="<?php echo esc_attr(get_the_title()); ?> Image" />
                 </div>
                 <div class="px-4 md:px-6 text-center py-4 text-black">
-                    <h5 class="text-lg md:text-[22px] font-semibold uppercase">
-                        <?php echo esc_html(get_the_content()); ?>
-                    </h5>
+                   
                     <h3 class="text-[6vw] md:text-[36px] font-[500] mt-2 uppercase md:leading-[40px]">
                         <?php echo esc_html(get_the_title()); ?>
                     </h3>
+                    <h4 class="text-2xl my-2 uppercase ">
+                    <?php the_field('designation'); ?>
+                    </h4>
+                    <p class="text-lg md:text-[16px] ">
+                        <?php echo esc_html(get_the_content()); ?>
+            </p>
                 </div>
             </article>
 
