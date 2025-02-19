@@ -28,7 +28,7 @@ get_header(); ?>
     <div class="flex flex-col gap-5">
         <div class="bg-[#F2F2F2] py-8 px-16 flex-1">
             <h2 class="font-semibold text-[35px] mb-5">Contact us at</h2>
-            <p class="text-xl font-light">Need help with Watchblock? Contact us below, and we’ll get back to you within 24 hours.</p>
+            <p class="text-xl font-light">We'd love to hear from you! Whether you have a question, feedback, or need assistance, please don't hesitate to contact us.</p>
             <div class="mt-6">
                 <ul class="flex flex-col gap-5">
                     <li class="flex items-center gap-4">
@@ -44,7 +44,7 @@ get_header(); ?>
         </div>
         <div class="bg-[#F2F2F2] py-8 px-16 flex-1">
             <h2 class="font-semibold text-[35px] mb-5">Leave us some feedback</h2>
-            <p class="text-xl font-light">Need help with Watchblock? Contact us below, and we’ll get back to you within 24 hours.</p>
+            <p class="text-xl font-light">Have a question or feedback? We're here to help! Contact us, and we'll respond within one business day.</p>
             <div class="mt-6">
                 <a class="bg-[#B6E22E] py-[14px] px-[25px]">Send Feedback</a>
             </div>

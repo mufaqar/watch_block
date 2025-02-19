@@ -290,3 +290,81 @@ function add_custom_color_size_nft_fields() {
         echo '</div></div>';
     }
 }
+
+
+
+function add_custom_menu_items($items) {
+    // Define new menu items
+    $new_items = [
+        
+        'sell-my-watch' => __('Sell My Watch', 'your-textdomain'),
+        'stolen-watch' => __('Report lost/stolen Watch', 'your-textdomain'),
+    ];
+
+    // Move Logout to the end
+    if (isset($items['customer-logout'])) {
+        $logout_item = ['customer-logout' => $items['customer-logout']];
+        unset($items['customer-logout']);
+
+        // Merge items: Add new items before logout
+        $items = array_merge($items, $new_items, $logout_item);
+    } else {
+        $items = array_merge($items, $new_items);
+    }
+
+    return $items;
+}
+add_filter('woocommerce_account_menu_items', 'add_custom_menu_items');
+
+
+
+
+function add_custom_account_endpoints() {
+    add_rewrite_endpoint('stolen-watch', EP_PAGES);
+    add_rewrite_endpoint('sell-my-watch', EP_PAGES);
+}
+add_action('init', 'add_custom_account_endpoints');
+
+
+
+function stolen_watch_content() {
+    $query = new WP_Query([
+        'post_type'      => 'stolen_watch',
+        'posts_per_page' => 10,
+    ]);
+
+    if ($query->have_posts()) {
+        echo '<ul>';
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+        }
+        echo '</ul>';
+    } else {
+        echo '<p>No stolen watches found.</p>';
+    }
+    wp_reset_postdata();
+}
+add_action('woocommerce_account_stolen-watch_endpoint', 'stolen_watch_content');
+
+
+function sell_my_watch_content() {
+    echo '<h2>Sell My Watch</h2>';
+    echo '<p>Use this form to list your watch for sale.</p>';
+
+    // Example form
+    echo '<form method="post">';
+    echo '<label for="watch-title">Watch Title:</label>';
+    echo '<input type="text" id="watch-title" name="watch-title" required>';
+    
+    echo '<label for="watch-price">Price:</label>';
+    echo '<input type="number" id="watch-price" name="watch-price" required>';
+
+    echo '<label for="watch-description">Description:</label>';
+    echo '<textarea id="watch-description" name="watch-description" required></textarea>';
+
+    echo '<button type="submit">Submit</button>';
+    echo '</form>';
+}
+add_action('woocommerce_account_sell-my-watch_endpoint', 'sell_my_watch_content');
+
