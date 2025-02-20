@@ -657,3 +657,11 @@ ol.flex-control-nav li {
 .single-product .variations_form .yith-add-to-wishlist-button-block {
     display: none !important;
 }
+
+
+.box-content {
+    background-color: white;
+    border-radius: 10px;  
+    text-align: center;
+
+}
