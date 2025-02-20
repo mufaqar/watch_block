@@ -6,6 +6,8 @@
 
 
 
+
+
 // Save custom fields to cart data
 add_filter('woocommerce_add_cart_item_data', 'save_custom_attributes_to_cart', 10, 2);
 function save_custom_attributes_to_cart($cart_item_data, $product_id) {
