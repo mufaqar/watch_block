@@ -2,6 +2,7 @@
 
 include_once 'woo.php';
 include_once 'ajax.php';
+include_once 'temp-account.php';
 
 function add_menu_link_class($classes, $item, $args) {
     if(isset($args->add_li_class)) {
