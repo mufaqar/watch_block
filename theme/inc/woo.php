@@ -205,7 +205,7 @@ function add_custom_color_size_nft_fields() {
             echo '<div id="nft-buttons">';
             foreach ($nft_options as $nft) {
                 $size_slug = str_replace(' ', '-', strtolower(trim($nft)));
-                echo '<button type="button" class="nft-button" data-attribute="watches_nft" data-value="' . esc_attr($size_slug) . '">' . esc_html(($nft)) . '</button>';
+                echo '<button type="button" class="nft-button" data-attribute="nft_watches" data-value="' . esc_attr($size_slug) . '">' . esc_html(($nft)) . '</button>';
             }
             echo '</div></div>';
         }

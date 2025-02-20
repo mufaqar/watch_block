@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        console.log(matchingVariation);
+       // console.log(matchingVariation);
 
         if (matchingVariation) {
             let priceElement = document.getElementById("selected-price");
