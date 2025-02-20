@@ -302,6 +302,8 @@ button.active_dashbord_page {
     position: relative !important;
 
 }
+.single-product .woocommerce .related  span.onsale
+{ position: absolute !important;}
 
 @media (max-width: 768px) {
     .woocommerce ul.products {
@@ -624,6 +626,17 @@ ol.flex-control-nav li {
     padding-right: 1rem;
 }
 
+.single-product .related .yith-add-to-wishlist-button-block {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    border-left: none !important;
+    border-right: none !important;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .options_product {
     display: flex;
     flex-direction: row;
@@ -638,6 +651,8 @@ ol.flex-control-nav li {
     margin-bottom: 20px !important;
 }
 
+
+.variations_form .yith-add-to-wishlist-button-block { display: none;}
 
 
 
