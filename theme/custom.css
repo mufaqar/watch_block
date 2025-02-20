@@ -652,7 +652,7 @@ ol.flex-control-nav li {
 }
 
 
-.variations_form .yith-add-to-wishlist-button-block { display: none;}
+.single-product .variations_form .yith-add-to-wishlist-button-block { display: none !important;}
 
 
 
