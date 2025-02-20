@@ -16,8 +16,11 @@ get_header();
         $model    = get_the_title();
         $serial   = get_post_meta($ID, 'serial_number', true);
         $status   = get_post_meta($ID, 'status', true);
-        $reported = get_post_meta($ID, 'reported_date', true);
+        $location   = get_post_meta($ID, 'location', true);
+  
         $details  = get_post_meta($ID, 'details', true);
+        $reported_raw = get_post_meta(get_the_ID(), 'reported_date', true);
+        $reported = $reported_raw ? date('F j, Y', strtotime($reported_raw)) : 'N/A';
     ?>
         <div class="max-w-3xl mx-auto bg-white p-6 shadow-lg rounded-lg">
             <h1 class="text-2xl font-bold mb-4"><?php echo esc_html($model); ?></h1>
@@ -26,7 +29,9 @@ get_header();
                 <div><strong>Report ID:</strong> #<?php echo esc_html($ID); ?></div>
                 <div><strong>Serial Number:</strong> <?php echo esc_html($serial); ?></div>
                 <div><strong>Date Reported:</strong> <?php echo esc_html($reported); ?></div>
+                <div><strong>Location</strong> <?php echo esc_html($location); ?></div>
                 <div><strong>Status:</strong> <?php echo esc_html($status); ?></div>
+
             </div>
 
             <div class="mb-4">

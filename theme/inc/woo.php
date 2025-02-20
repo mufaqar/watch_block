@@ -346,15 +346,18 @@ function get_all_myWatches() {
                     $model     = get_the_title();
                     $serial    = get_post_meta(get_the_ID(), 'serial_number', true);
                     $status     = get_post_meta(get_the_ID(), 'status', true);
-                    $reported  = get_post_meta(get_the_ID(), 'reported_date', true);
+               
+                    $reported_raw = get_post_meta(get_the_ID(), 'reported_date', true);
+                    $reported = $reported_raw ? date('F j, Y', strtotime($reported_raw)) : 'N/A';
+
                 ?>
                     <div class="grid grid-cols-6 gap-3 text-start border-b py-3">
                        
                         <div>#<?php echo esc_html($ID); ?></div>
                         <div><?php the_title(); ?></div>
-                        <div> <?php echo esc_html($serial); ?></div>
-                        <div> <?php echo esc_html($status); ?></div>
+                        <div> <?php echo esc_html($serial); ?></div>                        
                         <div> <?php echo esc_html($reported); ?></div>
+                        <div> <?php echo esc_html($status); ?></div>
                         <div> <a href="<?php the_permalink()?>" >View</a></div>
                   
                     </div>
