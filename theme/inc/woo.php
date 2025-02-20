@@ -80,68 +80,6 @@ function add_custom_button_after_add_to_cart() {
 /* Extra Options */
 
 
-// Add custom color, size, and NFT fields inside the add-to-cart form
-//add_action('woocommerce_before_add_to_cart_button', 'add_custom_color_size_nft_fields');
-function add_custom_color_size_nft_fields1() {
-    global $product;
-
-    if ($product->is_type('variable')) { // Ensure it's a variable product
-        $colors = $product->get_attribute('watches_colors'); 
-        $sizes = $product->get_attribute('watches_size'); 
-        $nfts = $product->get_attribute('watches_nft'); 
-
-        $color_options = $colors ? explode(',', $colors) : [];
-        $size_options = $sizes ? explode(',', $sizes) : [];
-        $nft_options = $nfts ? explode(',', $nfts) : [];
-
-        echo '<div class="watch_options">';
-
-        // Color Selection
-        if (!empty($color_options)) {
-            echo '<label class="text-xl font-medium">Color Available:</label>';
-            echo '<div id="color-buttons" class="py-[14px] mt-0">';
-            foreach ($color_options as $color) {
-                echo '<button type="button" class="color-button" data-color="' . esc_attr(trim($color)) . '">
-                    <figure class="bg-white p-1 rounded-[8px]">
-                        <img decoding="async" src="' . esc_url(get_template_directory_uri() . '/public/images/demo-watch.png') . '" 
-                            class="w-[50px] object-contain h-[50px]" alt="' . esc_attr($color) . '">
-                    </figure>
-                    <p class="color_label">' . esc_html(trim($color)) . '</p>
-                </button>';
-            }
-            echo '</div>';
-        }
-        echo "<div class='options_product'>";
-
-        // Size Selection
-        if (!empty($size_options)) {
-            echo '<div id="size-wrap">';
-            echo '<label class="text-xl font-medium">Choose Size:</label>';
-            echo '<div id="size-buttons">';
-            foreach ($size_options as $size) {
-                echo '<button type="button" class="size-button" data-size="' . esc_attr(trim($size)) . '">' . esc_html(trim($size)) . '</button>';
-            }
-            echo '</div> </div>';
-        }
-
-        // NFT Selection
-        if (!empty($nft_options)) {
-            echo '<div id="nft-wrap">';
-            echo '<label class="text-xl font-medium">select an item:</label>';
-            echo '<div id="nft-buttons">';
-            foreach ($nft_options as $nft) {
-                echo '<button type="button" class="nft-button" data-nft="' . esc_attr(trim($nft)) . '">' . esc_html(trim($nft)) . '</button>';
-            }
-            echo '</div> </div>';
-        }
-
-        // Hidden input fields (inside the form)
-        echo '<input type="hidden" name="custom_color" id="custom_color" value="" />';
-        echo '<input type="hidden" name="custom_size" id="custom_size" value="" />';
-        echo '<input type="hidden" name="custom_nft" id="custom_nft" value="" />';
-        echo '</div> </div>';
-    }
-}
 
 // Save custom fields to cart data
 add_filter('woocommerce_add_cart_item_data', 'save_custom_attributes_to_cart', 10, 2);
@@ -221,7 +159,7 @@ function add_custom_color_size_nft_fields() {
         // Get product attributes
         $colors = $product->get_attribute('watches_colors'); 
         $sizes = $product->get_attribute('watches_size'); 
-        $nfts = $product->get_attribute('watches_nft'); 
+        $nfts = $product->get_attribute('nft_watches'); 
 
         $color_options = $colors ? explode(',', $colors) : [];
         $size_options = $sizes ? explode(',', $sizes) : [];
