@@ -1,55 +1,36 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let selectedAttributes = {}; 
 
-    function updateSelectedAttributes(attribute, value) {
-        selectedAttributes[attribute] = value;
-        findMatchingVariation();
-    }
+jQuery(document).ready(function($) {
+    // Store selected color and size values
+    let selectedColor = '';
+    let selectedSize = '';
 
-    function findMatchingVariation() {
+    // Handle color button clicks
+    $('#color-buttons .color-button').on('click', function() {
+        // Remove active class from all color buttons
+        $('#color-buttons .color-button').removeClass('active');
         
-        if (!window.product_variations) return;
+        // Add active class to clicked color button
+        $(this).addClass('active');
+        
+        // Get the selected color value
+        selectedColor = $(this).data('color');
 
+        // Set the selected color value in the hidden input field
+        $('#custom_color').val(selectedColor);
+    });
 
-        let matchingVariation = window.product_variations.find(variation => {
-            console.log(selectedAttributes);
-            console.log(variation);
+    // Handle size button clicks
+    $('#size-buttons .size-button').on('click', function() {
+        // Remove active class from all size buttons
+        $('#size-buttons .size-button').removeClass('active');
+        
+        // Add active class to clicked size button
+        $(this).addClass('active');
+        
+        // Get the selected size value
+        selectedSize = $(this).data('size');
 
-            return Object.keys(selectedAttributes).every(attr => {
-                return variation.attributes["attribute_pa_" + attr] === selectedAttributes[attr];
-                
-            });
-        });
-
-       // console.log(matchingVariation);
-
-        if (matchingVariation) {
-            let priceElement = document.getElementById("selected-price");
-
-            if (matchingVariation.display_price) {
-                priceElement.innerHTML = `$ ${matchingVariation.display_price}`;
-            } else {
-                priceElement.innerHTML = "Unavailable";
-            }
-
-            // Update hidden input for variation ID (optional, useful for checkout)
-            document.querySelector('input[name="variation_id"]').value = matchingVariation.variation_id;
-          
-        }
-    }
-
-    document.querySelectorAll(".color-button, .size-button, .nft-button").forEach(button => {
-        button.addEventListener("click", function () {
-            let attribute = this.getAttribute("data-attribute");
-            let value = this.getAttribute("data-value");
-
-            updateSelectedAttributes(attribute, value);
-
-            // Highlight selected button
-            document.querySelectorAll(`[data-attribute="${attribute}"]`).forEach(btn => btn.classList.remove("active"));
-            this.classList.add("active");
-              // Enable Add to Cart button when a valid variation is selected
-              document.querySelector('.single_add_to_cart_button').classList.remove('disabled');
-        });
+        // Set the selected size value in the hidden input field
+        $('#custom_size').val(selectedSize);
     });
 });

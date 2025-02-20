@@ -1860,6 +1860,10 @@ body {
   height: 48px;
 }
 
+.h-\[49px\] {
+  height: 49px;
+}
+
 .h-\[50px\] {
   height: 50px;
 }
@@ -1890,14 +1894,6 @@ body {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[100px\] {
-  height: 100px;
-}
-
-.h-\[49px\] {
-  height: 49px;
 }
 
 .max-h-\[280px\] {
@@ -1976,6 +1972,10 @@ body {
   width: 48px;
 }
 
+.w-\[49px\] {
+  width: 49px;
+}
+
 .w-\[50px\] {
   width: 50px;
 }
@@ -2011,14 +2011,6 @@ body {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[100px\] {
-  width: 100px;
-}
-
-.w-\[49px\] {
-  width: 49px;
 }
 
 .min-w-\[120px\] {
@@ -2161,10 +2153,6 @@ body {
 
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -3078,6 +3066,11 @@ body {
   font-size: 8vw;
 }
 
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -3096,11 +3089,6 @@ body {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .font-\[400\] {
