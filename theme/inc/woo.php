@@ -355,7 +355,7 @@ function get_all_myWatches() {
                         <div> <?php echo esc_html($serial); ?></div>
                         <div> <?php echo esc_html($status); ?></div>
                         <div> <?php echo esc_html($reported); ?></div>
-                        <div> Action</div>
+                        <div> <a href="<?php the_permalink()?>" >View</a></div>
                   
                     </div>
                 <?php endwhile; ?>
