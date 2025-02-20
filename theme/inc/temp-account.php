@@ -3,77 +3,71 @@
 
 function get_all_watches() {
     ?>
-
-
-<div class="flex md:flex-row flex-col gap-5">
-    <div class="md:w-1/2 w-full">
-        <h4 class="text-2xl font-bold">Listed watches</h4>
-    </div>
-    <div class="md:w-1/2 w-full align-right flex align-center  justify-end gap-5">
-        <a href="#" class="text-xl bg-[#B6E22E] w-fit p-2 hover:bg-black hover:text-[#B6E22E] rounded-lg ">Sell
-            Watch</a>
+    <div class="flex md:flex-row flex-col gap-5">
+        <div class="md:w-1/2 w-full">
+            <h4 class="text-2xl font-bold">Listed Watches</h4>
+        </div>
+        <div class="md:w-1/2 w-full align-right flex items-center justify-end gap-5">
+            <a href="#" class="text-xl bg-[#B6E22E] w-fit p-2 hover:bg-black hover:text-[#B6E22E] rounded-lg">Sell Watch</a>
+        </div>
     </div>
 
-
-</div>
-
-
-<div class="box-content mt-6">
-
-    <?php
+    <div class="box-content mt-6">
+        <?php
         $query = new WP_Query([
             'post_type'      => 'product',
             'posts_per_page' => -1,
         ]);
 
         if ($query->have_posts()) : ?>
-    <div class="watch-list p-5">
+            <div class="watch-list p-5">
+                <?php while ($query->have_posts()) : $query->the_post(); 
+                    $product = wc_get_product(get_the_ID());
+                    $ID       = get_the_ID();
+                    $material     = get_post_meta($ID, 'material', true) ?: 'N/A'; // Default to 'N/A' if size is missing
+                    $stock_status = $product ? $product->get_stock_status() : 'N/A';
+                    $stock_quantity = $product ? $product->get_stock_quantity() : 0;
+                    $stock_text = ($stock_status === 'instock') ? "In Stock" : 'Out of Stock';
+                 
 
-        <?php while ($query->have_posts()) : $query->the_post(); 
-                    // Get meta fields
-                    $ID     = get_the_ID();
-                    $model     = get_the_title();
-                    $serial    = get_post_meta(get_the_ID(), 'serial_number', true);
-                    $status     = get_post_meta(get_the_ID(), 'status', true);
-               
-                    $reported_raw = get_post_meta(get_the_ID(), 'reported_date', true);
-                    $reported = $reported_raw ? date('F j, Y', strtotime($reported_raw)) : 'N/A';
+                    // Get price using WooCommerce function
+                    $price = function_exists('wc_get_product') ? wc_get_product($ID)->get_price() : 'N/A';
 
+                    // Get featured image
+                    $image = get_the_post_thumbnail_url($ID, 'thumbnail') ?: get_template_directory_uri() . '/public/images/place.png';
                 ?>
-        <div class="grid grid-cols-6 gap-3 text-start border-b py-3">
-
-            <div>
-                <h5>Registry ID</h5>
-                <p><?php echo esc_html($ID); ?></p>
-
-            </div>
-            <div class="flex item-center col-span-2 gap-2">
-                <img src="<?php echo get_template_directory_uri(); ?>/public/images/place.png" alt="watch"
-                    class="w-[49px] h-[49px] object-cover rounded-full bg-[#f2f2f2]" />
-                <div>
-                    <h5><?php the_title(); ?></h5>
-                    <p>
-                        Size: Large</p>
+                <div class="grid grid-cols-6 gap-3 text-start border-b py-3 items-center">
+                    <div>
+                        <h5>Registry ID</h5>
+                        <p><?php echo esc_html($ID); ?></p>
+                    </div>
+                    <div class="flex items-center col-span-2 gap-2">
+                        <img src="<?php echo esc_url($image); ?>" alt="watch"
+                            class="w-[49px] h-[49px] object-cover rounded-full bg-[#f2f2f2]" />
+                        <div>
+                            <h5><?php the_title(); ?></h5>
+                            <p><?php echo esc_html($material); ?></p>
+                        </div>
+                    </div>
+                    <div><span class="bg-[#f2f2f2] rounded-xl p-2"><?php echo esc_html($stock_text); ?></span></div>
+                    <div>$ <?php echo esc_html($price); ?></div>
+                    <div>
+                        <a href="<?php the_permalink(); ?>"
+                            class="text-base bg-[#B6E22E] w-fit p-2 hover:bg-black hover:text-[#B6E22E] rounded-lg">
+                            View Details
+                        </a>
+                    </div>
                 </div>
-
+                <?php endwhile; ?>
             </div>
-            <div><span class="bg-[#f2f2f2] rounded-xl p-2">Stock</span></div>
-            <div>$ 120.00</div>
-            <div> <a href="<?php the_permalink()?>"
-                    class="text-base bg-[#B6E22E] w-fit p-2 hover:bg-black hover:text-[#B6E22E] rounded-lg">View
-                    Details</a></div>
-
-        </div>
-        <?php endwhile; ?>
-    </div>
-    <?php else : ?>
-    <p>No watches found.</p>
-    <?php endif;
+        <?php else : ?>
+            <p>No watches found.</p>
+        <?php endif;
 
         wp_reset_postdata();
         ?>
-</div>
-<?php
+    </div>
+    <?php
 }
 
 
