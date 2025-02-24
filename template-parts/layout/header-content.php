@@ -12,7 +12,7 @@
 
 <header id="<?php echo ($header_color == 'White') ? 'white' : 'black'; ?>"
     class="md:py-4 lg:py-[24px] sticky w-full z-50 top-[-1px]">
-    <div id="header-wrapper" class="pl-3 sm:pl-4 py-2 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
+    <div id="header-wrapper" class="pl-3 sm:pl-4 md:py-2 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
         <a href="<?php bloginfo('url'); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/images/<?php echo $logo?>"
                 alt="<?php bloginfo('name'); ?>" class="min-w-[120px]">

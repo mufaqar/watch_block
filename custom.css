@@ -705,11 +705,8 @@ ol.flex-control-nav li {
   }
 }
 
-/* #header-wrapper {
-  transition: background 0.3s ease;
-} */
 #black #header-wrapper.scrolled {
-  background: rgb(255, 255, 255); /* Example background */
+  background: rgb(255, 255, 255);
 }
 
 #white #header-wrapper.scrolled {
