@@ -12,13 +12,13 @@
 
 <header id="<?php echo ($header_color == 'White') ? 'white' : 'black'; ?>"
     class="md:py-4 lg:py-[24px] sticky w-full z-50 top-[-1px]">
-    <div id="header-wrapper" class="pl-3 sm:pl-4 py-2 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
+    <div id="header-wrapper" class="pl-3 sm:pl-4 md:py-2 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
         <a href="<?php bloginfo('url'); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/images/<?php echo $logo?>"
                 alt="<?php bloginfo('name'); ?>" class="min-w-[120px]">
         </a>
         <div
-            class="bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
+            class="md:bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
             <div class="hidden md:block">
                 <?php wp_nav_menu( array( 
 					'theme_location' => 'main', 

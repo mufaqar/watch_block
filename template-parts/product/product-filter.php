@@ -2,7 +2,7 @@
     <div class="max-w-[1320px] mx-auto px-3 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
         
         <!-- Brands -->
-        <div class="flex flex-col justify-between">
+        <div class="flex flex-col justify-between w-full sm:w-auto">
             <h6 class="font-semibold mb-[9px]">Brand</h6>
             <div class="form-select">
                 <select id="brand-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
