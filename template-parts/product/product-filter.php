@@ -78,67 +78,7 @@
         window.location.href = '?brand=' + this.value;
     });
 </script>
+
+
 <?php
 
-function filter_woocommerce_shop_query($query) {
-    if (!is_admin() && $query->is_main_query() && (is_shop() || is_product_category())) {
-        
-        // Filtering by Brand
-        if (!empty($_GET['brand'])) {
-            $query->set('tax_query', [
-                [
-                    'taxonomy' => 'watch_brands',
-                    'field'    => 'slug',
-                    'terms'    => sanitize_text_field($_GET['brand']),
-                ],
-            ]);
-        }
-
-        // Filtering by Color
-        if (!empty($_GET['color'])) {
-            $tax_query = $query->get('tax_query') ? $query->get('tax_query') : [];
-            $tax_query[] = [
-                'taxonomy' => 'pa_watches_colors',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['color']),
-            ];
-            $query->set('tax_query', $tax_query);
-        }
-
-        // Filtering by Condition
-        if (!empty($_GET['condition'])) {
-            $tax_query = $query->get('tax_query') ? $query->get('tax_query') : [];
-            $tax_query[] = [
-                'taxonomy' => 'watch_type',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['condition']),
-            ];
-            $query->set('tax_query', $tax_query);
-        }
-
-        // Filtering by Size
-        if (!empty($_GET['size'])) {
-            $tax_query = $query->get('tax_query') ? $query->get('tax_query') : [];
-            $tax_query[] = [
-                'taxonomy' => 'pa_watches_size',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['size']),
-            ];
-            $query->set('tax_query', $tax_query);
-        }
-
-        // Sorting by Price
-        if (!empty($_GET['orderby'])) {
-            if ($_GET['orderby'] === 'price-desc') {
-                $query->set('orderby', 'meta_value_num');
-                $query->set('meta_key', '_price');
-                $query->set('order', 'DESC');
-            } elseif ($_GET['orderby'] === 'price-asc') {
-                $query->set('orderby', 'meta_value_num');
-                $query->set('meta_key', '_price');
-                $query->set('order', 'ASC');
-            }
-        }
-    }
-}
-add_action('pre_get_posts', 'filter_woocommerce_shop_query');
