@@ -141,17 +141,36 @@ function filter_woocommerce_shop_query($query) {
         }
 
         // Sorting by Price
-        if (!empty($_GET['orderby'])) {
-            if ($_GET['orderby'] === 'price-desc') {
-                $query->set('orderby', 'meta_value_num');
-                $query->set('meta_key', '_price');
-                $query->set('order', 'DESC');
-            } elseif ($_GET['orderby'] === 'price-asc') {
-                $query->set('orderby', 'meta_value_num');
-                $query->set('meta_key', '_price');
-                $query->set('order', 'ASC');
-            }
-        }
+        // if (!empty($_GET['orderby'])) {
+        //     if ($_GET['orderby'] === 'price-desc') {
+        //         $query->set('orderby', 'meta_value_num');
+        //         $query->set('meta_key', '_price');
+        //         $query->set('order', 'DESC');
+        //     } elseif ($_GET['orderby'] === 'price-asc') {
+        //         $query->set('orderby', 'meta_value_num');
+        //         $query->set('meta_key', '_price');
+        //         $query->set('order', 'ASC');
+        //     }
+        // }
     }
 }
 add_action('pre_get_posts', 'filter_woocommerce_shop_query');
+
+
+
+function custom_woocommerce_orderby_price($args) {
+    if (isset($_GET['orderby'])) {
+        if ($_GET['orderby'] === 'price-desc') {
+            $args['orderby']  = 'meta_value_num';
+            $args['meta_key'] = '_price';
+            $args['order']    = 'DESC';
+        } elseif ($_GET['orderby'] === 'price-asc') {
+            $args['orderby']  = 'meta_value_num';
+            $args['meta_key'] = '_price';
+            $args['order']    = 'ASC';
+        }
+    }
+    return $args;
+}
+//add_filter('woocommerce_get_catalog_ordering_args', 'custom_woocommerce_orderby_price');
+
