@@ -2900,6 +2900,11 @@ video {
     border-right-width: 1px;
   }
 
+  .md\:bg-\[\#F2F2F2\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(242 242 242 / var(--tw-bg-opacity, 1));
+  }
+
   .md\:p-5 {
     padding: 1.25rem;
   }

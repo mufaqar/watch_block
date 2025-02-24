@@ -18,7 +18,7 @@
                 alt="<?php bloginfo('name'); ?>" class="min-w-[120px]">
         </a>
         <div
-            class="bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
+            class="md:bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
             <div class="hidden md:block">
                 <?php wp_nav_menu( array( 
 					'theme_location' => 'main', 
