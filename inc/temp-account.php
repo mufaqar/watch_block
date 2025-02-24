@@ -3,7 +3,7 @@
 
 function get_all_watches() {
     ?>
-    <div class="flex md:flex-row flex-col gap-5">
+    <div class="flex gap-3 items-center mt-5 md:mt-1">
         <div class="md:w-1/2 w-full">
             <h4 class="text-2xl font-bold">Listed Watches</h4>
         </div>
@@ -12,61 +12,65 @@ function get_all_watches() {
         </div>
     </div>
 
-    <div class="box-content mt-6">
-        <?php
-        $query = new WP_Query([
-            'post_type'      => 'product',
-            'posts_per_page' => -1,
-        ]);
+    <div class="box-content w-auto overflow-x-auto mt-6">
+        <div class="w-[840px]">
+            <?php
+                $query = new WP_Query([
+                    'post_type'      => 'product',
+                    'posts_per_page' => -1,
+                ]);
 
-        if ($query->have_posts()) : ?>
-            <div class="watch-list p-5">
-                <?php while ($query->have_posts()) : $query->the_post(); 
-                    $product = wc_get_product(get_the_ID());
-                    $ID       = get_the_ID();
-                    $material     = get_post_meta($ID, 'material', true) ?: 'N/A'; // Default to 'N/A' if size is missing
-                    $stock_status = $product ? $product->get_stock_status() : 'N/A';
-                    $stock_quantity = $product ? $product->get_stock_quantity() : 0;
-                    $stock_text = ($stock_status === 'instock') ? "In Stock" : 'Out of Stock';
-                 
+                if ($query->have_posts()) : ?>
+                    <div class="watch-list p-5">
+                        <?php while ($query->have_posts()) : $query->the_post(); 
+                            $product = wc_get_product(get_the_ID());
+                            $ID       = get_the_ID();
+                            $material     = get_post_meta($ID, 'material', true) ?: 'N/A'; // Default to 'N/A' if size is missing
+                            $stock_status = $product ? $product->get_stock_status() : 'N/A';
+                            $stock_quantity = $product ? $product->get_stock_quantity() : 0;
+                            $stock_text = ($stock_status === 'instock') ? "In Stock" : 'Out of Stock';
+                        
 
-                    // Get price using WooCommerce function
-                    $price = function_exists('wc_get_product') ? wc_get_product($ID)->get_price() : 'N/A';
+                            // Get price using WooCommerce function
+                            $price = function_exists('wc_get_product') ? wc_get_product($ID)->get_price() : 'N/A';
 
-                    // Get featured image
-                    $image = get_the_post_thumbnail_url($ID, 'thumbnail') ?: get_template_directory_uri() . '/images//place.png';
-                ?>
-                <div class="grid grid-cols-6 gap-3 text-start border-b py-3 items-center">
-                    <div>
-                        <h5>Registry ID</h5>
-                        <p><?php echo esc_html($ID); ?></p>
-                    </div>
-                    <div class="flex items-center col-span-2 gap-2">
-                        <img src="<?php echo esc_url($image); ?>" alt="watch"
-                            class="w-[49px] h-[49px] object-cover rounded-full bg-[#f2f2f2]" />
-                        <div>
-                            <h5><?php the_title(); ?></h5>
-                            <p><?php echo esc_html($material); ?></p>
+                            // Get featured image
+                            $image = get_the_post_thumbnail_url($ID, 'thumbnail') ?: get_template_directory_uri() . '/images//place.png';
+                        ?>
+                        <div class="grid grid-cols-6 gap-3 text-start py-2 items-center">
+                            <div>
+                                <h5>Registry ID</h5>
+                                <p class="text-[#666666] !text-sm !pb-0">#<?php echo esc_html($ID); ?></p>
+                            </div>
+                            <div class="flex items-center col-span-2 gap-2">
+                                <img src="<?php echo esc_url($image); ?>" alt="watch"
+                                    class="w-[49px] h-[49px] object-cover rounded-md bg-[#f2f2f2]" />
+                                <div>
+                                    <h5><?php the_title(); ?></h5>
+                                    <p class="text-[#666666] !text-sm"><?php echo esc_html($material); ?></p>
+                                </div>
+                            </div>
+                            <div><span class="bg-[#f2f2f2] rounded-full font-medium py-[2px] px-3"><?php echo esc_html($stock_text); ?></span></div>
+                            <div>$ <?php echo esc_html($price); ?></div>
+                            <div class="flex justify-end">
+                                <a href="<?php the_permalink(); ?>"
+                                    class="text-xs bg-[#B6E22E] w-fit p-2 hover:bg-black hover:text-[#B6E22E] rounded-lg">
+                                    View Details
+                                </a>
+                            </div>
                         </div>
+                        <?php endwhile; ?>
                     </div>
-                    <div><span class="bg-[#f2f2f2] rounded-xl p-2"><?php echo esc_html($stock_text); ?></span></div>
-                    <div>$ <?php echo esc_html($price); ?></div>
-                    <div>
-                        <a href="<?php the_permalink(); ?>"
-                            class="text-base bg-[#B6E22E] w-fit p-2 hover:bg-black hover:text-[#B6E22E] rounded-lg">
-                            View Details
-                        </a>
-                    </div>
-                </div>
-                <?php endwhile; ?>
-            </div>
-        <?php else : ?>
-            <p>No watches found.</p>
-        <?php endif;
+                <?php else : ?>
+                    <p>No watches found.</p>
+                <?php endif;
 
-        wp_reset_postdata();
-        ?>
+                wp_reset_postdata();
+            ?>
+        </div>
     </div>
+
+    
     <?php
 }
 
