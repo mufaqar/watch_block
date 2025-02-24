@@ -31,7 +31,7 @@ $product_id = $product->get_id();
 
 <div class="flex flex-col mb-2 md:flex-row justify-between gap-2 border-b pb-3 md:pb-1">
     <div>
-        <h2 class="text-2xl font-bold"><?php the_title()?></h2>
+        <h2 class="text-2xl !pl-0 font-bold"><?php the_title()?></h2>
         <div class="flex justify-between gap-4 items-center max-w-[250px] my-2">
             <img src="<?php echo get_template_directory_uri(); ?>/images/svg/star-bar.svg" alt="" />
             <p><?php echo $review_count ?> Reviews</p>

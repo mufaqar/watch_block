@@ -157,7 +157,7 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
     <div class="lg:w-[65%]">
         <div class="flex flex-col mb-2 md:flex-row justify-between gap-2 border-b pb-3 md:pb-1">
             <div>
-                <h2 class="text-2xl font-bold">Apple Watch Ultra 2</h2>
+                <h2 class="text-2xl  font-bold">Apple Watch Ultra 2</h2>
                 <div class="flex justify-between gap-4 items-center max-w-[250px] my-2">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/svg/star-bar.svg" alt=""/>
                     <p>246 Reviews</p>

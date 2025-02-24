@@ -665,3 +665,56 @@ ol.flex-control-nav li {
     text-align: center;
 
 }
+.mini-cart{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#mini-cart img{
+    width: 92px !important;
+    height: 92px !important;
+}
+
+.quantity input{
+    background-color: #F0F0F0;
+    border: none;
+    width: 170px !important;
+    height: 53px !important;
+    border-radius: 50px;
+    font-weight: 500;
+    margin-right: 6px;
+}
+
+.input-text.qty.text::-webkit-outer-spin-button,
+.input-text.qty.text::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide arrows in Firefox */
+.input-text.qty.text[type=number] {
+    -moz-appearance: textfield;
+}
+
+.quantity-container{
+    position: relative !important;
+}
+.quantity-container .qty-btn.minus{
+    position: absolute;
+    top: 50%;
+    left: 22px;
+    transform: translateY(-50%);
+    font-size: 34px;
+}
+.quantity-container .qty-btn.plus{
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    transform: translateY(-50%);
+    font-size: 28px;
+}
+
+@media (max-width: 768px) {
+    .cart .add_cart_btn, .cart .quantity{
+        margin-bottom: 8px !important;
+    } 
+}

@@ -39,7 +39,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 				?>
 				<li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
 					<div class="flex gap-4">
-						<figure class="max-w-[124px] w-full h-[124px] bg-[#F0EEED] p-4 flex justify-center flex-col items-center">
+						<figure id="mini-cart" class="max-w-[124px] h-[124px] bg-[#F0EEED] p-4 flex justify-center flex-col items-center">
 							<?php if ( empty( $product_permalink ) ) : ?>
 								<?php echo $thumbnail; // Display the product image ?>
 								<figcaption><?php echo wp_kses_post( $product_name ); ?></figcaption>
