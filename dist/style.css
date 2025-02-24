@@ -680,6 +680,10 @@ video {
   top: 0.75rem;
 }
 
+.top-\[-1px\] {
+  top: -1px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -698,6 +702,10 @@ video {
 
 .z-\[50\] {
   z-index: 50;
+}
+
+.z-\[100\] {
+  z-index: 100;
 }
 
 .col-span-2 {
@@ -925,6 +933,14 @@ video {
 
 .mt-\[60px\] {
   margin-top: 60px;
+}
+
+.mt-\[\] {
+  margin-top: ;
+}
+
+.mt-\[-2px\] {
+  margin-top: -2px;
 }
 
 .box-content {
@@ -1993,6 +2009,11 @@ video {
   padding-bottom: 9.5px;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .pb-20 {
   padding-bottom: 5rem;
 }
@@ -2091,6 +2112,22 @@ video {
 
 .\!pl-0 {
   padding-left: 0px !important;
+}
+
+.pl-\[\] {
+  padding-left: ;
+}
+
+.pl-\[35px\] {
+  padding-left: 35px;
+}
+
+.pl-\[30px\] {
+  padding-left: 30px;
+}
+
+.pl-\[24px\] {
+  padding-left: 24px;
 }
 
 .text-left {
@@ -2325,6 +2362,18 @@ video {
 
 .leading-relaxed {
   line-height: 1.625;
+}
+
+.leading-3 {
+  line-height: .75rem;
+}
+
+.leading-\[\] {
+  line-height: ;
+}
+
+.leading-\[14vw\] {
+  line-height: 14vw;
 }
 
 .tracking-tight {
@@ -2718,6 +2767,11 @@ video {
     padding-bottom: 1.25rem;
   }
 
+  .sm\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
   .sm\:pl-4 {
     padding-left: 1rem;
   }
@@ -2750,12 +2804,24 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:sticky {
+    position: sticky;
+  }
+
+  .md\:top-0 {
+    top: 0px;
+  }
+
   .md\:mt-2 {
     margin-top: 0.5rem;
   }
 
   .md\:mt-4 {
     margin-top: 1rem;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0px;
   }
 
   .md\:block {
@@ -2868,6 +2934,14 @@ video {
 
   .md\:pr-5 {
     padding-right: 1.25rem;
+  }
+
+  .md\:pl-3 {
+    padding-left: 0.75rem;
+  }
+
+  .md\:pl-0 {
+    padding-left: 0px;
   }
 
   .md\:\!text-\[46px\] {
@@ -3061,6 +3135,21 @@ video {
   .lg\:py-\[32px\] {
     padding-top: 32px;
     padding-bottom: 32px;
+  }
+
+  .lg\:py-\[px\] {
+    padding-top: px;
+    padding-bottom: px;
+  }
+
+  .lg\:py-\[2px\] {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .lg\:py-\[24px\] {
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   .lg\:pl-8 {
