@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#size-buttons , #nft-buttons {
+	@apply mt-2 flex gap-2 flex-wrap;
+}
+
+.size-button , .nft-button {
+	@apply bg-[#F0F0F0] py-[9.5px] rounded-full px-6 text-black/60 border border-transparent;
+}
+
+#color-buttons {
+	@apply flex gap-2 flex-wrap;
+}
+
+.color-button {
+	@apply bg-[#EAEAEA] px-[2px] pt-[2px] pb-[5px] rounded-[10px] text-xs border border-transparent;
+}
+
+.color_lable {
+	@apply capitalize text-center mt-1 text-[#676767] text-xs font-medium;
+}
+
+.watch_options {
+	@apply border-b pb-[13px] mb-[13px];
+}
+
+.watch_options .active {
+	@apply border border-dashed border-black;
+}
+.add_cart_btn {
+	@apply bg-[#B6E22E] text-black uppercase font-semibold text-2xl px-6 py-3 rounded-[14px];
+}
+
+.filter_button{
+	@apply text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full;
+}
