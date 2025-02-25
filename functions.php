@@ -72,65 +72,6 @@ function enqueue_custom_minicart_script() {
 add_action('wp_enqueue_scripts', 'enqueue_custom_minicart_script');
 
 
-
-add_action('pre_get_posts', function($query) {
-    if (!is_admin() && $query->is_main_query() && is_shop()) {
-        // Get URL parameters
-        $meta_query = [];
-        $tax_query = [];
-
-        if (!empty($_GET['brand'])) {
-            $tax_query[] = [
-                'taxonomy' => 'pa_brand', // Replace with the correct taxonomy slug for brands
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['brand']),
-            ];
-        }
-
-        if (!empty($_GET['color'])) {
-            $tax_query[] = [
-                'taxonomy' => 'pa_color', // Replace with the correct taxonomy slug for colors
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['color']),
-            ];
-        }
-
-        if (!empty($_GET['condition'])) {
-            $tax_query[] = [
-                'taxonomy' => 'pa_condition', // Replace with the correct taxonomy slug for condition
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['condition']),
-            ];
-        }
-
-        if (!empty($_GET['material'])) {
-            $tax_query[] = [
-                'taxonomy' => 'pa_material', // Replace with the correct taxonomy slug for material
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['material']),
-            ];
-        }
-
-        if (!empty($_GET['orderby'])) {
-            if ($_GET['orderby'] === 'price-desc') {
-                $query->set('orderby', 'meta_value_num');
-                $query->set('meta_key', '_price');
-                $query->set('order', 'DESC');
-            } elseif ($_GET['orderby'] === 'price-asc') {
-                $query->set('orderby', 'meta_value_num');
-                $query->set('meta_key', '_price');
-                $query->set('order', 'ASC');
-            }
-        }
-
-        if (!empty($tax_query)) {
-            $query->set('tax_query', $tax_query);
-        }
-    }
-});
-
-
-
 function custom_enqueue_scripts() {
     if (is_product()) {
 		wp_dequeue_script('wc-add-to-cart-variation'); // Remove WooCommerce default variation script
@@ -146,4 +87,90 @@ function my_woocommerce_rest_check_permissions( $permission, $context, $object_i
   return true;
 }
 
+
+
+
+function filter_woocommerce_shop_query($query) {
+    if ( ! is_admin() && ( is_shop() || is_product_category() || is_product_tag() ) ) {
+
+ 
+        
+        // Filtering by Brand
+        if (!empty($_GET['brand'])) {
+            $query->set('tax_query', [
+                [
+                    'taxonomy' => 'watch_brands',
+                    'field'    => 'slug',
+                    'terms'    => sanitize_text_field($_GET['brand']),
+                ],
+            ]);
+        }
+
+        // Filtering by Color
+        if (!empty($_GET['color'])) {
+            $tax_query = $query->get('tax_query') ? $query->get('tax_query') : [];
+            $tax_query[] = [
+                'taxonomy' => 'pa_watches_colors',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($_GET['color']),
+            ];
+            $query->set('tax_query', $tax_query);
+        }
+
+        // Filtering by Condition
+        if (!empty($_GET['condition'])) {
+           
+            $tax_query = $query->get('tax_query') ? $query->get('tax_query') : [];
+            $tax_query[] = [
+                'taxonomy' => 'watch_type',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($_GET['condition']),
+            ];
+            $query->set('tax_query', $tax_query);
+        }
+
+        // Filtering by Size
+        if (!empty($_GET['size'])) {
+            $tax_query = $query->get('tax_query') ? $query->get('tax_query') : [];
+            $tax_query[] = [
+                'taxonomy' => 'pa_watches_size',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($_GET['size']),
+            ];
+            $query->set('tax_query', $tax_query);
+        }
+
+        // Sorting by Price
+        // if (!empty($_GET['orderby'])) {
+        //     if ($_GET['orderby'] === 'price-desc') {
+        //         $query->set('orderby', 'meta_value_num');
+        //         $query->set('meta_key', '_price');
+        //         $query->set('order', 'DESC');
+        //     } elseif ($_GET['orderby'] === 'price-asc') {
+        //         $query->set('orderby', 'meta_value_num');
+        //         $query->set('meta_key', '_price');
+        //         $query->set('order', 'ASC');
+        //     }
+        // }
+    }
+}
+add_action('pre_get_posts', 'filter_woocommerce_shop_query');
+
+
+
+function custom_woocommerce_orderby_price($args) {
+    if (isset($_GET['orderby'])) {
+        if ($_GET['orderby'] === 'price-desc') {
+            $args['orderby']  = 'meta_value_num';
+            $args['meta_key'] = '_price';
+            $args['order']    = 'DESC';
+        } elseif ($_GET['orderby'] === 'price-asc') {
+            $args['orderby']  = 'meta_value_num';
+            $args['meta_key'] = '_price';
+            $args['order']    = 'ASC';
+        }
+    }
+    return $args;
+}
+//add_filter('woocommerce_get_catalog_ordering_args', 'custom_woocommerce_orderby_price');
 

@@ -78,3 +78,7 @@
         window.location.href = '?brand=' + this.value;
     });
 </script>
+
+
+<?php
+
