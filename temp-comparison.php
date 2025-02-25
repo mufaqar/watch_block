@@ -35,23 +35,14 @@ if ($product1 && $product2) {
 }
 
 
-if (isset($_COOKIE['compareList'])) {
-    $compareList = json_decode($_COOKIE['compareList'], true);
-
-    if (is_array($compareList) && count($compareList) >= 2) {
-        $product1 = htmlspecialchars($compareList[0]);
-        $product2 = htmlspecialchars($compareList[1]);
-
-        echo "Comparing Product 1: " . $product1 . "<br>";
-        echo "Comparing Product 2: " . $product2 . "<br>";
-
-        // Fetch product details from the database using $product1 and $product2
-    } else {
-        echo "Please select at least two products for comparison.";
-    }
+$data = json_decode(file_get_contents("php://input"), true);
+if (isset($data["localStorageValue"])) {
+    $localStorageValue = $data["localStorageValue"];
+    echo "Received Local Storage Value: " . htmlspecialchars($localStorageValue);
 } else {
-    echo "No products selected for comparison.";
+    echo "No data received";
 }
+
 
 
 ?>

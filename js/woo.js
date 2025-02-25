@@ -93,40 +93,23 @@ jQuery(document).ready(function ($) {
 
 
 jQuery(document).ready(function ($) {
-    function getCookie(name) {
-        let cookies = document.cookie.split('; ');
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i].split('=');
-            if (cookie[0] === name) {
-                return decodeURIComponent(cookie[1]);
-            }
-        }
-        return null;
-    }
-
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            let date = new Date();
-            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
-    }
-
-    let compareList = JSON.parse(getCookie("compareList") || "[]");
-
+    let compareList = JSON.parse(localStorage.getItem("compareList")) || [];
+    // Handle click events on the compare buttons
     $(".add_compair_btn").click(function () {
         let productId = $(this).attr("data-product-id").toString();
-        let isIdExist = compareList.includes(productId);
-
-        if (!isIdExist) {
+       let isIdExist =  compareList.find((item, index) => {
+            if (item === productId) {
+                return item
+            }
+        });
+        if (isIdExist === undefined){
             compareList.push(productId);
-            setCookie("compareList", JSON.stringify(compareList), 7);
-        } else {
+            localStorage.setItem("compareList", JSON.stringify(compareList));
+        }
+        else{
             alert("This product is already in the comparison list.");
         }
-
+        // If 2 products are selected, redirect to the comparison page
         if (compareList.length >= 2) {
             let compareUrl = `/octaloop/comparison/?p1=${compareList[0]}&p2=${compareList[1]}`;
             window.location.href = compareUrl;
