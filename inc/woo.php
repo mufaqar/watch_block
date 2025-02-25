@@ -237,4 +237,14 @@ function sell_my_watch_content() {
  add_action('woocommerce_account_sell-my-watch_endpoint', 'sell_my_watch_content');
 
 
+ function custom_rename_dashboard_tab( $menu_links ) {
+    // Rename the "Dashboard" label
+    if ( isset( $menu_links['dashboard'] ) ) {
+        $menu_links['dashboard'] = __( 'Statistics', 'your-textdomain' ); // Change label
+    }
+    return $menu_links;
+}
+add_filter( 'woocommerce_account_menu_items', 'custom_rename_dashboard_tab', 10, 1 );
+
+
 
