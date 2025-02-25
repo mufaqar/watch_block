@@ -23,7 +23,7 @@
 	<script>
 		const localStorageValue = localStorage.getItem("compareList");
 		if (localStorageValue) {
-			window.location.href = `server.php?data=${encodeURIComponent(localStorageValue)}`;
+			window.location.href = `/comparison?data=${encodeURIComponent(localStorageValue)}`;
 		}
 	</script>
 
