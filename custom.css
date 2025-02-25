@@ -783,4 +783,9 @@ ol.flex-control-nav li {
   width: 100% !important;
   text-align: center !important;
   padding: 10px 25px !important;
+  justify-content: center;
+}
+
+.wishlist_table .product-add-to-cart a.button{
+  display: flex
 }
