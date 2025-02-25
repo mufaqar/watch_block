@@ -19,6 +19,12 @@
 
 	<?php wp_head(); ?>
 
+	<form action="process.php" method="POST" id="myForm">
+        <input type="hidden" name="localStorageValue" id="localStorageInput">
+	</form>
+	<script>
+		document.getElementById("localStorageInput").value = localStorage.getItem("compareList") || "";
+	</script>
 
 </head>
 <body <?php body_class(); ?>>

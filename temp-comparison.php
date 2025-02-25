@@ -35,6 +35,17 @@ if ($product1 && $product2) {
 }
 
 
+
+
+
+if (!empty($_POST["localStorageValue"])) {
+    echo "Received Local Storage Value: " . htmlspecialchars($_POST["localStorageValue"]);
+} else {
+    echo "No value received.";
+}
+
+
+
 ?>
 
 <section class="max-w-[1280px] mx-auto px-3 grid grid-cols-1 md:grid-cols-2 mb-28">
@@ -345,14 +356,6 @@ if ($product1 && $product2) {
         </section>
     </div>
 </section>
-
-<script>
-        let compareList = JSON.parse(localStorage.getItem("compareList")) || [];
-        if (compareList.length >= 2) {
-            let compareUrl = `/octaloop/comparison/?p1=${compareList[0]}&p2=${compareList[1]}`;
-            window.location.href = compareUrl;
-        }
-</script>
 
 <?php get_footer();
 
