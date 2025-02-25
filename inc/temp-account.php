@@ -129,21 +129,22 @@ function report_stolen_watch() {
     ?>
 <div class="box-content p-[25px]">
     <h2 class="text-[34px] font-semibold max-w-[410px] mx-auto md:leading-[41px]">Report a Lost or Stolen Watch</h2>
-    <form class="mt-5 flex flex-col gap-5" id="stolen_watch">
+    <form class="mt-5 flex flex-col gap-5" id="stolen_watch">   
+         <?php wp_nonce_field('stolen_watch_nonce', 'stolen_watch_nonce_field'); ?>
         <div class="relative">
             <input type="text" name="model_no" placeholder="Rolex" id="model_no"
-                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" />
-            <span class="bg-white p-1 text-sm text-[#70776F] absolute -top-[15px] left-3">Watch Model</span>
+                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required />
+            <span class="bg-white p-1 text-sm text-[#70776F] absolute -top-[15px] left-3">Watch Model *</span>
         </div>
         <div class="grid grid-cols-2 gap-5">
-            <input type="text" name="model_name" placeholder="Model Name" id="model_name"
-                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" />
-            <input type="text" name="serial_no" placeholder="Serial no" id="serial_no"
-                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" />
+            <input type="text" name="model_name" placeholder="Model Name *" id="model_name"
+                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required />
+            <input type="text" name="serial_no" placeholder="Serial No *" id="serial_no"
+                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required />
         </div>
         <div class="grid grid-cols-2 gap-5">
             <input type="date" name="date" placeholder="dd/mm/yyyy" id="date"
-                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" />
+                class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required />
             <div
                 class="border-[#C0C0C0] border flex items-center px-3 text-[#70776F] outline-black rounded-[5px] w-full">
                 <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,7 +159,7 @@ function report_stolen_watch() {
         <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Upload Proof</h4>
         <div>
             <label for="file-upload"
-                class="w-full max-w-2xl h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
+                class="w-full  h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
                 <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2"
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -166,13 +167,13 @@ function report_stolen_watch() {
                 </svg>
                 <p class="text-gray-600 text-sm">Upload Images from four sides</p>
                 <p class="text-gray-500 text-xs">(Each from one side)</p>
-                <input type="file" id="file-upload" name="proof_image" class="hidden">
+                <input type="file" id="file-upload" name="proof_image" class="hidden" >
             </label>
         </div>
         <textarea id="details" name="details"
             class="border-[#C0C0C0] _textarea border flex items-center p-3 text-[#70776F] outline-black rounded-[5px] w-full"
             style="padding:10px; border: 1px solid #C0C0C0; border-radius: 5px; height:130px"
-            placeholder="Description"></textarea>
+            placeholder="Description *" required></textarea>
         <button type="submit"
             class="font-bold text-2xl bg-[#B6E22E] w-full p-4 hover:bg-black hover:text-[#B6E22E]">Submit</button>
     </form>

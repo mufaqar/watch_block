@@ -37,7 +37,7 @@ function handle_stolen_watch_form() {
         'meta_input'   => array(
             'model_no'   => $model_no,
             'serial_no'  => $serial_no,
-            'reported_date'       => $date,
+            'reported_date'    => $date,
             'location'   => $location,
             'image'      => $file_url,
         ),

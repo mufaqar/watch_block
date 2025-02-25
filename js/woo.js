@@ -43,6 +43,7 @@ jQuery(document).ready(function ($) {
     // Stolen Watch Form Submission
     $('#stolen_watch').on('submit', function (e) {
         e.preventDefault();
+        alert("TEst");
 
         var formData = new FormData(this);
 

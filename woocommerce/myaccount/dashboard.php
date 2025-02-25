@@ -5,34 +5,100 @@ $current_user = wp_get_current_user();
 echo "<h2>Welcome, " . esc_html( $current_user->display_name ) . "!</h2>";
 
 
-echo do_shortcode('[products]');
+?>
 
-// Get latest products
-$args = array(
-    'post_type'      => 'product',
-    'posts_per_page' => 5, // Show 5 products
-);
+<!-- Slick Slider CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
-$products = new WP_Query( $args );
 
-if ( $products->have_posts() ) {
-    echo '<ul class="dashboard-products">';
-    while ( $products->have_posts() ) {
-        $products->the_post();
-        global $product;
-        ?>
-        <li>
-            <a href="<?php the_permalink(); ?>">
-                <?php the_post_thumbnail( 'thumbnail' ); ?>
-                <h4><?php the_title(); ?></h4>
-                <p><?php echo $product->get_price_html(); ?></p>
-            </a>
-        </li>
-        <?php
-    }
-    echo '</ul>';
-    wp_reset_postdata();
-} else {
-    echo '<p>No products found.</p>';
+<div class="rounded-[21px] p-[18px] border border-[#d2d2d2] flex-1">
+    <h6 class="text-center capitalize mb-6 font-medium text-black">Customer NFT Watches</h6>
+    <!-- Product Slider -->
+    <div>
+        <div class="nft_dash_slider">
+
+            <?php
+    $user_id = get_current_user_id();
+
+    if (!$user_id) {
+        echo '<p>Please log in to view your products.</p>';
+    } else {
+        $args = array(
+            'post_type'      => 'product',
+            'posts_per_page' => -1, // Adjust as needed
+            'author'         => $user_id, // Filter by logged-in user
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) {
+         
+            while ($query->have_posts()) {
+                $query->the_post();
+                $product = wc_get_product(get_the_ID()); // Get product object
+
+			
+                ?>
+            <?php
+global $product;
+if (!$product) {
+    $product = wc_get_product(get_the_ID());
 }
 ?>
+
+            <article class="p-5 boder">
+                <figure class="bg-white h-[367px] flex justify-center !relative py-4">
+                    <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>"
+                        alt="<?php the_title(); ?>" class="object-contain">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/svg/heart.svg" alt="Wishlist"
+                        class="w-[66px] right-0 top-2 absolute">
+
+                </figure>
+
+                <h3 class="text-2xl mt-4">
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                </h3>
+
+
+                <span class="text-2xl text-gray-900 mt-4 block">
+                    <?php echo $product->get_price_html(); ?>
+                </span>
+            </article>
+
+
+            <?php
+            }
+          
+        } else {
+            echo '<p>No products found.</p>';
+        }
+
+        wp_reset_postdata();
+    }
+    ?>
+        </div>
+
+
+    </div>
+</div>
+</div>
+</div>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Slick Slider JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+
+<script>
+jQuery(document).ready(function($) {
+    $('.nft_dash_slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+    });
+});
+</script>

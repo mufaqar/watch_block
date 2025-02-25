@@ -50,7 +50,6 @@ function enqueue_custom_scripts() {
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 
-
 function enqueue_custom_minicart_script() {
     // Enqueue WooCommerce cart fragments for dynamic updates
     wp_enqueue_script('wc-cart-fragments');
@@ -64,10 +63,11 @@ function enqueue_custom_minicart_script() {
         true
     );
 
-    // Pass WooCommerce AJAX URL to the script
-    wp_localize_script('custom-minicart-script', 'wc_cart_fragments_params', [
-        'wc_ajax_url' => WC_AJAX::get_endpoint('%%endpoint%%'),
-    ]);
+    // Localize script with WooCommerce AJAX URL
+    wp_localize_script('custom-minicart-script', 'ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('stolen_watch_nonce')
+    ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_minicart_script');
 
