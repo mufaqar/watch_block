@@ -2615,7 +2615,7 @@ video {
   border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
 }
 
-.add_cart_btn , .add_compair_btn {
+.add_cart_btn {
   border-radius: 14px;
   --tw-bg-opacity: 1;
   background-color: rgb(182 226 46 / var(--tw-bg-opacity, 1));

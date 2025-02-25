@@ -96,3 +96,15 @@ window.addEventListener("scroll", function () {
     header.classList.remove("scrolled");
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  let storedValue = localStorage.getItem("compareList");
+  fetch("temp-comparison.php", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ localStorageValue: storedValue })
+  })
+})
