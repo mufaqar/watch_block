@@ -37,7 +37,14 @@ if ($product1 && $product2) {
 
 
 
-
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (!empty($_POST["localStorageValue"])) {
+        $value = $_POST["localStorageValue"];
+        echo "Received Local Storage value: " . htmlspecialchars($value);
+    } else {
+        echo "No Local Storage value received.";
+    }
+}
 
 
 
