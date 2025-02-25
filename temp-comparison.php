@@ -55,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <input type="hidden" name="localStorageValue" id="localStorageValue">
 </form>
 
+<p>ddddd</p>
+
 <section class="max-w-[1280px] mx-auto px-3 grid grid-cols-1 md:grid-cols-2 mb-28">
     <div class="border-black md:border-r md:pr-5">
         <section class="flex flex-col gap-10 pt-[100px] mb-12">
