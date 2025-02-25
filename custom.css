@@ -772,3 +772,6 @@ ol.flex-control-nav li {
 .wishlist_table.mobile li .additional-info-wrapper .product-add-to-cart{
   margin-bottom: 20px !important;
 }
+.wishlist_table .remove_from_wishlist.button{
+  display: none !important;
+}
