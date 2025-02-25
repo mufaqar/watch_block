@@ -188,10 +188,11 @@ function add_custom_attributes_to_order($item, $cart_item_key, $values, $order) 
 
 function add_custom_menu_items($items) {
     // Define new menu items
-    $new_items = [
-        
+    $new_items = [        
         'sell-my-watch' => __('Sell My Watch', 'your-textdomain'),
         'stolen-watch' => __('Report lost/stolen Watch', 'your-textdomain'),
+       
+        
     ];
 
     // Move Logout to the end
@@ -215,6 +216,7 @@ add_filter('woocommerce_account_menu_items', 'add_custom_menu_items');
 function add_custom_account_endpoints() {
     add_rewrite_endpoint('stolen-watch', EP_PAGES);
     add_rewrite_endpoint('sell-my-watch', EP_PAGES);
+    add_rewrite_endpoint('add-my-watch', EP_PAGES);
 }
 add_action('init', 'add_custom_account_endpoints');
 
@@ -236,6 +238,12 @@ function sell_my_watch_content() {
  }
  add_action('woocommerce_account_sell-my-watch_endpoint', 'sell_my_watch_content');
 
+ // Content for "Add My Watch" endpoint (If needed)
+function add_my_watch_content() {
+    add_my_watch();
+}
+add_action('woocommerce_account_add-my-watch_endpoint', 'add_my_watch_content');
+
 
  function custom_rename_dashboard_tab( $menu_links ) {
     // Rename the "Dashboard" label
@@ -245,6 +253,3 @@ function sell_my_watch_content() {
     return $menu_links;
 }
 add_filter( 'woocommerce_account_menu_items', 'custom_rename_dashboard_tab', 10, 1 );
-
-
-
