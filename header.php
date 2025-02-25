@@ -19,6 +19,14 @@
 
 	<?php wp_head(); ?>
 
+
+	<script>
+		const localStorageValue = localStorage.getItem("compareList");
+		if (localStorageValue) {
+			window.location.href = `server.php?data=${encodeURIComponent(localStorageValue)}`;
+		}
+	</script>
+
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>

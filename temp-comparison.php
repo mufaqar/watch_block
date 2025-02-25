@@ -11,6 +11,8 @@ $color = ["silver", "golden"];
 
 get_header();
 
+
+
 $product1 = isset($_GET['p1']) ? get_post($_GET['p1']) : null;
 $product2 = isset($_GET['p2']) ? get_post($_GET['p2']) : null;
 
@@ -34,29 +36,25 @@ if ($product1 && $product2) {
 
 
 
-
-
-$value;
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (!empty($_POST["localStorageValue"])) {
-        $value = $_POST["localStorageValue"];
-        echo "Received Local Storage value: " . htmlspecialchars($value);
-    } else {
-        echo "No Local Storage value received.";
-    }
+<?php
+if (isset($_GET['data'])) {
+    $value = $_GET['data'];
+    echo "Received Local Storage value: " . htmlspecialchars($value);
+} else {
+    echo "No Local Storage value received.";
 }
+?>
+
+
+
+
 
 
 
 
 
 ?>
-<form id="localStorageForm" action="server.php" method="POST">
-    <input type="hidden" name="localStorageValue" id="localStorageValue">
-</form>
 
-<p>ddd: <?php echo $value ?></p>
 <section class="max-w-[1280px] mx-auto px-3 grid grid-cols-1 md:grid-cols-2 mb-28">
     <div class="border-black md:border-r md:pr-5">
         <section class="flex flex-col gap-10 pt-[100px] mb-12">
@@ -365,12 +363,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
     </div>
 </section>
-
-
-<script>
-    // Get Local Storage value
-    const localStorageValue = localStorage.getItem("compareList");
-    document.getElementById("localStorageValue").value = localStorageValue;
-</script>
 
 <?php get_footer();
