@@ -38,11 +38,10 @@ if ($product1 && $product2) {
 
 
 
-if (!empty($_POST["localStorageValue"])) {
-    echo "Received Local Storage Value: " . htmlspecialchars($_POST["localStorageValue"]);
-} else {
-    echo "No value received.";
-}
+
+
+
+
 
 
 
@@ -358,6 +357,3 @@ if (!empty($_POST["localStorageValue"])) {
 </section>
 
 <?php get_footer();
-
-
-

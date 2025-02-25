@@ -19,28 +19,6 @@
 
 	<?php wp_head(); ?>
 
-	<form action="temp-comparison.php" method="POST" id="myForm">
-        <input type="hidden" name="localStorageValue" id="localStorageInput">
-	</form>
-	<script>
-		document.getElementById("localStorageInput").value = localStorage.getItem("compareList") || "";
-		
-		window.onload = function () {
-        let inputValue = document.getElementById("localStorageInput").value;
-
-        fetch("temp-comparison.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: "inputValue=" + encodeURIComponent(inputValue)
-        })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("response").innerHTML = "Server Response: " + data;
-        })
-        .catch(error => console.error("Error:", error));
-    };
-	</script>
-
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
