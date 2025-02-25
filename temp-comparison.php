@@ -36,8 +36,8 @@ if ($product1 && $product2) {
 
 
 $data = json_decode(file_get_contents("php://input"), true);
-if (isset($data["localStorageValue"])) {
-    $localStorageValue = $data["localStorageValue"];
+if (isset($data["compareList"])) {
+    $localStorageValue = $data["compareList"];
     echo "Received Local Storage Value: " . htmlspecialchars($localStorageValue);
 } else {
     echo "No data received";
