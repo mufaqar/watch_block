@@ -11,9 +11,7 @@ $color = ["silver", "golden"];
 
 get_header();
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+
 
 $product1 = isset($_GET['p1']) ? get_post($_GET['p1']) : null;
 $product2 = isset($_GET['p2']) ? get_post($_GET['p2']) : null;
@@ -35,16 +33,6 @@ if ($product1 && $product2) {
 } else {
     echo "<p>Please select two products to compare.</p>";
 }
-
-
-$data = json_decode(file_get_contents("php://input"), true);
-if (isset($data["localStorageValue"])) {
-    $localStorageValue = $data["localStorageValue"];
-    echo "Received Local Storage Value: " . htmlspecialchars($localStorageValue);
-} else {
-    echo "No data received";
-}
-
 
 
 ?>
@@ -358,4 +346,15 @@ if (isset($data["localStorageValue"])) {
     </div>
 </section>
 
+<script>
+        let compareList = JSON.parse(localStorage.getItem("compareList")) || [];
+        if (compareList.length >= 2) {
+            let compareUrl = `/octaloop/comparison/?p1=${compareList[0]}&p2=${compareList[1]}`;
+            window.location.href = compareUrl;
+        }
+</script>
+
 <?php get_footer();
+
+
+
