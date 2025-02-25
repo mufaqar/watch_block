@@ -787,5 +787,5 @@ ol.flex-control-nav li {
 }
 
 .wishlist_table .product-add-to-cart a.button{
-  display: flex
+  display: flex !important;
 }
