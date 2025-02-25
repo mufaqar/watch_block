@@ -638,7 +638,7 @@ ol.flex-control-nav li {
 .woocommerce-message {
   max-width: 1250px;
   margin: 0px auto !important;
-  margin-bottom: 20px !important;
+  /* margin-bottom: 20px !important; */
 }
 
 .single-product .variations_form .yith-add-to-wishlist-button-block {
