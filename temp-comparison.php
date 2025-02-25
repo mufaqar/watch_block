@@ -37,12 +37,12 @@ if ($product1 && $product2) {
 
 
 
-if (isset($_GET['data'])) {
-    $value = $_GET['data'];
-    echo "Received Local Storage value: " . htmlspecialchars($value);
-} else {
-    echo "No Local Storage value received.";
-}
+// if (isset($_GET['data'])) {
+//     $value = $_GET['data'];
+//     echo "Received Local Storage value: " . htmlspecialchars($value);
+// } else {
+//     echo "No Local Storage value received.";
+// }
 
 
 
