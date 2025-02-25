@@ -140,18 +140,18 @@ function filter_woocommerce_shop_query($query) {
             $query->set('tax_query', $tax_query);
         }
 
-        // Sorting by Price
-        // if (!empty($_GET['orderby'])) {
-        //     if ($_GET['orderby'] === 'price-desc') {
-        //         $query->set('orderby', 'meta_value_num');
-        //         $query->set('meta_key', '_price');
-        //         $query->set('order', 'DESC');
-        //     } elseif ($_GET['orderby'] === 'price-asc') {
-        //         $query->set('orderby', 'meta_value_num');
-        //         $query->set('meta_key', '_price');
-        //         $query->set('order', 'ASC');
-        //     }
-        // }
+       // Sorting by Price
+        if (!empty($_GET['orderby'])) {
+            if ($_GET['orderby'] === 'price-desc') {
+                $query->set('orderby', 'meta_value_num');
+                $query->set('meta_key', '_price');
+                $query->set('order', 'DESC');
+            } elseif ($_GET['orderby'] === 'price-asc') {
+                $query->set('orderby', 'meta_value_num');
+                $query->set('meta_key', '_price');
+                $query->set('order', 'ASC');
+            }
+        }
     }
 }
 add_action('pre_get_posts', 'filter_woocommerce_shop_query');

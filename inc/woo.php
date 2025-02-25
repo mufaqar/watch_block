@@ -70,11 +70,10 @@ function add_custom_button_after_add_to_cart() {
     global $product;
 
     // Display the custom button
-    echo '<button type="button" class="add_cart_btn" onclick="customButtonAction()">
+    echo '<button type="button" class="add_compair_btn" data-product-id="' . get_the_ID() . '">
            COMPARE PRODUCT
           </button>';
 }
-
 
 
 /* Extra Options */

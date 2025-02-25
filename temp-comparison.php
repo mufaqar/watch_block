@@ -9,7 +9,43 @@
 $sizes = ["16mm", "18mm", "20mm", "22mm"];
 $color = ["silver", "golden"];
 
-get_header(); ?>
+get_header();
+
+
+
+$product1 = isset($_GET['p1']) ? get_post($_GET['p1']) : null;
+$product2 = isset($_GET['p2']) ? get_post($_GET['p2']) : null;
+
+if ($product1 && $product2) {
+    echo "<h2>Comparing Products</h2>";
+    echo "<div class='compare-container'>";
+    
+    foreach ([$product1, $product2] as $product) {
+        echo "<div class='compare-product'>";
+        echo "<h3>" . get_the_title($product->ID) . "</h3>";
+        echo get_the_post_thumbnail($product->ID, 'medium');
+        echo "<p>Price: " . wc_price(get_post_meta($product->ID, '_price', true)) . "</p>";
+        echo "<p>" . $product->post_content . "</p>";
+        echo "</div>";
+    }
+
+    echo "</div>";
+} else {
+    echo "<p>Please select two products to compare.</p>";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+?>
 
 <section class="max-w-[1280px] mx-auto px-3 grid grid-cols-1 md:grid-cols-2 mb-28">
     <div class="border-black md:border-r md:pr-5">
