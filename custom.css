@@ -792,4 +792,5 @@ ol.flex-control-nav li {
 
 .woocommerce a.remove:hover{
   background-color: transparent !important;
+  color: #c00 !important;
 }
