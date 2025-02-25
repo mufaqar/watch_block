@@ -782,7 +782,7 @@ ol.flex-control-nav li {
 .remove_from_wishlist{
   width: 100% !important;
   text-align: center !important;
-  padding: 3px 25px !important;
+  /* padding: 3px 25px !important; */
   justify-content: center;
 }
 
