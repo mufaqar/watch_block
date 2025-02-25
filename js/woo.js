@@ -91,41 +91,28 @@ jQuery(document).ready(function ($) {
     });
 });
 
+
 jQuery(document).ready(function ($) {
-
     let compareList = JSON.parse(localStorage.getItem("compareList")) || [];
-    console.log("Initial Compare List:", compareList);
-
-   
-
     // Handle click events on the compare buttons
     $(".add_compair_btn").click(function () {
-        let productId = $(this).attr("data-product-id").toString(); // Convert to string for consistency
-        console.log("Clicked Product ID:", productId);
-
-   
-
-       let comlist =  compareList.find((item, index) => {
+        let productId = $(this).attr("data-product-id").toString();
+       let isIdExist =  compareList.find((item, index) => {
             if (item === productId) {
                 return item
             }
         });
-        console.log("test" ,comlist);
-        if (comlist === undefined){
+        if (isIdExist === undefined){
             compareList.push(productId);
             localStorage.setItem("compareList", JSON.stringify(compareList));
         }
         else{
             alert("This product is already in the comparison list.");
         }
-
-        console.log("Updated Compare List:", compareList);
-
         // If 2 products are selected, redirect to the comparison page
         if (compareList.length >= 2) {
             let compareUrl = `/octaloop/comparison/?p1=${compareList[0]}&p2=${compareList[1]}`;
             window.location.href = compareUrl;
         }
-       
     });
 });

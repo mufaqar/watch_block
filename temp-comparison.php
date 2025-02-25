@@ -11,8 +11,6 @@ $color = ["silver", "golden"];
 
 get_header();
 
-
-
 $product1 = isset($_GET['p1']) ? get_post($_GET['p1']) : null;
 $product2 = isset($_GET['p2']) ? get_post($_GET['p2']) : null;
 
@@ -46,6 +44,9 @@ if ($product1 && $product2) {
 
 
 ?>
+<form id="localStorageForm" action="server.php" method="POST">
+    <input type="hidden" name="localStorageValue" id="localStorageValue">
+</form>
 
 <section class="max-w-[1280px] mx-auto px-3 grid grid-cols-1 md:grid-cols-2 mb-28">
     <div class="border-black md:border-r md:pr-5">
@@ -355,5 +356,12 @@ if ($product1 && $product2) {
         </section>
     </div>
 </section>
+
+
+<script>
+    // Get Local Storage value
+    const localStorageValue = localStorage.getItem("compareList");
+    document.getElementById("localStorageValue").value = localStorageValue;
+</script>
 
 <?php get_footer();
