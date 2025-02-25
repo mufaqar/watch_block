@@ -776,7 +776,8 @@ ol.flex-control-nav li {
 }
 
 .add_to_cart_button,
-.remove_from_wishlist {
+.remove_from_wishlist{
   width: 100% !important;
   text-align: center !important;
+  padding: 10px 25px !important;
 }
