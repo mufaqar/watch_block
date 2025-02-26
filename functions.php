@@ -196,20 +196,29 @@ add_action('init', 'register_watch_type_taxonomy');
 
 
 
-function add_watch_type_to_wc_api() {
-    register_rest_field('product', 'watch_type', array(
-        'get_callback'    => function ($product) {
-            return wp_get_post_terms($product['id'], 'watch_type', array('fields' => 'names'));
+function register_watch_type_api_routes() {
+    register_rest_route('wc/v3', '/products/watch_type', array(
+        'methods'  => 'GET',
+        'callback' => 'get_watch_type_terms',
+        'permission_callback' => function () {
+            return current_user_can('read');
         },
-        'update_callback' => function ($value, $product) {
-            if (!is_array($value)) {
-                return;
-            }
-            wp_set_post_terms($product->ID, $value, 'watch_type');
-        },
-        'schema'          => null,
     ));
 }
-add_action('rest_api_init', 'add_watch_type_to_wc_api');
+
+add_action('rest_api_init', 'register_watch_type_api_routes');
+
+function get_watch_type_terms() {
+    $terms = get_terms(array(
+        'taxonomy'   => 'watch_type',
+        'hide_empty' => false,
+    ));
+
+    if (empty($terms) || is_wp_error($terms)) {
+        return new WP_Error('no_watch_types', 'No watch types found', array('status' => 404));
+    }
+
+    return rest_ensure_response($terms);
+}
 
 
