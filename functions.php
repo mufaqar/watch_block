@@ -184,11 +184,19 @@ function register_watch_type_taxonomy() {
         'show_admin_column'     => true,
         'query_var'             => true,
         'rewrite'               => array('slug' => 'watch-type'),
-        'show_in_rest'          => true, // Important for API support
-        'rest_base'             => 'watch_type', // API endpoint slug
-        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'show_in_rest'          => true, // Enable REST API
+        'rest_base'             => 'watch_type', // API endpoint
+        'rest_controller_class' => 'WP_REST_Terms_Controller', // Use default WP REST controller
+        'capabilities' => array( // Ensure permissions
+            'manage_terms' => 'manage_categories',
+            'edit_terms'   => 'manage_categories',
+            'delete_terms' => 'manage_categories',
+            'assign_terms' => 'edit_posts',
+        ),
     );
+
     register_taxonomy('watch_type', 'product', $args);
 }
 add_action('init', 'register_watch_type_taxonomy');
+
 
