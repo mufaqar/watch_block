@@ -8,7 +8,7 @@
                 <select id="brand-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
                     <option value="" disabled selected>Select brand</option>
                     <?php 
-                    $brands = get_terms(['taxonomy' => 'watch_brands', 'hide_empty' => false]);
+                    $brands = get_terms(['taxonomy' => 'product_brand', 'hide_empty' => false]);
                     foreach ($brands as $brand) {
                         echo '<option value="' . esc_attr($brand->slug) . '">' . esc_html($brand->name) . '</option>';
                     }

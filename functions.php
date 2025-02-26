@@ -99,7 +99,7 @@ function filter_woocommerce_shop_query($query) {
         if (!empty($_GET['brand'])) {
             $query->set('tax_query', [
                 [
-                    'taxonomy' => 'watch_brands',
+                    'taxonomy' => 'product_brand',
                     'field'    => 'slug',
                     'terms'    => sanitize_text_field($_GET['brand']),
                 ],

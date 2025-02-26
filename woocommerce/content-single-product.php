@@ -90,10 +90,10 @@ if ( post_password_required() ) {
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Brand</h6>
                 <a class="text-black underline text-sm mt-1 capitalize"><?php
-                $watch_brands = get_the_terms(get_the_ID(), 'watch_brands');
+                $product_brands = get_the_terms(get_the_ID(), 'product_brand');
 
-                if ($watch_brands && !is_wp_error($watch_brands)) {
-                    $brand = $watch_brands[0]; 
+                if ($product_brands && !is_wp_error($product_brands)) {
+                    $brand = $product_brands[0]; 
                     echo  esc_html($brand->name) ;
                 } 
                 ?>
