@@ -13,7 +13,7 @@ get_header();
 	<?php get_template_part( 'template-parts/home-page/reviews-and-articles', 'tab' ); ?>
 	<?php get_template_part( 'template-parts/home-page/timepiece', 'spotlight' ); ?>
 	<?php get_template_part( 'template-parts/home-page/faqs', 'section' ); ?>
-	<section class="bg-[#1C1C1C] max-w-[1280px] mx-auto px-3 mb-20 p-[33px] grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 sm:gap-14">
+	<section class="bg-[#1C1C1C] max-w-[1280px] mx-auto px-5 border-b border-gray-700  md:mb-20 p-[33px] grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 sm:gap-14">
 		<div>
 			<h3 class="text-[23px] font-bold text-white uppercase text-center">Free Shipping</h3>
 			<p class="text-center text-[#FDFDFD] mt-4">Enjoy free domestic ground shipping on all orders over $150! Shop with ease and have your favorites delivered straight to your doorstep at no extra cost.</p>
@@ -27,8 +27,6 @@ get_header();
 			<p class="text-center text-[#FDFDFD] mt-4">Not satisfied with your purchase? Return any pair (except Second Chance items) within 30 days for a hassle-free refund.</p>
 		</div>
 	</section>
-
-
 
 <?php
 get_footer();

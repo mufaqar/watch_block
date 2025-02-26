@@ -9,7 +9,7 @@ if (!$product) {
     <figure class="bg-white h-[367px] flex justify-center !relative py-4">
         <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>" alt="<?php the_title(); ?>" class="object-contain">
         <img src="<?php echo get_template_directory_uri(); ?>/images/svg/heart.svg" alt="Wishlist" class="w-[66px] right-0 top-2 absolute">
-        <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-3 py-1.5 rounded-[8px] absolute left-3 top-3">POPULAR</span>
+        <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-5 py-1.5 rounded-[8px] absolute left-3 top-3">POPULAR</span>
     </figure>
     
     <h3 class="text-2xl mt-4">

@@ -1,5 +1,5 @@
 <section class="bg-white">
-    <div class="max-w-[1320px] mx-auto px-3 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
+    <div class="max-w-[1320px] mx-auto px-5 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
         
         <!-- Brands -->
         <div class="flex flex-col justify-between w-full sm:w-auto">
@@ -16,7 +16,7 @@
                 </select>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Color -->
         <div class="flex flex-col justify-between">
@@ -32,7 +32,7 @@
         ?>
     </div>
 </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Condition -->
         <div class="flex flex-col justify-between">
@@ -46,7 +46,7 @@
                 ?>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Price -->
         <div class="flex flex-col justify-between">
@@ -56,7 +56,7 @@
                 <a href="?orderby=price-asc" class="condition-button_for_price filter_button text-nowrap">Low to High</a>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Sizes -->
         <div class="flex flex-col justify-between">

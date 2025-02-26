@@ -1,4 +1,4 @@
-<section class="bg-[#F2F2F2] flex p-[10px] max-w-[1280px] mx-auto gap-3 rounded-[30px] px-3 mb-5">
+<section class="bg-[#F2F2F2] flex p-[10px] max-w-[1280px] mx-auto gap-3 rounded-[30px] px-5 mb-5">
     <aside class="bg-[#FFFFFF] p-3 rounded-[21px] max-w-[293px] w-full">
         <ul class="flex flex-col gap-1">
             <li>

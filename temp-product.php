@@ -13,7 +13,7 @@ get_header(); ?>
 
 <!-- Filters -->
 <section class="bg-white mt-20">
-    <div class="max-w-[1280px] mx-auto px-3 py-10 gap-[33px] flex justify-between flex-wrap">
+    <div class="max-w-[1280px] mx-auto px-5 py-10 gap-[33px] flex justify-between flex-wrap">
         <!-- Brands  -->
         <div class="flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Brand</h6>
@@ -25,7 +25,7 @@ get_header(); ?>
                 </select>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
         <!-- Color  -->
         <div class=" flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Color</h6>
@@ -36,7 +36,7 @@ get_header(); ?>
                 <button class="h-[25px] w-[25px] rounded-full bg-[#FCDB7E]"></button>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
         <!-- Condition  -->
         <div class=" flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Condition</h6>
@@ -45,7 +45,7 @@ get_header(); ?>
                 <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">Used</button>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
         <!-- Price  -->
         <div class=" flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Price</h6>
@@ -54,7 +54,7 @@ get_header(); ?>
                 <button class="condition-button_for_price text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full text-nowrap">Low to High</button>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
          <!-- Material  -->
          <div class="flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Material</h6>
@@ -119,7 +119,7 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
 
 
 
-<main class="max-w-[1280px] flex flex-col lg:flex-row mx-auto px-3 gap-10 mt-[140px] mb-12">
+<main class="max-w-[1280px] flex flex-col lg:flex-row mx-auto px-5 gap-10 mt-[140px] mb-12">
     <div class="lg:w-[35%]">
         <div id="page">
             <div class="row">
@@ -171,7 +171,7 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
                     </span>
                 </button>
                 <a href="#">                
-                    <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-3 py-1.5 rounded-[8px]">Follow</span>
+                    <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-5 py-1.5 rounded-[8px]">Follow</span>
                 </a>
             </div>
         </div>
@@ -236,7 +236,7 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
     </div>
 </main>
 
-<section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
+<section class="max-w-[1280px] px-5 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
     <div>
         <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Watch Details</h4>
         <ul>
@@ -315,7 +315,7 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
     </div>
 </section>
 
-<section class="max-w-[1280px] px-3 mx-auto mb-12">
+<section class="max-w-[1280px] px-5 mx-auto mb-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
         <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
         <?php get_template_part( 'template-parts/product/product', 'review' ); ?>
@@ -329,7 +329,7 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
 
 <!-- YOU MAY ALSO LIKE -->
 <section class="bg-[#F2F2F2] py-14 pb-28">
-    <div class="max-w-[1280px] px-3 mx-auto">
+    <div class="max-w-[1280px] px-5 mx-auto">
         <h2 class="uppercase font-semibold text-[#2B2B2B] text-center text-3xl sm:text-5xl md:text-[64px]">YOU MAY ALSO LIKE</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 gap-[52px]">
             <?php get_template_part('template-parts/product/product', 'card' ); ?>
