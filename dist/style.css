@@ -2975,6 +2975,11 @@ video {
     padding-bottom: 86px;
   }
 
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
   .md\:pb-1 {
     padding-bottom: 0.25rem;
   }
