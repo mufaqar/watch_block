@@ -200,3 +200,32 @@ function register_watch_type_taxonomy() {
 add_action('init', 'register_watch_type_taxonomy');
 
 
+function register_watch_type_rest_api() {
+    register_rest_route('wc/v3', '/products/watch_type', array(
+        'methods'  => 'POST',
+        'callback' => 'create_watch_type_term',
+        'permission_callback' => function () {
+            return current_user_can('manage_categories'); // Ensure only admins can add terms
+        },
+    ));
+}
+add_action('rest_api_init', 'register_watch_type_rest_api');
+
+function create_watch_type_term($request) {
+    $name = sanitize_text_field($request->get_param('name'));
+
+    if (!$name) {
+        return new WP_Error('invalid_term', 'Missing term name', array('status' => 400));
+    }
+
+    $term = wp_insert_term($name, 'watch_type');
+
+    if (is_wp_error($term)) {
+        return new WP_Error('term_error', $term->get_error_message(), array('status' => 400));
+    }
+
+    return rest_ensure_response($term);
+}
+
+
+
