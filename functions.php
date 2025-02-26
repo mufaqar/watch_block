@@ -230,3 +230,72 @@ function register_watch_type_api_routes() {
     ));
 }
 add_action('rest_api_init', 'register_watch_type_api_routes');
+
+
+function get_watch_type_terms() {
+    $terms = get_terms(array(
+        'taxonomy'   => 'watch_type',
+        'hide_empty' => false,
+    ));
+
+    if (empty($terms) || is_wp_error($terms)) {
+        return new WP_Error('no_watch_types', 'No watch types found', array('status' => 404));
+    }
+
+    return rest_ensure_response($terms);
+}
+
+
+function create_watch_type_term(WP_REST_Request $request) {
+    $name = sanitize_text_field($request->get_param('name'));
+    $slug = sanitize_title($request->get_param('slug'));
+
+    if (!$name) {
+        return new WP_Error('invalid_data', 'Name is required', array('status' => 400));
+    }
+
+    $term = wp_insert_term($name, 'watch_type', array('slug' => $slug));
+
+    if (is_wp_error($term)) {
+        return $term;
+    }
+
+    return rest_ensure_response(get_term($term['term_id'], 'watch_type'));
+}
+
+
+function update_watch_type_term(WP_REST_Request $request) {
+    $id   = (int) $request->get_param('id');
+    $name = sanitize_text_field($request->get_param('name'));
+    $slug = sanitize_title($request->get_param('slug'));
+
+    if (!$id || !$name) {
+        return new WP_Error('invalid_data', 'ID and Name are required', array('status' => 400));
+    }
+
+    $term = wp_update_term($id, 'watch_type', array('name' => $name, 'slug' => $slug));
+
+    if (is_wp_error($term)) {
+        return $term;
+    }
+
+    return rest_ensure_response(get_term($id, 'watch_type'));
+}
+
+
+function delete_watch_type_term(WP_REST_Request $request) {
+    $id = (int) $request->get_param('id');
+
+    if (!$id) {
+        return new WP_Error('invalid_data', 'ID is required', array('status' => 400));
+    }
+
+    $deleted = wp_delete_term($id, 'watch_type');
+
+    if (is_wp_error($deleted)) {
+        return $deleted;
+    }
+
+    return rest_ensure_response(array('message' => 'Term deleted successfully', 'id' => $id));
+}
+
