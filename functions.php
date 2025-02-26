@@ -175,6 +175,25 @@ function custom_woocommerce_orderby_price($args) {
 //add_filter('woocommerce_get_catalog_ordering_args', 'custom_woocommerce_orderby_price');
 
 
+function register_watch_type_taxonomy() {
+    $args = array(
+        'label'             => __('Watch Type', 'textdomain'),
+        'hierarchical'      => true,
+        'public'            => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'watch-type'),
+        'show_in_rest'      => true, // Enables API support
+        'rest_base'         => 'watch_type', // API base URL
+    );
+
+    register_taxonomy('watch_type', 'product', $args);
+}
+add_action('init', 'register_watch_type_taxonomy');
+
+
+
 function add_watch_type_to_wc_api() {
     register_rest_field('product', 'watch_type', array(
         'get_callback'    => function ($product) {
