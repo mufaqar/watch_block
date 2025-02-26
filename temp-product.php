@@ -25,7 +25,7 @@ get_header(); ?>
                 </select>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
         <!-- Color  -->
         <div class=" flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Color</h6>
@@ -36,7 +36,7 @@ get_header(); ?>
                 <button class="h-[25px] w-[25px] rounded-full bg-[#FCDB7E]"></button>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
         <!-- Condition  -->
         <div class=" flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Condition</h6>
@@ -45,7 +45,7 @@ get_header(); ?>
                 <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">Used</button>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
         <!-- Price  -->
         <div class=" flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Price</h6>
@@ -54,7 +54,7 @@ get_header(); ?>
                 <button class="condition-button_for_price text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full text-nowrap">Low to High</button>
             </div>
         </div>
-        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px]"></div>
+        <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
          <!-- Material  -->
          <div class="flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Material</h6>
