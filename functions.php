@@ -177,15 +177,15 @@ function custom_woocommerce_orderby_price($args) {
 
 function register_watch_type_taxonomy() {
     $args = array(
-        'label'             => __('Watch Type', 'textdomain'),
-        'hierarchical'      => true, // Like product categories
-        'public'            => true,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => array('slug' => 'watch-type'),
-        'show_in_rest'      => true, // Enable REST API
-        'rest_base'         => 'watch_type', // API base endpoint
+        'label'                 => __('Watch Type', 'textdomain'),
+        'hierarchical'          => true,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_admin_column'     => true,
+        'query_var'             => true,
+        'rewrite'               => array('slug' => 'watch-type'),
+        'show_in_rest'          => true, // Enable REST API
+        'rest_base'             => 'watch_type', // API base endpoint
         'rest_controller_class' => 'WP_REST_Terms_Controller',
     );
 
@@ -195,55 +195,38 @@ add_action('init', 'register_watch_type_taxonomy');
 
 
 
-
 function register_watch_type_api_routes() {
     register_rest_route('wc/v3', '/products/watch_type', array(
-        // GET: Fetch all watch_type terms
+        // GET: Fetch all terms
         array(
             'methods'  => 'GET',
             'callback' => 'get_watch_type_terms',
             'permission_callback' => '__return_true',
         ),
-        // POST: Create a new watch_type term
+        // POST: Create a new term
         array(
             'methods'  => 'POST',
             'callback' => 'create_watch_type_term',
             'permission_callback' => function () {
-                return current_user_can('manage_options'); // Admins only
+                return current_user_can('manage_categories'); // Admins only
             },
         ),
-        // PUT: Update an existing watch_type term
+        // PUT: Update an existing term
         array(
             'methods'  => 'PUT',
             'callback' => 'update_watch_type_term',
             'permission_callback' => function () {
-                return current_user_can('manage_options');
+                return current_user_can('manage_categories');
             },
         ),
-        // DELETE: Remove a watch_type term
+        // DELETE: Remove a term
         array(
             'methods'  => 'DELETE',
             'callback' => 'delete_watch_type_term',
             'permission_callback' => function () {
-                return current_user_can('manage_options');
+                return current_user_can('manage_categories');
             },
         ),
     ));
 }
 add_action('rest_api_init', 'register_watch_type_api_routes');
-
-
-function get_watch_type_terms() {
-    $terms = get_terms(array(
-        'taxonomy'   => 'watch_type',
-        'hide_empty' => false,
-    ));
-
-    if (empty($terms) || is_wp_error($terms)) {
-        return new WP_Error('no_watch_types', 'No watch types found', array('status' => 404));
-    }
-
-    return rest_ensure_response($terms);
-}
-
-
