@@ -18,6 +18,7 @@
 		<div class="text-white capitalize flex justify-center items-center gap-4 flex-wrap font-normal">
 			<a href="<?php echo home_url('/blog') ?>">Blog</a>
 			<button id="stolen-report">Report Stolen Watch</button>
+			<button id="compare-action">Compare</button>
 			<a href="<?php echo home_url('/contact-us') ?>">Contact us</a>
 		</div>
 		<div class="my-9 flex items-center gap-4 sm:gap-[30px]">
