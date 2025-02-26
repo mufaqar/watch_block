@@ -798,6 +798,10 @@ ol.flex-control-nav li {
   background-color: #F2F2F2 !important;
 }
 
+#compare-action{
+  
+}
+
 @media (max-width: 768px) {
   .woocommerce ul.products li.product .woocommerce-loop-product__title,
   .woocommerce h2{
