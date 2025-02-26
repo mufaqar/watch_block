@@ -198,15 +198,40 @@ add_action('init', 'register_watch_type_taxonomy');
 
 function register_watch_type_api_routes() {
     register_rest_route('wc/v3', '/products/watch_type', array(
-        'methods'  => 'GET',
-        'callback' => 'get_watch_type_terms',
-        'permission_callback' => function () {
-            return current_user_can('read');
-        },
+        // GET: Fetch all watch_type terms
+        array(
+            'methods'  => 'GET',
+            'callback' => 'get_watch_type_terms',
+            'permission_callback' => '__return_true',
+        ),
+        // POST: Create a new watch_type term
+        array(
+            'methods'  => 'POST',
+            'callback' => 'create_watch_type_term',
+            'permission_callback' => function () {
+                return current_user_can('manage_options'); // Admins only
+            },
+        ),
+        // PUT: Update an existing watch_type term
+        array(
+            'methods'  => 'PUT',
+            'callback' => 'update_watch_type_term',
+            'permission_callback' => function () {
+                return current_user_can('manage_options');
+            },
+        ),
+        // DELETE: Remove a watch_type term
+        array(
+            'methods'  => 'DELETE',
+            'callback' => 'delete_watch_type_term',
+            'permission_callback' => function () {
+                return current_user_can('manage_options');
+            },
+        ),
     ));
 }
-
 add_action('rest_api_init', 'register_watch_type_api_routes');
+
 
 function get_watch_type_terms() {
     $terms = get_terms(array(
