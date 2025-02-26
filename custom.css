@@ -794,7 +794,9 @@ ol.flex-control-nav li {
   background-color: transparent !important;
   color: #c00 !important;
 }
-
+#compare-modal .modal-content{
+  background-color: #F2F2F2 !important;
+}
 
 @media (max-width: 768px) {
   .woocommerce ul.products li.product .woocommerce-loop-product__title,

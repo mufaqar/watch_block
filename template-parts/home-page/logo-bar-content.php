@@ -1,19 +1,19 @@
-<section class="px-16">
-<div class="grid grid-cols-5 gap-10">
+<section class="px-5 md:px-16 bg-black">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-5 md:gap-10">
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/hublot.svg" alt="" class="w-full"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/Artboard3.png" alt="" class="w-24 sm:w-32"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/omega-logo-1.svg" alt="" class="w-full"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/Artboard1.png" alt="" class="w-full"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/rolex.svg" alt="" class="w-full"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/Artboard2.png" alt="" class="w-40"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/tudor-1.svg" alt="" class="w-full"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/Artboard4.png" alt="" class="w-40"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/zenith-uhrenmanufaktur-logo.svg" alt="" class="w-full"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/Artboard5.png" alt="" class="w-40"/>
     </figure>
 </div>
 </section>

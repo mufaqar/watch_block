@@ -11,7 +11,7 @@ $loop = new WP_Query($args);
 ?>
 
 <div id="compare-modal" class="compare-modal">
-  <div class="modal-content max-w-[1320px] bg-[#F2F2F2] p-[25px]">
+  <div class="modal-content max-w-[1320px] p-[25px]">
     <button class="close-compare">
       <svg width="26" height="26" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.69997e-06 4.24264L4.24264 0L43.1335 38.8909L38.8909 43.1335L1.69997e-06 4.24264Z" fill="#111111"/>
@@ -30,13 +30,16 @@ $loop = new WP_Query($args);
         if ($loop->have_posts()) :
             while ($loop->have_posts()) : $loop->the_post();
                 // Include the product card template
-                get_template_part('template-parts/product/product', 'card');
+                get_template_part('template-parts/product/product-card-for-compare', 'model');
             endwhile;
             wp_reset_postdata();
         else :
             echo '<p>No products found</p>';
         endif;
       ?>
+    </div>
+    <div>
+      <button class="bg-[#B6E22E] uppercase font-bold py-[15px] max-w-[541px] w-full hover:bg-black hover:text-[#B6E22E] text-2xl mt-8">continue</button>
     </div>
   </div>
 </div>
