@@ -202,19 +202,55 @@ add_action('init', 'register_watch_type_taxonomy');
 
 function register_watch_type_rest_api() {
     register_rest_route('wc/v3', '/products/watch_type', array(
-        'methods'  => 'POST',
-        'callback' => 'create_watch_type_term',
-        'permission_callback' => function () {
-            return current_user_can('manage_categories'); // Ensure only admins can add terms
-        },
+        array(
+            'methods'  => 'GET',
+            'callback' => 'get_watch_type_terms',
+            'permission_callback' => '__return_true',
+        ),
+        array(
+            'methods'  => 'POST',
+            'callback' => 'create_watch_type_term',
+            'permission_callback' => function () {
+                return current_user_can('manage_categories');
+            },
+        ),
+        array(
+            'methods'  => 'PUT',
+            'callback' => 'update_watch_type_term',
+            'permission_callback' => function () {
+                return current_user_can('manage_categories');
+            },
+        ),
+        array(
+            'methods'  => 'DELETE',
+            'callback' => 'delete_watch_type_term',
+            'permission_callback' => function () {
+                return current_user_can('manage_categories');
+            },
+        ),
     ));
 }
 add_action('rest_api_init', 'register_watch_type_rest_api');
 
+
+function get_watch_type_terms() {
+    $terms = get_terms(array(
+        'taxonomy'   => 'watch_type',
+        'hide_empty' => false,
+    ));
+
+    if (is_wp_error($terms) || empty($terms)) {
+        return new WP_Error('no_terms', 'No watch types found', array('status' => 404));
+    }
+
+    return rest_ensure_response($terms);
+}
+
+
 function create_watch_type_term($request) {
     $name = sanitize_text_field($request->get_param('name'));
 
-    if (!$name) {
+    if (empty($name)) {
         return new WP_Error('invalid_term', 'Missing term name', array('status' => 400));
     }
 
@@ -227,5 +263,39 @@ function create_watch_type_term($request) {
     return rest_ensure_response($term);
 }
 
+function update_watch_type_term($request) {
+    $term_id = intval($request->get_param('id'));
+    $new_name = sanitize_text_field($request->get_param('name'));
+
+    if (!$term_id || empty($new_name)) {
+        return new WP_Error('invalid_data', 'Missing term ID or name', array('status' => 400));
+    }
+
+    $term = wp_update_term($term_id, 'watch_type', array('name' => $new_name));
+
+    if (is_wp_error($term)) {
+        return new WP_Error('update_error', $term->get_error_message(), array('status' => 400));
+    }
+
+    return rest_ensure_response($term);
+}
+
+
+
+function delete_watch_type_term($request) {
+    $term_id = intval($request->get_param('id'));
+
+    if (!$term_id) {
+        return new WP_Error('invalid_data', 'Missing term ID', array('status' => 400));
+    }
+
+    $deleted = wp_delete_term($term_id, 'watch_type');
+
+    if (is_wp_error($deleted)) {
+        return new WP_Error('delete_error', $deleted->get_error_message(), array('status' => 400));
+    }
+
+    return rest_ensure_response(array('message' => 'Term deleted successfully'));
+}
 
 
