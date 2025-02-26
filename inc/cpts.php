@@ -196,34 +196,28 @@ function cptui_register_my_taxes() {
 add_action( 'init', 'cptui_register_my_taxes' );
 
 
-function custom_register_brands_taxonomy() {
-    $labels = array(
-        'name'              => _x('Brands', 'taxonomy general name', 'watche_block'),
-        'singular_name'     => _x('Brand', 'taxonomy singular name', 'watche_block'),
-        'search_items'      => __('Search Brands', 'watche_block'),
-        'all_items'         => __('All Brands', 'watche_block'),
-        'parent_item'       => __('Parent Brand', 'watche_block'),
-        'parent_item_colon' => __('Parent Brand:', 'watche_block'),
-        'edit_item'         => __('Edit Brand', 'watche_block'),
-        'update_item'       => __('Update Brand', 'watche_block'),
-        'add_new_item'      => __('Add New Brand', 'watche_block'),
-        'new_item_name'     => __('New Brand Name', 'watche_block'),
-        'menu_name'         => __('Brands', 'watche_block'),
+function register_watch_brands_taxonomy() {
+    register_taxonomy(
+        'watch_brands',
+        'product',
+        array(
+            'label'        => __('Watch Brands'),
+            'rewrite'      => array('slug' => 'watch-brands'),
+            'hierarchical' => true,
+            'show_in_rest' => true, // ✅ Enable REST API support
+            'capabilities' => array(
+                'manage_terms' => 'manage_woocommerce',
+                'edit_terms'   => 'manage_woocommerce',
+                'delete_terms' => 'manage_woocommerce',
+                'assign_terms' => 'edit_products',
+            ),
+        )
     );
-
-    $args = array(
-        'hierarchical'      => true, // Make it behave like categories.
-        'labels'            => $labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-		"show_in_rest" => true,
-        'query_var'         => true,
-        'rewrite'           => array('slug' => 'watch_brands'),
-    );
-
-    register_taxonomy('watch_brands', array('product'), $args);
 }
-add_action('init', 'custom_register_brands_taxonomy');
+add_action('init', 'register_watch_brands_taxonomy');
+
+
+
 
 
 function cptui_register_my_cpts_stolen_watch() {
