@@ -177,7 +177,7 @@ function custom_woocommerce_orderby_price($args) {
 
 function register_watch_type_taxonomy() {
     $args = array(
-        'label'             => __('Watch Type', 'textdomain'),
+        'label'             => __('Type', 'textdomain'),
         'hierarchical'      => true,
         'public'            => true,
         'show_ui'           => true,
