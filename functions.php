@@ -177,20 +177,22 @@ function custom_woocommerce_orderby_price($args) {
 
 function register_watch_type_taxonomy() {
     $args = array(
-        'label'             => __('Type', 'textdomain'),
-        'hierarchical'      => true,
+        'label'             => __('Watch Type', 'textdomain'),
+        'hierarchical'      => true, // Like product categories
         'public'            => true,
         'show_ui'           => true,
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'watch-type'),
-        'show_in_rest'      => true, // Enables API support
-        'rest_base'         => 'watch_type', // API base URL
+        'show_in_rest'      => true, // Enable REST API
+        'rest_base'         => 'watch_type', // API base endpoint
+        'rest_controller_class' => 'WP_REST_Terms_Controller',
     );
 
     register_taxonomy('watch_type', 'product', $args);
 }
 add_action('init', 'register_watch_type_taxonomy');
+
 
 
 
