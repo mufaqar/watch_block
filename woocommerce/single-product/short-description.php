@@ -45,7 +45,7 @@ $attributes = $product->get_attributes();
     <div class="registry_block">
         <h4 class="text-xl font-medium">Registry Number</h4>
         <div class="flex gap-6 py-[14px]">
-            <p class="text-[#676767]">#<?php echo $product->get_id() ?></p>
+            <p class="text-[#676767]">#<?php echo get_post_meta( get_the_ID(), 'registry_number', true ); ?></p>
             <img src="<?php echo get_template_directory_uri(); ?>/images/svg/barcode.svg" alt="" srcset="">
         </div>            
     </div>
