@@ -216,7 +216,7 @@ function custom_register_brands_taxonomy() {
         'labels'            => $labels,
         'show_ui'           => true,
         'show_admin_column' => true,
-		"show_in_rest" => true,
+		'show_in_rest' => true, 
         'query_var'         => true,
         'rewrite'           => array('slug' => 'watch_brands'),
 		'capabilities' => array(
