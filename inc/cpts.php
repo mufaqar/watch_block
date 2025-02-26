@@ -219,6 +219,12 @@ function custom_register_brands_taxonomy() {
 		"show_in_rest" => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'watch_brands'),
+		'capabilities' => array(
+                'manage_terms' => 'manage_product_terms', 
+                'edit_terms'   => 'edit_product_terms',
+                'delete_terms' => 'delete_product_terms',
+                'assign_terms' => 'assign_product_terms',
+            ),
     );
 
     register_taxonomy('watch_brands', array('product'), $args);
