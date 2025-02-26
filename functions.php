@@ -174,3 +174,21 @@ function custom_woocommerce_orderby_price($args) {
 }
 //add_filter('woocommerce_get_catalog_ordering_args', 'custom_woocommerce_orderby_price');
 
+
+function add_watch_type_to_wc_api() {
+    register_rest_field('product', 'watch_type', array(
+        'get_callback'    => function ($product) {
+            return wp_get_post_terms($product['id'], 'watch_type', array('fields' => 'names'));
+        },
+        'update_callback' => function ($value, $product) {
+            if (!is_array($value)) {
+                return;
+            }
+            wp_set_post_terms($product->ID, $value, 'watch_type');
+        },
+        'schema'          => null,
+    ));
+}
+add_action('rest_api_init', 'add_watch_type_to_wc_api');
+
+
