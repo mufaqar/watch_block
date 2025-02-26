@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 
-    <main class="max-w-[1280px] flex flex-col lg:flex-row mx-auto px-3 gap-10 mt-[20px] mb-12">
+    <main class="max-w-[1280px] flex flex-col lg:flex-row mx-auto px-5 gap-10 mt-[20px] mb-12">
         <div class="lg:w-[35%]">
          
             <?php
@@ -82,7 +82,7 @@ if ( post_password_required() ) {
 	
 	</main>
 
-    <section class="max-w-[1280px] px-3 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
+    <section class="max-w-[1280px] px-5 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 my-12">
     <div>
         <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Watch Details</h4>
         <ul>
@@ -162,7 +162,7 @@ if ( post_password_required() ) {
 </section>
 
 
-<section class="max-w-[1280px] px-3 mx-auto mb-12">
+<section class="max-w-[1280px] px-5 mx-auto mb-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
 	<?php do_action('watch_block_single_reviews'); ?>
     </div>
@@ -173,7 +173,7 @@ if ( post_password_required() ) {
 
 
 <section class="bg-[#F2F2F2] py-14 pb-28">
-    <div class="max-w-[1280px] px-3 mx-auto">
+    <div class="max-w-[1280px] px-5 mx-auto">
 		<?php do_action('watch_block_related_products'); ?>
     </div>
 </section>

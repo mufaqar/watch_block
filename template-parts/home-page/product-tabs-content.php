@@ -1,7 +1,7 @@
 <section class="bg-[#F2F2F2]">
-<div class="w-full py-6 max-w-[1280px] px-3 mx-auto">
+<div class="w-full py-6 max-w-[1280px] px-5 mx-auto">
   <!-- Tabs -->
-  <ul class="flex gap-3 sm:gap-3 md:gap-6 lg:gap-[50px] text-xl sm:text-3xl md:text-[34px] font-semibold">
+  <ul class="flex gap-3 sm:gap-3 md:gap-6 lg:gap-[50px] sm:text-3xl md:text-[34px] font-semibold">
     <li class="">
       <button class="tab-button text-black font-semibold py-2" data-tab="new">
         NEW 

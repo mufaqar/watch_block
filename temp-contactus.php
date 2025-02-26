@@ -12,7 +12,7 @@
 get_header(); ?>
 
 
-<section class="mt-28 max-w-[1280px] grid gap-5 grid-cols-1 md:grid-cols-2 px-3 mx-auto mb-12">
+<section class="mt-28 max-w-[1280px] grid gap-5 grid-cols-1 md:grid-cols-2 px-5 mx-auto mb-12">
     <div class="bg-[#2B2B2B] p-8 md:p-5 lg:p-12">
         <h3 class="text-white text-3xl sm:text-[48px] sm:leading-[55px] font-semibold">Request a call</h3>
         <p class="mt-4 text-xl font-light text-white">Give us some info so the right person can get back to you</p>

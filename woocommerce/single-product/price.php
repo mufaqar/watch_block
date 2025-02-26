@@ -49,7 +49,7 @@ $product_id = $product->get_id();
 
 
         <a href="/">
-            <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-3 py-1.5 rounded-[8px]">Follow</span>
+            <span class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-5 py-1.5 rounded-[8px]">Follow</span>
         </a>
     </div>
 </div>

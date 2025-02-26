@@ -1,5 +1,5 @@
 <section class="bg-white">
-    <div class="max-w-[1320px] mx-auto px-3 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
+    <div class="max-w-[1320px] mx-auto px-5 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
         
         <!-- Brands -->
         <div class="flex flex-col justify-between w-full sm:w-auto">

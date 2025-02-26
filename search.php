@@ -18,7 +18,7 @@ get_header();
 
 
         <section class="bg-[#F2F2F2] py-14 pb-28">
-            <div class="max-w-[1280px] px-3 mx-auto">
+            <div class="max-w-[1280px] px-5 mx-auto">
                 <?php
 				printf(
 					/* translators: 1: search result title. 2: search term. */

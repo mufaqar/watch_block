@@ -32,7 +32,7 @@ add_action('watch_block_single_reviews', 'display_all_reviews');
 add_action('watch_block_related_products', 'custom_output_related_products');
 
 function custom_output_related_products() {
-    echo '<div class="max-w-[1280px] px-3 mx-auto">';   
+    echo '<div class="max-w-[1280px] px-5 mx-auto">';   
     		woocommerce_output_related_products();
     echo '</div>';
 }

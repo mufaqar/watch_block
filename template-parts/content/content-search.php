@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="w-full py-6 max-w-[1280px] px-3 mx-auto">
+<div class="w-full py-6 max-w-[1280px] px-5 mx-auto">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
    
         <main class="max-w-[1280px] mx-auto z-[1]">

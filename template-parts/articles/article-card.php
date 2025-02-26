@@ -11,7 +11,7 @@
         
     <div>
         <div class="mb-8">
-            <h2 class="text-[26px] font-semibold leading-[29px] min-h-[89.2px] mt-2.5 mb-8"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+            <h2 class="text-xl md:text-[26px] font-semibold leading-[29px] md:min-h-[89.2px] mt-2.5 mb-2 md:mb-8"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
             <p><?php the_excerpt(); ?></p>
         </div>
         <a href="<?php the_permalink(); ?>">

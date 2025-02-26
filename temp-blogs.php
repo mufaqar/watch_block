@@ -25,7 +25,7 @@ $queryBlogs = new WP_Query($argsForBlogs);
 get_header(); ?>
 
 
-<main class="max-w-[1280px] mx-auto px-3 z-[1]">
+<main class="max-w-[1280px] mx-auto px-5 z-[1]">
     <img src="<?php echo get_template_directory_uri(); ?>/images//timepiece.png" alt="" class="h-[300px] w-full object-cover mt-24 rounded-[16px]"/>
 </main>
 <div class="!bg-white shadow-lg z-[50] mb-10 -mt-10 relative rounded-[12px] max-w-[709px] w-full mx-auto px-[25px]">
@@ -35,7 +35,7 @@ get_header(); ?>
     </div>
 </div>
 
-<div class="flex justify-center max-w-[1280px] mx-auto px-3 mb-10">
+<div class="flex justify-center max-w-[1280px] mx-auto px-5 mb-10">
     <button class="py-[11px] px-[38px] font-medium hover:bg-[#B6E22E] rounded-full">All</button>
     <?php
         $categories = get_categories(); // Get all categories
@@ -45,7 +45,7 @@ get_header(); ?>
 </div>
 
 
-<div class="max-w-[1280px] mx-auto px-3 mb-28">
+<div class="max-w-[1280px] mx-auto px-5 mb-28">
     <?php
         if ($query->have_posts()) {
             while ($query->have_posts()) {  
@@ -94,7 +94,7 @@ get_header(); ?>
 </div>
 
 
-<div class="max-w-[1280px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto px-3 mb-28">
+<div class="max-w-[1280px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto px-5 mb-28">
     <?php
         if ($queryBlogs->have_posts()) {
             while ($queryBlogs->have_posts()) {  

@@ -27,7 +27,7 @@
 			<a href="https://cloud.google.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/svg/cloud.svg" alt="" /></a>
 		</div>
 	</div>
-	<div class="text-white flex items-center px-3 text-center justify-center flex-wrap pb-3 gap-4">
+	<div class="text-white flex items-center px-5 text-center justify-center flex-wrap pb-3 gap-4">
 			<p>@2024 VOOKUM. All rights reserved</p>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
 			<a href="<?php echo home_url('/terms-and-condition') ?>">Terms & Conditions</a>

@@ -50,7 +50,7 @@ function get_all_watches() {
                                     <p class="text-[#666666] !text-sm"><?php echo esc_html($material); ?></p>
                                 </div>
                             </div>
-                            <div><span class="bg-[#f2f2f2] rounded-full font-medium py-[2px] px-3"><?php echo esc_html($stock_text); ?></span></div>
+                            <div><span class="bg-[#f2f2f2] rounded-full font-medium py-[2px] px-5"><?php echo esc_html($stock_text); ?></span></div>
                             <div>$ <?php echo esc_html($price); ?></div>
                             <div class="flex justify-end">
                                 <a href="<?php the_permalink(); ?>"
@@ -146,7 +146,7 @@ function report_stolen_watch() {
             <input type="date" name="date" placeholder="dd/mm/yyyy" id="date"
                 class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required />
             <div
-                class="border-[#C0C0C0] border flex items-center px-3 text-[#70776F] outline-black rounded-[5px] w-full">
+                class="border-[#C0C0C0] border flex items-center px-5 text-[#70776F] outline-black rounded-[5px] w-full">
                 <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5 7.25986C4.5264 7.25986 4.0722 7.07549 3.73731 6.7473C3.40242 6.41911 3.21429 5.97399 3.21429 5.50986C3.21429 5.04573 3.40242 4.60062 3.73731 4.27243C4.0722 3.94424 4.5264 3.75986 5 3.75986C5.4736 3.75986 5.9278 3.94424 6.26269 4.27243C6.59758 4.60062 6.78571 5.04573 6.78571 5.50986C6.78571 5.73968 6.73953 5.96724 6.64979 6.17956C6.56004 6.39188 6.42851 6.5848 6.26269 6.7473C6.09687 6.9098 5.90002 7.03871 5.68336 7.12665C5.46671 7.2146 5.2345 7.25986 5 7.25986ZM5 0.609863C3.67392 0.609863 2.40215 1.12611 1.46447 2.04504C0.526784 2.96397 0 4.2103 0 5.50986C0 9.18486 5 14.6099 5 14.6099C5 14.6099 10 9.18486 10 5.50986C10 4.2103 9.47322 2.96397 8.53553 2.04504C7.59785 1.12611 6.32608 0.609863 5 0.609863Z"
@@ -204,7 +204,7 @@ function report_stolen_watch() {
         <input type="text" name="serial_no" placeholder="Brand Name *" id="serial_no"
         class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required />
             <div
-                class="border-[#C0C0C0] border flex items-center px-3 text-[#70776F] outline-black rounded-[5px] w-full">
+                class="border-[#C0C0C0] border flex items-center px-5 text-[#70776F] outline-black rounded-[5px] w-full">
                 <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5 7.25986C4.5264 7.25986 4.0722 7.07549 3.73731 6.7473C3.40242 6.41911 3.21429 5.97399 3.21429 5.50986C3.21429 5.04573 3.40242 4.60062 3.73731 4.27243C4.0722 3.94424 4.5264 3.75986 5 3.75986C5.4736 3.75986 5.9278 3.94424 6.26269 4.27243C6.59758 4.60062 6.78571 5.04573 6.78571 5.50986C6.78571 5.73968 6.73953 5.96724 6.64979 6.17956C6.56004 6.39188 6.42851 6.5848 6.26269 6.7473C6.09687 6.9098 5.90002 7.03871 5.68336 7.12665C5.46671 7.2146 5.2345 7.25986 5 7.25986ZM5 0.609863C3.67392 0.609863 2.40215 1.12611 1.46447 2.04504C0.526784 2.96397 0 4.2103 0 5.50986C0 9.18486 5 14.6099 5 14.6099C5 14.6099 10 9.18486 10 5.50986C10 4.2103 9.47322 2.96397 8.53553 2.04504C7.59785 1.12611 6.32608 0.609863 5 0.609863Z"

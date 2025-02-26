@@ -11,18 +11,9 @@ $color = ["silver", "golden"];
 
 get_header();
 
-
-
 // Get product IDs from URL parameters (e.g., ?p1=123&p2=456)
 $product1 = isset($_GET['p1']) ? wc_get_product($_GET['p1']) : null;
 $product2 = isset($_GET['p2']) ? wc_get_product($_GET['p2']) : null;
-
-
-
-
-
-
-
 
 function render_product_section($product) {
     if (!$product || !is_a($product, 'WC_Product')) {
@@ -171,15 +162,11 @@ function render_product_section($product) {
     
     </div>
 
-    <?php
-    }
-    ?>
+    <?php } ?>
 
-
-    <section class="max-w-[1280px] mx-auto px-3 grid grid-cols-1 md:grid-cols-2 mb-28">    
-                <?php render_product_section($product1); ?>
-                <?php render_product_section($product2); ?> 
+    <section class="max-w-[1280px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 mb-28">    
+        <?php render_product_section($product1); ?>
+        <?php render_product_section($product2); ?> 
     </section>
-
 
 <?php get_footer();
