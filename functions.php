@@ -299,3 +299,12 @@ function delete_watch_type_term($request) {
 }
 
 
+
+function add_watch_type_to_rest_api($args, $taxonomy) {
+    if ($taxonomy === 'watch_type') {
+        $args['show_in_rest'] = true; // Enable REST API
+    }
+    return $args;
+}
+add_filter('register_taxonomy_args', 'add_watch_type_to_rest_api', 10, 2);
+
