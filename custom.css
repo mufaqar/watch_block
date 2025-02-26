@@ -797,7 +797,8 @@ ol.flex-control-nav li {
 
 
 @media (max-width: 768px) {
-  .woocommerce ul.products li.product .woocommerce-loop-product__title{
+  .woocommerce ul.products li.product .woocommerce-loop-product__title,
+  .woocommerce h2{
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-bottom: 10px !important;
