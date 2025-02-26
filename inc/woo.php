@@ -78,7 +78,6 @@ function add_custom_button_after_add_to_cart() {
 
 /* Extra Options */
 
-
 // Add custom color and size fields (buttons with icons) before the add-to-cart button for simple products
 // Add custom color and size fields (buttons with icons) before the add-to-cart button for simple products
 add_action('woocommerce_before_add_to_cart_button', 'add_custom_color_and_size_fields', 10);
