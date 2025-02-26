@@ -86,17 +86,22 @@ if ( post_password_required() ) {
     <div>
         <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Watch Details</h4>
         <ul>
-            <li class="py-3 border-b">
-                <h6 class="text-sm uppercase text-black/90 font-semibold">Regular Price</h6>
-                <p class="text-black/70 text-sm mt-1"><?php the_field('regular_price'); ?></p>
-            </li>
+            
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Brand</h6>
-                <a class="text-black underline text-sm mt-1 capitalize">Brand1</a>
+                <a class="text-black underline text-sm mt-1 capitalize"><?php
+                $watch_brands = get_the_terms(get_the_ID(), 'watch_brands');
+
+                if ($watch_brands && !is_wp_error($watch_brands)) {
+                    $brand = $watch_brands[0]; 
+                    echo  esc_html($brand->name) ;
+                } 
+                ?>
+                </a>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Model Name</h6>
-                <a class="text-black underline text-sm mt-1 capitalize">123456</a>
+                <a class="text-black underline text-sm mt-1 capitalize"><?php echo get_post_meta( get_the_ID(), 'model_name', true ); ?></a>
             </li>
         </ul>
     </div>
@@ -105,19 +110,19 @@ if ( post_password_required() ) {
         <ul>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
-                <p class="text-black/70 text-sm mt-1"><?php the_field('material'); ?></p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'case_material', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Crystal</h6>
-                <p class="text-black/70 text-sm mt-1"><?php the_field('crystal'); ?></p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'case_crystal', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Size</h6>
-                <p class="text-black/70 text-sm mt-1">40mm</p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'case_size', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
-                <p class="text-black/70 text-sm mt-1">18k White Gold Diamond</p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'case_bezel', true ); ?></p>
             </li>
         </ul>
     </div>
@@ -126,19 +131,19 @@ if ( post_password_required() ) {
         <ul>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Calibre</h6>
-                <p class="text-black/70 text-sm mt-1">3135</p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'movement_calibre', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
-                <p class="text-black/70 text-sm mt-1">Automatic</p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'movement_type', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
-                <p class="text-black/70 text-sm mt-1"><?php the_field('bezel'); ?></p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'movement_bezel', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Complication</h6>
-                <p class="text-black/70 text-sm mt-1"><?php the_field('complication'); ?></p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'movement_complication', true ); ?></p>
             </li>
         </ul>
     </div>
@@ -147,15 +152,15 @@ if ( post_password_required() ) {
         <ul>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
-                <p class="text-black/70 text-sm mt-1">White Gold</p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'bracelet_material', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
-                <p class="text-black/70 text-sm mt-1">Oyster</p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'bracelet_type', true ); ?></p>
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Clasp</h6>
-                <p class="text-black/70 text-sm mt-1"><?php the_field('clasp'); ?></p>
+                <p class="text-black/70 text-sm mt-1"><?php echo get_post_meta( get_the_ID(), 'bracelet_clasp', true ); ?></p>
             </li>
         </ul>
     </div>

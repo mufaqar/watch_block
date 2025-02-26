@@ -240,10 +240,7 @@ document.querySelectorAll('.condition-button_for_price').forEach(button => {
     <div>
         <h4 class="text-xl uppercase font-bold w-full pb-4 border-b border-[#111] mb-6">Watch Details</h4>
         <ul>
-            <li class="py-3 border-b">
-                <h6 class="text-sm uppercase text-black/90 font-semibold">Regular Price</h6>
-                <p class="text-black/70 text-sm mt-1"><?php the_field('regular_price'); ?></p>
-            </li>
+           
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Brand</h6>
                 <a class="text-black underline text-sm mt-1 capitalize">Brand1</a>
