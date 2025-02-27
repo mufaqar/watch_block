@@ -195,41 +195,21 @@ add_action('init', 'register_watch_type_taxonomy');
 
 
 //
+
+
 function add_crypto_payment_button_top() {
-    // Check if the cart is empty
     if (WC()->cart->is_empty()) {
         return;
     }
 
-    // Crypto Payment Gateway URL
-    $crypto_gateway_url = 'https://thirdpartycrypto.com/pay';
+    $crypto_gateway_url = 'http://watchblock.com/productid=%22100%22&productdetailsid=%22200%22';
 
-    // Get cart contents
-    $cart_items = [];
-    foreach (WC()->cart->get_cart() as $cart_item) {
-        $cart_items[] = [
-            'product_id'    => $cart_item['product_id'],
-            'name'          => $cart_item['data']->get_name(),
-            'quantity'      => $cart_item['quantity'],
-            'price'         => $cart_item['data']->get_price(),
-            'subtotal'      => wc_get_price_to_display($cart_item['data'], ['qty' => $cart_item['quantity']])
-        ];
-    }
-
-    // Prepare Data for Payment Gateway
-    $cart_data = [
-        'total'         => WC()->cart->get_total('edit'),
-        'subtotal'      => WC()->cart->get_subtotal(),
-        'currency'      => get_woocommerce_currency(),
-        'cart_items'    => $cart_items,
-        'return_url'    => site_url('/checkout/order-received/'),
-        'cancel_url'    => wc_get_checkout_url()
-    ];
-
-    // Convert to JSON
-    $cart_json = json_encode($cart_data);
-
-    var_dump($cart_json);
+    $cart_items = WC()->cart->get_cart();
+    $currency = get_woocommerce_currency();
+    $total = WC()->cart->get_total('edit');
+    $subtotal = WC()->cart->get_subtotal();
+    $return_url = site_url('/checkout/order-received/');
+    $cancel_url = wc_get_checkout_url();
 
     ?>
 
@@ -237,7 +217,19 @@ function add_crypto_payment_button_top() {
         <h3>Pay with Crypto</h3>
         <p>Use cryptocurrency to complete your payment securely.</p>
         <form id="crypto-payment-form" action="<?php echo esc_url($crypto_gateway_url); ?>" method="POST">
-            <input type="hidden" name="cart_data" value='<?php echo esc_attr($cart_json); ?>'>
+            <input type="hidden" name="currency" value="<?php echo esc_attr($currency); ?>">
+            <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
+            <input type="hidden" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
+            <input type="hidden" name="return_url" value="<?php echo esc_url($return_url); ?>">
+            <input type="hidden" name="cancel_url" value="<?php echo esc_url($cancel_url); ?>">
+
+            <?php foreach ($cart_items as $index => $cart_item) : ?>
+                <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]" value="<?php echo esc_attr($cart_item['product_id']); ?>">
+                <input type="hidden" name="cart_items[<?php echo $index; ?>][name]" value="<?php echo esc_attr($cart_item['data']->get_name()); ?>">
+                <input type="hidden" name="cart_items[<?php echo $index; ?>][quantity]" value="<?php echo esc_attr($cart_item['quantity']); ?>">
+                <input type="hidden" name="cart_items[<?php echo $index; ?>][price]" value="<?php echo esc_attr($cart_item['data']->get_price()); ?>">
+            <?php endforeach; ?>
+
             <button type="submit" class="button alt" style="background: #ff9800; color: #fff; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">
                 Pay with Crypto
             </button>
@@ -247,4 +239,3 @@ function add_crypto_payment_button_top() {
     <?php
 }
 add_action('woocommerce_checkout_before_customer_details', 'add_crypto_payment_button_top', 5);
-
