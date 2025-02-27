@@ -246,4 +246,5 @@ function add_crypto_payment_button_top() {
 
     <?php
 }
-add_action('woocommerce_before_checkout_form', 'add_crypto_payment_button_top', 5);
+add_action('woocommerce_checkout_before_customer_details', 'add_crypto_payment_button_top', 5);
+
