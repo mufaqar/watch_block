@@ -2,14 +2,14 @@
   <div class="modal-content !max-w-[590px] p-[25px]">
     <span class="close">&times;</span>
     <h2 class="text-[34px] font-semibold max-w-[410px] mx-auto md:leading-[41px]">Report a Lost or Stolen Watch</h2>
-    <form class="mt-5 flex flex-col gap-5">
+    <form class="mt-5 flex flex-col gap-5" id="stolen_watch">
         <div class="relative">
-            <input type="text" placeholder="Rolex" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full"/>
+            <input type="text" placeholder="Rolex" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required/>
             <span class="bg-white p-1 text-sm text-[#70776F] absolute -top-[15px] left-3">Watch Brand</span>
         </div>
         <div class="grid grid-cols-2 gap-5">
-            <input type="text" placeholder="Model" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full"/>
-            <input type="text" placeholder="Serial no" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full"/>
+            <input type="text" placeholder="Model" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required/>
+            <input type="text" placeholder="Serial no" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required/>
         </div>
         <div class="grid grid-cols-2 gap-5">
             <input type="date" placeholder="dd/mm/yyyy" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full"/>
@@ -22,8 +22,8 @@
         </div>
         <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Contact Info</h4>
         <div class="grid grid-cols-2 gap-5">
-            <input type="text" placeholder="Name" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full"/>
-            <input type="email" placeholder="Email" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full"/>
+            <input type="text" placeholder="Name" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required/>
+            <input type="email" placeholder="Email" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required/>
         </div>
         <div class="border-[#C0C0C0] border flex items-center px-5 text-[#70776F] outline-black rounded-[5px] w-full">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -43,7 +43,7 @@
             </label>
         </div>
         <textarea className="border-[#C0C0C0] _textarea border flex items-center !p-3 text-[#70776F] outline-black rounded-[5px] w-full"
-            style="padding:10px; border: 1px solid #C0C0C0; border-radius: 5px; height:130px "
+            style="padding:10px; border: 1px solid #C0C0C0; border-radius: 5px; height:130px " required
         >Description</textarea>
         <button type="submit" class="font-bold text-2xl bg-[#B6E22E] w-full p-4 hover:bg-black hover:text-[#B6E22E]">Confirm</button>
     </form>
