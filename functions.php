@@ -191,3 +191,59 @@ function register_watch_type_taxonomy() {
     register_taxonomy('watch_type', array('product'), $args);
 }
 add_action('init', 'register_watch_type_taxonomy');
+
+
+
+//
+function add_crypto_payment_button_top() {
+    // Check if the cart is empty
+    if (WC()->cart->is_empty()) {
+        return;
+    }
+
+    // Crypto Payment Gateway URL
+    $crypto_gateway_url = 'https://thirdpartycrypto.com/pay';
+
+    // Get cart contents
+    $cart_items = [];
+    foreach (WC()->cart->get_cart() as $cart_item) {
+        $cart_items[] = [
+            'product_id'    => $cart_item['product_id'],
+            'name'          => $cart_item['data']->get_name(),
+            'quantity'      => $cart_item['quantity'],
+            'price'         => $cart_item['data']->get_price(),
+            'subtotal'      => wc_get_price_to_display($cart_item['data'], ['qty' => $cart_item['quantity']])
+        ];
+    }
+
+    // Prepare Data for Payment Gateway
+    $cart_data = [
+        'total'         => WC()->cart->get_total('edit'),
+        'subtotal'      => WC()->cart->get_subtotal(),
+        'currency'      => get_woocommerce_currency(),
+        'cart_items'    => $cart_items,
+        'return_url'    => site_url('/checkout/order-received/'),
+        'cancel_url'    => wc_get_checkout_url()
+    ];
+
+    // Convert to JSON
+    $cart_json = json_encode($cart_data);
+
+    var_dump($cart_json);
+
+    ?>
+
+    <div id="crypto-payment-wrapper" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9;">
+        <h3>Pay with Crypto</h3>
+        <p>Use cryptocurrency to complete your payment securely.</p>
+        <form id="crypto-payment-form" action="<?php echo esc_url($crypto_gateway_url); ?>" method="POST">
+            <input type="hidden" name="cart_data" value='<?php echo esc_attr($cart_json); ?>'>
+            <button type="submit" class="button alt" style="background: #ff9800; color: #fff; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">
+                Pay with Crypto
+            </button>
+        </form>
+    </div>
+
+    <?php
+}
+add_action('woocommerce_before_checkout_form', 'add_crypto_payment_button_top', 5);

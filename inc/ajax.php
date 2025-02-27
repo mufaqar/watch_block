@@ -7,12 +7,15 @@ function handle_stolen_watch_form() {
     }
 
     // Get form data
-    $model_no   = sanitize_text_field($_POST['model_no']);
-    $model_name = sanitize_text_field($_POST['model_name']);
+    $brand   = sanitize_text_field($_POST['brand']);
+    $model_no = sanitize_text_field($_POST['model_no']);
     $serial_no  = sanitize_text_field($_POST['serial_no']);
     $date       = sanitize_text_field($_POST['date']);
     $location   = sanitize_text_field($_POST['location']);
     $details    = sanitize_textarea_field($_POST['details']);
+    $name       = sanitize_text_field($_POST['name']);
+    $email      = sanitize_text_field($_POST['email']);
+    $phone      = sanitize_textarea_field($_POST['phone']);
 
     // Handle file upload
     if (!empty($_FILES['file'])) {
@@ -30,16 +33,21 @@ function handle_stolen_watch_form() {
 
     // Insert data into custom post type or send email
     $post_data = array(
-        'post_title'   => $model_name . ' (' . $model_no . ')',
+        'post_title'   => $model_no . ' (' . $brand . ')',
         'post_content' => $details,
         'post_status'  => 'publish',
         'post_type'    => 'stolen_watch',
         'meta_input'   => array(
             'model_no'   => $model_no,
-            'serial_no'  => $serial_no,
+            'serial_number'  => $serial_no,
             'reported_date'    => $date,
+            'brand'   => $brand,           
+            'name'   => $name,
+            'email'   => $email,
+            'phone'   => $phone,           
             'location'   => $location,
             'image'      => $file_url,
+            'status'   => "Still Lost",
         ),
     );
 

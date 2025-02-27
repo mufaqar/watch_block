@@ -50,11 +50,14 @@ jQuery(document).ready(function ($) {
         formData.append('nonce', ajax_object.nonce);
 
         // Append input values manually
+        formData.append('brand', $('#brand').val());
         formData.append('model_no', $('#model_no').val());
-        formData.append('model_name', $('#model_name').val());
         formData.append('serial_no', $('#serial_no').val());
         formData.append('date', $('#date').val());
         formData.append('location', $('#location').val());
+        formData.append('email', $('#email').val());
+        formData.append('name', $('#name').val());
+        formData.append('phone', $('#phone').val());
         formData.append('details', $('#details').val());
 
         // Append file input manually
@@ -75,7 +78,7 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.success) {
                     alert(response.data.message);
-                    $('#stolen_watch')[0].reset();
+                   // $('#stolen_watch')[0].reset();
                 } else {
                     alert(response.data.message);
                 }
