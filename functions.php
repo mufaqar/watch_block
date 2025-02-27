@@ -217,17 +217,17 @@ function crypto_payment_button_shortcode() {
         <h3>Pay with Crypto</h3>
         <p>Use cryptocurrency to complete your payment securely.</p>
         <form id="crypto-payment-form" action="<?php echo esc_url($crypto_gateway_url); ?>" method="POST">
-            <input type="hidden" name="currency" value="<?php echo esc_attr($currency); ?>">
-            <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
-            <input type="hidden" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
-            <input type="hidden" name="return_url" value="<?php echo esc_url($return_url); ?>">
-            <input type="hidden" name="cancel_url" value="<?php echo esc_url($cancel_url); ?>">
+            <input type="text" name="currency" value="<?php echo esc_attr($currency); ?>">
+            <input type="text" name="total" value="<?php echo esc_attr($total); ?>">
+            <input type="text" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
+            <input type="text" name="return_url" value="<?php echo esc_url($return_url); ?>">
+            <input type="text" name="cancel_url" value="<?php echo esc_url($cancel_url); ?>">
 
             <?php foreach ($cart_items as $index => $cart_item) : ?>
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]" value="<?php echo esc_attr($cart_item['product_id']); ?>">
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][name]" value="<?php echo esc_attr($cart_item['data']->get_name()); ?>">
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][quantity]" value="<?php echo esc_attr($cart_item['quantity']); ?>">
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][price]" value="<?php echo esc_attr($cart_item['data']->get_price()); ?>">
+                <input type="text" name="cart_items[<?php echo $index; ?>][product_id]" value="<?php echo esc_attr($cart_item['product_id']); ?>">
+                <input type="text" name="cart_items[<?php echo $index; ?>][name]" value="<?php echo esc_attr($cart_item['data']->get_name()); ?>">
+                <input type="text" name="cart_items[<?php echo $index; ?>][quantity]" value="<?php echo esc_attr($cart_item['quantity']); ?>">
+                <input type="text" name="cart_items[<?php echo $index; ?>][price]" value="<?php echo esc_attr($cart_item['data']->get_price()); ?>">
             <?php endforeach; ?>
 
             <button type="submit" class="button alt" style="background: #ff9800; color: #fff; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">
