@@ -196,13 +196,12 @@ add_action('init', 'register_watch_type_taxonomy');
 
 //
 
-
-function add_crypto_payment_button_top() {
+function crypto_payment_button_shortcode() {
     if (WC()->cart->is_empty()) {
-        return;
+        return '';
     }
 
-    $crypto_gateway_url = 'http://watchblock.com/productid=%22100%22&productdetailsid=%22200%22';
+    $crypto_gateway_url = 'https://thirdpartycrypto.com/pay';
 
     $cart_items = WC()->cart->get_cart();
     $currency = get_woocommerce_currency();
@@ -211,6 +210,7 @@ function add_crypto_payment_button_top() {
     $return_url = site_url('/checkout/order-received/');
     $cancel_url = wc_get_checkout_url();
 
+    ob_start(); // Start output buffering
     ?>
 
     <div id="crypto-payment-wrapper" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9;">
@@ -237,5 +237,6 @@ function add_crypto_payment_button_top() {
     </div>
 
     <?php
+    return ob_get_clean(); // Return the buffered content
 }
-add_action('woocommerce_checkout_before_customer_details', 'add_crypto_payment_button_top', 5);
+add_shortcode('crypto_payment_button', 'crypto_payment_button_shortcode');
