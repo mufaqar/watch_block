@@ -51,10 +51,7 @@ if (!$product) {
                 <figure class="bg-white h-[367px] flex justify-center !relative py-4">
                     <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>"
                         alt="<?php the_title(); ?>" class="object-contain">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/svg/heart.svg" alt="Wishlist"
-                        class="w-[66px] right-0 top-2 absolute">
-
-                </figure>
+                     </figure>
 
                 <h3 class="text-2xl mt-4">
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
