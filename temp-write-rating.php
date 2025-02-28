@@ -44,12 +44,13 @@ get_header(); ?>
 <main class="max-w-[1280px] mx-auto flex flex-col justify-center px-5">
     <h1 class="uppercase text-[64px] text-center font-semibold mt-12">
         <?php
-    if ($product_id) {
-    $product = wc_get_product($product_id);
-        if ($product) {
-            echo 'Review for: ' . esc_html($product->get_name()) ;
-        }
-    } ?>
+        if ($product_id) {
+            $product = wc_get_product($product_id);
+            if ($product) {
+                echo 'Review for: ' . esc_html($product->get_name()) ;
+            }
+        } 
+        ?>
     </h1>
 
     <div class="success_message hidden bg-green-200 text-green-800 p-3 rounded mt-5">

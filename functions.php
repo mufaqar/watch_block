@@ -183,7 +183,7 @@ function crypto_payment_button_shortcode() {
         return '';
     }
 
-    $crypto_gateway_url = 'https://4389-154-192-137-46.ngrok-free.app/api/crypto-wallet';
+    $crypto_gateway_url = 'https://6536-101-50-124-179.ngrok-free.app/';
 
     $cart_items = WC()->cart->get_cart();
     $currency = get_woocommerce_currency();
@@ -196,8 +196,7 @@ function crypto_payment_button_shortcode() {
     ?>
 
     <div id="crypto-payment-wrapper" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9;">
-        <h3>Pay with Crypto</h3>
-        <p>Use cryptocurrency to complete your payment securely.</p>
+        <h3>Pay with Crypto</h3>       
         <form id="crypto-payment-form" action="<?php echo esc_url($crypto_gateway_url); ?>" method="POST">
             <input type="hidden" name="currency" value="<?php echo esc_attr($currency); ?>">
             <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
