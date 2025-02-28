@@ -183,7 +183,7 @@ function crypto_payment_button_shortcode() {
         return '';
     }
 
-    $crypto_gateway_url = 'https://watchblock-backend.onrender.com/api/crypto-checkout';
+    $crypto_gateway_url = 'https://4389-154-192-137-46.ngrok-free.app/api/crypto-wallet';
 
     $cart_items = WC()->cart->get_cart();
     $currency = get_woocommerce_currency();
