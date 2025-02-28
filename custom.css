@@ -851,9 +851,12 @@ ol.flex-control-nav li {
 
 .woocommerce-PaymentMethod .button.delete{
   background-color: #c00 !important;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   color: #fff !important;
 }
-.woocommerce-PaymentMethod{
-  
+.woocommerce-MyAccount-paymentMethods a.button{
+  background-color: #B6E22E !important;
+  border-radius: 8px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
 }
