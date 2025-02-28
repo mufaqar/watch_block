@@ -87,33 +87,35 @@ function get_Stolen_Watches() {
         ]);
 
         if ($query->have_posts()) : ?>
-    <div class="watch-list p-5">
-        <div class="grid grid-cols-6 gap-3 text-start py-3 border-b">
-            <div>Report ID</div>
-            <div>Watch Model</div>
-            <div>Serial Number</div>
-            <div>Date Reported</div>
-            <div>Status</div>
-            <div>Action</div>
-        </div>
-        <?php while ($query->have_posts()) : $query->the_post(); 
-                            $ID     = get_the_ID();
-                            $model     = get_the_title();
-                            $serial    = get_post_meta(get_the_ID(), 'serial_number', true);
-                            $status     = get_post_meta(get_the_ID(), 'status', true);               
-                            $reported_raw = get_post_meta(get_the_ID(), 'reported_date', true);
-                            $reported = $reported_raw ? date('F j, Y', strtotime($reported_raw)) : 'N/A';
+    <div class="watch-list overflow-x-auto p-5">
+        <div class="w-[790px]">
+            <div class="grid font-semibold grid-cols-6 gap-3 text-start py-3 border-b">
+                <div>Report ID</div>
+                <div>Watch Model</div>
+                <div>Serial Number</div>
+                <div>Date Reported</div>
+                <div>Status</div>
+                <div>Action</div>
+            </div>
+            <?php while ($query->have_posts()) : $query->the_post(); 
+                                $ID     = get_the_ID();
+                                $model     = get_the_title();
+                                $serial    = get_post_meta(get_the_ID(), 'serial_number', true);
+                                $status     = get_post_meta(get_the_ID(), 'status', true);               
+                                $reported_raw = get_post_meta(get_the_ID(), 'reported_date', true);
+                                $reported = $reported_raw ? date('F j, Y', strtotime($reported_raw)) : 'N/A';
 
-                        ?>
-        <div class="grid grid-cols-6 gap-3 text-start border-b py-3">
-            <div>#<?php echo esc_html($ID); ?></div>
-            <div><?php the_title(); ?></div>
-            <div> <?php echo esc_html($serial); ?></div>
-            <div> <?php echo esc_html($reported); ?></div>
-            <div> <?php echo esc_html($status); ?></div>
-            <div> <a href="<?php the_permalink()?>">View</a></div>
+                            ?>
+            <div class="grid grid-cols-6 text-sm gap-3 text-start border-b py-3">
+                <div>#<?php echo esc_html($ID); ?></div>
+                <div><?php the_title(); ?></div>
+                <div> <?php echo esc_html($serial); ?></div>
+                <div> <?php echo esc_html($reported); ?></div>
+                <div> <?php echo esc_html($status); ?></div>
+                <div > <a class="py-2 px-7 bg-[#B6E22E] rounded-lg font-semibold" href="<?php the_permalink()?>">View</a></div>
+            </div>
+            <?php endwhile; ?>
         </div>
-        <?php endwhile; ?>
     </div>
     <?php else : ?>
     <p>No stolen watches found.</p>
@@ -127,8 +129,8 @@ function get_Stolen_Watches() {
 
 function report_stolen_watch() {
     ?>
-<div class="box-content p-[25px]">
-    <h2 class="text-[34px] font-semibold max-w-[410px] mx-auto md:leading-[41px]">Report a Lost or Stolen Watch</h2>
+<div class="box-content p-[25px] pt-0">
+    <h2 class="text-[34px] text-left font-semibold md:leading-[41px] !pt-[1rem] !px-0">Report a Lost or Stolen Watch</h2>
     <form class="mt-5 flex flex-col gap-5" id="stolen_watch">
         <div class="relative">
             <input type="text" name="brand" id="brand" placeholder="Rolex" class="border-[#C0C0C0] border text-[#70776F] outline-black rounded-[5px] w-full" required/>

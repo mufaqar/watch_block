@@ -821,3 +821,29 @@ ol.flex-control-nav li {
   }
 }
 
+.woocommerce-order-details__title,
+.woocommerce-column__title{
+  padding-left: 0 !important;
+}
+.woocommerce-table thead{
+  background-color: #B6E22E !important;
+}
+.woocommerce table.shop_table{
+  border-spacing: 0px !important;
+  background-color: #fff !important;
+}
+.woocommerce table.shop_table td{
+  text-align: left !important;
+}
+.woocommerce .woocommerce-customer-details address,
+.woocommerce-Address address{
+  padding: 10px 20px !important;
+  border-radius: 16px !important;
+  background-color: #fff;
+  line-height: 2rem !important;
+}
+.edit-account{
+  padding: 10px 20px !important;
+  border-radius: 16px !important;
+  background-color: #fff;
+}

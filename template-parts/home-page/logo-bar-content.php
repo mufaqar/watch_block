@@ -1,19 +1,19 @@
 <section class="px-5 md:px-16 bg-black">
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-5 md:gap-10">
+<div class="grid grid-cols-3 sm:grid-cols-5 gap-x-3 sm:gap-5 md:gap-10">
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/1.png" alt="" class="w-24 sm:w-32"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/1.png" alt="" class="w-14 md:w-32"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/4.png" alt="" class="w-40"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/4.png" alt="" class="w-20 md:w-40"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/3.png" alt="" class="w-40"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/3.png" alt="" class="w-16 md:w-40"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/2.png" alt="" class="w-40"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/2.png" alt="" class="w-16 md:w-40"/>
     </figure>
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/5.png" alt="" class="w-40"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/5.png" alt="" class="w-20 md:w-40"/>
     </figure>
 </div>
 </section>

@@ -13,7 +13,7 @@ echo "<h2>Welcome, " . esc_html( $current_user->display_name ) . "!</h2>";
 
 
 <div class="rounded-[21px] p-[18px] border border-[#d2d2d2] flex-1">
-    <h6 class="text-center capitalize mb-6 font-medium text-black">Customer NFT Watches</h6>
+    <h6 class="text-xl capitalize mb-6 font-medium text-black">Customer NFT Watches</h6>
     <!-- Product Slider -->
     <div>
         <div class="nft_dash_slider">
@@ -47,21 +47,18 @@ if (!$product) {
 }
 ?>
 
-            <article class="p-5 boder">
-                <figure class="bg-white h-[367px] flex justify-center !relative py-4">
+            <article class="px-2 boder">
+                <figure class="bg-white h-[240px] flex justify-center !relative">
                     <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>"
                         alt="<?php the_title(); ?>" class="object-contain">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/svg/heart.svg" alt="Wishlist"
-                        class="w-[66px] right-0 top-2 absolute">
-
                 </figure>
 
-                <h3 class="text-2xl mt-4">
+                <h3 class="text-lg mt-4">
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h3>
 
 
-                <span class="text-2xl text-gray-900 mt-4 block">
+                <span class="text-lg text-gray-900 mt-2 block">
                     <?php echo $product->get_price_html(); ?>
                 </span>
             </article>
