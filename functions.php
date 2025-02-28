@@ -119,15 +119,15 @@ function filter_woocommerce_shop_query($query) {
 
         // Filtering by Condition
         if (!empty($_GET['condition'])) {
-           
-            $tax_query = $query->get('tax_query') ? $query->get('tax_query') : [];
-            $tax_query[] = [
-                'taxonomy' => 'watch_type',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['condition']),
+            $meta_query = $query->get('meta_query') ? $query->get('meta_query') : [];
+            $meta_query[] = [
+                'key'     => 'watch_type',
+                'value'   => sanitize_text_field($_GET['condition']),
+                'compare' => '='
             ];
-            $query->set('tax_query', $tax_query);
+            $query->set('meta_query', $meta_query);
         }
+        
 
         // Filtering by Size
         if (!empty($_GET['size'])) {
