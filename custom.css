@@ -854,7 +854,7 @@ ol.flex-control-nav li {
   border-radius: 8px !important;
   color: #fff !important;
 }
-.woocommerce-MyAccount-paymentMethods a.button{
+.woocommerce .woocommerce-MyAccount-paymentMethods a.button{
   background-color: #B6E22E !important;
   border-radius: 8px !important;
   padding-top: 8px !important;
