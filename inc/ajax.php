@@ -144,3 +144,38 @@ function handle_add_request_watch() {
 }
 add_action('wp_ajax_handle_add_request_watch', 'handle_add_request_watch');
 add_action('wp_ajax_nopriv_handle_add_request_watch', 'handle_add_request_watch');
+
+
+
+
+function handle_ajax_product_review() {
+    if (!isset($_POST['product_id'], $_POST['review_author'], $_POST['review_content'], $_POST['review_rating'])) {
+        wp_send_json_error(['message' => 'Invalid request.']);
+    }
+
+    $product_id = intval($_POST['product_id']);
+    $author = sanitize_text_field($_POST['review_author']);
+    $content = sanitize_textarea_field($_POST['review_content']);
+    $rating = intval($_POST['review_rating']);
+
+    // Insert comment (review)
+    $comment_id = wp_insert_comment([
+        'comment_post_ID' => $product_id,
+        'comment_author'  => $author,
+        'comment_content' => $content,
+        'comment_approved' => 0, // Set to 1 for auto-approval
+    ]);
+
+    if ($comment_id) {
+        // Save rating as comment meta
+        update_comment_meta($comment_id, 'rating', $rating);
+
+        wp_send_json_success(['message' => 'Review submitted successfully! Pending approval.']);
+    } else {
+        wp_send_json_error(['message' => 'Failed to submit review.']);
+    }
+}
+
+add_action('wp_ajax_handle_ajax_product_review', 'handle_ajax_product_review');
+add_action('wp_ajax_nopriv_handle_ajax_product_review', 'handle_ajax_product_review');
+

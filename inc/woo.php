@@ -2,8 +2,6 @@
 
 
 function display_all_reviews() {
-
-
     global $product;
 
     $comments = get_comments(array(
@@ -13,18 +11,27 @@ function display_all_reviews() {
 
     if ($comments) {
         foreach ($comments as $comment) {
-            echo '<section class="bg-[#F2F2F2] py-[28px] rounded-[20px] px-[32px]">';
-			echo '<img src="' . get_template_directory_uri() . '/images/svg/rating-star.svg" alt=""/>';
-			echo '<h5 class="flex text-xl items-center gap-1 mt-4">' . esc_html($comment->comment_author) . '.<img src="' . get_template_directory_uri() . '/images/svg/green-checks.svg" alt=""/></h5>';
-			echo '<p class="mt-3 text-[#676767]">"' . esc_html($comment->comment_content) . '</p>';
-			echo '<p class="mt-6 text-[#676767]">' . esc_html(get_comment_date('', $comment)) . '</p>';
+            echo '<section class="bg-[#F2F2F2] py-[28px] rounded-[20px] px-[32px] mb-4">';
+            echo '<img src="' . get_template_directory_uri() . '/images/svg/rating-star.svg" alt=""/>';
+            echo '<h5 class="flex text-xl items-center gap-1 mt-4">' . esc_html($comment->comment_author) . '.<img src="' . get_template_directory_uri() . '/images/svg/green-checks.svg" alt=""/></h5>';
+            echo '<p class="mt-3 text-[#676767]">"' . esc_html($comment->comment_content) . '"</p>';
+            echo '<p class="mt-6 text-[#676767]">' . esc_html(get_comment_date('', $comment)) . '</p>';
             echo '</section>';
         }
     } else {
         echo '<p>' . __('No reviews yet. Be the first to review this product!', 'textdomain') . '</p>';
     }
+   
+    
+    // Add 'Write a Review' button with product ID
+    $review_page_url = add_query_arg('product_id', $product->get_id(), site_url('/write-a-review'));
+    echo '<div class="mt-6">';
+    echo '<a href="' . esc_url($review_page_url) . '" class="bg-blue-600 text-black py-2 px-4 rounded-lg inline-block">' . __('Write a Review', 'textdomain') . '</a>';
+    echo '</div>';
 }
 add_action('watch_block_single_reviews', 'display_all_reviews');
+
+
 
 
 
