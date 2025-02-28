@@ -168,8 +168,9 @@ if ( post_password_required() ) {
 
 
 <section class="max-w-[1280px] px-5 mx-auto mb-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-	<?php do_action('watch_block_single_reviews'); ?>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12"></div>
+    <div class="flex justify-center flex-col items-center gap-1">
+        <?php do_action('watch_block_single_reviews'); ?>
     </div>
 </section>
 
