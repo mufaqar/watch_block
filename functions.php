@@ -183,7 +183,7 @@ function crypto_payment_button_shortcode() {
         return '';
     }
 
-    $crypto_gateway_url = 'https://6536-101-50-124-179.ngrok-free.app/';
+    $crypto_gateway_url = 'https://nft-watch-dashboard.vercel.app/crypto-checkout';
 
     $cart_items = WC()->cart->get_cart();
     $currency = get_woocommerce_currency();
