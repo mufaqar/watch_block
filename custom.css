@@ -825,7 +825,8 @@ ol.flex-control-nav li {
 .woocommerce-column__title{
   padding-left: 0 !important;
 }
-.woocommerce-table thead{
+.woocommerce-table thead,
+.woocommerce-MyAccount-paymentMethods thead{
   background-color: #B6E22E !important;
 }
 .woocommerce table.shop_table{
@@ -850,4 +851,6 @@ ol.flex-control-nav li {
 
 .woocommerce-PaymentMethod .button.delete{
   background-color: #c00 !important;
+  border-radius: 10px !important;
+  color: #fff !important;
 }
