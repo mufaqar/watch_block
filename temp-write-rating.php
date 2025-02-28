@@ -1,6 +1,6 @@
 <?php
 /**
-* Template Name: Rating
+* Template Name: Write Rating
 *
 * @package WordPress
 * @subpackage Twenty_Fourteen
@@ -9,13 +9,9 @@
 session_start();
 
 $product_id = isset($_GET['product_id']) ? intval($_GET['product_id']) : 0;
-
-
-
-
 $rating = isset($_SESSION['rating']) ? $_SESSION['rating'] : 0;
 
-echo $rating;
+
 if (isset($_POST['rating'])) {
     $_SESSION['rating'] = intval($_POST['rating']);
     echo "Rating saved: " . $_SESSION['rating'];
