@@ -39,7 +39,7 @@ $loop = new WP_Query($args);
       ?>
     </div>
     <div>
-      <button class="bg-[#B6E22E] uppercase font-bold py-[15px] max-w-[541px] w-full hover:bg-black hover:text-[#B6E22E] text-2xl mt-8">continue</button>
+      <button class="bg-[#B6E22E] uppercase font-bold py-[15px] max-w-[541px] w-full hover:bg-black hover:text-[#B6E22E] text-2xl mt-8" id="comparison" >Continue</button>
     </div>
   </div>
 </div>

@@ -798,8 +798,9 @@ ol.flex-control-nav li {
   background-color: #f2f2f2 !important;
 }
 
-#compare-action {
-}
+
+.comactive figure { border: 2px solid #B6E22E !important;}
+
 
 @media (max-width: 768px) {
   .woocommerce ul.products li.product .woocommerce-loop-product__title,

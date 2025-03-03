@@ -144,27 +144,41 @@ jQuery(document).ready(function ($) {
 });
 
 
-// jQuery(document).ready(function ($) {
-//     let compareList = JSON.parse(localStorage.getItem("compareList")) || [];
-//     // Handle click events on the compare buttons
-//     $(".add_compair_btn").click(function () {
-//         let productId = $(this).attr("data-product-id").toString();
-//        let isIdExist =  compareList.find((item, index) => {
-//             if (item === productId) {
-//                 return item
-//             }
-//         });
-//         if (isIdExist === undefined){
-//             compareList.push(productId);
-//             localStorage.setItem("compareList", JSON.stringify(compareList));
-//         }
-//         else{
-//             alert("This product is already in the comparison list.");
-//         }
-//         // If 2 products are selected, redirect to the comparison page
-//         if (compareList.length >= 2) {
-//             let compareUrl = `/octaloop/comparison/?p1=${compareList[0]}&p2=${compareList[1]}`;
-//             window.location.href = compareUrl;
-//         }
-//     });
-// });
+jQuery(document).ready(function ($) {
+    let compareList = [];
+
+    $(".compare-product").click(function () {
+        let productId = $(this).attr("data-product-id").toString();
+
+        // Check if the product is already in the list
+        let index = compareList.indexOf(productId);
+
+        if (index !== -1) {
+            // Remove product if it already exists
+            compareList.splice(index, 1);
+            $(this).removeClass("comactive");
+        } else {
+            if (compareList.length >= 2) {
+                // Remove the first product and remove the "comactive" class from the button
+                let removedProduct = compareList.shift();
+                $(`.compare-product[data-product-id='${removedProduct}']`).removeClass("comactive");
+            }
+            // Add the new product
+            compareList.push(productId);
+            $(this).addClass("comactive");
+        }
+
+        console.log("compareList", compareList);
+    });
+
+    $("#comparison").click(function () {
+        if (compareList.length < 2) {
+            alert("Please select two products for comparison.");
+            return;
+        }
+        let compareUrl = `http://localhost/octaloop/comparison?p1=${compareList[0]}&p2=${compareList[1]}`;
+        window.location.href = compareUrl;
+    });
+});
+
+
