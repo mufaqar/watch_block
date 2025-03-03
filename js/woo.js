@@ -176,7 +176,7 @@ jQuery(document).ready(function ($) {
             alert("Please select two products for comparison.");
             return;
         }
-        let compareUrl = `http://localhost/octaloop/comparison?p1=${compareList[0]}&p2=${compareList[1]}`;
+        let compareUrl = `/comparison?p1=${compareList[0]}&p2=${compareList[1]}`;
         window.location.href = compareUrl;
     });
 });
