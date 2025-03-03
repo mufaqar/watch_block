@@ -896,7 +896,9 @@ ol.flex-control-nav li {
   color: #b6e22e !important;
 }
 
-#search-field{
+#search-field,
+#location,
+#phone{
   border: transparent !important;
 }
 
