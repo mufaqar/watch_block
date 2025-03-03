@@ -51,17 +51,10 @@ if (!$product) {
                 <figure class="bg-white h-[240px] flex justify-center !relative">
                     <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>"
                         alt="<?php the_title(); ?>" class="object-contain">
-<<<<<<< HEAD
                 </figure>
-=======
-                     </figure>
->>>>>>> 270f871e680e3378c43c8281ae44667396df2664
-
                 <h3 class="text-lg mt-4">
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h3>
-
-
                 <span class="text-lg text-gray-900 mt-2 block">
                     <?php echo $product->get_price_html(); ?>
                 </span>
