@@ -37,6 +37,7 @@ li {
 	padding: 12px;
 	border-radius: 21px;
 }
+
 .woocommerce-MyAccount-navigation ul {
 	display: flex;
 	flex-direction: column;
@@ -44,34 +45,39 @@ li {
 	align-items: flex-start;
 	gap: 0;
 }
+
 .woocommerce-MyAccount-navigation ul li a {
 	font-weight: 700;
 	font-size: 14px;
 	color: #111111;
 }
+
 .woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link a {
 	padding: 18px 30px;
 	width: 100%;
 	display: block;
 }
+
 .woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link {
 	width: 100%;
 	margin-bottom: 2px;
 }
-.woocommerce-MyAccount-navigation
-	ul
-	.woocommerce-MyAccount-navigation-link:hover {
+
+.woocommerce-MyAccount-navigation ul .woocommerce-MyAccount-navigation-link:hover {
 	background-color: #b6e22e;
 	border-radius: 12px;
 }
+
 .woocommerce-MyAccount-navigation ul .is-active {
 	background-color: #b6e22e;
 	border-radius: 12px;
 }
+
 .woocommerce-MyAccount-content p {
 	padding-bottom: 0.5rem;
 	font-size: 18px;
 }
+
 .woocommerce-Addresses,
 .woocommerce .col2-set .col-1,
 .woocommerce-page .col2-set .col-1,
@@ -83,25 +89,31 @@ li {
 	width: 100% !important;
 	padding-right: 1rem;
 }
+
 .woocommerce-Addresses .woocommerce-Address header {
 	font-weight: 700;
 	font-size: 20px;
 }
+
 .woocommerce-Addresses .woocommerce-Address header a {
 	color: #b6e22e;
 }
+
 .woocommerce-orders-table {
 	border-radius: 21px !important;
 	overflow: hidden;
 	border-spacing: 0;
 	margin-bottom: 0 !important;
 }
+
 .woocommerce-orders-table thead {
 	background-color: #b6e22e;
 }
+
 .woocommerce-orders-table thead tr th {
 	padding: 1rem !important;
 }
+
 .woocommerce-orders-table tbody td {
 	padding: 16px !important;
 }

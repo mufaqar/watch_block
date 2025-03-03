@@ -101,7 +101,7 @@ if ( post_password_required() ) {
             </li>
             <li class="py-3 border-b">
                 <h6 class="text-sm uppercase text-black/90 font-semibold">Model Name</h6>
-                <a class="text-black underline text-sm mt-1 capitalize"><?php echo get_post_meta( get_the_ID(), 'model_name', true ); ?></a>
+                <a class="text-black underline text-sm mt-1 capitalize"><?php the_title(); ?></a>
             </li>
         </ul>
     </div>
