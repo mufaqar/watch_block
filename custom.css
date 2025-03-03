@@ -895,13 +895,10 @@ ol.flex-control-nav li {
   background-color: #000 !important;
   color: #b6e22e !important;
 }
-/* .woocommerce-account .woocommerce-MyAccount-content,
-.woocommerce form .form-row input.input-text, 
-.woocommerce form .form-row textarea,
-.woocommerce form .form-row label{
-  font-size: 16px !important;
-  color: #70776f !important;
-} */
+
+#search-field{
+  border: transparent !important;
+}
 
 .woocommerce-EditAccountForm label,
 .woocommerce-EditAccountForm input {
