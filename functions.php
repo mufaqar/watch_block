@@ -221,3 +221,74 @@ function crypto_payment_button_shortcode() {
     return ob_get_clean(); // Return the buffered content
 }
 add_shortcode('crypto_payment_button', 'crypto_payment_button_shortcode');
+
+
+
+// Add profile picture upload field
+add_action('woocommerce_edit_account_form', 'custom_profile_picture_upload_field');
+function custom_profile_picture_upload_field() {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+    ?>
+    <p>
+        <label for="profile_picture"><?php esc_html_e('Profile Picture', 'woocommerce'); ?></label>
+        <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
+        <?php if ($profile_image): ?>
+            <br><img src="<?php echo esc_url($profile_image); ?>" width="100" height="100" style="border-radius:50px;">
+        <?php endif; ?>
+    </p>
+    <?php
+}
+
+// Save uploaded profile picture
+add_action('woocommerce_save_account_details', 'save_custom_profile_picture', 10, 1);
+function save_custom_profile_picture($user_id) {
+    if (!empty($_FILES['profile_picture']['name'])) {
+        $upload = wp_handle_upload($_FILES['profile_picture'], ['test_form' => false]);
+        if (isset($upload['url'])) {
+            update_user_meta($user_id, 'profile_picture', esc_url($upload['url']));
+        }
+    }
+}
+
+add_filter('woocommerce_account_menu_items', 'add_profile_picture_to_menu', 10, 1);
+function add_profile_picture_to_menu($items) {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+    
+    if ($profile_image) {
+        $items = ['profile_picture' => '<img src="' . esc_url($profile_image) . '" width="30" height="30" style="border-radius:15px;">'] + $items;
+    }
+
+    return $items;
+}
+
+function assign_user_badge($user_id) {
+    $order_count = wc_get_customer_order_count($user_id);
+    
+    if ($order_count >= 10) {
+        update_user_meta($user_id, 'user_badge', 'Gold');
+    } elseif ($order_count >= 5) {
+        update_user_meta($user_id, 'user_badge', 'Silver');
+    } elseif ($order_count > 1) { // Ensures users with 0 orders don't get a badge
+        update_user_meta($user_id, 'user_badge', 'Bronze');
+    }
+}
+
+// Update badge on order completion
+add_action('woocommerce_order_status_completed', function ($order_id) {
+    $order = wc_get_order($order_id);
+    $user_id = $order->get_user_id();
+    if ($user_id) {
+        assign_user_badge($user_id);
+    }
+});
+
+
+function display_user_badge() {
+    $user_id = get_current_user_id();
+    $badge = get_user_meta($user_id, 'user_badge', true);    
+    if (!empty($badge)) {
+        echo '<p><strong>Your Badge: </strong> <span style="color: gold;">' . esc_html($badge) . '</span></p>';
+    }
+}
