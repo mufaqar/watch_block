@@ -183,9 +183,10 @@ function crypto_payment_button_shortcode() {
         return '';
     }
 
+    $api_url = get_theme_mod('mytheme_api_url', '');
 
 
-    $crypto_gateway_url = 'https://15e7-154-192-137-1.ngrok-free.appapi/crypto-wallet';
+    $crypto_gateway_url = $api_url;
 
     $cart_items = WC()->cart->get_cart();
     $currency = get_woocommerce_currency();
@@ -299,22 +300,22 @@ function display_user_badge() {
 
 function mytheme_customize_register($wp_customize) {
     // Add a section
-    $wp_customize->add_section('mytheme_custom_section', array(
-        'title'    => __('Custom Theme Options', 'mytheme'),
+    $wp_customize->add_section('wb_theme_options', array(
+        'title'    => __('Theme Options', 'mytheme'),
         'priority' => 30,
     ));
 
     // Add a setting
-    $wp_customize->add_setting('mytheme_custom_text', array(
-        'default'   => '',
-        'sanitize_callback' => 'sanitize_text_field',
+    $wp_customize->add_setting('mytheme_api_url', array(
+        'default'   => 'https://15e7-154-192-137-1.ngrok-free.app/api/payments/crypto-wallet',
+        'sanitize_callback' => 'esc_url_raw', // Use esc_url_raw() for URL sanitization
     ));
 
     // Add a control
-    $wp_customize->add_control('mytheme_custom_text_control', array(
-        'label'    => __('Custom Meta Text', 'mytheme'),
-        'section'  => 'mytheme_custom_section',
-        'settings' => 'mytheme_custom_text',
+    $wp_customize->add_control('mytheme_api_url_control', array(
+        'label'    => __('API URL', 'mytheme'),
+        'section'  => 'wb_theme_options',
+        'settings' => 'mytheme_api_url',
         'type'     => 'text',
     ));
 }
