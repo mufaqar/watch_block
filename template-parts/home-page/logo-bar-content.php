@@ -1,7 +1,7 @@
 <section class="px-5 md:px-16 bg-black">
 <div class="grid grid-cols-3 sm:grid-cols-5 gap-x-3 sm:gap-5 md:gap-10">
     <figure class="flex justify-center items-center">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/1.png" alt="" class="w-14 md:w-32"/>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/1.png" alt="" class="w-14 md:w-28"/>
     </figure>
     <figure class="flex justify-center items-center">
         <img src="<?php echo get_template_directory_uri(); ?>/images/Brands-Logos/4.png" alt="" class="w-20 md:w-40"/>
