@@ -183,7 +183,9 @@ function crypto_payment_button_shortcode() {
         return '';
     }
 
-    $crypto_gateway_url = 'https://nft-watch-dashboard.vercel.app/crypto-checkout';
+
+
+    $crypto_gateway_url = 'https://15e7-154-192-137-1.ngrok-free.appapi/crypto-wallet';
 
     $cart_items = WC()->cart->get_cart();
     $currency = get_woocommerce_currency();
@@ -292,3 +294,28 @@ function display_user_badge() {
         echo '<p><strong>Your Badge: </strong> <span style="color: gold;">' . esc_html($badge) . '</span></p>';
     }
 }
+
+
+
+function mytheme_customize_register($wp_customize) {
+    // Add a section
+    $wp_customize->add_section('mytheme_custom_section', array(
+        'title'    => __('Custom Theme Options', 'mytheme'),
+        'priority' => 30,
+    ));
+
+    // Add a setting
+    $wp_customize->add_setting('mytheme_custom_text', array(
+        'default'   => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    // Add a control
+    $wp_customize->add_control('mytheme_custom_text_control', array(
+        'label'    => __('Custom Meta Text', 'mytheme'),
+        'section'  => 'mytheme_custom_section',
+        'settings' => 'mytheme_custom_text',
+        'type'     => 'text',
+    ));
+}
+add_action('customize_register', 'mytheme_customize_register');
