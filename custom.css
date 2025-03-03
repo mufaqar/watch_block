@@ -884,7 +884,7 @@ ol.flex-control-nav li {
 
 .formclass .button,
 .woocommerce-Button.button {
-  padding: 8px 28px !important;
+  padding: 12px 28px !important;
   background-color: #b6e22e !important;
   border-radius: 8px !important;
   font-weight: 600 !important;
