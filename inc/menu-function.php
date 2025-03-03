@@ -49,3 +49,29 @@ function get_custom_limited_content( $limit = 50 ) {
 
     return $content;
 }
+
+
+
+
+function mytheme_customize_register($wp_customize) {
+    // Add a section
+    $wp_customize->add_section('wb_theme_options', array(
+        'title'    => __('Theme Options', 'mytheme'),
+        'priority' => 30,
+    ));
+
+    // Add a setting
+    $wp_customize->add_setting('mytheme_api_url', array(
+        'default'   => 'https://15e7-154-192-137-1.ngrok-free.app/api/payments/crypto-wallet',
+        'sanitize_callback' => 'esc_url_raw', // Use esc_url_raw() for URL sanitization
+    ));
+
+    // Add a control
+    $wp_customize->add_control('mytheme_api_url_control', array(
+        'label'    => __('API URL', 'mytheme'),
+        'section'  => 'wb_theme_options',
+        'settings' => 'mytheme_api_url',
+        'type'     => 'text',
+    ));
+}
+add_action('customize_register', 'mytheme_customize_register');

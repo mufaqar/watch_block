@@ -227,45 +227,6 @@ add_shortcode('crypto_payment_button', 'crypto_payment_button_shortcode');
 
 
 
-// Add profile picture upload field
-add_action('woocommerce_edit_account_form', 'custom_profile_picture_upload_field');
-function custom_profile_picture_upload_field() {
-    $user_id = get_current_user_id();
-    $profile_image = get_user_meta($user_id, 'profile_picture', true);
-    ?>
-    <p>
-        <label for="profile_picture"><?php esc_html_e('Profile Picture', 'woocommerce'); ?></label>
-        <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
-        <?php if ($profile_image): ?>
-            <br><img src="<?php echo esc_url($profile_image); ?>" width="100" height="100" style="border-radius:50px;">
-        <?php endif; ?>
-    </p>
-    <?php
-}
-
-// Save uploaded profile picture
-add_action('woocommerce_save_account_details', 'save_custom_profile_picture', 10, 1);
-function save_custom_profile_picture($user_id) {
-    if (!empty($_FILES['profile_picture']['name'])) {
-        $upload = wp_handle_upload($_FILES['profile_picture'], ['test_form' => false]);
-        if (isset($upload['url'])) {
-            update_user_meta($user_id, 'profile_picture', esc_url($upload['url']));
-        }
-    }
-}
-
-add_filter('woocommerce_account_menu_items', 'add_profile_picture_to_menu', 10, 1);
-function add_profile_picture_to_menu($items) {
-    $user_id = get_current_user_id();
-    $profile_image = get_user_meta($user_id, 'profile_picture', true);
-    
-    if ($profile_image) {
-        $items = ['profile_picture' => '<img src="' . esc_url($profile_image) . '" width="30" height="30" style="border-radius:15px;">'] + $items;
-    }
-
-    return $items;
-}
-
 function assign_user_badge($user_id) {
     $order_count = wc_get_customer_order_count($user_id);
     
@@ -298,25 +259,72 @@ function display_user_badge() {
 
 
 
-function mytheme_customize_register($wp_customize) {
-    // Add a section
-    $wp_customize->add_section('wb_theme_options', array(
-        'title'    => __('Theme Options', 'mytheme'),
-        'priority' => 30,
-    ));
 
-    // Add a setting
-    $wp_customize->add_setting('mytheme_api_url', array(
-        'default'   => 'https://15e7-154-192-137-1.ngrok-free.app/api/payments/crypto-wallet',
-        'sanitize_callback' => 'esc_url_raw', // Use esc_url_raw() for URL sanitization
-    ));
 
-    // Add a control
-    $wp_customize->add_control('mytheme_api_url_control', array(
-        'label'    => __('API URL', 'mytheme'),
-        'section'  => 'wb_theme_options',
-        'settings' => 'mytheme_api_url',
-        'type'     => 'text',
-    ));
+
+// Add profile picture upload field to WooCommerce "Edit Account" page
+add_action('woocommerce_edit_account_form', 'custom_profile_picture_upload_field');
+function custom_profile_picture_upload_field() {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+    ?>
+    <p>
+        <label for="profile_picture"><?php esc_html_e('Profile Picture', 'woocommerce'); ?></label>
+        <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
+        <?php if ($profile_image): ?>
+            <br><img src="<?php echo esc_url($profile_image); ?>" width="100" height="100" style="border-radius:50px;">
+        <?php endif; ?>
+    </p>
+    <?php
 }
-add_action('customize_register', 'mytheme_customize_register');
+
+// Save the uploaded profile picture
+add_action('woocommerce_save_account_details', 'save_custom_profile_picture', 10, 1);
+function save_custom_profile_picture($user_id) {
+    if (!empty($_FILES['profile_picture']['name'])) {
+        $upload = wp_handle_upload($_FILES['profile_picture'], ['test_form' => false]);
+        if (isset($upload['url'])) {
+            update_user_meta($user_id, 'profile_picture', esc_url($upload['url']));
+        }
+    }
+}
+
+// Override WordPress avatar with the uploaded profile picture
+add_filter('get_avatar', 'custom_user_profile_avatar', 10, 5);
+function custom_user_profile_avatar($avatar, $id_or_email, $size, $default, $alt) {
+    $user_id = 0;
+
+    if (is_numeric($id_or_email)) {
+        $user_id = (int) $id_or_email;
+    } elseif (is_object($id_or_email) && !empty($id_or_email->user_id)) {
+        $user_id = (int) $id_or_email->user_id;
+    } elseif (is_email($id_or_email)) {
+        $user = get_user_by('email', $id_or_email);
+        if ($user) {
+            $user_id = $user->ID;
+        }
+    }
+
+    if ($user_id) {
+        $profile_image = get_user_meta($user_id, 'profile_picture', true);
+        if (!empty($profile_image)) {
+            return '<img src="' . esc_url($profile_image) . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
+        }
+    }
+
+    // Default avatar if no custom image is uploaded
+    return '<img src="' . esc_url(get_template_directory_uri() . '/images/default-avatar.png') . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
+}
+
+// Add profile picture to WooCommerce account menu
+add_filter('woocommerce_account_menu_items', 'add_profile_picture_to_menu', 10, 1);
+function add_profile_picture_to_menu($items) {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+
+    if ($profile_image) {
+        $items = ['profile_picture' => '<img src="' . esc_url($profile_image) . '" width="30" height="30" style="border-radius:15px;">'] + $items;
+    }
+
+    return $items;
+}
