@@ -921,7 +921,7 @@ legend {
   align-items: center;
 }
 
-.woocommerce-EditAccountForm.edit-account input, .woocommerce-Input.woocommerce-Input--text.input-text, input{
+.woocommerce-EditAccountForm.edit-account input, .woocommerce-Input.woocommerce-Input--text.input-text{
   border: 1px solid #7979794f !important;
 }
 
