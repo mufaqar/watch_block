@@ -313,8 +313,8 @@ function crypto_payment_button_shortcode() {
         <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
         <input type="hidden" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
         <input type="hidden" name="checkout_id" value="<?php echo esc_attr($randomHex); ?>">
-        <input type="hidden" name="return_url" value="<?php echo esc_url($return_url); ?>">
-        <input type="hidden" name="cancel_url" value="<?php echo esc_url($cancel_url); ?>">
+        <input type="hidden" name="api_url" value="<?php echo esc_url($api_url); ?>">
+        <input type="hidden" name="sucess_url" value="<?php echo esc_url($success_url); ?>">
 
         <?php foreach ($cart_items as $index => $cart_item) : ?>
         <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]"
