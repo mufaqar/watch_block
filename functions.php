@@ -313,8 +313,8 @@ function crypto_payment_button_shortcode() {
         <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
         <input type="hidden" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
         <input type="hidden" name="checkout_id" value="<?php echo esc_attr($randomHex); ?>">
-        <input type="text" name="api_url" value="<?php echo esc_url($api_url); ?>">
-        <input type="text" name="sucess_url" value="<?php echo esc_url($success_url); ?>">
+        <input type="text" name="cancel_url" value="<?php echo esc_url($api_url); ?>">
+        <input type="text" name="return_url" value="<?php echo esc_url($success_url); ?>">
 
         <?php foreach ($cart_items as $index => $cart_item) : ?>
         <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]"
@@ -344,7 +344,7 @@ document.getElementById('crypto-payment-form').addEventListener('submit', functi
         currency: formData.get('currency'),
         total: formData.get('total'),
         subtotal: formData.get('subtotal'),
-        return_url: formData.get('return_url'),
+        return_url: formData.get('api_url'),
         cancel_url: formData.get('cancel_url'),
         checkout_id: formData.get('checkout_id'),
         cart_items: []
