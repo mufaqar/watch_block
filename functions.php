@@ -315,8 +315,14 @@ function crypto_payment_button_shortcode() {
         <input type="hidden" name="checkout_id" value="<?php echo esc_attr($randomHex); ?>">
         <input type="hidden" name="return_url" value="<?php echo esc_url($api_url); ?>">
         <input type="hidden" name="sucess_url" value="<?php echo esc_url($success_url); ?>">
+        <input type="hidden" name="sucess_url" value="<?php echo esc_url($success_url); ?>">
 
-        <?php foreach ($cart_items as $index => $cart_item) : ?>
+        <?php foreach ($cart_items as $index => $cart_item) :
+            
+            $product = wc_get_product($cart_item['product_id']);
+            $product_type = $product ? $product->get_type() : ''; // Get product type
+            
+            ?>
         <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]"
             value="<?php echo esc_attr($cart_item['product_id']); ?>">
         <input type="hidden" name="cart_items[<?php echo $index; ?>][name]"
@@ -325,6 +331,8 @@ function crypto_payment_button_shortcode() {
             value="<?php echo esc_attr($cart_item['quantity']); ?>">
         <input type="hidden" name="cart_items[<?php echo $index; ?>][price]"
             value="<?php echo esc_attr($cart_item['data']->get_price()); ?>">
+            <input type="text" name="cart_items[<?php echo $index; ?>][product_type]"
+            value="<?php echo esc_attr($product_type); ?>">
             <?php
     // Get product attributes for simple product
     $product = wc_get_product($cart_item['product_id']);
