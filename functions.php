@@ -285,8 +285,6 @@ function add_profile_picture_to_menu($items) {
     return $items;
 }
 
-
-
 function crypto_payment_button_shortcode() {
     if (WC()->cart->is_empty()) {
         return '';
@@ -294,11 +292,9 @@ function crypto_payment_button_shortcode() {
 
     $randomHex = bin2hex(random_bytes(8));
     $api_url = get_theme_mod('mytheme_api_url', '');
-    $crypto_gateway_url = $api_url;
     $success_url = 'https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id=' . $randomHex;
 
     $cart_items = WC()->cart->get_cart();
-   
     $currency = get_woocommerce_currency();
     $total = WC()->cart->get_total('edit');
     $subtotal = WC()->cart->get_subtotal();
@@ -312,12 +308,14 @@ function crypto_payment_button_shortcode() {
     style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9;">
     <h3>Pay with Crypto</h3>
 
-
     <form id="crypto-payment-form">
         <input type="hidden" name="currency" value="<?php echo esc_attr($currency); ?>">
         <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
         <input type="hidden" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
-        <input type="hidden" name="checkout_id" value="4325435435">
+        <input type="hidden" name="checkout_id" value="<?php echo esc_attr($randomHex); ?>">
+        <input type="hidden" name="return_url" value="<?php echo esc_url($return_url); ?>">
+        <input type="hidden" name="cancel_url" value="<?php echo esc_url($cancel_url); ?>">
+
         <?php foreach ($cart_items as $index => $cart_item) : ?>
         <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]"
             value="<?php echo esc_attr($cart_item['product_id']); ?>">
@@ -348,6 +346,7 @@ document.getElementById('crypto-payment-form').addEventListener('submit', functi
         subtotal: formData.get('subtotal'),
         return_url: formData.get('return_url'),
         cancel_url: formData.get('cancel_url'),
+        checkout_id: formData.get('checkout_id'),
         cart_items: []
     };
 
@@ -365,9 +364,7 @@ document.getElementById('crypto-payment-form').addEventListener('submit', functi
             // Find or create the cart item object
             let item = data.cart_items.find(i => i.id === itemKey);
             if (!item) {
-                item = {
-                    id: itemKey
-                };
+                item = { id: itemKey };
                 data.cart_items.push(item);
             }
 
@@ -377,15 +374,12 @@ document.getElementById('crypto-payment-form').addEventListener('submit', functi
     }
 
     // Remove the temporary id field
-    data.cart_items = data.cart_items.map(({
-        id,
-        ...rest
-    }) => rest);
+    data.cart_items = data.cart_items.map(({ id, ...rest }) => rest);
 
     console.log("Processed Data:", data);
 
     // Send the data as JSON via AJAX
-    fetch($api_url, {
+    fetch("<?php echo esc_url($api_url); ?>", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -395,8 +389,7 @@ document.getElementById('crypto-payment-form').addEventListener('submit', functi
         .then(response => response.json())
         .then(result => {
             console.log('Success:', result);
-            window.location.href = "<?php echo esc_url($success_url); ?>";
-
+            window.location.href = "<?php echo esc_url($success_url); ?>"; // Redirect on success
         })
         .catch(error => {
             console.error('Error:', error);
