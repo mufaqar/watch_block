@@ -184,7 +184,7 @@ function crypto_payment_button_shortcode() {
     }
 
     $api_url = get_theme_mod('mytheme_api_url', '');
-    echo $api_url;
+   // echo $api_url;
 
 
     $crypto_gateway_url = $api_url;
@@ -201,7 +201,7 @@ function crypto_payment_button_shortcode() {
 
     <div id="crypto-payment-wrapper" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9;">
         <h3>Pay with Crypto</h3>       
-        <form id="crypto-payment-form" action="<?php echo esc_url($crypto_gateway_url); ?>" method="POST">
+        <form id="crypto-payment-form" action="<?php echo esc_url($crypto_gateway_url); ?>" method="GET">
             <input type="text" name="currency" value="<?php echo esc_attr($currency); ?>">
             <input type="text" name="total" value="<?php echo esc_attr($total); ?>">
             <input type="text" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
