@@ -367,33 +367,38 @@ document.getElementById('crypto-payment-form').addEventListener('submit', functi
         cart_items: []
     };
 
-    // Extract cart items
-    for (let pair of formData.entries()) {
+     // Extract cart items and attributes
+     for (let pair of formData.entries()) {
         const key = pair[0];
         const value = pair[1];
 
-        // Match cart item keys like cart_items[unique_id][product_id]
-        const match = key.match(/^cart_items\[(.*?)\]\[(.*?)\]$/);
+        // Match cart item keys like cart_items[unique_id][field] or cart_items[unique_id][attributes][attribute_name]
+        const match = key.match(/^cart_items\[(.*?)\]\[(.*?)\](?:\[(.*?)\])?$/);
         if (match) {
             const itemKey = match[1]; // Unique identifier for each cart item
-            const fieldName = match[2]; // Field name (product_id, name, quantity, price)
+            const fieldName = match[2]; // Field name (product_id, name, quantity, price, attributes)
+            const attributeName = match[3]; // Attribute name (e.g., color, size)
 
             // Find or create the cart item object
             let item = data.cart_items.find(i => i.id === itemKey);
             if (!item) {
-                item = { id: itemKey };
+                item = { id: itemKey, attributes: {} };
                 data.cart_items.push(item);
             }
 
-            // Assign the extracted value
-            item[fieldName] = value;
+            // If it's an attribute, store it inside the `attributes` object
+            if (attributeName) {
+                item.attributes[attributeName] = value;
+            } else {
+                item[fieldName] = value;
+            }
         }
     }
 
     // Remove the temporary id field
     data.cart_items = data.cart_items.map(({ id, ...rest }) => rest);
 
-    console.log("Processed Data:", data);
+    console.log("Processed Data:", JSON.stringify(data, null, 2));
 
     // Send the data as JSON via AJAX
     fetch("<?php echo esc_url($api_url); ?>", {
