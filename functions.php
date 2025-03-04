@@ -325,6 +325,23 @@ function crypto_payment_button_shortcode() {
             value="<?php echo esc_attr($cart_item['quantity']); ?>">
         <input type="hidden" name="cart_items[<?php echo $index; ?>][price]"
             value="<?php echo esc_attr($cart_item['data']->get_price()); ?>">
+            <?php
+    // Get product attributes for simple product
+    $product = wc_get_product($cart_item['product_id']);
+    if ($product) {
+        $attributes = $product->get_attributes();
+        foreach ($attributes as $attribute_name => $attribute) {
+            $attr_label = wc_attribute_label($attribute_name);
+            $attr_value = $product->get_attribute($attribute_name); // Get attribute value
+            if (!empty($attr_value)) {
+            ?>
+                <input type="hidden" name="cart_items[<?php echo $index; ?>][attributes][<?php echo esc_attr($attr_label); ?>]"
+                    value="<?php echo esc_attr($attr_value); ?>">
+            <?php
+            }
+        }
+    }
+    ?>
         <?php endforeach; ?>
 
         <button type="submit" class="button alt" id="crypto-pay-button"
