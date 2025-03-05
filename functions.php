@@ -178,12 +178,121 @@ function custom_woocommerce_orderby_price($args) {
 
 //
 
+
+
+
+
+
+function assign_user_badge($user_id) {
+    $order_count = wc_get_customer_order_count($user_id);
+    
+    if ($order_count >= 10) {
+        update_user_meta($user_id, 'user_badge', 'Gold');
+    } elseif ($order_count >= 5) {
+        update_user_meta($user_id, 'user_badge', 'Silver');
+    } elseif ($order_count > 1) { // Ensures users with 0 orders don't get a badge
+        update_user_meta($user_id, 'user_badge', 'Bronze');
+    }
+}
+
+// Update badge on order completion
+add_action('woocommerce_order_status_completed', function ($order_id) {
+    $order = wc_get_order($order_id);
+    $user_id = $order->get_user_id();
+    if ($user_id) {
+        assign_user_badge($user_id);
+    }
+});
+
+
+function display_user_badge() {
+    $user_id = get_current_user_id();
+    $badge = get_user_meta($user_id, 'user_badge', true);    
+    if (!empty($badge)) {
+        echo '<p><strong>Your Badge: </strong> <span style="color: gold;">' . esc_html($badge) . '</span></p>';
+    }
+}
+
+
+
+
+
+
+// Add profile picture upload field to WooCommerce "Edit Account" page
+add_action('woocommerce_edit_account_form', 'custom_profile_picture_upload_field');
+function custom_profile_picture_upload_field() {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+    ?>
+<p>
+    <label for="profile_picture"><?php esc_html_e('Profile Picture', 'woocommerce'); ?></label>
+    <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
+    <?php if ($profile_image): ?>
+    <br><img src="<?php echo esc_url($profile_image); ?>" width="100" height="100" style="border-radius:50px;">
+    <?php endif; ?>
+</p>
+<?php
+}
+
+// Save the uploaded profile picture
+add_action('woocommerce_save_account_details', 'save_custom_profile_picture', 10, 1);
+function save_custom_profile_picture($user_id) {
+    if (!empty($_FILES['profile_picture']['name'])) {
+        $upload = wp_handle_upload($_FILES['profile_picture'], ['test_form' => false]);
+        if (isset($upload['url'])) {
+            update_user_meta($user_id, 'profile_picture', esc_url($upload['url']));
+        }
+    }
+}
+
+// Override WordPress avatar with the uploaded profile picture
+add_filter('get_avatar', 'custom_user_profile_avatar', 10, 5);
+function custom_user_profile_avatar($avatar, $id_or_email, $size, $default, $alt) {
+    $user_id = 0;
+
+    if (is_numeric($id_or_email)) {
+        $user_id = (int) $id_or_email;
+    } elseif (is_object($id_or_email) && !empty($id_or_email->user_id)) {
+        $user_id = (int) $id_or_email->user_id;
+    } elseif (is_email($id_or_email)) {
+        $user = get_user_by('email', $id_or_email);
+        if ($user) {
+            $user_id = $user->ID;
+        }
+    }
+
+    if ($user_id) {
+        $profile_image = get_user_meta($user_id, 'profile_picture', true);
+        if (!empty($profile_image)) {
+            return '<img src="' . esc_url($profile_image) . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
+        }
+    }
+
+    // Default avatar if no custom image is uploaded
+    return '<img src="' . esc_url(get_template_directory_uri() . '/images/default-avatar.png') . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
+}
+
+// Add profile picture to WooCommerce account menu
+add_filter('woocommerce_account_menu_items', 'add_profile_picture_to_menu', 10, 1);
+function add_profile_picture_to_menu($items) {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+
+    if ($profile_image) {
+        $items = ['profile_picture' => '<img src="' . esc_url($profile_image) . '" width="30" height="30" style="border-radius:15px;">'] + $items;
+    }
+
+    return $items;
+}
+
 function crypto_payment_button_shortcode() {
     if (WC()->cart->is_empty()) {
         return '';
     }
 
-    $crypto_gateway_url = 'https://nft-watch-dashboard.vercel.app/crypto-checkout';
+    $randomHex = bin2hex(random_bytes(8));
+    $api_url = get_theme_mod('mytheme_api_url', '');
+    $success_url = 'https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id=' . $randomHex;
 
     $cart_items = WC()->cart->get_cart();
     $currency = get_woocommerce_currency();
@@ -195,29 +304,130 @@ function crypto_payment_button_shortcode() {
     ob_start(); // Start output buffering
     ?>
 
-    <div id="crypto-payment-wrapper" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9;">
-        <h3>Pay with Crypto</h3>       
-        <form id="crypto-payment-form" action="<?php echo esc_url($crypto_gateway_url); ?>" method="POST">
-            <input type="hidden" name="currency" value="<?php echo esc_attr($currency); ?>">
-            <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
-            <input type="hidden" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
-            <input type="hidden" name="return_url" value="<?php echo esc_url($return_url); ?>">
-            <input type="hidden" name="cancel_url" value="<?php echo esc_url($cancel_url); ?>">
+<div id="crypto-payment-wrapper"
+    style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9;">
+    <h3>Pay with Crypto</h3>
 
-            <?php foreach ($cart_items as $index => $cart_item) : ?>
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]" value="<?php echo esc_attr($cart_item['product_id']); ?>">
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][name]" value="<?php echo esc_attr($cart_item['data']->get_name()); ?>">
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][quantity]" value="<?php echo esc_attr($cart_item['quantity']); ?>">
-                <input type="hidden" name="cart_items[<?php echo $index; ?>][price]" value="<?php echo esc_attr($cart_item['data']->get_price()); ?>">
-            <?php endforeach; ?>
+    <form id="crypto-payment-form">
+        <input type="hidden" name="currency" value="<?php echo esc_attr($currency); ?>">
+        <input type="hidden" name="total" value="<?php echo esc_attr($total); ?>">
+        <input type="hidden" name="subtotal" value="<?php echo esc_attr($subtotal); ?>">
+        <input type="hidden" name="checkout_id" value="<?php echo esc_attr($randomHex); ?>">
+        <input type="hidden" name="return_url" value="<?php echo esc_url($api_url); ?>">
+        <input type="hidden" name="sucess_url" value="<?php echo esc_url($success_url); ?>">
 
-            <button type="submit" class="button alt" style="background: #ff9800; color: #fff; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">
-                Pay with Crypto
-            </button>
-        </form>
-    </div>
+        <?php foreach ($cart_items as $index => $cart_item) :
+            
+            $product = wc_get_product($cart_item['product_id']);
+            $product_type = $product ? $product->get_type() : ''; // Get product type
+            
+            ?>
+        <input type="hidden" name="cart_items[<?php echo $index; ?>][product_id]"
+            value="<?php echo esc_attr($cart_item['product_id']); ?>">
+        <input type="hidden" name="cart_items[<?php echo $index; ?>][name]"
+            value="<?php echo esc_attr($cart_item['data']->get_name()); ?>">
+        <input type="hidden" name="cart_items[<?php echo $index; ?>][quantity]"
+            value="<?php echo esc_attr($cart_item['quantity']); ?>">
+        <input type="hidden" name="cart_items[<?php echo $index; ?>][price]"
+            value="<?php echo esc_attr($cart_item['data']->get_price()); ?>">
+            <input type="hidden" name="cart_items[<?php echo $index; ?>][product_type]"
+            value="<?php echo esc_attr($product_type); ?>">
+            <?php
+    // Get product attributes for simple product
+    $product = wc_get_product($cart_item['product_id']);
+    if ($product) {
+        $attributes = $product->get_attributes();
+        foreach ($attributes as $attribute_name => $attribute) {
+            $attr_label = wc_attribute_label($attribute_name);
+            $attr_value = $product->get_attribute($attribute_name); // Get attribute value
+            if (!empty($attr_value)) {
+            ?>
+                <input type="hidden" name="cart_items[<?php echo $index; ?>][attributes][<?php echo esc_attr($attr_label); ?>]"
+                    value="<?php echo esc_attr($attr_value); ?>">
+            <?php
+            }
+        }
+    }
+    ?>
+        <?php endforeach; ?>
 
-    <?php
+        <button type="submit" class="button alt" id="crypto-pay-button"
+            style="background: #ff9800; color: #fff; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">
+            Pay with Crypto
+        </button>
+    </form>
+</div>
+
+<script>
+document.getElementById('crypto-payment-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather form data
+    const formData = new FormData(this);
+    const data = {
+        currency: formData.get('currency'),
+        total: formData.get('total'),
+        subtotal: formData.get('subtotal'),
+        return_url: formData.get('return_url'),
+        cancel_url: formData.get('cancel_url'),
+        checkout_id: formData.get('checkout_id'),
+        cart_items: []
+    };
+
+     // Extract cart items and attributes
+     for (let pair of formData.entries()) {
+        const key = pair[0];
+        const value = pair[1];
+
+        // Match cart item keys like cart_items[unique_id][field] or cart_items[unique_id][attributes][attribute_name]
+        const match = key.match(/^cart_items\[(.*?)\]\[(.*?)\](?:\[(.*?)\])?$/);
+        if (match) {
+            const itemKey = match[1]; // Unique identifier for each cart item
+            const fieldName = match[2]; // Field name (product_id, name, quantity, price, attributes)
+            const attributeName = match[3]; // Attribute name (e.g., color, size)
+
+            // Find or create the cart item object
+            let item = data.cart_items.find(i => i.id === itemKey);
+            if (!item) {
+                item = { id: itemKey, attributes: {} };
+                data.cart_items.push(item);
+            }
+
+            // If it's an attribute, store it inside the `attributes` object
+            if (attributeName) {
+                item.attributes[attributeName] = value;
+            } else {
+                item[fieldName] = value;
+            }
+        }
+    }
+
+    // Remove the temporary id field
+    data.cart_items = data.cart_items.map(({ id, ...rest }) => rest);
+
+    console.log("Processed Data:", JSON.stringify(data, null, 2));
+
+    // Send the data as JSON via AJAX
+    fetch("<?php echo esc_url($api_url); ?>", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Success:', result);
+            window.location.href = "<?php echo esc_url($success_url); ?>"; // Redirect on success
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
+        });
+});
+</script>
+
+<?php
     return ob_get_clean(); // Return the buffered content
 }
 add_shortcode('crypto_payment_button', 'crypto_payment_button_shortcode');

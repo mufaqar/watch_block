@@ -38,12 +38,18 @@
         <div class="flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Condition</h6>
             <div class="flex gap-[5px] min-w-[120px]">
+<<<<<<< HEAD
                 <?php 
                     $conditions = get_terms(['taxonomy' => 'watch_type', 'hide_empty' => false]);
                     foreach ($conditions as $condition) {
                         echo '<a href="?condition=' . esc_attr($condition->slug) . '" class="condition-button filter_button">' . esc_html($condition->name) . '</a>';
                     }
                 ?>
+=======
+            <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">New</button>
+                <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">Used</button>
+          
+>>>>>>> 218f97de580fbdbdfee795242d14ed144e3493c5
             </div>
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>

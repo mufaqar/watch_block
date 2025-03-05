@@ -2,7 +2,15 @@
 defined( 'ABSPATH' ) || exit;
 
 $current_user = wp_get_current_user();
-echo "<h2>Welcome, " . esc_html( $current_user->display_name ) . "!</h2>";
+
+if ($current_user->exists()) {
+    echo "<h2>Welcome, " . esc_html($current_user->display_name) . "!</h2>";
+
+    display_user_badge();
+}
+
+
+
 
 
 ?>
@@ -13,7 +21,7 @@ echo "<h2>Welcome, " . esc_html( $current_user->display_name ) . "!</h2>";
 
 
 <div class="rounded-[21px] p-[18px] border border-[#d2d2d2] flex-1">
-    <h6 class="text-xl capitalize mb-6 font-medium text-black">Customer NFT Watches</h6>
+ 
     <!-- Product Slider -->
     <div>
         <div class="nft_dash_slider">
