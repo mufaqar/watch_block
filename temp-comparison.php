@@ -24,8 +24,18 @@ function render_product_section($product) {
     $image_url = wp_get_attachment_image_url($product->get_image_id(), 'full');
     $price = $product->get_price_html();
     $title = $product->get_name();
-    $colors = get_post_meta($product->get_id(), 'available_colors', true) ?: [];
-    $sizes = get_post_meta($product->get_id(), 'available_sizes', true) ?: [];
+
+    $Pid = $product->get_id();
+   
+
+
+    // Get colors (attribute: pa_watches_colors)
+    $colors = wc_get_product_terms($product->get_id(), 'pa_watches_colors', ['fields' => 'names']);
+    
+    // Get sizes (attribute: pa_watches_size)
+    $sizes = wc_get_product_terms($product->get_id(), 'pa_watches_size', ['fields' => 'names']);
+    
+
     ?>
 
 <div class="border-black first:md:border-r md:px-5">
@@ -43,6 +53,7 @@ function render_product_section($product) {
                 </div>
             </div>
         </div>
+
         <div class="mt-20">
             <div class="flex flex-col mb-2 md:flex-row justify-between gap-2 border-b pb-3 md:pb-1">
                 <div>
@@ -56,7 +67,7 @@ function render_product_section($product) {
                     <h4 class="text-[28px] sm:text-[36px] font-bold"><?php echo $price; ?></h4>
                 </div>
             </div>
-            <!-- <div class="pb-4">
+            <div class="pb-4">
                 <h4 class="text-xl font-medium">Colors available</h4>
                 <div class="py-[14px] flex gap-2 flex-wrap">
                     <?php foreach ($colors as $clr) { ?>
@@ -77,7 +88,7 @@ function render_product_section($product) {
                                     } ?>
                 </div>
 
-            </div> -->
+            </div>
         </div>
     </section>
 
@@ -89,7 +100,7 @@ function render_product_section($product) {
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Brand</h6>
                     <a class="text-black underline text-sm mt-1 capitalize"><?php
-                $product_brands = get_the_terms(get_the_ID(), 'product_brand');
+                $product_brands = get_the_terms($Pid, 'product_brand');
 
                 if ($product_brands && !is_wp_error($product_brands)) {
                     $brand = $product_brands[0]; 
@@ -110,22 +121,22 @@ function render_product_section($product) {
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'case_material', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'case_material', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Crystal</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'case_crystal', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'case_crystal', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Size</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'case_size', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'case_size', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'case_bezel', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'case_bezel', true ); ?></p>
                 </li>
             </ul>
         </div>
@@ -135,22 +146,22 @@ function render_product_section($product) {
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Calibre</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'movement_calibre', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'movement_calibre', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'movement_type', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'movement_type', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Bezel</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'movement_bezel', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'movement_bezel', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Complication</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'movement_complication', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'movement_complication', true ); ?></p>
                 </li>
             </ul>
         </div>
@@ -160,17 +171,17 @@ function render_product_section($product) {
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Material</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'bracelet_material', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'bracelet_material', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Type</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'bracelet_type', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'bracelet_type', true ); ?></p>
                 </li>
                 <li class="py-3 border-b">
                     <h6 class="text-sm uppercase text-black/90 font-semibold">Clasp</h6>
                     <p class="text-black/70 text-sm mt-1">
-                        <?php echo get_post_meta( get_the_ID(), 'bracelet_clasp', true ); ?></p>
+                        <?php echo get_post_meta( $Pid, 'bracelet_clasp', true ); ?></p>
                 </li>
             </ul>
         </div>
