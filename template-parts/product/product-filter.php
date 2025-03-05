@@ -55,7 +55,7 @@
             <?php 
                $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
                foreach ($sizes as $size) {
-                   echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
+                  echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
                }
                ?>
          </div>
