@@ -110,6 +110,13 @@ add_action('pre_get_posts', function($query) {
 }, 20);
 
 
+function add_custom_rewrite_rules() {
+    add_rewrite_rule('^shop/condition/([^/]*)/?', 'index.php?post_type=product&condition=$matches[1]', 'top');
+}
+add_action('init', 'add_custom_rewrite_rules');
+
+
+
 function filter_woocommerce_shop_query($query) {
     if (!is_admin() && $query->is_main_query() && (is_shop() || is_product_category() || is_product_tag())) {
 
