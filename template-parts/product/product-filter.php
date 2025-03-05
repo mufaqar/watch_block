@@ -27,7 +27,7 @@
             foreach ($colors as $color) {
                 // Get the color name or meta value (if stored in the term meta)
                 $color_name = esc_attr($color->slug); // Assuming slug is the color name
-                echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
+                echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] border w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
             }
         ?>
     </div>
