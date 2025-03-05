@@ -72,16 +72,7 @@
         window.location.href = url.toString();
     });
    
-    // Handle Condition Filter Buttons
-    document.querySelectorAll(".condition-button").forEach(button => {
-        button.addEventListener("click", function () {
-            let condition = this.getAttribute("data-condition");
-            let url = new URL(window.location.href);
-            url.searchParams.set("condition", condition);
-            url.hash = "filter";
-            window.location.href = url.toString();
-        });
-    });
+  
    
     // Handle Color Filter Click
     document.querySelectorAll(".filter-button").forEach(button => {

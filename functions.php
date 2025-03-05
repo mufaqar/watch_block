@@ -97,12 +97,15 @@ function add_custom_query_vars($vars) {
 }
 add_filter('query_vars', 'add_custom_query_vars');
 
-
 add_action('pre_get_posts', function($query) {
-    if ($query->is_main_query() && is_shop() && get_query_var('condition', '')) {
-        $query->set('posts_per_page', -1);
-        $query->set('post_status', 'publish');
-        $query->is_404 = false; // Force prevent 404
+    if (!is_admin() && $query->is_main_query() && is_shop()) {
+        $condition = get_query_var('condition', '');
+
+        if (!empty($condition)) {
+            $query->set('posts_per_page', -1);
+            $query->set('post_status', 'publish');
+            $query->is_404 = false; // Prevent 404
+        }
     }
 }, 20);
 

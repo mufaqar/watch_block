@@ -60,8 +60,7 @@ get_header(); ?>
 
         <input type="hidden" name="product_id" id="product_id" value="<?php echo esc_attr($product_id); ?>">
         <input type="hidden" name="review_rating" id="review_rating">
-        <input type="hidden" name="review_author" id="review_author" value="1">
-
+        <input type="hidden" name="review_author" id="review_author" value="<?php echo is_user_logged_in() ? get_current_user_id() : 0; ?>">
         
         <span id="selectedRating" class="hidden">0</span>
         <div class="stars flex justify-center text-xl">
