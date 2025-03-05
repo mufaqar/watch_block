@@ -60,13 +60,16 @@
 <script>
 	document.getElementById("compare-action").addEventListener("click", function () {
 		document.getElementById("compare-modal").style.display = "block";
+		document.body.style.overflow = "hidden";
 	});
 	document.querySelector(".close-compare").addEventListener("click", function () {
 		document.getElementById("compare-modal").style.display = "none";
+		document.body.style.overflow = "auto";
 	});
 	window.addEventListener("click", function (event) {
 		if (event.target === document.getElementById("compare-modal")) {
 			document.getElementById("compare-modal").style.display = "none";
+			document.body.style.overflow = "auto";
 		}
 	});
 </script>

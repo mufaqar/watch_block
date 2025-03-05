@@ -24,11 +24,11 @@
     <div class="flex gap-3 flex-wrap min-w-[140px]">
         <?php 
         $colors = get_terms(['taxonomy' => 'pa_watches_colors', 'hide_empty' => false]);
-        foreach ($colors as $color) {
-            // Get the color name or meta value (if stored in the term meta)
-            $color_name = esc_attr($color->slug); // Assuming slug is the color name
-            echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
-        }
+            foreach ($colors as $color) {
+                // Get the color name or meta value (if stored in the term meta)
+                $color_name = esc_attr($color->slug); // Assuming slug is the color name
+                echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
+            }
         ?>
     </div>
 </div>
@@ -39,10 +39,10 @@
             <h6 class="font-semibold mb-[9px]">Condition</h6>
             <div class="flex gap-[5px] min-w-[120px]">
                 <?php 
-                $conditions = get_terms(['taxonomy' => 'watch_type', 'hide_empty' => false]);
-                foreach ($conditions as $condition) {
-                    echo '<a href="?condition=' . esc_attr($condition->slug) . '" class="condition-button filter_button">' . esc_html($condition->name) . '</a>';
-                }
+                    $conditions = get_terms(['taxonomy' => 'watch_type', 'hide_empty' => false]);
+                    foreach ($conditions as $condition) {
+                        echo '<a href="?condition=' . esc_attr($condition->slug) . '" class="condition-button filter_button">' . esc_html($condition->name) . '</a>';
+                    }
                 ?>
             </div>
         </div>
@@ -63,10 +63,10 @@
             <h6 class="font-semibold mb-[9px]">Sizes Available</h6>
             <div class="flex gap-[5px] flex-wrap">
                 <?php 
-                $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
-                foreach ($sizes as $size) {
-                    echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
-                }
+                    $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
+                    foreach ($sizes as $size) {
+                        echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
+                    }
                 ?>
             </div>
         </div>
