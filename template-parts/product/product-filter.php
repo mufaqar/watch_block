@@ -59,7 +59,7 @@
 
         <!-- Sizes -->
         <div class="flex flex-col ">
-            <h6 class="font-semibold mb-[9px]">Sizes Available</h6>
+            <h6 class="font-semibold mb-[9px] flex justify-between gap-5">Sizes Available  <a href="<?php echo get_permalink(wc_get_page_id('shop')); ?>" class="clear-filters-button">Clear</a></h6>
             <div class="flex gap-[5px] flex-wrap">
                 <?php 
                     $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
@@ -67,9 +67,12 @@
                         echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
                     }
                 ?>
+               
             </div>
         </div>
+        
     </div>
+    
 </section>
 
 <script>

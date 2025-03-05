@@ -92,7 +92,7 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 
 
 function custom_pre_get_posts_query($query) {
-    if ( is_post_type_archive('product')) {
+    if ( ! is_admin() && ( is_shop() || is_product_category() || is_product_tag() ) ) {
         $tax_query = array('relation' => 'AND');
 
         // Brand Filter
