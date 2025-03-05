@@ -259,3 +259,111 @@ add_action('woocommerce_account_add-my-watch_endpoint', 'add_my_watch_content');
     return $menu_links;
 }
 add_filter( 'woocommerce_account_menu_items', 'custom_rename_dashboard_tab', 10, 1 );
+
+
+
+// Badge System
+
+
+
+function assign_user_badge($user_id) {
+    $order_count = wc_get_customer_order_count($user_id);
+    
+    if ($order_count >= 10) {
+        update_user_meta($user_id, 'user_badge', 'Gold');
+    } elseif ($order_count >= 5) {
+        update_user_meta($user_id, 'user_badge', 'Silver');
+    } elseif ($order_count > 1) { // Ensures users with 0 orders don't get a badge
+        update_user_meta($user_id, 'user_badge', 'Bronze');
+    }
+}
+
+// Update badge on order completion
+add_action('woocommerce_order_status_completed', function ($order_id) {
+    $order = wc_get_order($order_id);
+    $user_id = $order->get_user_id();
+    if ($user_id) {
+        assign_user_badge($user_id);
+    }
+});
+
+
+function display_user_badge() {
+    $user_id = get_current_user_id();
+    $badge = get_user_meta($user_id, 'user_badge', true);    
+    if (!empty($badge)) {
+        echo '<p><strong>Your Badge: </strong> <span style="color: gold;">' . esc_html($badge) . '</span></p>';
+    }
+}
+
+
+
+
+
+// Add profile picture upload field to WooCommerce "Edit Account" page
+add_action('woocommerce_edit_account_form', 'custom_profile_picture_upload_field');
+function custom_profile_picture_upload_field() {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+    ?>
+<p>
+    <label for="profile_picture"><?php esc_html_e('Profile Picture', 'woocommerce'); ?></label>
+    <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
+    <?php if ($profile_image): ?>
+    <br><img src="<?php echo esc_url($profile_image); ?>" width="100" height="100" style="border-radius:50px;">
+    <?php endif; ?>
+</p>
+<?php
+}
+
+// Save the uploaded profile picture
+add_action('woocommerce_save_account_details', 'save_custom_profile_picture', 10, 1);
+function save_custom_profile_picture($user_id) {
+    if (!empty($_FILES['profile_picture']['name'])) {
+        $upload = wp_handle_upload($_FILES['profile_picture'], ['test_form' => false]);
+        if (isset($upload['url'])) {
+            update_user_meta($user_id, 'profile_picture', esc_url($upload['url']));
+        }
+    }
+}
+
+// Override WordPress avatar with the uploaded profile picture
+add_filter('get_avatar', 'custom_user_profile_avatar', 10, 5);
+function custom_user_profile_avatar($avatar, $id_or_email, $size, $default, $alt) {
+    $user_id = 0;
+
+    if (is_numeric($id_or_email)) {
+        $user_id = (int) $id_or_email;
+    } elseif (is_object($id_or_email) && !empty($id_or_email->user_id)) {
+        $user_id = (int) $id_or_email->user_id;
+    } elseif (is_email($id_or_email)) {
+        $user = get_user_by('email', $id_or_email);
+        if ($user) {
+            $user_id = $user->ID;
+        }
+    }
+
+    if ($user_id) {
+        $profile_image = get_user_meta($user_id, 'profile_picture', true);
+        if (!empty($profile_image)) {
+            return '<img src="' . esc_url($profile_image) . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
+        }
+    }
+
+    // Default avatar if no custom image is uploaded
+    return '<img src="' . esc_url(get_template_directory_uri() . '/images/default-avatar.png') . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
+}
+
+// Add profile picture to WooCommerce account menu
+add_filter('woocommerce_account_menu_items', 'add_profile_picture_to_menu', 10, 1);
+function add_profile_picture_to_menu($items) {
+    $user_id = get_current_user_id();
+    $profile_image = get_user_meta($user_id, 'profile_picture', true);
+
+    if ($profile_image) {
+        $items = ['profile_picture' => '<img src="' . esc_url($profile_image) . '" width="30" height="30" style="border-radius:15px;">'] + $items;
+    }
+
+    return $items;
+}
+
