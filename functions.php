@@ -87,14 +87,6 @@ function my_woocommerce_rest_check_permissions( $permission, $context, $object_i
   return true;
 }
 
-
-function add_condition_query_var($vars) {
-    $vars[] = 'condition';
-    return $vars;
-}
-add_filter('query_vars', 'add_condition_query_var');
-
-
 function filter_woocommerce_shop_query($query) {
     if (!is_admin() && $query->is_main_query() && (is_shop() || is_product_category() || is_product_tag())) {
         
