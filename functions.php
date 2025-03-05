@@ -98,23 +98,21 @@ function add_custom_query_vars($vars) {
 add_filter('query_vars', 'add_custom_query_vars');
 
 
-add_action('template_redirect', function() {
-    global $wp_query;
-    if (isset($wp_query->query_vars['condition'])) {
-        echo 'Condition Query Var: ' . esc_html($wp_query->query_vars['condition']);
-        exit;
+add_action('pre_get_posts', function($query) {
+    if ($query->is_main_query() && is_shop() && get_query_var('condition', '')) {
+        $query->set('posts_per_page', -1);
+        $query->set('post_status', 'publish');
+        $query->is_404 = false; // Force prevent 404
     }
-});
-
+}, 20);
 
 
 function filter_woocommerce_shop_query($query) {
     if (!is_admin() && $query->is_main_query() && (is_shop() || is_product_category() || is_product_tag())) {
-        
+
         $meta_query = $query->get('meta_query') ? $query->get('meta_query') : [];
         $tax_query  = $query->get('tax_query') ? $query->get('tax_query') : [];
 
-        // Use get_query_var instead of $_GET
         $condition = get_query_var('condition', '');
         if (!empty($condition)) {
             $meta_query[] = [
@@ -124,40 +122,15 @@ function filter_woocommerce_shop_query($query) {
             ];
         }
 
-        // Filtering by Brand
-        if (!empty($_GET['brand'])) {
-            $tax_query[] = [
-                'taxonomy' => 'product_brand',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['brand']),
-            ];
-        }
-
-        // Filtering by Color
-        if (!empty($_GET['color'])) {
-            $tax_query[] = [
-                'taxonomy' => 'pa_watches_colors',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['color']),
-            ];
-        }
-
-        // Filtering by Size
-        if (!empty($_GET['size'])) {
-            $tax_query[] = [
-                'taxonomy' => 'pa_watches_size',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['size']),
-            ];
-        }
-
-        // Set Queries
         if (!empty($meta_query)) {
             $query->set('meta_query', $meta_query);
         }
         if (!empty($tax_query)) {
             $query->set('tax_query', $tax_query);
         }
+
+        // Debug
+        error_log(print_r($query->query_vars, true));
     }
 }
-add_action('pre_get_posts', 'filter_woocommerce_shop_query');
+add_action('pre_get_posts', 'filter_woocommerce_shop_query', 20);
