@@ -38,10 +38,10 @@
         <div class="flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Condition</h6>
             <div class="flex gap-[5px] min-w-[120px]">
-            <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">New</button>
-                <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">Used</button>
-          
-            </div>
+            <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="new">New</button>
+            <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="used">Used</button>
+        </div>
+
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
@@ -71,10 +71,50 @@
 </section>
 
 <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    // Handle Brand Filter Change
     document.getElementById('brand-filter').addEventListener('change', function() {
-        window.location.href = '?brand=' + this.value;
+        let url = new URL(window.location.href);
+        url.searchParams.set("brand", this.value);
+        window.location.href = url.toString();
     });
+
+    // Handle Condition Filter Buttons
+    document.querySelectorAll(".condition-button").forEach(button => {
+        button.addEventListener("click", function () {
+            let condition = this.getAttribute("data-condition");
+            let url = new URL(window.location.href);
+            url.searchParams.set("condition", condition);
+            window.location.href = url.toString();
+        });
+    });
+
+    // Handle Color Filter Click
+    document.querySelectorAll(".filter-button").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            let color = this.getAttribute("href").split("=")[1];
+            let url = new URL(window.location.href);
+            url.searchParams.set("color", color);
+            window.location.href = url.toString();
+        });
+    });
+
+    // Handle Size Filter Click
+    document.querySelectorAll(".condition-button_for_price").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            let size = this.getAttribute("href").split("=")[1];
+            let url = new URL(window.location.href);
+            url.searchParams.set("size", size);
+            window.location.href = url.toString();
+        });
+    });
+});
+
 </script>
+
+
 
 
 <?php
