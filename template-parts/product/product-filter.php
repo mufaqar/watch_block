@@ -81,6 +81,7 @@
     document.getElementById('brand-filter').addEventListener('change', function() {
         let url = new URL(window.location.href);
         url.searchParams.set("brand", this.value);
+        url.hash = "filter";
         window.location.href = url.toString();
     });
 
@@ -90,6 +91,7 @@
             let condition = this.getAttribute("data-condition");
             let url = new URL(window.location.href);
             url.searchParams.set("condition", condition);
+            url.hash = "filter";
             window.location.href = url.toString();
         });
     });
@@ -101,6 +103,7 @@
             let color = this.getAttribute("href").split("=")[1];
             let url = new URL(window.location.href);
             url.searchParams.set("color", color);
+            url.hash = "filter";
             window.location.href = url.toString();
         });
     });
