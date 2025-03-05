@@ -91,56 +91,65 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 
 
 
-function add_custom_query_vars($vars) {
-    $vars[] = 'condition';
-    return $vars;
-}
-add_filter('query_vars', 'add_custom_query_vars');
+function custom_pre_get_posts_query($query) {
+    if ( is_post_type_archive('product')) {
+        $tax_query = array('relation' => 'AND');
 
-add_action('pre_get_posts', function($query) {
-    if (!is_admin() && $query->is_main_query() && is_shop()) {
-        $condition = get_query_var('condition', '');
-
-        if (!empty($condition)) {
-            $query->set('posts_per_page', -1);
-            $query->set('post_status', 'publish');
-            $query->is_404 = false; // Prevent 404
-        }
-    }
-}, 20);
-
-
-function add_custom_rewrite_rules() {
-    add_rewrite_rule('^shop/condition/([^/]*)/?', 'index.php?post_type=product&condition=$matches[1]', 'top');
-}
-add_action('init', 'add_custom_rewrite_rules');
-
-
-
-function filter_woocommerce_shop_query($query) {
-    if (!is_admin() && $query->is_main_query() && (is_shop() || is_product_category() || is_product_tag())) {
-
-        $meta_query = $query->get('meta_query') ? $query->get('meta_query') : [];
-        $tax_query  = $query->get('tax_query') ? $query->get('tax_query') : [];
-
-        $condition = get_query_var('condition', '');
-        if (!empty($condition)) {
-            $meta_query[] = [
-                'key'     => 'watch_type',
-                'value'   => sanitize_text_field($condition),
-                'compare' => '='
-            ];
+        // Brand Filter
+        if (isset($_GET['brand']) && !empty($_GET['brand'])) {
+            $tax_query[] = array(
+                'taxonomy' => 'product_brand',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($_GET['brand']),
+            );
         }
 
-        if (!empty($meta_query)) {
-            $query->set('meta_query', $meta_query);
+        // Color Filter
+        if (isset($_GET['color']) && !empty($_GET['color'])) {
+            $tax_query[] = array(
+                'taxonomy' => 'pa_watches_colors',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($_GET['color']),
+            );
         }
-        if (!empty($tax_query)) {
+
+        // Condition Filter
+        if (isset($_GET['condition']) && !empty($_GET['condition'])) {
+            $tax_query[] = array(
+                'taxonomy' => 'product_condition',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($_GET['condition']),
+            );
+        }
+
+        // Size Filter
+        if (isset($_GET['size']) && !empty($_GET['size'])) {
+            $tax_query[] = array(
+                'taxonomy' => 'pa_watches_size',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field($_GET['size']),
+            );
+        }
+
+        // Price Filter
+        if (isset($_GET['orderby'])) {
+            switch ($_GET['orderby']) {
+                case 'price-desc':
+                    $query->set('orderby', 'meta_value_num');
+                    $query->set('meta_key', '_price');
+                    $query->set('order', 'DESC');
+                    break;
+                case 'price-asc':
+                    $query->set('orderby', 'meta_value_num');
+                    $query->set('meta_key', '_price');
+                    $query->set('order', 'ASC');
+                    break;
+            }
+        }
+
+        if (count($tax_query) > 1) {
             $query->set('tax_query', $tax_query);
         }
-
-        // Debug
-        error_log(print_r($query->query_vars, true));
     }
 }
-add_action('pre_get_posts', 'filter_woocommerce_shop_query', 20);
+add_action('pre_get_posts', 'custom_pre_get_posts_query');
