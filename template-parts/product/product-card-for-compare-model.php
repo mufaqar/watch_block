@@ -5,7 +5,7 @@ if (!$product) {
 }
 ?>
 
-<article class="!text-left">
+<article class="!text-left flex flex-col justify-center">
     <button type="button" class="compare-product" data-product-id="<?php echo get_the_ID() ?>">
         <figure class="bg-white h-[367px] flex justify-center !relative py-4">
             <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>" alt="<?php the_title(); ?>"
