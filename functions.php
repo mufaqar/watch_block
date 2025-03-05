@@ -114,13 +114,13 @@ function custom_pre_get_posts_query($query) {
         }
 
         // Condition Filter
-        if (isset($_GET['condition']) && !empty($_GET['condition'])) {
-            $tax_query[] = array(
-                'taxonomy' => 'product_condition',
-                'field'    => 'slug',
-                'terms'    => sanitize_text_field($_GET['condition']),
-            );
-        }
+        // if (isset($_GET['condition']) && !empty($_GET['condition'])) {
+        //     $tax_query[] = array(
+        //         'taxonomy' => 'product_condition',
+        //         'field'    => 'slug',
+        //         'terms'    => sanitize_text_field($_GET['condition']),
+        //     );
+        // }
 
         // Size Filter
         if (isset($_GET['size']) && !empty($_GET['size'])) {
