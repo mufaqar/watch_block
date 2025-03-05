@@ -24,11 +24,11 @@
     <div class="flex gap-3 flex-wrap min-w-[140px]">
         <?php 
         $colors = get_terms(['taxonomy' => 'pa_watches_colors', 'hide_empty' => false]);
-        foreach ($colors as $color) {
-            // Get the color name or meta value (if stored in the term meta)
-            $color_name = esc_attr($color->slug); // Assuming slug is the color name
-            echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
-        }
+            foreach ($colors as $color) {
+                // Get the color name or meta value (if stored in the term meta)
+                $color_name = esc_attr($color->slug); // Assuming slug is the color name
+                echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
+            }
         ?>
     </div>
 </div>
@@ -38,10 +38,26 @@
         <div class="flex flex-col justify-between">
             <h6 class="font-semibold mb-[9px]">Condition</h6>
             <div class="flex gap-[5px] min-w-[120px]">
+<<<<<<< HEAD
             <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="new">New</button>
             <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="used">Used</button>
         </div>
 
+=======
+<<<<<<< HEAD
+                <?php 
+                    $conditions = get_terms(['taxonomy' => 'watch_type', 'hide_empty' => false]);
+                    foreach ($conditions as $condition) {
+                        echo '<a href="?condition=' . esc_attr($condition->slug) . '" class="condition-button filter_button">' . esc_html($condition->name) . '</a>';
+                    }
+                ?>
+=======
+            <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">New</button>
+                <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full">Used</button>
+          
+>>>>>>> 218f97de580fbdbdfee795242d14ed144e3493c5
+            </div>
+>>>>>>> be3584f6b2720d1c67847dfb6d319319480e10eb
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
@@ -60,10 +76,10 @@
             <h6 class="font-semibold mb-[9px]">Sizes Available</h6>
             <div class="flex gap-[5px] flex-wrap">
                 <?php 
-                $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
-                foreach ($sizes as $size) {
-                    echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
-                }
+                    $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
+                    foreach ($sizes as $size) {
+                        echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
+                    }
                 ?>
             </div>
         </div>
