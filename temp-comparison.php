@@ -38,7 +38,7 @@ function render_product_section($product) {
 
     ?>
 
-<div class="border-black first:md:border-r md:px-5">
+<div class="border-gray-300 first:md:border-r-[2px] md:px-5">
     <section class="flex flex-col gap-10 pt-[100px] mb-12">
         <div>
             <div id="page">
@@ -186,14 +186,19 @@ function render_product_section($product) {
             </ul>
         </div>
     </section>
-
 </div>
 
 <?php } ?>
 
-<section class="max-w-[1280px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 mb-28">
+
+
+<section class="max-w-[1280px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 mb-10">
     <?php render_product_section($product1); ?>
     <?php render_product_section($product2); ?>
 </section>
+
+<div class="bg-[#F2F2F2] py-3 sticky bottom-0 left-0 right-0 flex justify-center items-center mb-28">
+    <a href="/shop" class="single_add_to_cart_button !rounded-none">Back to product page</a>
+</div>
 
 <?php get_footer();
