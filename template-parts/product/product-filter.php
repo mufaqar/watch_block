@@ -1,4 +1,4 @@
-<section class="bg-white">
+<section class="bg-white" id="filter">
     <div class="max-w-[1320px] mx-auto px-5 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
         
         <!-- Brands -->
@@ -51,8 +51,8 @@
         <div class="flex flex-col ">
             <h6 class="font-semibold mb-[9px]">Price</h6>
             <div class="flex gap-[5px] min-w-[201px]">
-                <a href="<?php echo home_url('shop/?orderby=price'); ?>" class="condition-button_for_price filter_button text-nowrap">High to Low</a>
-                <a href="shop/?orderby=price-desc" class="condition-button_for_price filter_button text-nowrap">Low to High</a>
+                <a href="<?php echo home_url('shop/?orderby=price#filter'); ?>" class="condition-button_for_price filter_button text-nowrap">High to Low</a>
+                <a href="<?php echo home_url('shop/?orderby=price-desc#filter'); ?>" class="condition-button_for_price filter_button text-nowrap">Low to High</a>
             </div>
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
@@ -64,7 +64,7 @@
                 <?php 
                     $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
                     foreach ($sizes as $size) {
-                        echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
+                        echo '<a href="?size=' . esc_attr($size->slug) . '#filter" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
                     }
                 ?>
                
