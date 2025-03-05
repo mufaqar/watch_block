@@ -51,8 +51,8 @@
         <div class="flex flex-col ">
             <h6 class="font-semibold mb-[9px]">Price</h6>
             <div class="flex gap-[5px] min-w-[201px]">
-                <a href="?orderby=price-desc" class="condition-button_for_price filter_button text-nowrap">High to Low</a>
-                <a href="?orderby=price-asc" class="condition-button_for_price filter_button text-nowrap">Low to High</a>
+                <a href="<?php echo home_url('shop/?orderby=price'); ?>" class="condition-button_for_price filter_button text-nowrap">High to Low</a>
+                <a href="shop/?orderby=price-desc" class="condition-button_for_price filter_button text-nowrap">Low to High</a>
             </div>
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
@@ -105,16 +105,7 @@
         });
     });
 
-    // Handle Size Filter Click
-    document.querySelectorAll(".condition-button_for_price").forEach(button => {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            let size = this.getAttribute("href").split("=")[1];
-            let url = new URL(window.location.href);
-            url.searchParams.set("size", size);
-            window.location.href = url.toString();
-        });
-    });
+   
 });
 
 </script>

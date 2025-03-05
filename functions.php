@@ -132,20 +132,20 @@ function custom_pre_get_posts_query($query) {
         }
 
         // Price Filter
-        if (isset($_GET['orderby'])) {
-            switch ($_GET['orderby']) {
-                case 'price-desc':
-                    $query->set('orderby', 'meta_value_num');
-                    $query->set('meta_key', '_price');
-                    $query->set('order', 'DESC');
-                    break;
-                case 'price-asc':
-                    $query->set('orderby', 'meta_value_num');
-                    $query->set('meta_key', '_price');
-                    $query->set('order', 'ASC');
-                    break;
-            }
-        }
+        // if (isset($_GET['orderby'])) {
+        //     switch ($_GET['orderby']) {
+        //         case 'price-desc':
+        //             $query->set('orderby', 'meta_value_num');
+        //             $query->set('meta_key', '_price');
+        //             $query->set('order', 'DESC');
+        //             break;
+        //         case 'price-asc':
+        //             $query->set('orderby', 'meta_value_num');
+        //             $query->set('meta_key', '_price');
+        //             $query->set('order', 'ASC');
+        //             break;
+        //     }
+        // }
 
         if (count($tax_query) > 1) {
             $query->set('tax_query', $tax_query);
