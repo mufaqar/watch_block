@@ -6,7 +6,7 @@
                 <p class="md:text-[26px] mb-10 text-white font-light">
                 Every dealer in our network is carefully vetted through a strict certification process to meet WatchBlock’s elite standards. We collaborate with top industry professionals, so you can shop with absolute confidence and peace of mind.
                 </p>
-                <a class="bg-[#B6E22E] md:text-[24px] mfont text-[#111111] font-semibold py-[10px] px-[9px] rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
+                <a href="/contact-us" class="bg-[#B6E22E] md:text-[24px] mfont text-[#111111] font-semibold py-[10px] px-[9px] rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
                     FIND A DEALER NEAR YOU
                 </a>
             </div>
