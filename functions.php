@@ -90,6 +90,15 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 
 
 
+function redirect_guest_users_from_checkout() {
+    if (is_checkout() && !is_user_logged_in()) {
+        wp_redirect(wp_login_url(wc_get_checkout_url())); 
+        exit;
+    }
+}
+add_action('template_redirect', 'redirect_guest_users_from_checkout');
+
+
 
 function custom_pre_get_posts_query($query) {
     if ( ! is_admin() && ( is_shop() || is_product_category() || is_product_tag() ) ) {
