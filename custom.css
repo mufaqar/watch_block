@@ -803,6 +803,11 @@ ol.flex-control-nav li {
 
 #crypto-pay-button , .wc-block-components-checkout-place-order-button {
   background: #b6e22e !important;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 24px;
+  border-radius: 14px;
+  color: #000;
 }
 
 

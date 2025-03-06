@@ -1,6 +1,6 @@
 <?php
 /**
-* Template Name: Comming Soon
+* Template Name: Coming Soon
 *
 * @package WordPress
 * @subpackage Twenty_Fourteen
@@ -12,7 +12,7 @@ get_header(); ?>
 
 <section class="mt-60 mb-40">
     <div class="w-full  max-w-[1280px] px-5 mx-auto">
-        <h1 class="text-4xl text-center font-bold">Comming Soon</h1>
+        <h1 class="text-4xl text-center font-bold">Coming Soon</h1>
         <p class="text-xl text-center  mt-8 leading">We’re almost ready to redefine your experience with luxury timepieces!
             WatchBlock is bringing you a secure, seamless, and stylish way to buy and sell watches. Stay connected
             something extraordinary is on its way!</p>
