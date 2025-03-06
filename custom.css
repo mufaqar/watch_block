@@ -360,6 +360,10 @@ input {
   padding: 0 1rem;
 }
 
+.woocommerce ul.products li.product a img{
+  margin: 0 !important;
+}
+
 .woocommerce table.shop_table td {
   /* padding: 8px 12px !important; */
   text-align: center;

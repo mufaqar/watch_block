@@ -26,7 +26,7 @@ get_header(); ?>
 
 
 <main class="max-w-[1280px] mx-auto px-5 z-[1]">
-    <img src="<?php echo get_template_directory_uri(); ?>/images//timepiece.png" alt="" class="h-[300px] w-full object-cover mt-24 rounded-[16px]"/>
+    <img src="<?php echo get_template_directory_uri(); ?>/images/timepiece.png" alt="" class="h-[300px] w-full object-cover mt-24 rounded-[16px]"/>
 </main>
 <div class="!bg-white shadow-lg z-[50] mb-10 -mt-10 relative rounded-[12px] max-w-[709px] w-full mx-auto px-[25px]">
     <div class="py-[22px] flex gap-5">
