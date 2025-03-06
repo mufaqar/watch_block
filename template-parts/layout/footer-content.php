@@ -11,7 +11,7 @@
 
 <footer class="bg-[#1C1C1C]">
 	<div class="max-w-[612px] px-5 md:px-0 mx-auto text-center flex flex-col pt-12 items-center">
-		<a href="#">
+		<a href="<?php bloginfo('url'); ?>">
 			<img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="watch-blocks" class="min-w-[120px]"/>
 		</a>
 		<p class="text-white mt-[10px] mb-14">YOUR PERFECT WATCH IS STILL HERE – GRAB YOURS BEFORE IT'S GONE!</p>
@@ -31,7 +31,7 @@
 	<div class="text-white flex items-center px-5 text-center justify-center flex-wrap pb-3 gap-4">
 			<p>@2024 VOOKUM. All rights reserved</p>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
-			<a href="<?php echo home_url('/terms-and-condition') ?>">Terms & Conditions</a>
+			<a href="<?php echo home_url('/terms-and-conditions') ?>">Terms & Conditions</a>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
 			<a href="<?php echo home_url('/privacy-policy') ?>">Privacy Policy</a>
 		</div>
