@@ -42,12 +42,12 @@ get_header();
         <section class="bg-[#F2F2F2] py-14 pb-28">
             <div class="max-w-[1280px] px-5 mx-auto">
                 <?php
-printf(
-    '<h3 class="uppercase font-semibold text-[#2B2B2B] text-center text-3xl sm:text-5xl md:text-[64px]">%1$s <span>%2$s</span></h3>',
-    esc_html__( 'Result Not Found:', 'watch_block' ),
-    get_search_query()
-);
-?>
+					printf(
+						'<h3 class="uppercase font-semibold text-[#2B2B2B] text-center text-3xl sm:text-5xl md:text-[64px]">%1$s <span>%2$s</span></h3>',
+						esc_html__( 'No results found for:', 'watch_block' ),
+						get_search_query()
+					);
+					?>
 
             </div>
         </section>
