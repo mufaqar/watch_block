@@ -801,6 +801,10 @@ ol.flex-control-nav li {
 
 .comactive figure { border: 2px solid #B6E22E !important;}
 
+#crypto-pay-button , .wc-block-components-checkout-place-order-button {
+  background: #b6e22e !important;
+}
+
 
 @media (max-width: 768px) {
   .woocommerce ul.products li.product .woocommerce-loop-product__title,
