@@ -96,7 +96,7 @@ $query = new WP_Query($args);
 
             </div>
             <div class="flex justify-center mt-16">
-                <a href="#" class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-6 py-3 rounded-[14px]">see
+                <a href="<?php echo home_url('/about#reviews'); ?>" class="bg-[#B6E22E] text-black uppercase text-2xl font-light px-6 py-3 rounded-[14px]">see
                     all</a>
             </div>
         </div>
