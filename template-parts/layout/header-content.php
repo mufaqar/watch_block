@@ -35,7 +35,7 @@
                         <label for="search-field" class="sr-only">Search Watches</label>
                         <input id="search-field" placeholder="Search Watches"
                             value="<?php echo esc_attr(get_search_query()); ?>" type="search" name="s"
-                            class="bg-transparent py-3 outline-none !border-none w-full focus:border-none text-[#A1A1A1]" />
+                            class="bg-transparent py-3 outline-none !border-none w-full focus:border-none focus:bg-none text-[#A1A1A1]" />
                         <input type="hidden" name="post_type" value="product" />
                         <button type="submit" class="focus:outline-none">
                             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/svg/search-icon.svg"
