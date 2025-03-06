@@ -39,5 +39,7 @@
     <?php echo do_shortcode('[top_rated_products limit="3" columns="3"]'); ?>
     </div>
   </div>
+</a>
 </div>
 </section>
+
