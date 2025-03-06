@@ -73,7 +73,6 @@ $query = new WP_Query($args);
                                 alt="Verified" />
                         </h5>
                     </div>
-
                     <?php 
                     $rating = get_comment_meta(get_comment_ID(), 'rating', true);
                     if (!empty($rating)) : ?>
@@ -81,8 +80,7 @@ $query = new WP_Query($args);
                         <?php echo str_repeat('★', intval($rating)); // Display rating stars ?>
                     </div>
                     <?php endif; ?>
-
-                    <p class="mt-3 text-[#676767]">"<?php the_content() ?></p>
+                    <p class="mt-3 text-[#676767]"><?php the_content() ?></p>
                     <p class="mt-6 text-[#676767] text-sm">Posted on <?php echo get_the_date('F j, Y'); ?></p>
                 </section>
 
