@@ -58,7 +58,7 @@ nav ul {
   padding-top: 4rem;
 }
 
-li.current_page_item a {
+li.current_page_item a , li.current-menu-item a{
   color: #b6e22e !important;
 }
 
@@ -203,6 +203,8 @@ button.active_dashbord_page {
 .mini-cart-wrapper {
   position: relative;
 }
+
+.woocommerce ul.products li.product a img {height: 381px; max-height: 381px;}
 
 /* Mini-cart styles */
 .mini-cart {
@@ -804,6 +806,15 @@ ol.flex-control-nav li {
 
 
 .comactive figure { border: 2px solid #B6E22E !important;}
+
+#crypto-pay-button , .wc-block-components-checkout-place-order-button , .wc-block-cart__submit-button {
+  background: #b6e22e !important;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px !important;
+  border-radius: 14px;
+  color: #000 !important;
+}
 
 
 @media (max-width: 768px) {
