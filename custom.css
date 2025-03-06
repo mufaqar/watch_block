@@ -801,7 +801,7 @@ ol.flex-control-nav li {
 
 .comactive figure { border: 2px solid #B6E22E !important;}
 
-#crypto-pay-button , .wc-block-components-checkout-place-order-button {
+#crypto-pay-button , .wc-block-components-checkout-place-order-button , .wc-block-cart__submit-button {
   background: #b6e22e !important;
   text-transform: uppercase;
   font-weight: 600;
