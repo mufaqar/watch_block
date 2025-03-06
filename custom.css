@@ -204,6 +204,8 @@ button.active_dashbord_page {
   position: relative;
 }
 
+.woocommerce ul.products li.product a img {height: 381px; max-height: 381px;}
+
 /* Mini-cart styles */
 .mini-cart {
   position: fixed;
