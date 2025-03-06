@@ -68,7 +68,7 @@ $query = new WP_Query($args);
                         <img src="<?php echo get_template_directory_uri(); ?>/images/svg/rating-star.svg"
                             alt="Rating Star" />
                         <h5 class="flex text-xl items-center gap-1">
-                            <?php echo esc_html(get_comment_author()); ?>
+                            <?php echo the_title(); ?>
                             <img src="<?php echo get_template_directory_uri(); ?>/images/svg/green-checks.svg"
                                 alt="Verified" />
                         </h5>
@@ -83,7 +83,7 @@ $query = new WP_Query($args);
                     <?php endif; ?>
 
                     <p class="mt-3 text-[#676767]">"<?php the_content() ?></p>
-                    <p class="mt-6 text-[#676767] text-sm">Posted on <?php echo get_comment_date('F j, Y'); ?></p>
+                    <p class="mt-6 text-[#676767] text-sm">Posted on <?php echo get_the_date('F j, Y'); ?></p>
                 </section>
 
 
