@@ -265,18 +265,41 @@ add_filter( 'woocommerce_account_menu_items', 'custom_rename_dashboard_tab', 10,
 // Badge System
 
 
-
 function assign_user_badge($user_id) {
     $order_count = wc_get_customer_order_count($user_id);
-    
-    if ($order_count >= 10) {
+
+    // Get the count of approved product reviews by the user
+    $review_count = get_review_count_by_user($user_id);
+
+    // Calculate total score (orders + reviews)
+    $total_count = $order_count + $review_count;
+
+    if ($total_count >= 50) {
+        update_user_meta($user_id, 'user_badge', 'Diamond');
+    } elseif ($total_count >= 30) {
+        update_user_meta($user_id, 'user_badge', 'Platinum');
+    } elseif ($total_count >= 10) {
         update_user_meta($user_id, 'user_badge', 'Gold');
-    } elseif ($order_count >= 5) {
+    } elseif ($total_count >= 5) {
         update_user_meta($user_id, 'user_badge', 'Silver');
-    } elseif ($order_count > 1) { // Ensures users with 0 orders don't get a badge
+    } elseif ($total_count >= 1) {
         update_user_meta($user_id, 'user_badge', 'Bronze');
+    } else {
+        delete_user_meta($user_id, 'user_badge'); // Remove badge if no activity
     }
 }
+
+function get_review_count_by_user($user_id) {
+    $args = array(
+        'user_id' => $user_id,
+        'count'   => true,
+        'type'    => 'review',
+        'status'  => 'approve'
+    );
+
+    return get_comments($args);
+}
+
 
 // Update badge on order completion
 add_action('woocommerce_order_status_completed', function ($order_id) {
