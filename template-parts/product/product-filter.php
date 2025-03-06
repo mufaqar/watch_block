@@ -1,4 +1,4 @@
-<section class="bg-white">
+<section class="bg-white" id="filter">
     <div class="max-w-[1320px] mx-auto px-5 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
         
         <!-- Brands -->
@@ -27,7 +27,7 @@
             foreach ($colors as $color) {
                 // Get the color name or meta value (if stored in the term meta)
                 $color_name = esc_attr($color->slug); // Assuming slug is the color name
-                echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
+                echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] border w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
             }
         ?>
     </div>
@@ -38,7 +38,6 @@
         <div class="flex flex-col ">
             <h6 class="font-semibold mb-[9px]">Condition</h6>
             <div class="flex gap-[5px] min-w-[120px]">
-
             <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="new">New</button>
             <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="used">Used</button>
         </div>
@@ -51,8 +50,8 @@
         <div class="flex flex-col ">
             <h6 class="font-semibold mb-[9px]">Price</h6>
             <div class="flex gap-[5px] min-w-[201px]">
-                <a href="<?php echo home_url('shop/?orderby=price'); ?>" class="condition-button_for_price filter_button text-nowrap">High to Low</a>
-                <a href="shop/?orderby=price-desc" class="condition-button_for_price filter_button text-nowrap">Low to High</a>
+                <a href="<?php echo home_url('shop/?orderby=price#filter'); ?>" class="condition-button_for_price filter_button text-nowrap">High to Low</a>
+                <a href="<?php echo home_url('shop/?orderby=price-desc#filter'); ?>" class="condition-button_for_price filter_button text-nowrap">Low to High</a>
             </div>
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
@@ -64,13 +63,11 @@
                 <?php 
                     $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
                     foreach ($sizes as $size) {
-                        echo '<a href="?size=' . esc_attr($size->slug) . '" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
+                        echo '<a href="?size=' . esc_attr($size->slug) . '#filter" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
                     }
                 ?>
-               
             </div>
         </div>
-        
     </div>
     
 </section>
@@ -81,6 +78,7 @@
     document.getElementById('brand-filter').addEventListener('change', function() {
         let url = new URL(window.location.href);
         url.searchParams.set("brand", this.value);
+        url.hash = "filter";
         window.location.href = url.toString();
     });
 
@@ -90,6 +88,7 @@
             let condition = this.getAttribute("data-condition");
             let url = new URL(window.location.href);
             url.searchParams.set("condition", condition);
+            url.hash = "filter";
             window.location.href = url.toString();
         });
     });
@@ -101,6 +100,7 @@
             let color = this.getAttribute("href").split("=")[1];
             let url = new URL(window.location.href);
             url.searchParams.set("color", color);
+            url.hash = "filter";
             window.location.href = url.toString();
         });
     });
