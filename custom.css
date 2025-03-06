@@ -58,7 +58,7 @@ nav ul {
   padding-top: 4rem;
 }
 
-li.current_page_item a {
+li.current_page_item a , li.current-menu-item a{
   color: #b6e22e !important;
 }
 
