@@ -19,19 +19,20 @@
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Color -->
-        <div class="flex flex-col ">
-    <h6 class="font-semibold mb-[9px]">Color Available</h6>
-    <div class="flex gap-3 flex-wrap min-w-[140px]">
-        <?php 
-        $colors = get_terms(['taxonomy' => 'pa_watches_colors', 'hide_empty' => false]);
-            foreach ($colors as $color) {
-                // Get the color name or meta value (if stored in the term meta)
-                $color_name = esc_attr($color->slug); // Assuming slug is the color name
-                echo '<a href="?color=' . $color_name . '" class="filter-button h-[25px] border w-[25px] rounded-full" style="background-color: ' . $color_name . ';"></a>';
-            }
-        ?>
-    </div>
-</div>
+        <div class="flex flex-col w-full sm:w-auto">
+            <h6 class="font-semibold mb-[9px]">Color Available</h6>
+            <div class="form-select">
+                <select id="color-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
+                    <option value="" disabled selected>Select Color</option>
+                    <?php 
+                     $colors = get_terms(['taxonomy' => 'pa_watches_colors', 'hide_empty' => false]);
+                     foreach ($colors as $color) {
+                         echo '<option value="' . esc_attr($color->slug) . '">' . esc_html($color->name) . '</option>';
+                     }
+                    ?>
+                </select>
+            </div>
+        </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Condition -->
@@ -57,15 +58,18 @@
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Sizes -->
-        <div class="flex flex-col ">
-            <h6 class="font-semibold mb-[9px] flex justify-between gap-5">Sizes Available  <a href="<?php echo get_permalink(wc_get_page_id('shop')); ?>" class="clear-filters-button">Clear</a></h6>
-            <div class="flex gap-[5px] flex-wrap">
-                <?php 
-                    $sizes = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
-                    foreach ($sizes as $size) {
-                        echo '<a href="?size=' . esc_attr($size->slug) . '#filter" class="condition-button_for_price filter_button">' . esc_html($size->name) . '</a>';
-                    }
-                ?>
+        <div class="flex flex-col w-full sm:w-auto">
+            <h6 class="font-semibold mb-[9px]">Size Available</h6>
+            <div class="form-select">
+                <select id="size-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
+                    <option value="" disabled selected>Select Size</option>
+                    <?php 
+                     $colors = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
+                     foreach ($colors as $color) {
+                         echo '<option value="' . esc_attr($color->slug) . '">' . esc_html($color->name) . '</option>';
+                     }
+                    ?>
+                </select>
             </div>
         </div>
     </div>
@@ -73,39 +77,44 @@
 </section>
 
 <script>
-   document.addEventListener("DOMContentLoaded", function () {
-    // Handle Brand Filter Change
-    document.getElementById('brand-filter').addEventListener('change', function() {
+  document.addEventListener("DOMContentLoaded", function () {
+    function updateURLParam(key, value) {
         let url = new URL(window.location.href);
-        url.searchParams.set("brand", this.value);
+        url.searchParams.set(key, value);
         url.hash = "filter";
         window.location.href = url.toString();
+    }
+
+    // Handle Brand Filter Change
+    document.getElementById("brand-filter").addEventListener("change", function () {
+        updateURLParam("brand", this.value);
+    });
+
+    // Handle Color Filter Change
+    document.getElementById("color-filter").addEventListener("change", function () {
+        updateURLParam("color", this.value);
+    });
+
+    // Handle Size Filter Change
+    document.getElementById("size-filter").addEventListener("change", function () {
+        updateURLParam("size", this.value);
     });
 
     // Handle Condition Filter Buttons
     document.querySelectorAll(".condition-button").forEach(button => {
         button.addEventListener("click", function () {
-            let condition = this.getAttribute("data-condition");
-            let url = new URL(window.location.href);
-            url.searchParams.set("condition", condition);
-            url.hash = "filter";
-            window.location.href = url.toString();
+            updateURLParam("condition", this.getAttribute("data-condition"));
         });
     });
 
-    // Handle Color Filter Click
-    document.querySelectorAll(".filter-button").forEach(button => {
+    // Handle Price Sorting
+    document.querySelectorAll(".condition-button_for_price").forEach(button => {
         button.addEventListener("click", function (event) {
             event.preventDefault();
-            let color = this.getAttribute("href").split("=")[1];
-            let url = new URL(window.location.href);
-            url.searchParams.set("color", color);
-            url.hash = "filter";
-            window.location.href = url.toString();
+            let paramValue = new URL(this.href).searchParams.get("orderby");
+            updateURLParam("orderby", paramValue);
         });
     });
-
-   
 });
 
 </script>
