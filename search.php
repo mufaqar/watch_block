@@ -11,11 +11,11 @@ get_header();
 ?>
 
 <section id="primary">
-    <main id="main">
+    <main id="main" class="min-h-[50vh] bg-[#F2F2F2] py-14 pb-28 ">
 
         <?php if ( have_posts() ) : ?>
 
-        <section class="bg-[#F2F2F2] py-14 pb-28">
+        <section class="bg-[#F2F2F2] py-14 pb-28 ">
             <div class="max-w-[1280px] px-5 mx-auto">
                 <?php
                 printf(
