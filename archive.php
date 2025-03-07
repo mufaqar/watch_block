@@ -17,8 +17,8 @@ get_header();
 
 
     <!-- Hero Section -->
-    <div class="bg-black h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px]">
-        <h1 class="text-center text-white text-[14vw] md:text-[42px] font-[600] container mx-auto">
+    <div class="bg-white h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px]">
+        <h1 class="text-center text-black text-[14vw] md:text-[42px] font-[600] container mx-auto">
             <?php the_archive_title()?></h1>
     </div>
 
