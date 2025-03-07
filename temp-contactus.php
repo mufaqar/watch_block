@@ -100,19 +100,21 @@ jQuery(document).ready(function($) {
             processData: false, 
             dataType: "json",
             success: function(response) {
-                if (response.status === "success") {
-                    $(".success_message").show().text("Email submitted successfully!");
+                if (response.success) {
+                    $(".success_message").show().text(response.data.message);
                     $("#contactForm")[0].reset(); // Reset form fields
                 } else {
-                    $(".success_message").show().text("Error submitting the form.");
+                    $(".success_message").show().text(response.data.message);
                 }
             },
-            error: function() {
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText); // Debugging output
                 $(".success_message").show().text("An unexpected error occurred.");
             }
         });
     });
 });
+
 
 
 </script>

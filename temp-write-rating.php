@@ -156,39 +156,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script type="text/javascript">   
     
-    jQuery(document).ready(function($) {
-    $("#contactForm").submit(function(e) {
-        e.preventDefault();
 
-        var form_data = new FormData();
-        form_data.append('action', 'handle_ajax_contact_form');
-        form_data.append('first_name', $('#first_name').val());
-        form_data.append('job_title', $('#job_title').val());
-        form_data.append('email', $('#email').val());
-        form_data.append('phone', $('#phone').val());
-        form_data.append('country', $('#country').val());
-
+    jQuery(document).ready(function($) {	
+    $("#review_form").submit(function(e) {                     
+        e.preventDefault(); 
+    
+        var review_rating = $('#review_rating').val();	             
+        var review_author = $('#review_author').val();	       
+        var review_content = $('#review_content').val();	             
+        var product_id = $('#product_id').val();	 
+  
+        var form_data = new FormData();       
+        form_data.append('action', 'handle_ajax_product_review');
+        form_data.append('review_rating', review_rating);
+        form_data.append('review_author', review_author);
+        form_data.append('review_content', review_content);
+        form_data.append('product_id', product_id);
+        
         $.ajax({
             url: "<?php echo admin_url('admin-ajax.php'); ?>",
-            type: "POST",
+            type: 'POST',
             data: form_data,
-            contentType: false, 
-            processData: false, 
-            dataType: "json",
-            success: function(response) {
-                if (response.success) {
-                    $(".success_message").show().text(response.data.message);
-                    $("#contactForm")[0].reset(); // Reset form fields
-                } 
+            contentType: false, // Optional (only needed for file uploads)
+            processData: false, // Optional (only needed for file uploads)
+            beforeSend: function() {                    
+                $("#loader").show(); // Ensure #loader exists in your HTML
             },
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText); // Debugging output
-                $(".success_message").show().text("An unexpected error occurred.");
+            complete: function() {
+                $("#loader").hide(); // Ensure #loader exists in your HTML
+            },   
+            success: function(response) { 
+                if (response.success) {  // WordPress AJAX returns "success: true"
+                    $(".success_message").css("display", "flex").text(response.data.message);
+                } else {
+                    $(".success_message").css("display", "flex").text("Error submitting review.");
+                }      
+            },
+            error: function() {
+                $(".success_message").css("display", "flex").text("An unexpected error occurred.");
             }
         });
-    });
+    }); 
 });
-
 
 	</script>
 
