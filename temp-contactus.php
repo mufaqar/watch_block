@@ -84,22 +84,35 @@ jQuery(document).ready(function($) {
     $("#contactForm").submit(function(e) {
         e.preventDefault();
 
-        var formData = $(this).serialize(); // Serialize form fields
+        var form_data = new FormData();
+        form_data.append('action', 'handle_ajax_contact_form');
+        form_data.append('first_name', $('#first_name').val());
+        form_data.append('job_title', $('#job_title').val());
+        form_data.append('email', $('#email').val());
+        form_data.append('phone', $('#phone').val());
+        form_data.append('country', $('#country').val());
 
-        $.post("<?php echo admin_url('admin-ajax.php'); ?>", {
-            action: 'handle_ajax_contact_form',
-            formData: formData
-        }, function(response) {
-            if (response.success) {
-                $(".success_message").show().text(response.data.message);
-                $("#contactForm")[0].reset(); // Clear form
-            } else {
-                $(".success_message").show().text(response.data.message);
+        $.ajax({
+            url: "<?php echo admin_url('admin-ajax.php'); ?>",
+            type: "POST",
+            data: form_data,
+            contentType: false, 
+            processData: false, 
+            dataType: "json",
+            success: function(response) {
+                if (response.status === "success") {
+                    $(".success_message").show().text("Email submitted successfully!");
+                    $("#contactForm")[0].reset(); // Reset form fields
+                } else {
+                    $(".success_message").show().text("Error submitting the form.");
+                }
+            },
+            error: function() {
+                $(".success_message").show().text("An unexpected error occurred.");
             }
-        }).fail(function() {
-            $(".success_message").show().text("An unexpected error occurred.");
         });
     });
 });
+
 
 </script>
