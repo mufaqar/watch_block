@@ -56,6 +56,8 @@ get_header(); ?>
     <div class="success_message hidden bg-green-200 text-green-800 p-3 rounded mt-5">
         Review submitted successfully! Pending approval.
     </div>
+
+    <?php if (is_user_logged_in()): ?>
     <form id="review_form">
 
         <input type="hidden" name="product_id" id="product_id" value="<?php echo esc_attr($product_id); ?>">
@@ -75,8 +77,12 @@ get_header(); ?>
             <button
                 class="bg-[#B6E22E] text-[24px] mfont text-[#111111] uppercase font-medium py-[10px] px-6 rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">Submit</button>
         </div>
-
     </form>
+    <?php else: ?>
+    <p class="text-center text-red-500 font-bold text-lg">You must be logged in to leave a review. 
+        <a href="<?php echo esc_url(wp_login_url(get_permalink())); ?>" class="text-blue-500 underline">Login here</a>
+    </p>
+<?php endif; ?>
 </main>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6 max-w-[1280px] mx-auto px-5">
