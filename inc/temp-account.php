@@ -15,9 +15,11 @@ function get_all_watches() {
     <div class="box-content w-auto overflow-x-auto mt-6">
         <div class="w-[840px]">
             <?php
+            $current_user_id = get_current_user_id();
                 $query = new WP_Query([
                     'post_type'      => 'product',
                     'posts_per_page' => -1,
+                    'author'         => $current_user_id,
                 ]);
 
                 if ($query->have_posts()) : ?>
