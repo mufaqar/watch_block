@@ -56,7 +56,7 @@ global $product;
 if ($product) {
     $price = (float) $product->get_price();
     $discounted_price = $price * 0.05; // 5% of the price
-    echo '<p style="color: red; font-weight: bold;">NFT Price: ' . wc_price($discounted_price) . '</p>';
+    echo '<p style="color: #b6e22e ; font-weight: bold;">NFT Price: ' . wc_price($discounted_price) . '</p>';
 }
 ?>
 
