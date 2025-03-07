@@ -80,7 +80,8 @@ get_header(); ?>
     </form>
     <?php else: ?>
     <p class="text-center text-red-500 font-bold text-lg">You must be logged in to leave a review. 
-        <a href="<?php echo esc_url(wp_login_url(get_permalink())); ?>" class="text-blue-500 underline">Login here</a>
+    <a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>" class="text-blue-500 underline">Login here</a>
+
     </p>
 <?php endif; ?>
 </main>
