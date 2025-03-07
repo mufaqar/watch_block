@@ -62,7 +62,7 @@ get_header(); ?>
             <p class="text-xl font-light">Have a question or feedback? We're here to help! Contact us, and we'll respond
                 within one business day.</p>
             <div class="mt-6">
-                <a class="bg-[#B6E22E] py-[14px] px-[25px]">Send Feedback</a>
+                <a  href="mailto:sprinkautopilot@gmail.com" class="bg-[#B6E22E] py-[14px] px-[25px]">Send Feedback</a>
             </div>
         </div>
     </div>
