@@ -147,26 +147,27 @@ add_action('wp_ajax_nopriv_handle_add_request_watch', 'handle_add_request_watch'
 
 
 
-
 function handle_ajax_product_review() {
     if (!isset($_POST['product_id'], $_POST['review_author'], $_POST['review_content'], $_POST['review_rating'])) {
         wp_send_json_error(['message' => 'Invalid request.']);
     }
 
     $product_id = intval($_POST['product_id']);
-    $author = sanitize_text_field($_POST['review_author']);
+    $author_id = intval($_POST['review_author']);
+    $author_name = ($author_id > 0) ? get_the_author_meta('display_name', $author_id) : 'Guest';
     $content = sanitize_textarea_field($_POST['review_content']);
     $rating = intval($_POST['review_rating']);
 
     // Insert comment (review)
     $comment_id = wp_insert_comment([
-        'comment_post_ID' => $product_id,
-        'comment_author'  => $author,
-        'comment_content' => $content,
+        'comment_post_ID'  => $product_id,
+        'comment_author'   => $author_name, // Ensure it's a string
+        'user_id'          => $author_id,   // Store user ID correctly
+        'comment_content'  => $content,
         'comment_approved' => 0, // Set to 1 for auto-approval
     ]);
 
-    if ($comment_id) {
+    if ($comment_id && !is_wp_error($comment_id)) {
         // Save rating as comment meta
         update_comment_meta($comment_id, 'rating', $rating);
 
@@ -178,4 +179,3 @@ function handle_ajax_product_review() {
 
 add_action('wp_ajax_handle_ajax_product_review', 'handle_ajax_product_review');
 add_action('wp_ajax_nopriv_handle_ajax_product_review', 'handle_ajax_product_review');
-
