@@ -36,12 +36,17 @@ get_header(); ?>
 </div>
 
 <div class="flex justify-center max-w-[1280px] mx-auto px-5 mb-10">
-    <button class="py-[11px] px-[38px] font-medium hover:bg-[#B6E22E] rounded-full">All</button>
+    <a href="<?php echo home_url('/blog'); ?>" class="py-[11px] px-[38px] font-medium hover:bg-[#B6E22E] rounded-full">All</a>
+    
     <?php
-        $categories = get_categories(); // Get all categories
-        foreach ($categories as $category): ?>
-            <button data-category="<?php echo esc_attr($category->slug); ?>" class="py-[11px] px-[38px] font-medium hover:bg-[#B6E22E] rounded-full"><?php echo esc_html($category->name); ?></button>
-    <?php endforeach; ?>
+$categories = get_categories(); // Get all categories
+foreach ($categories as $category): ?>
+    <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>" 
+       class="py-[11px] px-[38px] font-medium hover:bg-[#B6E22E] rounded-full">
+       <?php echo esc_html($category->name); ?>
+    </a>
+<?php endforeach; ?>
+
 </div>
 
 

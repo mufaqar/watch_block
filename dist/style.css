@@ -712,8 +712,20 @@ video {
   z-index: 50;
 }
 
+.z-\[999\] {
+  z-index: 999;
+}
+
+.z-\[999px\] {
+  z-index: 999px;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
+}
+
+.m-6 {
+  margin: 1.5rem;
 }
 
 .mx-\[5px\] {
@@ -3209,6 +3221,14 @@ video {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-\[42\.42px\] {
+    font-size: 42.42px;
+  }
+
+  .md\:text-\[42px\] {
+    font-size: 42px;
   }
 
   .md\:leading-\[40px\] {
