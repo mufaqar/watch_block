@@ -182,12 +182,21 @@ add_action('wp_ajax_nopriv_handle_ajax_product_review', 'handle_ajax_product_rev
 
 
 function handle_ajax_contact_form() {
+    // Check if it's an AJAX request
+    if (!defined('DOING_AJAX') || !DOING_AJAX) {
+        wp_send_json_error(['message' => 'Invalid request']);
+    }
+
     // Retrieve data from the AJAX request
     $first_name = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
     $job_title = isset($_POST['job_title']) ? sanitize_text_field($_POST['job_title']) : '';
     $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
     $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
     $country = isset($_POST['country']) ? sanitize_text_field($_POST['country']) : '';
+
+    if (empty($first_name) || empty($email) || empty($phone) || empty($country)) {
+        wp_send_json_error(['message' => 'All fields are required']);
+    }
 
     // Prepare email message
     $to = "mufaqar@gmail.com";
@@ -208,4 +217,5 @@ function handle_ajax_contact_form() {
 
 add_action('wp_ajax_handle_ajax_contact_form', 'handle_ajax_contact_form');
 add_action('wp_ajax_nopriv_handle_ajax_contact_form', 'handle_ajax_contact_form');
+
 
