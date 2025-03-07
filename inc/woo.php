@@ -315,7 +315,7 @@ function display_user_badge() {
     $user_id = get_current_user_id();
     $badge = get_user_meta($user_id, 'user_badge', true);    
     if (!empty($badge)) {
-        echo '<p><strong>Your Badge: </strong> <span style="color: gold;">' . esc_html($badge) . '</span></p>';
+        echo '<p><strong>Your Badge: </strong> <span style="color: #B6E22E;">' . esc_html($badge) . '</span></p>';
     }
 }
 
