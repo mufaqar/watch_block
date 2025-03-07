@@ -11,7 +11,7 @@
 
  <!-- Hero Section -->
  <div class="bg-white h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px] border-b-[1px] border-[#E5E5E5]">
-        <h1 class="text-center text-black text-[14vw] md:text-[115.42px] font-[600] container mx-auto">
+        <h1 class="text-center text-black text-[14vw] md:text-[42px] font-[600] container mx-auto">
             <?php the_title()?></h1>
     </div>
 
