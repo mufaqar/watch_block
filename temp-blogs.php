@@ -28,12 +28,15 @@ get_header(); ?>
 <main class="max-w-[1280px] mx-auto px-5 z-[1]">
     <img src="<?php echo get_template_directory_uri(); ?>/images/timepiece.png" alt="" class="h-[300px] w-full object-cover mt-24 rounded-[16px]"/>
 </main>
+
 <div class="!bg-white shadow-lg z-[50] mb-10 -mt-10 relative rounded-[12px] max-w-[709px] w-full mx-auto px-[25px]">
-    <div class="py-[22px] flex gap-5">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/svg/search.svg" alt="" class=" w-[36px]"/>
-        <input type="text" placeholder="Search" class="text-lg focus:outline-none w-full border-none ring-0 focus:border-none">
-    </div>
+    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="py-[22px] flex gap-5">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/svg/search.svg" alt="Search Icon" class="w-[36px]"/>
+        <input type="text" name="s" placeholder="Search" class="text-lg focus:outline-none w-full border-none ring-0 focus:border-none" value="<?php echo get_search_query(); ?>">
+        <input type="hidden" name="post_type" value="post"> <!-- Only search in posts -->
+    </form>
 </div>
+
 
 <div class="flex justify-center max-w-[1280px] mx-auto px-5 mb-10">
     <a href="<?php echo home_url('/blog'); ?>" class="py-[11px] px-[38px] font-medium hover:bg-[#B6E22E] rounded-full">All</a>
