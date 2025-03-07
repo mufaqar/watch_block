@@ -16,7 +16,7 @@
 
             <div class="flex justify-between mt-10">
                 <h4 class="text-[28px] font-bold text-white">$21,995</h4>
-                <a href="/shop"
+                <a href="<?php echo home_url('/product/gmt-master-ii/')?>"
                     class="bg-[#B6E22E] text-[24px] mfont text-[#111111] uppercase font-semibold py-[10px] px-[9px] rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
                     BUY NOW
                 </a>
