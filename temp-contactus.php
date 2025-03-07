@@ -16,6 +16,12 @@ get_header(); ?>
     <div class="bg-[#2B2B2B] p-8 md:p-5 lg:p-12">
         <h3 class="text-white text-3xl sm:text-[48px] sm:leading-[55px] font-semibold">Request a call</h3>
         <p class="mt-4 text-xl font-light text-white">Give us some info so the right person can get back to you</p>
+
+        <div class="success_message hidden bg-green-200 text-green-800 p-3 rounded mt-5">
+            Email submitted successfully! We will contact you shortly.
+
+        </div>
+
         <form id="contactForm" class="flex flex-col mt-8 gap-4">
             <input type="text" id="first_name" name="first_name" placeholder="First Name"
                 class="px-4 py-3 bg-white text-[#70776F] border-[#C0C0C0] border rounded-md" required />
@@ -73,52 +79,51 @@ get_header(); ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script type="text/javascript">   
-    
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("#contactForm").submit(function(e) {
+        e.preventDefault();
 
-    jQuery(document).ready(function($) {	
-    $("#contactForm").submit(function(e) {                     
-        e.preventDefault(); 
-    
-        var first_name = $('#first_name').val();	             
-        var job_title = $('#job_title').val();	       
-        var email = $('#email').val();	             
-        var phone = $('#phone').val();	 
-        var country = $('#country').val();	 
-  
-        var form_data = new FormData();       
+        var first_name = $('#first_name').val();
+        var job_title = $('#job_title').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var country = $('#country').val();
+
+        var form_data = new FormData();
         form_data.append('action', 'handle_ajax_contact_form');
         form_data.append('first_name', first_name);
         form_data.append('job_title', job_title);
         form_data.append('email', email);
         form_data.append('phone', phone);
         form_data.append('country', country);
-        
+
         $.ajax({
             url: "<?php echo admin_url('admin-ajax.php'); ?>",
             type: 'POST',
             data: form_data,
             contentType: false, // Optional (only needed for file uploads)
             processData: false, // Optional (only needed for file uploads)
-            beforeSend: function() {                    
+            beforeSend: function() {
                 $("#loader").show(); // Ensure #loader exists in your HTML
             },
             complete: function() {
                 $("#loader").hide(); // Ensure #loader exists in your HTML
-            },   
-            success: function(response) { 
-                if (response.success) {  // WordPress AJAX returns "success: true"
-                    $(".success_message").css("display", "flex").text(response.data.message);
+            },
+            success: function(response) {
+                if (response.success) { // WordPress AJAX returns "success: true"
+                    $(".success_message").css("display", "flex").text(response.data
+                    .message);
                 } else {
-                    $(".success_message").css("display", "flex").text("Error submitting review.");
-                }      
+                    $(".success_message").css("display", "flex").text(
+                        "Error submitting review.");
+                }
             },
             error: function() {
-                $(".success_message").css("display", "flex").text("An unexpected error occurred.");
+                $(".success_message").css("display", "flex").text(
+                    "An unexpected error occurred.");
             }
         });
-    }); 
+    });
 });
-
-	</script>
-
+</script>
