@@ -43,7 +43,7 @@ $attributes = $product->get_attributes();
 ?>
 
     <div class="registry_block">
-        <h4 class="text-xl font-medium">Registry Number</h4>
+        <h4 class="text-xl font-medium">Registry Number  </h4>
         <div class="flex gap-6 py-[14px]">
             <p class="text-[#676767]">#<?php echo get_post_meta( get_the_ID(), 'registry_number', true ); ?></p>
             <img src="<?php echo get_template_directory_uri(); ?>/images/svg/barcode.svg" alt="" srcset="">
@@ -51,5 +51,13 @@ $attributes = $product->get_attributes();
     </div>
 
 	
-	<?php //add_custom_color_size_nft_fields(); ?>
+ <?php
+global $product;
+if ($product) {
+    $price = (float) $product->get_price();
+    $discounted_price = $price * 0.05; // 5% of the price
+    echo '<p style="color: red; font-weight: bold;">NFT Price: ' . wc_price($discounted_price) . '</p>';
+}
+?>
+
 
