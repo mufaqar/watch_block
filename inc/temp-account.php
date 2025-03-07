@@ -170,7 +170,7 @@ function report_stolen_watch() {
                 </svg>
                 <p class="text-gray-600 text-sm">Upload Images from four sides</p>
                 <p class="text-gray-500 text-xs">(Each from one side)</p>
-                <input type="file" id="file-upload" class="hidden">
+                <input type="file" id="file-upload" class="hidden" accept="image/*">
             </label>
         </div>
         <textarea  name="details" id="details" className="border-[#C0C0C0] _textarea border flex items-center !p-3 text-[#70776F] outline-black rounded-[5px] w-full"

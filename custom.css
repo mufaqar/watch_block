@@ -596,6 +596,7 @@ ol.flex-control-nav li {
 
 .faq-item.open .faq-question {
   padding-left: 0px;
+  padding-right: 0 !important;
 }
 
 .yith-wcwl-add-to-wishlist a span {

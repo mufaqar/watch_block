@@ -45,13 +45,16 @@
 <script>
 	document.getElementById("stolen-report").addEventListener("click", function () {
 		document.getElementById("modal").style.display = "block";
+		document.body.style.overflow = "hidden";
 	});
 	document.querySelector(".close").addEventListener("click", function () {
 		document.getElementById("modal").style.display = "none";
+		document.body.style.overflow = "auto";
 	});
 	window.addEventListener("click", function (event) {
 		if (event.target === document.getElementById("modal")) {
 			document.getElementById("modal").style.display = "none";
+			document.body.style.overflow = "auto";
 		}
 	});
 </script>

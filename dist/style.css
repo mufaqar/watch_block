@@ -688,6 +688,10 @@ video {
   top: -1px;
 }
 
+.left-\[95px\] {
+  left: 95px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -2654,11 +2658,6 @@ video {
   transition-timing-function: linear;
 }
 
-.content-none {
-  --tw-content: none;
-  content: var(--tw-content);
-}
-
 #size-buttons , #nft-buttons {
   margin-top: 0.5rem;
   display: flex;
@@ -2807,6 +2806,10 @@ video {
 
 .focus\:border-none:focus {
   border-style: none;
+}
+
+.focus\:bg-none:focus {
+  background-image: none;
 }
 
 .focus\:outline-none:focus {
