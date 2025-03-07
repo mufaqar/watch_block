@@ -181,31 +181,29 @@ add_action('wp_ajax_handle_ajax_product_review', 'handle_ajax_product_review');
 add_action('wp_ajax_nopriv_handle_ajax_product_review', 'handle_ajax_product_review');
 
 
-
 function handle_ajax_contact_form() {
-    
-    parse_str($_POST['formData'], $formData);
-    
-    $to = get_option('admin_email');
+    // Sanitize inputs
+    $first_name = sanitize_text_field($_POST['first_name']);
+    $job_title = sanitize_text_field($_POST['job_title']);
+    $email = sanitize_email($_POST['email']);
+    $phone = sanitize_text_field($_POST['phone']);
+    $country = sanitize_text_field($_POST['country']);
+
+    // Email setup
     $to = "mufaqar@gmail.com";
     $subject = 'New Contact Form Submission';
-    $message = "Name: " . sanitize_text_field($formData['first_name']) . "\n" .
-               "Job Title: " . sanitize_text_field($formData['job_title']) . "\n" .
-               "Email: " . sanitize_email($formData['email']) . "\n" .
-               "Phone: " . sanitize_text_field($formData['phone']) . "\n" .
-               "Country: " . sanitize_text_field($formData['country']);
-    
+    $message = "Name: $first_name\nJob Title: $job_title\nEmail: $email\nPhone: $phone\nCountry: $country";
+
     $headers = ['Content-Type: text/plain; charset=UTF-8'];
-    
+
     if (wp_mail($to, $subject, $message, $headers)) {
-        echo json_encode(['status' => 'success']);
+        wp_send_json_success(['message' => 'Email sent successfully!']);
     } else {
-        echo json_encode(['status' => 'error']);
+        wp_send_json_error(['message' => 'Email failed to send.']);
     }
-    
+
     wp_die();
 }
-
 add_action('wp_ajax_handle_ajax_contact_form', 'handle_ajax_contact_form');
 add_action('wp_ajax_nopriv_handle_ajax_contact_form', 'handle_ajax_contact_form');
 

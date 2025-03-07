@@ -84,46 +84,22 @@ jQuery(document).ready(function($) {
     $("#contactForm").submit(function(e) {
         e.preventDefault();
 
-        var first_name = $('#first_name').val();
-        var job_title = $('#job_title').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        var country = $('#country').val();
+        var formData = $(this).serialize(); // Serialize form fields
 
-        var form_data = new FormData();
-        form_data.append('action', 'handle_ajax_contact_form');
-        form_data.append('first_name', first_name);
-        form_data.append('job_title', job_title);
-        form_data.append('email', email);
-        form_data.append('phone', phone);
-        form_data.append('country', country);
-
-        $.ajax({
-            url: "<?php echo admin_url('admin-ajax.php'); ?>",
-            type: 'POST',
-            data: form_data,
-            contentType: false, // Optional (only needed for file uploads)
-            processData: false, // Optional (only needed for file uploads)
-            beforeSend: function() {
-                $("#loader").show(); // Ensure #loader exists in your HTML
-            },
-            complete: function() {
-                $("#loader").hide(); // Ensure #loader exists in your HTML
-            },
-            success: function(response) {
-                if (response.success) { // WordPress AJAX returns "success: true"
-                    $(".success_message").css("display", "flex").text(response.data
-                    .message);
-                } else {
-                    $(".success_message").css("display", "flex").text(
-                        "Error submitting review.");
-                }
-            },
-            error: function() {
-                $(".success_message").css("display", "flex").text(
-                    "An unexpected error occurred.");
+        $.post("<?php echo admin_url('admin-ajax.php'); ?>", {
+            action: 'handle_ajax_contact_form',
+            formData: formData
+        }, function(response) {
+            if (response.success) {
+                $(".success_message").show().text(response.data.message);
+                $("#contactForm")[0].reset(); // Clear form
+            } else {
+                $(".success_message").show().text(response.data.message);
             }
+        }).fail(function() {
+            $(".success_message").show().text("An unexpected error occurred.");
         });
     });
 });
+
 </script>
