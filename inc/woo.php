@@ -24,8 +24,9 @@ function display_all_reviews() {
    
     
     // Add 'Write a Review' button with product ID
+    echo '</div>';
     $review_page_url = add_query_arg('product_id', $product->get_id(), site_url('/write-a-review'));
-    echo '<div class="mt-6">';
+    echo '<div class="mt-6 flex justify-center">';
     echo '<a href="' . esc_url($review_page_url) . '" class="add_compair_btn single_add_to_cart_button">' . __('Write a Review', 'textdomain') . '</a>';
     echo '</div>';
 }
