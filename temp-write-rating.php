@@ -179,9 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (response.success) {
                     $(".success_message").show().text(response.data.message);
                     $("#contactForm")[0].reset(); // Reset form fields
-                } else {
-                    $(".success_message").show().text(response.data.message);
-                }
+                } 
             },
             error: function(xhr, status, error) {
                 console.log(xhr.responseText); // Debugging output
