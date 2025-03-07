@@ -199,7 +199,7 @@ function handle_ajax_contact_form() {
     }
 
     // Prepare email message
-    $to = "mufaqar@gmail.com";
+    $to = "mufaqar@gmail.com,sprinkautopilot@gmail.com";
     $subject = 'New Contact Form Submission';
     $message = "Name: $first_name\nJob Title: $job_title\nEmail: $email\nPhone: $phone\nCountry: $country";
 
