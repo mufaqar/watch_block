@@ -179,3 +179,33 @@ function handle_ajax_product_review() {
 
 add_action('wp_ajax_handle_ajax_product_review', 'handle_ajax_product_review');
 add_action('wp_ajax_nopriv_handle_ajax_product_review', 'handle_ajax_product_review');
+
+
+
+function handle_ajax_contact_form() {
+    
+    parse_str($_POST['formData'], $formData);
+    
+    $to = get_option('admin_email');
+    $to = "mufaqar@gmail.com";
+    $subject = 'New Contact Form Submission';
+    $message = "Name: " . sanitize_text_field($formData['first_name']) . "\n" .
+               "Job Title: " . sanitize_text_field($formData['job_title']) . "\n" .
+               "Email: " . sanitize_email($formData['email']) . "\n" .
+               "Phone: " . sanitize_text_field($formData['phone']) . "\n" .
+               "Country: " . sanitize_text_field($formData['country']);
+    
+    $headers = ['Content-Type: text/plain; charset=UTF-8'];
+    
+    if (wp_mail($to, $subject, $message, $headers)) {
+        echo json_encode(['status' => 'success']);
+    } else {
+        echo json_encode(['status' => 'error']);
+    }
+    
+    wp_die();
+}
+
+add_action('wp_ajax_handle_ajax_contact_form', 'handle_ajax_contact_form');
+add_action('wp_ajax_nopriv_handle_ajax_contact_form', 'handle_ajax_contact_form');
+
