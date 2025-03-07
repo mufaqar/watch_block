@@ -33,11 +33,11 @@ get_header();
                         <p class="text-[4vw] md:text-[18px] font-[500] text-[#676767] py-3 leading-relaxed ">
                             <?php the_field('about_details'); ?>
                         </p>
-                        <div class="mt-6">
+                        <!-- <div class="mt-6">
                             <a href="#"
                                 class="bg-[#B6E22E] px-6 md:px-10 py-3 md:py-4 font-[500] text-[4vw] md:text-[18px] rounded-[12px] inline-block">SEE
                                 MORE</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
