@@ -37,11 +37,11 @@ $items = [
 get_header(); ?>
 
 
-<main class="bg-black min-h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px]">
+<main class="bg-black min-h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px] !z-[-1]">
     <h1 class="text-center text-white text-[8vw] md:text-[115.42px] leading-[14vw] uppercase font-[600] max-w-[1280px] mx-auto">escrow services</h1>
 </main>
 
-<section class="py-[81px] max-w-[1280px] items-center gap-6 md:gap-[43px] grid grid-cols-1 md:grid-cols-2 mx-auto px-5 overflow-x-hidden">
+<section class="py-[81px] max-w-[1280px] items-center gap-6 md:gap-[43px] grid grid-cols-1 !z-[-1] md:grid-cols-2 mx-auto px-5 overflow-x-hidden">
     <div class="relative">
         <img src="<?php echo get_template_directory_uri(); ?>/images/escrow.png" class="z-[2] relative" alt="" srcset="">
         <div class="bg-[#F2F2F2] w-[787px] h-[430px] absolute top-1/2 -translate-y-1/2 -left-4 "></div>
@@ -55,7 +55,7 @@ get_header(); ?>
     </div>
 </section>
 
-<section class="lg:mt-[213px] px-5 mb-[73px] mfont">
+<section class="lg:mt-[213px] px-5 mb-[73px] mfont !z-[-1]">
     <h2 class="text-center font-semibold text-2xl sm:text-3xl uppercase md:text-[48px]">what is an escrow account & how it works</h2>
     <div class="mt-[102px] max-w-[920px] flex mx-auto relative pl-[24px] md:pl-0">
         <div class="h-full w-[31px] bg-[#B6E22E] absolute rounded-b-full"></div>
