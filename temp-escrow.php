@@ -37,7 +37,7 @@ $items = [
 get_header(); ?>
 
 
-<main class="bg-black h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px]">
+<main class="bg-black min-h-96 w-full flex items-center justify-center mt-[-140px] pt-[140px]">
     <h1 class="text-center text-white text-[8vw] md:text-[115.42px] leading-[14vw] uppercase font-[600] max-w-[1280px] mx-auto">escrow services</h1>
 </main>
 
