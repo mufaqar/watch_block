@@ -38,7 +38,7 @@ $product_id = $product->get_id();
         </div>
     </div>
     <div class="flex items-center gap-4">
-        <h4 class="text-[28px] sm:text-[36px] font-bold"><?php echo $product->get_price_html(); ?></h4>
+        <h4 class="text-[28px] sm:text-[28px] font-bold"><?php echo $product->get_price_html(); ?></h4>
         <!-- <button class="border-l-[2px] px-4 border-r-[2px] border-gray-300">
             <a class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/svg/heart2.svg" alt=""
