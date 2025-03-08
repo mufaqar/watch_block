@@ -20,7 +20,7 @@ if ($current_user->exists()) {
 
     // Display the profile picture
     if ($profile_picture) {
-        echo '<img src="' . esc_url($profile_picture) . '" alt="Profile Picture" width="150" style="border-radius: 50%; margin-bottom: 20px;" />';
+        echo '<img src="' . esc_url($profile_picture) . '" alt="Profile Picture" width="150" style="margin-bottom: 20px;" />';
     } else {
         echo '<p>No profile picture uploaded.</p>';
     }
