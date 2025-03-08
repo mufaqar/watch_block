@@ -2598,6 +2598,10 @@ video {
   color: rgb(234 179 8 / var(--tw-text-opacity, 1));
 }
 
+.text-\[vw\] {
+  color: vw;
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -3198,6 +3202,10 @@ video {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-\[23px\] {
+    font-size: 23px;
   }
 
   .md\:leading-\[40px\] {
