@@ -720,6 +720,22 @@ video {
   z-index: -1 !important;
 }
 
+.\!z-\[99999999\] {
+  z-index: 99999999 !important;
+}
+
+.z-\[9999999\] {
+  z-index: 9999999;
+}
+
+.\!z-\[9999999\] {
+  z-index: 9999999 !important;
+}
+
+.\!z-\[99\] {
+  z-index: 99 !important;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
