@@ -103,6 +103,16 @@
         // AJAX request to filter products dynamically (to be implemented)
     }
 
+    function setActiveButton(buttons, selectedValue) {
+        buttons.forEach((button) => {
+            if (button.dataset.condition === selectedValue) {
+                button.classList.add("bg-[#B6E22E]", "border-[#B6E22E]"); // Active styling
+            } else {
+                button.classList.remove("bg-[#B6E22E]", "border-[#B6E22E]"); // Reset others
+            }
+        });
+    }
+
     // Handle dropdown changes
     brandFilter?.addEventListener("change", function () {
         updateURL("brand", this.value);
@@ -120,15 +130,29 @@
     conditionButtons.forEach((button) => {
         button.addEventListener("click", function () {
             updateURL("condition", this.dataset.condition);
+            setActiveButton(conditionButtons, this.dataset.condition);
         });
     });
 
-    // Handle price sorting clicks like conditions
+    // Handle price sorting clicks
     priceButtons.forEach((button) => {
         button.addEventListener("click", function () {
             updateURL("price", this.dataset.condition);
+            setActiveButton(priceButtons, this.dataset.condition);
         });
     });
+
+    // Load active filters from URL on page load
+    function setActiveFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeCondition = urlParams.get("condition");
+        const activePrice = urlParams.get("price");
+
+        if (activeCondition) setActiveButton(conditionButtons, activeCondition);
+        if (activePrice) setActiveButton(priceButtons, activePrice);
+    }
+
+    setActiveFromURL();
 });
 
     </script>

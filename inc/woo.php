@@ -322,72 +322,86 @@ function display_user_badge() {
 
 
 
+// Woo Shop Filter
 
 
-// Add profile picture upload field to WooCommerce "Edit Account" page
-add_action('woocommerce_edit_account_form', 'custom_profile_picture_upload_field');
-function custom_profile_picture_upload_field() {
-    $user_id = get_current_user_id();
-    $profile_image = get_user_meta($user_id, 'profile_picture', true);
-    ?>
-<p>
-    <label for="profile_picture"><?php esc_html_e('Profile Picture', 'woocommerce'); ?></label>
-    <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
-    <?php if ($profile_image): ?>
-    <br><img src="<?php echo esc_url($profile_image); ?>" width="100" height="100" style="border-radius:50px;">
-    <?php endif; ?>
-</p>
-<?php
+
+
+function enqueue_ajax_filter_script() {
+    wp_enqueue_script('shop-filter', get_template_directory_uri() . '/js/shop.js', ['jquery'], null, true);
+    wp_localize_script('shop-filter', 'woocommerce_ajax', ['ajax_url' => admin_url('admin-ajax.php')]);
 }
+add_action('wp_enqueue_scripts', 'enqueue_ajax_filter_script');
 
-// Save the uploaded profile picture
-add_action('woocommerce_save_account_details', 'save_custom_profile_picture', 10, 1);
-function save_custom_profile_picture($user_id) {
-    if (!empty($_FILES['profile_picture']['name'])) {
-        $upload = wp_handle_upload($_FILES['profile_picture'], ['test_form' => false]);
-        if (isset($upload['url'])) {
-            update_user_meta($user_id, 'profile_picture', esc_url($upload['url']));
+function filter_woocommerce_products() {
+    $args = [
+        'post_type'      => 'product',
+        'posts_per_page' => 12,
+        'tax_query'      => [],
+        'meta_query'     => [],
+        'orderby'        => 'meta_value_num',
+        'order'          => 'ASC', // Default order
+        'meta_key'       => '_price', // Sort by price meta key
+    ];
+
+    // Apply brand filter
+    if (!empty($_POST['brand'])) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'product_brand',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($_POST['brand']),
+        ];
+    }
+
+    // Apply color filter
+    if (!empty($_POST['color'])) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'pa_watches_colors',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($_POST['color']),
+        ];
+    }
+
+    // Apply size filter
+    if (!empty($_POST['size'])) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'pa_watches_size',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($_POST['size']),
+        ];
+    }
+
+    // Apply condition filter
+    if (!empty($_POST['condition'])) {
+        $args['meta_query'][] = [
+            'key'     => 'watch_type',
+            'value'   => sanitize_text_field($_POST['condition']),
+            'compare' => '=',
+        ];
+    }
+
+    // Apply price sorting
+    if (!empty($_POST['price'])) {
+        if ($_POST['price'] === 'high') {
+            $args['order'] = 'DESC'; // High to Low
+        } elseif ($_POST['price'] === 'low') {
+            $args['order'] = 'ASC'; // Low to High
         }
     }
+
+    // Query products
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            wc_get_template_part('content', 'product');
+        endwhile;
+    else :
+        echo '<p>No products found.</p>';
+    endif;
+
+    wp_reset_postdata();
+    die();
 }
-
-// Override WordPress avatar with the uploaded profile picture
-add_filter('get_avatar', 'custom_user_profile_avatar', 10, 5);
-function custom_user_profile_avatar($avatar, $id_or_email, $size, $default, $alt) {
-    $user_id = 0;
-
-    if (is_numeric($id_or_email)) {
-        $user_id = (int) $id_or_email;
-    } elseif (is_object($id_or_email) && !empty($id_or_email->user_id)) {
-        $user_id = (int) $id_or_email->user_id;
-    } elseif (is_email($id_or_email)) {
-        $user = get_user_by('email', $id_or_email);
-        if ($user) {
-            $user_id = $user->ID;
-        }
-    }
-
-    if ($user_id) {
-        $profile_image = get_user_meta($user_id, 'profile_picture', true);
-        if (!empty($profile_image)) {
-            return '<img src="' . esc_url($profile_image) . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
-        }
-    }
-
-    // Default avatar if no custom image is uploaded
-    return '<img src="' . esc_url(get_template_directory_uri() . '/images/default-avatar.png') . '" width="' . $size . '" height="' . $size . '" style="border-radius:50%;" alt="' . esc_attr($alt) . '">';
-}
-
-// Add profile picture to WooCommerce account menu
-add_filter('woocommerce_account_menu_items', 'add_profile_picture_to_menu', 10, 1);
-function add_profile_picture_to_menu($items) {
-    $user_id = get_current_user_id();
-    $profile_image = get_user_meta($user_id, 'profile_picture', true);
-
-    if ($profile_image) {
-        $items = ['profile_picture' => '<img src="' . esc_url($profile_image) . '" width="30" height="30" style="border-radius:15px;">'] + $items;
-    }
-
-    return $items;
-}
-
+add_action('wp_ajax_filter_products', 'filter_woocommerce_products');
+add_action('wp_ajax_nopriv_filter_products', 'filter_woocommerce_products');
