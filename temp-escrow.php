@@ -55,7 +55,7 @@ get_header(); ?>
     </div>
 </section>
 
-<section class="mt-[213px] px-5 mb-[73px] mfont">
+<section class="lg:mt-[213px] px-5 mb-[73px] mfont">
     <h2 class="text-center font-semibold text-3xl uppercase md:text-[48px]">what is an escrow account & how it works</h2>
     <div class="mt-[102px] max-w-[920px] flex mx-auto relative pl-[24px] md:pl-0">
         <div class="h-full w-[31px] bg-[#B6E22E] absolute rounded-b-full"></div>
