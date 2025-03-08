@@ -98,7 +98,7 @@ function redirect_guest_users_from_checkout() {
 }
 add_action('template_redirect', 'redirect_guest_users_from_checkout');
 
-
+// Add custom profile picture field to WooCommerce edit account form
 
 add_action('woocommerce_save_account_details', 'save_custom_profile_picture');
 function save_custom_profile_picture($user_id) {
@@ -111,4 +111,26 @@ function save_custom_profile_picture($user_id) {
             wc_add_notice(__('Error uploading profile picture.', 'your-textdomain'), 'error');
         }
     }
+}
+
+// Login and Register
+
+add_shortcode('woocommerce_my_account', 'custom_woocommerce_my_account_shortcode');
+function custom_woocommerce_my_account_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'login_only' => false,
+        'register_only' => false,
+    ), $atts, 'woocommerce_my_account');
+
+    ob_start();
+
+    if ($atts['login_only']) {
+        wc_get_template('myaccount/form-login-only.php');
+    } elseif ($atts['register_only']) {
+        wc_get_template('myaccount/form-register-only.php');
+    } else {
+        wc_get_template('myaccount/my-account.php');
+    }
+
+    return ob_get_clean();
 }
