@@ -100,3 +100,15 @@ add_action('template_redirect', 'redirect_guest_users_from_checkout');
 
 
 
+add_action('woocommerce_save_account_details', 'save_custom_profile_picture');
+function save_custom_profile_picture($user_id) {
+    if (isset($_FILES['profile_picture']) && !empty($_FILES['profile_picture']['name'])) {
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        $uploaded = wp_handle_upload($_FILES['profile_picture'], array('test_form' => false));
+        if (isset($uploaded['file'])) {
+            update_user_meta($user_id, 'profile_picture', $uploaded['url']);
+        } else {
+            wc_add_notice(__('Error uploading profile picture.', 'your-textdomain'), 'error');
+        }
+    }
+}

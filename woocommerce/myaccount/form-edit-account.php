@@ -19,10 +19,11 @@ defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_edit_account_form' ); ?>
 
-<form class="woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?> >
+<form class="woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?>  enctype="multipart/form-data">
 
 	<?php do_action( 'woocommerce_edit_account_form_start' ); ?>
 
+	
 	<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
 		<label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" />
@@ -60,6 +61,18 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_2" id="password_2" autocomplete="off" />
 		</p>
 	</fieldset>
+
+	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+    <label for="profile_picture"><?php esc_html_e('Profile Picture', 'your-textdomain'); ?></label>
+    <input type="file" name="profile_picture" id="profile_picture" accept="image/*" />
+    <?php
+    $user_id = get_current_user_id();
+    $profile_picture = get_user_meta($user_id, 'profile_picture', true);
+    if ($profile_picture) {
+        echo '<img src="' . esc_url($profile_picture) . '" alt="Profile Picture" width="100" style="margin-top: 10px;" />';
+    }
+    ?>
+</p>
 	<div class="clear"></div>
 
 	<?php do_action( 'woocommerce_edit_account_form' ); ?>

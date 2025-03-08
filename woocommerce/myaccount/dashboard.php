@@ -1,19 +1,51 @@
+
+<div class="flex md:flex-row flex-col gap-5">
+
 <?php
 defined( 'ABSPATH' ) || exit;
 
+
+
 $current_user = wp_get_current_user();
 
+// Check if the user is logged in
 if ($current_user->exists()) {
-    echo "<h2>Welcome, " . esc_html($current_user->display_name) . "!</h2>";
+    // Get the user's profile picture
+    $user_id = get_current_user_id();
+    $profile_picture = get_user_meta($user_id, 'profile_picture', true);
+
+    ?>
+    <div class="md:w-1/3 w-full">
+    <?php
+
+    // Display the profile picture
+    if ($profile_picture) {
+        echo '<img src="' . esc_url($profile_picture) . '" alt="Profile Picture" width="150" style="border-radius: 50%; margin-bottom: 20px;" />';
+    } else {
+        echo '<p>No profile picture uploaded.</p>';
+    }
+    ?>
+    </div>
+    <div class="md:w-2/3 w-full">
+    <?php
+
+    // Display the welcome message
+    echo "<h2 class='pl-0'>Welcome, " . esc_html($current_user->display_name) . "!</h2>";
 
     display_user_badge();
+
+    ?>
+    </div>
+   
+    <?php
+
+    // Display the user badge (if applicable)
+   
 }
 
 
-
-
-
 ?>
+</div>
 
 <!-- Slick Slider CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
