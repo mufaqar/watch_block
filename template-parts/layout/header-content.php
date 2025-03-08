@@ -19,8 +19,10 @@
         <div
             class="md:bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
             <div class="hidden md:block">
-                <?php wp_nav_menu( array( 
-					'theme_location' => 'main', 
+              
+                <?php
+                wp_nav_menu( array( 
+					'theme_location' => 'primary', 
 					'container'      => 'nav',
 					'container_class'=> 'flex header-menu flex-col space-y-4',
 					'add_li_class'    => 'menu-item',
@@ -79,9 +81,10 @@
 <!-- Mobile Header  -->
 
 <nav id="nav-menu" class="bg-black text-white hidden lg:hidden fixed md:sticky mt-[-2px] md:mt-0 w-full z-[100]">
+   
     <div>
         <?php wp_nav_menu( array( 
-			'theme_location' => 'main', 
+			'theme_location' => 'primary', 
 			'container'      => 'div',
 			'container_class'=> 'flex header-menu flex-col space-y-4',
 			'add_li_class'    => 'menu-item',
