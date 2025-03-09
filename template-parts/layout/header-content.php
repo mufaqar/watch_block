@@ -105,12 +105,12 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/images/svg/save.svg" alt=""
                     class="w-[14px] h-[20px]">
             </a>
-            <button class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow"
+            <a href="<?php echo esc_url(wc_get_page_permalink('cart')); ?>" class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow"
                 id="open-cart">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/svg/cart.svg" alt=""
                     class="w-[17px] h-[17px]">
 
-            </button>
+            </a>
 
             <a href="<?php echo wc_get_page_permalink('myaccount'); ?>"
                 class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
