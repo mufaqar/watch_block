@@ -379,15 +379,20 @@ function filter_woocommerce_products() {
             'compare' => '=',
         ];
     }
+    
 
     // Apply price sorting
     if (!empty($_POST['price'])) {
+        $args['meta_key'] = '_price';
+        $args['orderby']  = 'meta_value_num'; // Ensure numeric sorting
+
         if ($_POST['price'] === 'high') {
             $args['order'] = 'DESC'; // High to Low
         } elseif ($_POST['price'] === 'low') {
             $args['order'] = 'ASC'; // Low to High
         }
     }
+
 
     // Query products
     $query = new WP_Query($args);
