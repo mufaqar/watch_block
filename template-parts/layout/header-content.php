@@ -8,10 +8,6 @@
         $logo = "logo-dark.svg";
     }
 
- 
-
-   
-
 ?>  
 
 <header id="<?php echo ($header_color == 'White') ? 'white' : 'black'; ?>" class="sticky w-full !z-[99999999] top-[-1px]">
