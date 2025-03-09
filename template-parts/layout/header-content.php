@@ -8,6 +8,10 @@
         $logo = "logo-dark.svg";
     }
 
+ 
+
+   
+
 ?>  
 
 <header id="<?php echo ($header_color == 'White') ? 'white' : 'black'; ?>" class="sticky w-full !z-[99999999] top-[-1px]">
@@ -17,6 +21,7 @@
         <a href="<?php bloginfo('url'); ?>">
             <img id="site-logo" src="<?php echo get_template_directory_uri(); ?>/images/<?php echo $logo; ?>" 
                 alt="<?php bloginfo('name'); ?>" class="min-w-[120px]">
+               
         </a>
 
         <div
