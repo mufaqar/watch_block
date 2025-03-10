@@ -181,106 +181,56 @@ function crypto_payment_button_shortcode() {
 //add_shortcode('crypto_payment_button', 'crypto_payment_button_shortcode');
 
 
-// Register custom payment gateway
-function register_crypto_payment_gateway($gateways) {
-    $gateways['crypto_payment'] = 'WC_Gateway_Crypto_Payment';
-    return $gateways;
-}
-add_filter('woocommerce_payment_gateways', 'register_crypto_payment_gateway');
+public function process_payment($order_id) {
+    $order = wc_get_order($order_id);
+    $randomHex = bin2hex(random_bytes(8));
+    $api_url = $this->api_url;
 
-class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
+    // Prepare payment data
+    $data = array(
+        'checkout_id' => $randomHex,
+        'currency'    => get_woocommerce_currency(),
+        'total'       => $order->get_total(),
+        'subtotal'    => $order->get_subtotal(),
+        'return_url'  => site_url('/checkout/order-received/'),
+        'cancel_url'  => wc_get_checkout_url(),
+        'billing'     => array(
+            'first_name' => $order->get_billing_first_name(),
+            'last_name'  => $order->get_billing_last_name(),
+            'email'      => $order->get_billing_email(),
+            'phone'      => $order->get_billing_phone(),
+            'address_1'  => $order->get_billing_address_1(),
+            'address_2'  => $order->get_billing_address_2(),
+            'city'       => $order->get_billing_city(),
+            'state'      => $order->get_billing_state(),
+            'postcode'   => $order->get_billing_postcode(),
+            'country'    => $order->get_billing_country(),
+        ),
+        'shipping'    => array(
+            'first_name' => $order->get_shipping_first_name(),
+            'last_name'  => $order->get_shipping_last_name(),
+            'address_1'  => $order->get_shipping_address_1(),
+            'address_2'  => $order->get_shipping_address_2(),
+            'city'       => $order->get_shipping_city(),
+            'state'      => $order->get_shipping_state(),
+            'postcode'   => $order->get_shipping_postcode(),
+            'country'    => $order->get_shipping_country(),
+        ),
+    );
 
-    public function __construct() {
-        $this->id                 = 'crypto_payment';
-        $this->method_title       = __('Pay With Crypto', 'woocommerce');
-        $this->method_description = __('Redirect customers to pay via cryptocurrency.', 'woocommerce');
-        $this->has_fields         = false;
-        $this->supports           = array('products', 'woocommerce_blocks'); // Ensures support for WooCommerce Checkout Blocks
+    // Redirect to API URL
+    $redirect_url = esc_url_raw(add_query_arg($data, $api_url));
 
-        // Load settings
-        $this->init_form_fields();
-        $this->init_settings();
-
-        $this->title       = $this->get_option('title');
-        $this->description = $this->get_option('description');
-        $this->enabled     = $this->get_option('enabled');
-        $this->api_url     = $this->get_option('api_url');
-
-        // Save admin settings
-        add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
-    }
-
-    public function init_form_fields() {
-        $this->form_fields = array(
-            'enabled' => array(
-                'title'   => __('Enable/Disable', 'woocommerce'),
-                'type'    => 'checkbox',
-                'label'   => __('Enable Pay With Crypto', 'woocommerce'),
-                'default' => 'yes',
-            ),
-            'title' => array(
-                'title'       => __('Title', 'woocommerce'),
-                'type'        => 'text',
-                'default'     => __('Pay With Crypto', 'woocommerce'),
-            ),
-            'description' => array(
-                'title'       => __('Description', 'woocommerce'),
-                'type'        => 'textarea',
-                'default'     => __('Use cryptocurrency to complete your payment.', 'woocommerce'),
-            ),
-            'api_url' => array(
-                'title'       => __('API URL', 'woocommerce'),
-                'type'        => 'text',
-                'description' => __('Enter the API endpoint for processing the payment.', 'woocommerce'),
-                'default'     => '',
-            ),
-        );
-    }
-
-    public function process_payment($order_id) {
-        $order = wc_get_order($order_id);
-        $randomHex = bin2hex(random_bytes(8));
-        $api_url = $this->api_url;
-
-        // Prepare payment data
-        $data = array(
-            'checkout_id' => $randomHex,
-            'currency'    => get_woocommerce_currency(),
-            'total'       => $order->get_total(),
-            'subtotal'    => $order->get_subtotal(),
-            'return_url'  => site_url('/checkout/order-received/'),
-            'cancel_url'  => wc_get_checkout_url(),
-            'billing'     => array(
-                'first_name' => $order->get_billing_first_name(),
-                'last_name'  => $order->get_billing_last_name(),
-                'email'      => $order->get_billing_email(),
-                'phone'      => $order->get_billing_phone(),
-                'address_1'  => $order->get_billing_address_1(),
-                'address_2'  => $order->get_billing_address_2(),
-                'city'       => $order->get_billing_city(),
-                'state'      => $order->get_billing_state(),
-                'postcode'   => $order->get_billing_postcode(),
-                'country'    => $order->get_billing_country(),
-            ),
-            'shipping'    => array(
-                'first_name' => $order->get_shipping_first_name(),
-                'last_name'  => $order->get_shipping_last_name(),
-                'address_1'  => $order->get_shipping_address_1(),
-                'address_2'  => $order->get_shipping_address_2(),
-                'city'       => $order->get_shipping_city(),
-                'state'      => $order->get_shipping_state(),
-                'postcode'   => $order->get_shipping_postcode(),
-                'country'    => $order->get_shipping_country(),
-            ),
-        );
-
-        // Redirect to API URL
-        $redirect_url = esc_url_raw(add_query_arg($data, $api_url));
-
+    if ($redirect_url) {
         return array(
             'result'   => 'success',
-            'redirect' => $redirect_url,
+            'redirect' => "https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id={$randomHex}",
+        );
+    } else {
+        wc_add_notice(__('Payment processing failed. Please try again.', 'woocommerce'), 'error');
+        return array(
+            'result'   => 'failure',
+            'redirect' => '',
         );
     }
 }
-
