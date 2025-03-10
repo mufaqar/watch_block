@@ -1695,6 +1695,11 @@ video {
   border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
 }
 
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 197 94 / var(--tw-border-opacity, 1));
+}
+
 .\!bg-white {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) !important;
@@ -1831,6 +1836,11 @@ video {
 
 .bg-white\/80 {
   background-color: rgb(255 255 255 / 0.8);
+}
+
+.bg-green-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 253 244 / var(--tw-bg-opacity, 1));
 }
 
 .bg-cover {
