@@ -953,8 +953,8 @@ legend {
 .woocommerce-billing-fields h3,
 .woocommerce-additional-fields h3{
   font-size: 20px !important;
-  font-weight: 600px !important;
-  margin-bottom: 1rem !important;
+  font-weight: 600 !important;
+  margin-bottom: .2rem !important;
 }
 
 .place-order button{
