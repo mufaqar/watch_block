@@ -12,18 +12,14 @@
 
 <header id="<?php echo ($header_color == 'White') ? 'white' : 'black'; ?>" class="sticky w-full !z-[99999999] top-[-1px]">
     <div id="header-wrapper" class="pl-3 sm:pl-4 md:py-2 lg:pl-8 2xl:pl-[64px] items-center justify-between flex gap-5 lg:gap-[46px]">
-      
-
         <a href="<?php bloginfo('url'); ?>">
             <img id="site-logo" src="<?php echo get_template_directory_uri(); ?>/images/<?php echo $logo; ?>" 
                 alt="<?php bloginfo('name'); ?>" class="min-w-[120px]">
-               
         </a>
 
         <div
             class="md:bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
             <div class="hidden md:block">
-              
                 <?php
                 wp_nav_menu( array( 
 					'theme_location' => 'primary', 
@@ -35,17 +31,14 @@
             </div>
             <div class="flex items-center gap-2">
                 <form role="search" method="get" class="" action="<?php echo esc_url(home_url('/')); ?>">
-                    <div
-                        class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
-
+                    <div class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
                         <label for="search-field" class="sr-only">Search Watches</label>
                         <input id="search-field" placeholder="Search Watches"
                             value="<?php echo esc_attr(get_search_query()); ?>" type="search" name="s"
                             class="bg-transparent py-3 outline-none !border-none w-full focus:border-none focus:bg-none text-[#A1A1A1]" />
                         <input type="hidden" name="post_type" value="product" />
-                        <button type="submit" class="focus:outline-none">
-                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/svg/search-icon.svg"
-                                alt="Search" />
+                        <button type="submit" id="search-button" class="focus:outline-none" disabled>
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/svg/search-icon.svg" alt="Search" />
                         </button>
                     </div>
                 </form>
@@ -137,4 +130,18 @@ window.addEventListener("scroll", function () {
   }
 });
 
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("search-field");
+        const searchButton = document.getElementById("search-button");
+        function toggleButton() {
+            // Remove leading/trailing spaces and check if there's any valid character
+            const isValid = searchInput.value.trim().length > 0;
+            searchButton.disabled = !isValid;
+        }
+        searchInput.addEventListener("input", toggleButton);
+        toggleButton(); // Initialize on page load
+    });
 </script>
