@@ -22,6 +22,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 ?>
 
+<main class="checkout_title">
+ <h1>CHECKOUT</h1>
+</main>
+
 <form name="checkout" method="post" class="checkout woocommerce-checkout max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
     <!-- Left Column (Billing & Shipping) -->
