@@ -271,8 +271,16 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             ),
         );
 
+        $response = wp_remote_post( 'https://watchblock-backend.onrender.com/api/payments/crypto-wallet', array(
+            'method'    => 'POST',
+            'body'      => json_encode( $data ), // Encode the data as JSON
+            'headers'   => array(
+                'Content-Type' => 'application/json', // Ensure the server knows we're sending JSON
+            ),
+        ) );
+
         // Redirect user to external crypto payment page
-        $redirect_url = "https://nft-watch-dashboard.vercel.app/crypto-wallet?" . http_build_query($data);
+        $redirect_url = "https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id={$randomHex}";
 
         return array(
             'result'   => 'success',
