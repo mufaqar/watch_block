@@ -26,7 +26,7 @@ if ( is_shop() ) :
 
 
 <section class="PageContent">
-    <div class="w-full pb-6 max-w-[1280px] px-5 !pt-[55px] mx-auto">
+    <div class="w-full pb-6 max-w-[1280px] px-5 lg:px-0 !pt-[55px] mx-auto">
         <?php
         while ( have_posts() ) : the_post();
         the_content();
