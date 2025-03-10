@@ -235,56 +235,92 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
         );
     }
 
+   
     public function process_payment($order_id) {
         $order = wc_get_order($order_id);
         $randomHex = bin2hex(random_bytes(8));
-
-        // Payment data
+    
+        $checkout_id =  $randomHex; // Ideally, generate dynamically
+        $success_url = "https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id={$checkout_id}";
+    
         $data = array(
-            'checkout_id' => $randomHex,
-            'currency'    => get_woocommerce_currency(),
-            'total'       => $order->get_total(),
-            'subtotal'    => $order->get_subtotal(),
-            'return_url'  => site_url('/checkout/order-received/'),
-            'cancel_url'  => wc_get_checkout_url(),
+            'currency'    => 'USD',
+            'total'       => '100.00',
+            'subtotal'    => '90.00',
+            'return_url'  => 'https://example.com/checkout/order-received/',
+            'success_url' => $success_url,
+            'checkout_id' => $checkout_id,
+            'cart_items'  => array(
+                array(
+                    'product_id'    => '123',
+                    'name'          => 'Sample Product',
+                    'quantity'      => 1,
+                    'price'         => '50.00',
+                    'product_type'  => 'simple',
+                    'attributes'    => array(
+                        'Color' => 'Red',
+                        'Size'  => 'Large',
+                    ),
+                ),
+            ),
             'billing'     => array(
-                'first_name' => $order->get_billing_first_name(),
-                'last_name'  => $order->get_billing_last_name(),
-                'email'      => $order->get_billing_email(),
-                'phone'      => $order->get_billing_phone(),
-                'address_1'  => $order->get_billing_address_1(),
-                'address_2'  => $order->get_billing_address_2(),
-                'city'       => $order->get_billing_city(),
-                'state'      => $order->get_billing_state(),
-                'postcode'   => $order->get_billing_postcode(),
-                'country'    => $order->get_billing_country(),
+                'first_name' => 'John',
+                'last_name'  => 'Doe',
+                'email'      => 'john@example.com',
+                'phone'      => '1234567890',
+                'address_1'  => '123 Main St',
+                'address_2'  => 'Apt 4B',
+                'city'       => 'New York',
+                'state'      => 'NY',
+                'postcode'   => '10001',
+                'country'    => 'US',
             ),
             'shipping'    => array(
-                'first_name' => $order->get_shipping_first_name(),
-                'last_name'  => $order->get_shipping_last_name(),
-                'address_1'  => $order->get_shipping_address_1(),
-                'address_2'  => $order->get_shipping_address_2(),
-                'city'       => $order->get_shipping_city(),
-                'state'      => $order->get_shipping_state(),
-                'postcode'   => $order->get_shipping_postcode(),
-                'country'    => $order->get_shipping_country(),
+                'first_name' => 'Jane',
+                'last_name'  => 'Doe',
+                'address_1'  => '456 Side St',
+                'address_2'  => 'Suite 10',
+                'city'       => 'Los Angeles',
+                'state'      => 'CA',
+                'postcode'   => '90001',
+                'country'    => 'US',
             ),
         );
-
-        $response = wp_remote_post( 'https://watchblock-backend.onrender.com/api/payments/crypto-wallet', array(
+    
+        // Send POST request
+        $response = wp_remote_post('https://watchblock-backend.onrender.com/api/payments/crypto-wallet', array(
             'method'    => 'POST',
-            'body'      => json_encode( $data ), // Encode the data as JSON
+            'body'      => json_encode($data),
             'headers'   => array(
-                'Content-Type' => 'application/json', // Ensure the server knows we're sending JSON
+                'Content-Type' => 'application/json',
             ),
-        ) );
-
-        // Redirect user to external crypto payment page
-        $redirect_url = "https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id={$randomHex}";
-
-        return array(
-            'result'   => 'success',
-            'redirect' => esc_url_raw($redirect_url),
-        );
+        ));
+    
+        if (is_wp_error($response)) {
+            wc_add_notice(__('Payment error:', 'woocommerce') . ' Unable to process payment.', 'error');
+            return array(
+                'result'   => 'failure',
+                'redirect' => wc_get_checkout_url(),
+            );
+        }
+    
+        $response_body = wp_remote_retrieve_body($response);
+        $response_data = json_decode($response_body, true);
+    
+        if (!empty($response_data['message']) && $response_data['message'] === 'Session Successfully created!') {
+            return array(
+                'result'   => 'success',
+                'redirect' => $success_url,
+            );
+        } else {
+            wc_add_notice(__('Payment error:', 'woocommerce') . ' ' . ($response_data['message'] ?? 'Unknown error'), 'error');
+            return array(
+                'result'   => 'failure',
+                'redirect' => wc_get_checkout_url(),
+            );
+        }
     }
+    
+    
+    
 }
