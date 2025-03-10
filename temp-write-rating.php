@@ -37,7 +37,7 @@ get_header(); ?>
 }
 
 .faded {
-    opacity: 0.2;
+    opacity: 0.4;
 }
 </style>
 
