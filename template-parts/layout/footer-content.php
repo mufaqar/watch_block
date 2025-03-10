@@ -24,7 +24,7 @@
 		<div class="my-9 flex items-center gap-4 sm:gap-[30px]">
 			<a href="https://x.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/svg/x.svg" alt="" /></a>
 			<a href="https://youtube.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/svg/yt.svg" alt="" /></a>
-			<a href="https://www.google.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/svg/fb.svg" alt="" /></a>
+			<a href="https://www.facebook.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/svg/fb.svg" alt="" /></a>
 			<a href="https://cloud.google.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/svg/cloud.svg" alt="" /></a>
 		</div>
 	</div>
