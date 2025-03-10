@@ -183,3 +183,13 @@ jQuery(document).ready(function ($) {
 });
 
 
+jQuery(document).ready(function ($) {
+    $('input.qty').on('input', function () {
+        let max = 10; // Set maximum quantity
+        if ($(this).val() > max) {
+            $(this).val(max);
+        }
+    });
+});
+
+
