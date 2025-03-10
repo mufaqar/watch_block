@@ -945,3 +945,7 @@ legend {
 .woocommerce form .show-password-input, .woocommerce-page form .show-password-input {
   top: 1.5rem !important;
 }
+
+.woocommerce img, .woocommerce-page img{
+  object-fit: contain !important;
+}

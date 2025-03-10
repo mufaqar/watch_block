@@ -42,7 +42,7 @@ get_header(); ?>
 </style>
 
 <main class="max-w-[1280px] mx-auto flex flex-col justify-center px-5">
-    <h1 class="uppercase text-[64px] text-center font-semibold mt-12">
+    <h1 class="uppercase text-5xl mb-5 text-center font-semibold mt-12">
         <?php
         if ($product_id) {
             $product = wc_get_product($product_id);
@@ -121,35 +121,32 @@ get_header(); ?>
 
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const stars = document.querySelectorAll(".star");
-    let selectedRating = <?= $rating ?>;
+    document.addEventListener("DOMContentLoaded", function () {
+        const stars = document.querySelectorAll(".star");
+        let selectedRating = <?= $rating ?>;
 
-    function updateStars(rating) {
-        stars.forEach((star, index) => {
-            star.classList.toggle("dark", index < rating);
-            star.classList.toggle("faded", index >= rating);
-        });
-        document.getElementById("selectedRating").innerText = rating;
-        document.getElementById("review_rating").value = rating;
-    }
+        function updateStars(rating) {
+            stars.forEach((star, index) => {
+                star.classList.toggle("dark", index < rating);
+                star.classList.toggle("faded", index >= rating);
+            });
+            document.getElementById("selectedRating").innerText = rating;
+        }
 
-    stars.forEach(star => {
-        star.addEventListener("click", function() {
-            selectedRating = parseInt(this.getAttribute("data-value"));
-
-            // Send rating to server
-            fetch("save_rating.php", {
+        stars.forEach(star => {
+            star.addEventListener("click", function () {
+                selectedRating = parseInt(this.getAttribute("data-value"));
+                
+                // Send rating to server
+                fetch("save_rating.php", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     body: "rating=" + selectedRating
                 }).then(response => response.text())
-                .then(() => updateStars(selectedRating));
+                  .then(() => updateStars(selectedRating));
+            });
         });
     });
-});
 </script>
 
 
