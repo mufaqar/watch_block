@@ -2124,6 +2124,10 @@ video {
   padding-top: 1rem !important;
 }
 
+.\!pt-\[55px\] {
+  padding-top: 55px !important;
+}
+
 .pb-20 {
   padding-bottom: 5rem;
 }
@@ -2138,6 +2142,10 @@ video {
 
 .pb-4 {
   padding-bottom: 1rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 
 .pb-\[10px\] {
