@@ -42,7 +42,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
     <!-- Right Column (Order Summary) -->
     <div class="bg-white p-6 rounded-lg shadow h-fit">
-        <h2 class="text-lg !font-semibold mb-4"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h2>
+        <h2 class="text-lg !font-semibold your_order mb-4"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h2>
         <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
         <div id="order_review" class="woocommerce-checkout-review-order">
             <?php do_action( 'woocommerce_checkout_order_review' ); ?>
