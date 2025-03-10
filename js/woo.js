@@ -65,6 +65,7 @@ jQuery(document).ready(function ($) {
         if (fileInput.length > 0) {
             formData.append('file', fileInput[0]);
         }
+        console.log("🚀 ~ fileInput:", fileInput)
 
         $.ajax({
             url: ajax_object.ajax_url,

@@ -168,8 +168,9 @@ function report_stolen_watch() {
                 <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 12l5-5m0 0l5 5m-5-5v12"></path>
                 </svg>
-                <p class="text-gray-600 text-sm">Upload Images from four sides</p>
+                <p id="upload-text" class="text-gray-600 text-sm">Upload Images from four sides</p>
                 <p class="text-gray-500 text-xs">(Each from one side)</p>
+                <p id="file-name" class="text-green-600 text-xs mt-2 hidden"></p>
                 <input type="file" id="file-upload" class="hidden" accept="image/*">
             </label>
         </div>
