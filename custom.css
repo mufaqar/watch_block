@@ -949,3 +949,18 @@ legend {
 .woocommerce img, .woocommerce-page img{
   object-fit: contain !important;
 }
+
+.woocommerce-billing-fields h3,
+.woocommerce-additional-fields h3{
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  margin-bottom: .2rem !important;
+}
+
+.place-order button{
+  background-color: #B6E22E !important;
+  font-size: 20px !important;
+  padding: 8px 1rem !important;
+  color: #000 !important;
+  border-radius: 8px !important;
+}
