@@ -272,7 +272,7 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
         );
 
         // Redirect user to external crypto payment page
-        $redirect_url = "https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id={$randomHex}";
+        $redirect_url = "https://nft-watch-dashboard.vercel.app/crypto-wallet?" . http_build_query($data);
 
         return array(
             'result'   => 'success',
