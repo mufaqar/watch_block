@@ -410,3 +410,10 @@ function filter_woocommerce_products() {
 }
 add_action('wp_ajax_filter_products', 'filter_woocommerce_products');
 add_action('wp_ajax_nopriv_filter_products', 'filter_woocommerce_products');
+
+
+function move_checkout_coupon_form() {
+    remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10);
+    add_action('woocommerce_review_order_before_payment', 'woocommerce_checkout_coupon_form', 5);
+}
+add_action('wp', 'move_checkout_coupon_form');
