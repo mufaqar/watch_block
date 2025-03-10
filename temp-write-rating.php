@@ -122,6 +122,36 @@ get_header(); ?>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+//     const stars = document.querySelectorAll(".star");
+//     let selectedRating = <?= $rating ?>;
+
+//     function updateStars(rating) {
+//         stars.forEach((star, index) => {
+//             star.classList.toggle("dark", index < rating);
+//             star.classList.toggle("faded", index >= rating);
+//         });
+//         document.getElementById("selectedRating").innerText = rating;
+//         document.getElementById("review_rating").value = rating;
+//     }
+
+//     stars.forEach(star => {
+//         star.addEventListener("click", function() {
+//             selectedRating = parseInt(this.getAttribute("data-value"));
+
+//             // Send rating to server
+//             fetch("save_rating.php", {
+//                     method: "POST",
+//                     headers: {
+//                         "Content-Type": "application/x-www-form-urlencoded"
+//                     },
+//                     body: "rating=" + selectedRating
+//                 }).then(response => response.text())
+//                 .then(() => updateStars(selectedRating));
+//         });
+//     });
+// });
+
+document.addEventListener("DOMContentLoaded", function() {
     const stars = document.querySelectorAll(".star");
     let selectedRating = <?= $rating ?>;
 
@@ -137,19 +167,24 @@ document.addEventListener("DOMContentLoaded", function() {
     stars.forEach(star => {
         star.addEventListener("click", function() {
             selectedRating = parseInt(this.getAttribute("data-value"));
+            
+            // Immediately update UI before server request
+            updateStars(selectedRating);
 
             // Send rating to server
             fetch("save_rating.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: "rating=" + selectedRating
-                }).then(response => response.text())
-                .then(() => updateStars(selectedRating));
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "rating=" + selectedRating
+            }).then(response => response.text())
+            .then(data => console.log("Server response:", data)) // Debugging
+            .catch(error => console.error("Error:", error));
         });
     });
 });
+
 </script>
 
 
