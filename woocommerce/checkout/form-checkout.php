@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
@@ -28,12 +29,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 ?>
 
-<main class="checkout_title">
- <h1>CHECKOUT</h1>
-</main>
-
 <form name="checkout" method="post" class="checkout woocommerce-checkout max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
-    
     <!-- Left Column (Billing & Shipping) -->
     <div class="space-y-6">
         <?php if ( $checkout->get_checkout_fields() ) : ?>
@@ -54,7 +50,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
     <!-- Right Column (Order Summary) -->
     <div class="bg-white p-6 rounded-lg shadow h-fit">
-        <h2 class="text-lg !font-semibold mb-4"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h2>
+        <h2 class="text-lg !font-semibold your_order mb-4"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h2>
         <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
         <div id="order_review" class="woocommerce-checkout-review-order">
             <?php do_action( 'woocommerce_checkout_order_review' ); ?>

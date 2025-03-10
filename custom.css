@@ -964,3 +964,8 @@ legend {
   color: #000 !important;
   border-radius: 8px !important;
 }
+
+.your_order{
+  font-size: 20px !important;
+  font-weight: 600 !important;
+}
