@@ -70,9 +70,11 @@ get_header(); ?>
             <span class="star <?php echo ($i <= $rating) ? 'dark' : 'faded'; ?>" data-value="<?= $i ?>">★</span>
             <?php endfor; ?>
         </div>
+        <div class="flex justify-center">
         <textarea name="review_content" id="review_content" placeholder="Tell us about your thoughts"
             class="border-[#C0C0C0] mt-4 border max-w-[1050px] w-full mx-auto h-[149px] rounded-[5px] p-3"
             required></textarea>
+        </div>
         <div class="flex justify-center my-7">
             <button
                 class="bg-[#B6E22E] text-[24px] mfont text-[#111111] uppercase font-medium py-[10px] px-6 rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">Submit</button>
@@ -115,7 +117,6 @@ get_header(); ?>
         <p class="text-center text-gray-500"><?php _e('No reviews yet. Be the first to review this product!', 'textdomain'); ?></p>
     <?php endif; ?>
 
-
 </div>
 
 
@@ -155,8 +156,6 @@ document.addEventListener("DOMContentLoaded", function() {
 <?php get_footer(); ?>
 
 <script type="text/javascript">   
-    
-
     jQuery(document).ready(function($) {	
     $("#review_form").submit(function(e) {                     
         e.preventDefault(); 
