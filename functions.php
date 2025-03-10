@@ -115,22 +115,8 @@ function save_custom_profile_picture($user_id) {
 
 // Login and Register
 
-add_shortcode('woocommerce_my_account', 'custom_woocommerce_my_account_shortcode');
-function custom_woocommerce_my_account_shortcode($atts) {
-    $atts = shortcode_atts(array(
-        'login_only' => false,
-        'register_only' => false,
-    ), $atts, 'woocommerce_my_account');
-
-    ob_start();
-
-    if ($atts['login_only']) {
-        wc_get_template('myaccount/form-login-only.php');
-    } elseif ($atts['register_only']) {
-        wc_get_template('myaccount/form-register-only.php');
-    } else {
-        wc_get_template('myaccount/my-account.php');
-    }
-
-    return ob_get_clean();
+function custom_woocommerce_quantity_max($args, $product) {
+    $args['max_value'] = 10; // Set maximum quantity limit
+    return $args;
 }
+add_filter('woocommerce_quantity_input_args', 'custom_woocommerce_quantity_max', 10, 2);
