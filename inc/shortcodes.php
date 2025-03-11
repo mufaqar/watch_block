@@ -67,48 +67,57 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
     public function process_payment($order_id) {
         $order = wc_get_order($order_id);
         $randomHex = bin2hex(random_bytes(8));
-
+    
         $checkout_id = $randomHex; 
-        //https://nft-watch-dashboard.vercel.app/crypto-wallet
-        $success_url = rtrim($this->api_sucess, '/') . "?checkout_id={$checkout_id}"; // Fix success URL
-
-        // Get order total, currency, and subtotal
+        $success_url = rtrim($this->api_sucess, '/') . "?checkout_id={$checkout_id}";
+    
+        // Get order details
         $currency = $order->get_currency();
         $total = $order->get_total();
         $subtotal = $order->get_subtotal();
-
+        $discount_total = $order->get_discount_total();
+        $shipping_total = $order->get_shipping_total();
+        $cart_tax = $order->get_cart_tax();
+        $total_tax = $order->get_total_tax();
+    
         $cart_items = array();
-    foreach ($order->get_items() as $item_id => $item) {
-        $product = $item->get_product();
-        $attributes = array();
-
-        // Fetch attributes from cart item
-        $meta_data = $item->get_meta_data();
-        foreach ($meta_data as $meta) {
-            if (strpos($meta->key, 'attribute_') !== false) {
-                $attr_name = str_replace('attribute_', '', $meta->key);
-                $attributes[$attr_name] = $meta->value;
+        foreach ($order->get_items() as $item_id => $item) {
+            $product = $item->get_product();
+            $attributes = array();
+    
+            // Fetch attributes from cart item
+            $meta_data = $item->get_meta_data();
+            foreach ($meta_data as $meta) {
+                if (strpos($meta->key, 'attribute_') !== false) {
+                    $attr_name = str_replace('attribute_', '', $meta->key);
+                    $attributes[$attr_name] = $meta->value;
+                }
             }
-        }
-
-        // If attributes are still empty, try formatted meta data
-        if (empty($attributes)) {
-            $formatted_meta = $item->get_formatted_meta_data('');
-            foreach ($formatted_meta as $meta) {
-                $attributes[$meta->key] = $meta->value;
+    
+            // If attributes are still empty, try formatted meta data
+            if (empty($attributes)) {
+                $formatted_meta = $item->get_formatted_meta_data('');
+                foreach ($formatted_meta as $meta) {
+                    $attributes[$meta->key] = $meta->value;
+                }
             }
+    
+            $cart_items[] = array(
+                'id'           => $item_id,
+                'name'         => $product->get_name(),
+                'product_id'   => $product->get_id(),
+                'variation_id' => $item->get_variation_id(),
+                'quantity'     => $item->get_quantity(),
+                'price'        => $product->get_price(),
+                'subtotal'     => $item->get_subtotal(),
+                'subtotal_tax' => $item->get_subtotal_tax(),
+                'total'        => $item->get_total(),
+                'total_tax'    => $item->get_total_tax(),
+                'sku'          => $product->get_sku(),
+                'attributes'   => $attributes,
+            );
         }
-
-        $cart_items[] = array(
-            'product_id'   => $product->get_id(),
-            'name'         => $product->get_name(),
-            'quantity'     => $item->get_quantity(),
-            'price'        => $product->get_price(),
-            'product_type' => $product->get_type(),
-            'attributes'   => $attributes, // Only attributes from the cart item
-        );
-    }
-
+    
         // Get billing & shipping details
         $billing = array(
             'first_name' => $order->get_billing_first_name(),
@@ -122,7 +131,7 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             'postcode'   => $order->get_billing_postcode(),
             'country'    => $order->get_billing_country(),
         );
-
+    
         $shipping = array(
             'first_name' => $order->get_shipping_first_name(),
             'last_name'  => $order->get_shipping_last_name(),
@@ -133,21 +142,29 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             'postcode'   => $order->get_shipping_postcode(),
             'country'    => $order->get_shipping_country(),
         );
-
+    
+        // Construct the data payload
         $data = array(
-            'currency'    => $currency,
-            'total'       => $total,
-            'subtotal'    => $subtotal,
-            'return_url'  => $order->get_checkout_order_received_url(),
-            'success_url' => $success_url,
-            'checkout_id' => $checkout_id,
-            'cart_items'  => $cart_items,
-            'billing'     => $billing,
-            'shipping'    => $shipping,
+            'id'             => $order_id,
+            'order_key'      => $order->get_order_key(),
+            'status'         => $order->get_status(),
+            'currency'       => $currency,
+            'total'          => $total,
+            'subtotal'       => $subtotal,
+            'discount_total' => $discount_total,
+            'shipping_total' => $shipping_total,
+            'cart_tax'       => $cart_tax,
+            'total_tax'      => $total_tax,
+            'return_url'     => $order->get_checkout_order_received_url(),
+            'success_url'    => $success_url,
+            'checkout_id'    => $checkout_id,
+            'payment_method' => $order->get_payment_method(),
+            'billing'        => $billing,
+            'shipping'       => $shipping,
+            'cart_items'     => $cart_items,
         );
-
+    
         // Send POST request
-        //https://watchblock-backend.onrender.com/api/payments/crypto-wallet
         $response = wp_remote_post($this->api_url, array(
             'method'    => 'POST',
             'body'      => json_encode($data),
@@ -155,7 +172,7 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
                 'Content-Type' => 'application/json',
             ),
         ));
-
+    
         if (is_wp_error($response)) {
             wc_add_notice(__('Payment error:', 'woocommerce') . ' Unable to process payment.', 'error');
             return array(
@@ -163,10 +180,10 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
                 'redirect' => wc_get_checkout_url(),
             );
         }
-
+    
         $response_body = wp_remote_retrieve_body($response);
         $response_data = json_decode($response_body, true);
-
+    
         if (!empty($response_data['message']) && $response_data['message'] === 'Session Successfully created!') {
             return array(
                 'result'   => 'success',
@@ -180,4 +197,5 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             );
         }
     }
+    
 }
