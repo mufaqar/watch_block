@@ -17,7 +17,7 @@ function get_all_watches() {
             <?php
             $current_user_id = get_current_user_id();
                 $query = new WP_Query([
-                    'post_type'      => 'product',
+                    'post_type'      => 'request_watch',
                     'posts_per_page' => -1,
                     'author'         => $current_user_id,
                 ]);
@@ -27,32 +27,29 @@ function get_all_watches() {
                         <?php while ($query->have_posts()) : $query->the_post(); 
                             $product = wc_get_product(get_the_ID());
                             $ID       = get_the_ID();
-                            $material     = get_post_meta($ID, 'material', true) ?: 'N/A'; // Default to 'N/A' if size is missing
-                            $stock_status = $product ? $product->get_stock_status() : 'N/A';
-                            $stock_quantity = $product ? $product->get_stock_quantity() : 0;
-                            $stock_text = ($stock_status === 'instock') ? "In Stock" : 'Out of Stock';
-                        
-
-                            // Get price using WooCommerce function
-                            $price = function_exists('wc_get_product') ? wc_get_product($ID)->get_price() : 'N/A';
+                          
+                            $brand = get_post_meta($ID, 'brand', true) ?:  'N/A';
+                            $model_name = get_post_meta($ID, 'model_name', true) ?:   0;
+                            $size = get_post_meta($ID, 'size', true) ?: 'N/A';
+                            $price = get_post_meta($ID, 'price', true) ?  : 'N/A';
 
                             // Get featured image
-                            $image = get_the_post_thumbnail_url($ID, 'thumbnail') ?: get_template_directory_uri() . '/images//place.png';
+                            $image = get_the_post_thumbnail_url($ID, 'full') ?: get_template_directory_uri() . '/images//place.png';
                         ?>
                         <div class="grid grid-cols-6 gap-3 text-start py-2 items-center">
                             <div>
-                                <h5>Registry ID</h5>
-                                <p class="text-[#666666] !text-sm !pb-0">#<?php echo esc_html($ID); ?></p>
+                                <h5>Model No</h5>
+                                <p class="text-[#666666] !text-sm !pb-0"><?php echo esc_html($model_name); ?></p>
                             </div>
                             <div class="flex items-center col-span-2 gap-2">
                                 <img src="<?php echo esc_url($image); ?>" alt="watch"
                                     class="w-[49px] h-[49px] object-cover rounded-md bg-[#f2f2f2]" />
                                 <div>
                                     <h5><?php the_title(); ?></h5>
-                                    <p class="text-[#666666] !text-sm"><?php echo esc_html($material); ?></p>
+                                    <p class="text-[#666666] !text-sm"><?php echo esc_html($brand); ?></p>
                                 </div>
                             </div>
-                            <div><span class="bg-[#f2f2f2] rounded-full font-medium py-[2px] px-5"><?php echo esc_html($stock_text); ?></span></div>
+                            <div><span class="bg-[#f2f2f2] rounded-full font-medium py-[2px] px-5"><?php echo esc_html($model_name); ?></span></div>
                             <div>$ <?php echo esc_html($price); ?></div>
                             <div class="flex justify-end">
                                 <a href="<?php the_permalink(); ?>"
