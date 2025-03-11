@@ -108,11 +108,10 @@ function add_custom_color_and_size_fields() {
 
         // Color Selection (Buttons with Icons)
         echo '<div class="watch_options">';
-        echo '<label for="custom_color" class="text-xl font-medium">Color Available:</label>';
-        echo '<div id="color-buttons" class="py-[14px] mt-0">';
-        
         // Loop through color options and generate buttons
         if (isset($color_options)) {
+            echo '<label for="custom_color" class="text-xl font-medium">Color Available:</label>';
+            echo '<div id="color-buttons" class="py-[14px] mt-0">';
             foreach ($color_options as $color) {
                 echo '<button type="button" class="color-button" data-color="' . esc_attr(trim($color)) . '">
         <figure class="bg-white p-1 rounded-[8px]">
@@ -124,22 +123,25 @@ function add_custom_color_and_size_fields() {
       </button>';
 
             }
+            echo '</div>'; // Close color buttons container
         }
 
-        echo '</div>'; // Close color buttons container
+       
 
         // Size Selection (Buttons)
+        if (isset($size_options)) {
         echo '<label for="custom_size" class="text-xl font-medium">Choose Size:</label>';
         echo '<div id="size-buttons">';
         
         // Loop through size options and generate buttons
-        if (isset($size_options)) {
+       
             foreach ($size_options as $size) {
                 echo '<button type="button" class="size-button" data-size="' . esc_attr(trim($size)) . '">' . esc_html(trim($size)) . '</button>';
             }
+            echo '</div>'; // Close size buttons container
         }
 
-        echo '</div>'; // Close size buttons container
+       
 
         // Hidden input for color and size values
         echo '<input type="hidden" name="custom_color" id="custom_color" value="" />';
