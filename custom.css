@@ -967,5 +967,55 @@ legend {
 
 .your_order{
   font-size: 20px !important;
+  font-weight: 700 !important;
+  padding:  0 !important;
+  margin-top: 0 !important;
+}
+
+#coupon_code{
+  border-radius: 30px !important;
+  width: 100% !important;
+}
+.form-row-last{
+  width: 30% !important;
+}
+.form-row-last .button{
+  background-color: #B6E22E !important;
+  font-size: 20px !important;
+  padding: 11px 1rem !important;
+  color: #000 !important;
+  border-radius: 8px !important;
+}
+.form-row-first{
+  width: 70% !important;
+}
+#order_review p{
+  font-size: 20px !important;
   font-weight: 600 !important;
+  margin-bottom: .2rem !important;
+}
+
+#payment{
+  margin-top: 1rem !important;
+}
+#order_comments{
+  border: 1px solid #cfcfcf !important;
+  padding: 12px !important;
+  border-radius: 4px !important;
+}
+.woocommerce-checkout{
+  margin-bottom: 3rem !important;
+}
+.checkout_page_title{
+  margin-bottom: 3rem !important;
+  font-size: 56px !important;
+  font-weight: 600 !important;
+  margin-top: -2rem !important;
+}
+
+@media (min-width:768px){
+  #customer_details{
+    border-right: 1px solid #d5d5d5 !important;
+    padding-right: 2rem !important;
+  }
 }

@@ -29,13 +29,17 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 ?>
 
+<div>
+    <h2 class="checkout_page_title mb-10 text-center">CHECKOUT</h2>
+</div>
+
 <form name="checkout" method="post" class="checkout woocommerce-checkout max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
     <!-- Left Column (Billing & Shipping) -->
     <div class="space-y-6">
         <?php if ( $checkout->get_checkout_fields() ) : ?>
             <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-            <div id="customer_details" class="bg-white p-6 rounded-lg shadow">
+            <div id="customer_details" class="bg-white">
                 <div class="mb-6">
                     <?php do_action( 'woocommerce_checkout_billing' ); ?>
                 </div>
@@ -49,12 +53,22 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
     </div>
 
     <!-- Right Column (Order Summary) -->
-    <div class="bg-white p-6 rounded-lg shadow h-fit">
-        <h2 class="text-lg !font-semibold your_order mb-4"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h2>
+    <div class="">
+        
+    <div>
+        <h2 class="your_order mb-4"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h2>
         <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-        <div id="order_review" class="woocommerce-checkout-review-order">
-            <?php do_action( 'woocommerce_checkout_order_review' ); ?>
+        <div class="order-summary-wrapper"> <!-- Parent div -->
+            <?php do_action( 'woocommerce_before_checkout_order_review' ); ?>
+            <div id="order_review" class="woocommerce-checkout-review-order">
+                <?php do_action( 'woocommerce_checkout_order_review' ); ?>
+            </div>
+            <div class="checkout-coupon-form">
+                <?php do_action( 'woocommerce_before_checkout_form', WC()->checkout() ); ?>
+            </div>
         </div>
+    </div>
+
         
         <!-- Coupon Code Above Payment Method -->
         <div class="mt-6">
