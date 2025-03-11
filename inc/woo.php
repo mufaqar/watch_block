@@ -196,15 +196,20 @@ function add_custom_attributes_to_order($item, $cart_item_key, $values, $order) 
 
 
 function add_custom_menu_items($items) {
-    // Define new menu items
+    // Move "Edit Account" to the top if it exists
+    if (isset($items['edit-account'])) {
+        $edit_account = ['edit-account' => $items['edit-account']];
+        unset($items['edit-account']);
+        $items = $edit_account + $items; // Place "Edit Account" at the top
+    }
+
+    // Define new custom menu items
     $new_items = [        
         'sell-my-watch' => __('Sell My Watch', 'your-textdomain'),
         'stolen-watch' => __('Report lost/stolen Watch', 'your-textdomain'),
-       
-        
     ];
 
-    // Move Logout to the end
+    // Move "Logout" to the end if it exists
     if (isset($items['customer-logout'])) {
         $logout_item = ['customer-logout' => $items['customer-logout']];
         unset($items['customer-logout']);
