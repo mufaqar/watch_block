@@ -239,66 +239,90 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
     public function process_payment($order_id) {
         $order = wc_get_order($order_id);
         $randomHex = bin2hex(random_bytes(8));
-    
-        $checkout_id =  $randomHex; // Ideally, generate dynamically
+        
+        $checkout_id = $randomHex; // Ideally, generate dynamically
         $success_url = "https://nft-watch-dashboard.vercel.app/crypto-wallet?checkout_id={$checkout_id}";
-    
+        
         // Get order total, currency, and subtotal
-    $currency = $order->get_currency();
-    $total = $order->get_total();
-    $subtotal = $order->get_subtotal();
-
-    // Get cart items
-    $cart_items = array();
-    foreach ($order->get_items() as $item_id => $item) {
-        $product = $item->get_product();
-        $cart_items[] = array(
-            'product_id'   => $product->get_id(),
-            'name'         => $product->get_name(),
-            'quantity'     => $item->get_quantity(),
-            'price'        => $product->get_price(),
-            'product_type' => $product->get_type(),
-            'attributes'   => $product->get_attributes(),
+        $currency = $order->get_currency();
+        $total = $order->get_total();
+        $subtotal = $order->get_subtotal();
+        
+        // Get cart items
+        $cart_items = array();
+        foreach ($order->get_items() as $item_id => $item) {
+            $product = $item->get_product();
+            
+            // Get product attributes
+            $attributes = array();
+            if ($product->is_type('variable')) {
+                // For variable products, get selected attributes
+                $variation_id = $item->get_variation_id();
+                $variation = wc_get_product($variation_id);
+                if ($variation) {
+                    foreach ($variation->get_attributes() as $key => $value) {
+                        $attributes[$key] = $value;
+                    }
+                }
+            } else {
+                // For simple products, get all attributes
+                foreach ($product->get_attributes() as $attr_name => $attr) {
+                    if ($attr->is_taxonomy()) {
+                        $terms = wc_get_product_terms($product->get_id(), $attr->get_name(), array('fields' => 'names'));
+                        $attributes[$attr_name] = implode(', ', $terms);
+                    } else {
+                        $attributes[$attr_name] = $attr->get_options();
+                    }
+                }
+            }
+        
+            $cart_items[] = array(
+                'product_id'   => $product->get_id(),
+                'name'         => $product->get_name(),
+                'quantity'     => $item->get_quantity(),
+                'price'        => $product->get_price(),
+                'product_type' => $product->get_type(),
+                'attributes'   => $attributes,
+            );
+        }
+        
+        // Get billing & shipping details
+        $billing = array(
+            'first_name' => $order->get_billing_first_name(),
+            'last_name'  => $order->get_billing_last_name(),
+            'email'      => $order->get_billing_email(),
+            'phone'      => $order->get_billing_phone(),
+            'address_1'  => $order->get_billing_address_1(),
+            'address_2'  => $order->get_billing_address_2(),
+            'city'       => $order->get_billing_city(),
+            'state'      => $order->get_billing_state(),
+            'postcode'   => $order->get_billing_postcode(),
+            'country'    => $order->get_billing_country(),
         );
-    }
-
-    // Get billing & shipping details
-    $billing = array(
-        'first_name' => $order->get_billing_first_name(),
-        'last_name'  => $order->get_billing_last_name(),
-        'email'      => $order->get_billing_email(),
-        'phone'      => $order->get_billing_phone(),
-        'address_1'  => $order->get_billing_address_1(),
-        'address_2'  => $order->get_billing_address_2(),
-        'city'       => $order->get_billing_city(),
-        'state'      => $order->get_billing_state(),
-        'postcode'   => $order->get_billing_postcode(),
-        'country'    => $order->get_billing_country(),
-    );
-
-    $shipping = array(
-        'first_name' => $order->get_shipping_first_name(),
-        'last_name'  => $order->get_shipping_last_name(),
-        'address_1'  => $order->get_shipping_address_1(),
-        'address_2'  => $order->get_shipping_address_2(),
-        'city'       => $order->get_shipping_city(),
-        'state'      => $order->get_shipping_state(),
-        'postcode'   => $order->get_shipping_postcode(),
-        'country'    => $order->get_shipping_country(),
-    );
-
-    $data = array(
-        'currency'    => $currency,
-        'total'       => $total,
-        'subtotal'    => $subtotal,
-        'return_url'  => $order->get_checkout_order_received_url(),
-        'success_url' => $success_url,
-        'checkout_id' => $checkout_id,
-        'cart_items'  => $cart_items,
-        'billing'     => $billing,
-        'shipping'    => $shipping,
-    );
-
+        
+        $shipping = array(
+            'first_name' => $order->get_shipping_first_name(),
+            'last_name'  => $order->get_shipping_last_name(),
+            'address_1'  => $order->get_shipping_address_1(),
+            'address_2'  => $order->get_shipping_address_2(),
+            'city'       => $order->get_shipping_city(),
+            'state'      => $order->get_shipping_state(),
+            'postcode'   => $order->get_shipping_postcode(),
+            'country'    => $order->get_shipping_country(),
+        );
+        
+        $data = array(
+            'currency'    => $currency,
+            'total'       => $total,
+            'subtotal'    => $subtotal,
+            'return_url'  => $order->get_checkout_order_received_url(),
+            'success_url' => $success_url,
+            'checkout_id' => $checkout_id,
+            'cart_items'  => $cart_items,
+            'billing'     => $billing,
+            'shipping'    => $shipping,
+        );
+        
     
         // Send POST request
         $response = wp_remote_post('https://watchblock-backend.onrender.com/api/payments/crypto-wallet', array(
