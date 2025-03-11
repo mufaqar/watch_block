@@ -77,40 +77,37 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
         $total = $order->get_total();
         $subtotal = $order->get_subtotal();
 
-        // Get cart items
         $cart_items = array();
-        foreach ($order->get_items() as $item_id => $item) {
-            $product = $item->get_product();
-            $attributes = array();
+    foreach ($order->get_items() as $item_id => $item) {
+        $product = $item->get_product();
+        $attributes = array();
 
-            if ($product->is_type('variable')) {
-                $variation_id = $item->get_variation_id();
-                $variation = wc_get_product($variation_id);
-                if ($variation) {
-                    foreach ($variation->get_attributes() as $key => $value) {
-                        $attributes[$key] = $value;
-                    }
-                }
-            } else {
-                foreach ($product->get_attributes() as $attr_name => $attr) {
-                    if ($attr->is_taxonomy()) {
-                        $terms = wc_get_product_terms($product->get_id(), $attr->get_name(), array('fields' => 'names'));
-                        $attributes[$attr_name] = implode(', ', $terms);
-                    } else {
-                        $attributes[$attr_name] = $attr->get_options();
-                    }
-                }
+        // Fetch attributes from cart item
+        $meta_data = $item->get_meta_data();
+        foreach ($meta_data as $meta) {
+            if (strpos($meta->key, 'attribute_') !== false) {
+                $attr_name = str_replace('attribute_', '', $meta->key);
+                $attributes[$attr_name] = $meta->value;
             }
-
-            $cart_items[] = array(
-                'product_id'   => $product->get_id(),
-                'name'         => $product->get_name(),
-                'quantity'     => $item->get_quantity(),
-                'price'        => $product->get_price(),
-                'product_type' => $product->get_type(),
-                'attributes'   => $attributes,
-            );
         }
+
+        // If attributes are still empty, try formatted meta data
+        if (empty($attributes)) {
+            $formatted_meta = $item->get_formatted_meta_data('');
+            foreach ($formatted_meta as $meta) {
+                $attributes[$meta->key] = $meta->value;
+            }
+        }
+
+        $cart_items[] = array(
+            'product_id'   => $product->get_id(),
+            'name'         => $product->get_name(),
+            'quantity'     => $item->get_quantity(),
+            'price'        => $product->get_price(),
+            'product_type' => $product->get_type(),
+            'attributes'   => $attributes, // Only attributes from the cart item
+        );
+    }
 
         // Get billing & shipping details
         $billing = array(
