@@ -26,12 +26,12 @@ function get_all_watches() {
                     <div class="watch-list p-5">
                         <?php while ($query->have_posts()) : $query->the_post(); 
                             $product = wc_get_product(get_the_ID());
-                            $ID       = get_the_ID();
-                          
+                            $ID       = get_the_ID();                          
                             $brand = get_post_meta($ID, 'brand', true) ?:  'N/A';
                             $model_name = get_post_meta($ID, 'model_name', true) ?:   0;
                             $size = get_post_meta($ID, 'size', true) ?: 'N/A';
                             $price = get_post_meta($ID, 'price', true) ?  : 'N/A';
+                        
 
                             // Get featured image
                             $image = get_the_post_thumbnail_url($ID, 'full') ?: get_template_directory_uri() . '/images//place.png';
@@ -49,7 +49,7 @@ function get_all_watches() {
                                     <p class="text-[#666666] !text-sm"><?php echo esc_html($brand); ?></p>
                                 </div>
                             </div>
-                            <div><span class="bg-[#f2f2f2] rounded-full font-medium py-[2px] px-5"><?php echo esc_html($model_name); ?></span></div>
+                            <div><span class="bg-[#f2f2f2] rounded-full font-medium py-[2px] px-5"><?php echo esc_html($size); ?></span></div>
                             <div>$ <?php echo esc_html($price); ?></div>
                             <div class="flex justify-end">
                                 <a href="<?php the_permalink(); ?>"
