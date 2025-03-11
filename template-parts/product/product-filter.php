@@ -19,19 +19,23 @@
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Color -->
+         
         <div class="flex flex-col w-full sm:w-auto">
-            <h6 class="font-semibold mb-[9px]">Color Available</h6>
-            <div class="form-select">
-                <select id="color-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
-                 
-                    <?php 
-                     $colors = get_terms(['taxonomy' => 'pa_watches_colors', 'hide_empty' => false]);
-                     foreach ($colors as $color) {
-                         echo '<option value="' . esc_attr($color->slug) . '">' . esc_html($color->name) . '</option>';
-                     }
-                    ?>
-                </select>
-            </div>
+        <?php 
+            $colors = get_terms(['taxonomy' => 'pa_watches_colors', 'hide_empty' => false]);
+            if (!empty($colors)) : ?>
+                <h6 class="font-semibold mb-[9px]">Color Available</h6>
+                <div class="form-select">
+                    <select id="color-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
+                        <?php 
+                        foreach ($colors as $color) {
+                            echo '<option value="' . esc_attr($color->slug) . '">' . esc_html($color->name) . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            <?php endif; ?>
+
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
