@@ -3056,6 +3056,10 @@ video {
     flex-wrap: nowrap;
   }
 
+  .md\:items-start {
+    align-items: flex-start;
+  }
+
   .md\:gap-10 {
     gap: 2.5rem;
   }

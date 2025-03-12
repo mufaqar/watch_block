@@ -139,7 +139,7 @@ get_header();
 
     <section class="container mx-auto px-4 mt-[106px] mb-[177px]" id="reviews">
         <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center mb-[50px] text-black uppercase">Testimonials</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:flex gap-6 items-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:flex gap-6 items-center md:items-start">
             <!-- Testimonial Card -->
             <?php
             $args = array(
