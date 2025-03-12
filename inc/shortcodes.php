@@ -24,8 +24,8 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
         $this->title       = $this->get_option('title');
         $this->description = $this->get_option('description');
         $this->enabled     = $this->get_option('enabled');
-        // $this->api_url     = $this->get_option('api_url');
-        // $this->api_sucess  = $this->get_option('api_sucess');
+        $this->api_url     = $this->get_option('api_url');
+        $this->api_sucess  = $this->get_option('api_sucess');
 
         // Save admin settings
         add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
