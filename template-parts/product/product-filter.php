@@ -116,9 +116,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // AJAX request to filter products dynamically (to be implemented)
     }
 
-    function setActiveButton(buttons, selectedValue) {
+    function setActiveButton(buttons, selectedValue, datasetKey) {
         buttons.forEach((button) => {
-            if (button.dataset.condition === selectedValue) {
+            if (button.dataset[datasetKey] === selectedValue) {
                 button.classList.add("bg-[#B6E22E]", "border-[#B6E22E]"); // Active styling
             } else {
                 button.classList.remove("bg-[#B6E22E]", "border-[#B6E22E]"); // Reset others
@@ -143,17 +143,17 @@ document.addEventListener("DOMContentLoaded", function() {
     conditionButtons.forEach((button) => {
         button.addEventListener("click", function() {
             updateURL("condition", this.dataset.condition);
-            setActiveButton(conditionButtons, this.dataset.condition);
+            setActiveButton(conditionButtons, this.dataset.condition, "condition");
         });
     });
 
     // Handle price sorting clicks
     priceButtons.forEach((button) => {
-    button.addEventListener("click", function() {
-        updateURL("price", this.dataset.price);
-        setActiveButton(priceButtons, this.dataset.price);
+        button.addEventListener("click", function() {
+            updateURL("price", this.dataset.price);
+            setActiveButton(priceButtons, this.dataset.price, "price");
+        });
     });
-});
 
     // Load active filters from URL on page load
     function setActiveFromURL() {
@@ -161,10 +161,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const activeCondition = urlParams.get("condition");
         const activePrice = urlParams.get("price");
 
-        if (activeCondition) setActiveButton(conditionButtons, activeCondition);
-        if (activePrice) setActiveButton(priceButtons, activePrice);
+        if (activeCondition) setActiveButton(conditionButtons, activeCondition, "condition");
+        if (activePrice) setActiveButton(priceButtons, activePrice, "price");
     }
 
     setActiveFromURL();
 });
+
 </script>
