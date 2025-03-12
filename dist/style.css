@@ -3020,6 +3020,10 @@ video {
     height: 700px;
   }
 
+  .md\:h-\[98px\] {
+    height: 98px;
+  }
+
   .md\:min-h-\[89\.2px\] {
     min-height: 89.2px;
   }

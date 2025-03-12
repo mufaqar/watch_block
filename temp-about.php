@@ -149,18 +149,16 @@ get_header();
             $reviews_query = new WP_Query( $args );
             if ( $reviews_query->have_posts() ) : 
                 while ( $reviews_query->have_posts() ) : $reviews_query->the_post(); ?>
-            <div class="flex flex-col md:w-[33.33%]">
+            <div class="flex flex-col flex-1">
                 <div class="bg-[#F2F2F2] p-6 pb-28">
                     <!-- Display Review Icon (replace with dynamic content if needed) -->
                     <img src="<?php echo get_template_directory_uri(); ?>/images/“.png"
                         class="h-auto w-[64px] md:w-[50px] lg:w-[64px]  mb-3" alt="Testimonial Icon" />
                     <!-- Display Review Content -->
-                    <div class="md:min-h-[98px] py-3 text-[16px] md:text-[18px] leading-relaxed">
-                        <p class="">
-                            <?php the_content(); ?>
-                            <!-- Display review content -->
-                        </p>
-                    </div>
+                    <p class="py-3 text-[16px] md:text-[18px] leading-relaxed">
+                        <?php the_content(); ?>
+                        <!-- Display review content -->
+                    </p>
                 </div>
                 <div class="bg-black h-28 text-center flex flex-col items-center justify-center -mt-14">
                     <!-- Display Profile Image (use featured image for review if available) -->
