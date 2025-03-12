@@ -253,7 +253,7 @@ button.active_dashbord_page {
   font-size: 24px !important;
   text-transform: uppercase !important;
   color: #111 !important;
-  margin-bottom: 0 !important;
+  margin-bottom: 14px !important;
   padding-bottom: 0 !important;
   letter-spacing: 4px;
 }
@@ -266,7 +266,7 @@ button.active_dashbord_page {
 }
 
 .product-excerpt {
-  margin-bottom: 4px !important;
+  margin-bottom: 14px !important;
 }
 
 .woocommerce ul.products li.product,
