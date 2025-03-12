@@ -128,7 +128,7 @@ function get_Stolen_Watches() {
 
 function report_stolen_watch() {
     ?>
-<div class="box-content p-[25px] pt-0">
+<div class="box-content p-[25px] pt-3 md:pt-0">
     <h2 class="text-[34px] text-left font-semibold md:leading-[41px] !pt-[1rem] !px-0">Report a Lost or Stolen Watch</h2>
     <form class="mt-5 flex flex-col gap-5" id="stolen_watch">
         <div class="relative">
