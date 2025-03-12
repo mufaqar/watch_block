@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const filters = document.querySelectorAll("#brand-filter, #color-filter, #size-filter");
     const conditionButtons = document.querySelectorAll(".condition-button");
+    const priceButtons = document.querySelectorAll(".price-button");
     const shopContainer = document.querySelector(".products"); // Ensure this matches WooCommerce product container
 
     function updateFilters() {
@@ -20,6 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
             if (button.classList.contains("active")) {
                 formData.append("condition", button.dataset.condition);
                 params.set("condition", button.dataset.condition);
+            }
+        });
+
+        // Collect price filter
+        priceButtons.forEach(button => {
+            if (button.classList.contains("active")) {
+                formData.append("price", button.dataset.price);
+                params.set("price", button.dataset.price);
             }
         });
 
@@ -45,6 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
     conditionButtons.forEach(button => {
         button.addEventListener("click", function () {
             conditionButtons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+            updateFilters();
+        });
+    });
+
+    // Price button click event
+    priceButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            priceButtons.forEach(btn => btn.classList.remove("active"));
             this.classList.add("active");
             updateFilters();
         });

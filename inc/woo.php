@@ -345,10 +345,7 @@ function filter_woocommerce_products() {
         'post_type'      => 'product',
         'posts_per_page' => 12,
         'tax_query'      => [],
-        'meta_query'     => [],
-        'orderby'        => 'meta_value_num',
-        'order'          => 'ASC', // Default order
-        'meta_key'       => '_price', // Sort by price meta key
+        'meta_query'     => []
     ];
 
     // Apply brand filter
@@ -391,11 +388,12 @@ function filter_woocommerce_products() {
     // Apply price sorting
     if (!empty($_POST['price'])) {
         $args['meta_key'] = '_price';
-        $args['orderby']  = 'meta_value_num'; // Ensure numeric sorting
+        $args['orderby']  = 'meta_value_num'; 
 
         if ($_POST['price'] === 'high') {
             $args['order'] = 'DESC'; // High to Low
         } elseif ($_POST['price'] === 'low') {
+            
             $args['order'] = 'ASC'; // Low to High
         }
     }

@@ -61,10 +61,8 @@
         <div class="flex flex-col ">
             <h6 class="font-semibold mb-[9px]">Price</h6>
             <div class="flex gap-[5px] min-w-[201px]">
-                <button class="condition-button_for_price filter_button text-nowrap" data-condition="low">High to
-                    Low</button>
-                <button class="condition-button_for_price filter_button text-nowrap" data-condition="high">Low to
-                    High</button>
+                <button class="price-button filter_button text-nowrap" data-price="high">High to Low</button>
+                <button class="price-button filter_button text-nowrap" data-price="low">Low to High</button>
             </div>
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
@@ -99,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const colorFilter = document.getElementById("color-filter");
     const sizeFilter = document.getElementById("size-filter");
     const conditionButtons = document.querySelectorAll(".condition-button");
-    const priceButtons = document.querySelectorAll(".condition-button_for_price");
+    const priceButtons = document.querySelectorAll(".price-button");
 
     function updateURL(param, value) {
         let url = new URL(window.location.href);
@@ -151,11 +149,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Handle price sorting clicks
     priceButtons.forEach((button) => {
-        button.addEventListener("click", function() {
-            updateURL("price", this.dataset.condition);
-            setActiveButton(priceButtons, this.dataset.condition);
-        });
+    button.addEventListener("click", function() {
+        updateURL("price", this.dataset.price);
+        setActiveButton(priceButtons, this.dataset.price);
     });
+});
 
     // Load active filters from URL on page load
     function setActiveFromURL() {
