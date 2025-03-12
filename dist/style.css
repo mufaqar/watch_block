@@ -1113,6 +1113,14 @@ video {
   min-height: 50vh;
 }
 
+.min-h-\[\] {
+  min-height: ;
+}
+
+.min-h-\[440px\] {
+  min-height: 440px;
+}
+
 .\!w-full {
   width: 100% !important;
 }
@@ -3014,6 +3022,10 @@ video {
 
   .md\:min-h-\[89\.2px\] {
     min-height: 89.2px;
+  }
+
+  .md\:min-h-\[440px\] {
+    min-height: 440px;
   }
 
   .md\:w-1\/2 {
