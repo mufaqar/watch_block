@@ -47,10 +47,10 @@
             <div class="flex gap-[5px] min-w-[120px]">
                 <button
                     class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full"
-                    data-condition="new">New</button>
+                    data-condition="New">New</button>
                 <button
                     class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full"
-                    data-condition="used">Used</button>
+                    data-condition="Used">Used</button>
             </div>
 
 
