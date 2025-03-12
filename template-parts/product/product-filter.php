@@ -1,12 +1,13 @@
 <section class="bg-white" id="filter">
     <div class="max-w-[1320px] mx-auto px-5 py-10 gap-[33px] flex justify-between md:flex-nowrap flex-wrap">
-        
+
         <!-- Brands -->
         <div class="flex flex-col w-full sm:w-auto">
             <h6 class="font-semibold mb-[9px]">Brand</h6>
             <div class="form-select">
-                <select id="brand-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
-                  
+                <select id="brand-filter"
+                    class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
+
                     <?php 
                     $brands = get_terms(['taxonomy' => 'product_brand', 'hide_empty' => false]);
                     foreach ($brands as $brand) {
@@ -19,21 +20,22 @@
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Color -->
-         
+
         <div class="flex flex-col w-full sm:w-auto">
-        <?php 
+            <?php 
             $colors = get_terms(['taxonomy' => 'pa_watches_colors', 'hide_empty' => false]);
             if (!empty($colors)) : ?>
-                <h6 class="font-semibold mb-[9px]">Color Available</h6>
-                <div class="form-select">
-                    <select id="color-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
-                        <?php 
+            <h6 class="font-semibold mb-[9px]">Color Available</h6>
+            <div class="form-select">
+                <select id="color-filter"
+                    class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
+                    <?php 
                         foreach ($colors as $color) {
                             echo '<option value="' . esc_attr($color->slug) . '">' . esc_html($color->name) . '</option>';
                         }
                         ?>
-                    </select>
-                </div>
+                </select>
+            </div>
             <?php endif; ?>
 
         </div>
@@ -43,9 +45,13 @@
         <div class="flex flex-col ">
             <h6 class="font-semibold mb-[9px]">Condition</h6>
             <div class="flex gap-[5px] min-w-[120px]">
-            <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="New">New</button>
-            <button class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full" data-condition="Used">Used</button>
-        </div>
+                <button
+                    class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full"
+                    data-condition="New">New</button>
+                <button
+                    class="condition-button text-[12.25px] py-[7px] px-[15px] border-[1.3px] border-[#BAC8D3] hover:bg-[#B6E22E] text-black hover:border-[#B6E22E] rounded-full"
+                    data-condition="Used">Used</button>
+            </div>
 
 
         </div>
@@ -55,18 +61,23 @@
         <div class="flex flex-col ">
             <h6 class="font-semibold mb-[9px]">Price</h6>
             <div class="flex gap-[5px] min-w-[201px]">
-                <button class="condition-button_for_price filter_button text-nowrap"  data-condition="low">High to Low</button>
-                <button class="condition-button_for_price filter_button text-nowrap"  data-condition="high">Low to High</button>
+                <button class="condition-button_for_price filter_button text-nowrap" data-condition="low">High to
+                    Low</button>
+                <button class="condition-button_for_price filter_button text-nowrap" data-condition="high">Low to
+                    High</button>
             </div>
         </div>
         <div class="w-[1.33px] bg-[#F4F4F4] h-[77px] hidden sm:block"></div>
 
         <!-- Sizes -->
         <div class="flex flex-col w-full sm:w-auto">
-            <h6 class="font-semibold mb-[9px]">Size Available</h6>
+            <div class="flex justify-between items-center mb-[9px] font-semibold ">
+                <h6 class="">Size Available</h6> <a href="<?php echo home_url('shop'); ?>">Reset</a>
+            </div>
             <div class="form-select">
-                <select id="size-filter" class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
-                 
+                <select id="size-filter"
+                    class="bg-[#F9F9F9] text-[#C9C4C4] min-w-[185px] w-full py-[10px] px-[15px] font-medium rounded-[10px]">
+
                     <?php 
                      $colors = get_terms(['taxonomy' => 'pa_watches_size', 'hide_empty' => false]);
                      foreach ($colors as $color) {
@@ -77,13 +88,13 @@
             </div>
         </div>
     </div>
-    
+
 </section>
 
 
 
 <script>
-   document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const brandFilter = document.getElementById("brand-filter");
     const colorFilter = document.getElementById("color-filter");
     const sizeFilter = document.getElementById("size-filter");
@@ -118,21 +129,21 @@
     }
 
     // Handle dropdown changes
-    brandFilter?.addEventListener("change", function () {
+    brandFilter?.addEventListener("change", function() {
         updateURL("brand", this.value);
     });
 
-    colorFilter?.addEventListener("change", function () {
+    colorFilter?.addEventListener("change", function() {
         updateURL("color", this.value);
     });
 
-    sizeFilter?.addEventListener("change", function () {
+    sizeFilter?.addEventListener("change", function() {
         updateURL("size", this.value);
     });
 
     // Handle condition button clicks
     conditionButtons.forEach((button) => {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function() {
             updateURL("condition", this.dataset.condition);
             setActiveButton(conditionButtons, this.dataset.condition);
         });
@@ -140,7 +151,7 @@
 
     // Handle price sorting clicks
     priceButtons.forEach((button) => {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function() {
             updateURL("price", this.dataset.condition);
             setActiveButton(priceButtons, this.dataset.condition);
         });
@@ -158,6 +169,4 @@
 
     setActiveFromURL();
 });
-
-    </script>
-
+</script>
