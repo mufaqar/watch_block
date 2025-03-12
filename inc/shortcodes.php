@@ -68,10 +68,9 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
         $order = wc_get_order($order_id);
         $randomHex = bin2hex(random_bytes(8));
     
-        $checkout_id = $randomHex; 
+        $checkout_id = $randomHex;
         $success_url = rtrim($this->api_sucess, '/') . "?checkout_id={$checkout_id}";
     
-        // Get order details
         $currency = $order->get_currency();
         $total = $order->get_total();
         $subtotal = $order->get_subtotal();
@@ -85,7 +84,6 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             $product = $item->get_product();
             $attributes = array();
     
-            // Fetch attributes from cart item
             $meta_data = $item->get_meta_data();
             foreach ($meta_data as $meta) {
                 if (strpos($meta->key, 'attribute_') !== false) {
@@ -94,7 +92,6 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
                 }
             }
     
-            // If attributes are still empty, try formatted meta data
             if (empty($attributes)) {
                 $formatted_meta = $item->get_formatted_meta_data('');
                 foreach ($formatted_meta as $meta) {
@@ -118,7 +115,24 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             );
         }
     
-        // Get billing & shipping details
+        // Add shipping as a separate line item
+        if ($shipping_total > 0) {
+            $cart_items[] = array(
+                'id'           => 'shipping',
+                'name'         => 'Shipping',
+                'product_id'   => '',
+                'variation_id' => '',
+                'quantity'     => 1,
+                'price'        => $shipping_total,
+                'subtotal'     => $shipping_total,
+                'subtotal_tax' => 0,
+                'total'        => $shipping_total,
+                'total_tax'    => 0,
+                'sku'          => '',
+                'attributes'   => array(),
+            );
+        }
+    
         $billing = array(
             'first_name' => $order->get_billing_first_name(),
             'last_name'  => $order->get_billing_last_name(),
@@ -143,7 +157,6 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             'country'    => $order->get_shipping_country(),
         );
     
-        // Construct the data payload
         $data = array(
             'id'             => $order_id,
             'order_key'      => $order->get_order_key(),
@@ -162,9 +175,9 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             'billing'        => $billing,
             'shipping'       => $shipping,
             'cart_items'     => $cart_items,
+            'shipping_method' => $order->get_shipping_method(),
         );
     
-        // Send POST request
         $response = wp_remote_post($this->api_url, array(
             'method'    => 'POST',
             'body'      => json_encode($data),
@@ -197,5 +210,6 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             );
         }
     }
+    
     
 }
