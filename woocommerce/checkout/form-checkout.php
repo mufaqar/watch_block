@@ -34,8 +34,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 </div>
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
-    <!-- Left Column (Billing & Shipping) -->
-    <div class="space-y-6">
+<div class="space-y-6">
         <?php if ( $checkout->get_checkout_fields() ) : ?>
             <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
@@ -52,7 +51,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <?php endif; ?>
     </div>
 
-    <!-- Right Column (Order Summary) -->
+  
     <div class="">
         
     <div>
