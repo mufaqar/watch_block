@@ -957,6 +957,10 @@ video {
   margin-top: 60px;
 }
 
+.\!mt-0 {
+  margin-top: 0px !important;
+}
+
 .box-content {
   box-sizing: content-box;
 }
@@ -1386,10 +1390,6 @@ video {
 
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1920,6 +1920,10 @@ video {
   padding: 33px;
 }
 
+.\!p-6 {
+  padding: 1.5rem !important;
+}
+
 .\!px-0 {
   padding-left: 0px !important;
   padding-right: 0px !important;
@@ -2118,6 +2122,11 @@ video {
 .py-\[9\.5px\] {
   padding-top: 9.5px;
   padding-bottom: 9.5px;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .\!pb-0 {

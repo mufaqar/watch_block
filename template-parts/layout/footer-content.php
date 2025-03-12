@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div class="text-white flex items-center px-5 text-center justify-center flex-wrap pb-3 gap-4">
-			<p>@2024 VOOKUM. All rights reserved</p>
+			<p>@2025 VOOKUM. All rights reserved</p>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>
 			<a href="<?php echo home_url('/terms-and-conditions') ?>">Terms & Conditions</a>
 			<div class="w-[2px] h-[15px] bg-[white]"></div>

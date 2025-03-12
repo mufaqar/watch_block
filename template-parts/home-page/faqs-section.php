@@ -35,9 +35,9 @@ $terms = get_terms(array(
                         echo '<ul class="faq-list mb-5">';
                         while ($query->have_posts()) {
                             $query->the_post();
-                            echo '<li class="faq-item">
-                                <div class="py-6">
-                                    <button class="faq-question flex justify-between items-center text-left font-bold text-lg border-b-[2px] border-[#111111] pb-4 w-full">' . get_the_title() . '
+                            echo '<li class="faq-item !mt-0">
+                                <div class="!p-6">
+                                    <button class="faq-question flex justify-between items-center text-left font-bold !px-0 text-lg border-b-[2px] border-[#111111] pb-4 w-full">' . get_the_title() . '
                                     <img class="transition-all duration-100 ease-linear" src="'. get_template_directory_uri().'/images/svg/chevron.svg" alt=""/>
                                     </button>
                                     <div class="faq-answer pt-4 text-[18px]">' . get_the_content() . '</div>
