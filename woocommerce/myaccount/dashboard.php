@@ -30,7 +30,7 @@ if ($current_user->exists()) {
     <?php
 
     // Display the welcome message
-    echo "<h2 class='!pl-0'>Welcome, " . esc_html($current_user->display_name) . "!</h2>";
+    echo "<h2 class='!pl-0' style='padding-left: 0 !important'>Welcome, " . esc_html($current_user->display_name) . "!</h2>";
 
     display_user_badge();
 
