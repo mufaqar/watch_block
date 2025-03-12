@@ -149,7 +149,7 @@ get_header();
             $reviews_query = new WP_Query( $args );
             if ( $reviews_query->have_posts() ) : 
                 while ( $reviews_query->have_posts() ) : $reviews_query->the_post(); ?>
-            <div class="flex flex-col flex-1">
+            <div class="flex flex-col md:w-[33.33%]">
                 <div class="bg-[#F2F2F2] p-6 pb-28">
                     <!-- Display Review Icon (replace with dynamic content if needed) -->
                     <img src="<?php echo get_template_directory_uri(); ?>/images/“.png"
