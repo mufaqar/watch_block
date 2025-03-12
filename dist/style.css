@@ -3028,6 +3028,18 @@ video {
     min-height: 440px;
   }
 
+  .md\:min-h-\[x\] {
+    min-height: x;
+  }
+
+  .md\:min-h-\[98x\] {
+    min-height: 98x;
+  }
+
+  .md\:min-h-\[98px\] {
+    min-height: 98px;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
