@@ -1006,9 +1006,12 @@ legend {
 .place-order button {
   background-color: #B6E22E !important;
   font-size: 20px !important;
-  padding: 8px 1rem !important;
+  padding: 12px 1.8rem !important;
   color: #000 !important;
   border-radius: 8px !important;
+}
+.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea{
+  border: 1px solid #cfcfcf !important;
 }
 
 .your_order {
