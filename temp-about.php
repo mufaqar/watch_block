@@ -33,11 +33,6 @@ get_header();
                         <p class="text-[4vw] md:text-[18px] font-[500] text-[#676767] py-3 leading-relaxed ">
                             <?php the_field('about_details'); ?>
                         </p>
-                        <!-- <div class="mt-6">
-                            <a href="#"
-                                class="bg-[#B6E22E] px-6 md:px-10 py-3 md:py-4 font-[500] text-[4vw] md:text-[18px] rounded-[12px] inline-block">SEE
-                                MORE</a>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -144,7 +139,7 @@ get_header();
 
     <section class="container mx-auto px-4 mt-[106px] mb-[177px]" id="reviews">
         <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center mb-[50px] text-black uppercase">Testimonials</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:flex gap-6 items-center">
             <!-- Testimonial Card -->
             <?php
             $args = array(

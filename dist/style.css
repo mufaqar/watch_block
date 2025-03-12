@@ -3263,6 +3263,10 @@ video {
     margin-top: 213px;
   }
 
+  .lg\:flex {
+    display: flex;
+  }
+
   .lg\:hidden {
     display: none;
   }
