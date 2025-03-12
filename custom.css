@@ -1046,6 +1046,9 @@ legend {
     border-right: 1px solid #d5d5d5 !important;
     padding-right: 2rem !important;
   }
+  .leading-relaxed p{
+    min-height: 146px !important;
+  }
 }
 
 @media (max-width:768px){
@@ -1069,6 +1072,3 @@ legend {
   }
 }
 
-.leading-relaxed p{
-  min-height: 146px !important;
-}
