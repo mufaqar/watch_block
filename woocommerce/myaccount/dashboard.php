@@ -15,7 +15,7 @@ if ($current_user->exists()) {
     $profile_picture = get_user_meta($user_id, 'profile_picture', true);
 
     ?>
-    <div class="md:w-1/3 w-full">
+    <div class=" w-full">
     <?php
 
     // Display the profile picture
@@ -26,11 +26,11 @@ if ($current_user->exists()) {
     }
     ?>
     </div>
-    <div class="md:w-2/3 w-full">
+    <div class=" w-full">
     <?php
 
     // Display the welcome message
-    echo "<h2 class='pl-0'>Welcome, " . esc_html($current_user->display_name) . "!</h2>";
+    echo "<h2 class='!pl-0'>Welcome, " . esc_html($current_user->display_name) . "!</h2>";
 
     display_user_badge();
 
