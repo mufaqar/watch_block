@@ -519,9 +519,10 @@ input {
 }
 
 .form-select {
-  position: relative;
+  position: relative; /* Ensure pseudo-element positions correctly */
 }
 
+/* Default dropdown arrow */
 .form-select:before {
   content: "";
   position: absolute;
@@ -533,8 +534,15 @@ input {
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(0deg); /* Keep it centered */
+  transition: transform 0.3s ease-in-out; /* Smooth rotation */
 }
+
+/* Rotate arrow when dropdown is open */
+.open-dropdown:before {
+  transform: translateY(-50%) rotate(180deg); /* Keep the same Y position */
+}
+
 
 .condition-button.selected,
 .condition-button_for_price.selected {

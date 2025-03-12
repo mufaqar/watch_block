@@ -68,3 +68,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const filters = document.querySelectorAll(".form-select select");
+
+    filters.forEach((filter) => {
+        if (filter) {
+            // Add class when dropdown opens
+            filter.addEventListener("focus", function() {
+                this.parentElement.classList.add("open-dropdown");
+            });
+
+            // Remove class when dropdown closes
+            filter.addEventListener("blur", function() {
+                this.parentElement.classList.remove("open-dropdown");
+            });
+        }
+    });
+});
