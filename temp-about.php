@@ -155,7 +155,7 @@ get_header();
                     <img src="<?php echo get_template_directory_uri(); ?>/images/“.png"
                         class="h-auto w-[64px] md:w-[50px] lg:w-[64px]  mb-3" alt="Testimonial Icon" />
                     <!-- Display Review Content -->
-                    <div class="py-3 text-[16px] md:text-[18px] leading-relaxed">
+                    <div class="py-3 text-[16px] line-clamp-4 md:text-[18px] leading-relaxed">
                         <?php the_content(); ?>
                     </div>
                 </div>
