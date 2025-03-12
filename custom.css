@@ -1006,7 +1006,7 @@ legend {
 .place-order button {
   background-color: #B6E22E !important;
   font-size: 20px !important;
-  padding: 12px 1.8rem !important;
+  padding: 14px 1.8rem !important;
   color: #000 !important;
   border-radius: 8px !important;
 }
@@ -1033,7 +1033,7 @@ legend {
 .form-row-last .button {
   background-color: #B6E22E !important;
   font-size: 20px !important;
-  padding: 11px 1rem !important;
+  padding: 13px 1rem !important;
   color: #000 !important;
   border-radius: 8px !important;
 }
