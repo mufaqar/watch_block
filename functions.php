@@ -120,3 +120,4 @@ function custom_woocommerce_quantity_max($args, $product) {
     return $args;
 }
 add_filter('woocommerce_quantity_input_args', 'custom_woocommerce_quantity_max', 10, 2);
+
