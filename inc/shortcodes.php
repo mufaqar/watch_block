@@ -112,24 +112,22 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
                 'total_tax'    => $item->get_total_tax(),
                 'sku'          => $product->get_sku(),
                 'attributes'   => $attributes,
+                'taxes'        => $item->get_taxes(),
+                'meta_data'    => $meta_data,
             );
         }
     
-        // Add shipping as a separate line item
-        if ($shipping_total > 0) {
-            $cart_items[] = array(
-                'id'           => 'shipping',
-                'name'         => 'Shipping',
-                'product_id'   => '',
-                'variation_id' => '',
-                'quantity'     => 1,
-                'price'        => $shipping_total,
-                'subtotal'     => $shipping_total,
-                'subtotal_tax' => 0,
+        // Add shipping details in the correct structure
+        $shipping_lines = array();
+        foreach ($order->get_shipping_methods() as $shipping_item_id => $shipping_item) {
+            $shipping_lines[] = array(
+                'id'           => $shipping_item_id,
+                'method_title' => $shipping_item->get_method_title(),
+                'method_id'    => $shipping_item->get_method_id(),
                 'total'        => $shipping_total,
                 'total_tax'    => 0,
-                'sku'          => '',
-                'attributes'   => array(),
+                'taxes'        => array(),
+                'meta_data'    => $shipping_item->get_meta_data(),
             );
         }
     
@@ -175,7 +173,7 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             'billing'        => $billing,
             'shipping'       => $shipping,
             'cart_items'     => $cart_items,
-            'shipping_method' => $order->get_shipping_method(),
+            'shipping_lines' => $shipping_lines,
         );
     
         $response = wp_remote_post($this->api_url, array(
@@ -210,6 +208,7 @@ class WC_Gateway_Crypto_Payment extends WC_Payment_Gateway {
             );
         }
     }
+    
     
     
 }
