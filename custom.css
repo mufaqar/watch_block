@@ -1069,3 +1069,6 @@ legend {
   }
 }
 
+.leading-relaxed p{
+  min-height: 98px !important;
+}
