@@ -1037,7 +1037,9 @@ legend {
   color: #000 !important;
   border-radius: 8px !important;
 }
-
+.woocommerce-NoticeGroup.woocommerce-NoticeGroup-checkout{
+  grid-column: span 2 !important;
+}
 .form-row-first {
   width: 70% !important;
 }
