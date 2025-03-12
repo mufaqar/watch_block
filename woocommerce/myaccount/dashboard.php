@@ -15,7 +15,7 @@ if ($current_user->exists()) {
     $profile_picture = get_user_meta($user_id, 'profile_picture', true);
 
     ?>
-    <div class="!max-w-[150px] w-full">
+    <div class="!max-w-[150px] w-full" style="max-width: 150px !important">
     <?php
 
     // Display the profile picture
