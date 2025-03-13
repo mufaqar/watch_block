@@ -62,12 +62,10 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 	do_action( 'woocommerce_after_quantity_input_field' );
 	?>
 </div>
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    // Select all input fields with class "input-text qty text"
     document.querySelectorAll(".input-text.qty.text").forEach(input => {
-        input.value = 1; // Reset value to 1 on page load
+        let currentQuantity = input.value; // Get current cart quantity
 
         // Create a container div
         let container = document.createElement("div");
@@ -91,26 +89,28 @@ document.addEventListener("DOMContentLoaded", function () {
         container.appendChild(input);
         container.appendChild(plusBtn);
 
+        // Set input value from cart quantity
+        input.value = currentQuantity;
+
         // Add event listeners
         plusBtn.addEventListener("click", (event) => {
             event.preventDefault(); // Prevent page reload
             input.value = parseInt(input.value) + 1;
+            input.dispatchEvent(new Event('change', { bubbles: true })); // Trigger WooCommerce update
         });
 
         minusBtn.addEventListener("click", (event) => {
             event.preventDefault(); // Prevent page reload
             if (parseInt(input.value) > parseInt(input.min || 1)) {
                 input.value = parseInt(input.value) - 1;
+                input.dispatchEvent(new Event('change', { bubbles: true })); // Trigger WooCommerce update
             }
+        });
+
+        // Ensure WooCommerce updates when manually entering values
+        input.addEventListener("change", function() {
+            jQuery(input).trigger("change");
         });
     });
 });
 </script>
-
-
-
-
-
-<?php
-
-

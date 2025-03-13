@@ -100,3 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
       body: JSON.stringify({ localStorageValue: storedValue })
   })
 })
+
+document.getElementById("file-upload").addEventListener("change", function (event) {
+  const filePreview = document.getElementById("file-preview");
+  filePreview.innerHTML = ""; // Clear previous preview
+
+  const file = event.target.files[0];
+
+  if (file) {
+      if (file.type.startsWith("image/")) {
+          const img = document.createElement("img");
+          img.src = URL.createObjectURL(file);
+          img.classList.add("mt-2", "max-h-24", "mx-auto", "rounded-md");
+          img.onload = () => URL.revokeObjectURL(img.src); // Free memory
+          filePreview.appendChild(img);
+      } else {
+          filePreview.textContent = `Selected File: ${file.name}`;
+      }
+  }
+});

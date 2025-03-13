@@ -160,17 +160,23 @@ function report_stolen_watch() {
             <input type="text" name="phone" id="phone" placeholder="Ph No" class="w-full border-none outline-none" />
         </div>
         <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Upload Proof</h4>
-        <div>
-            <label for="file-upload" class="w-full  h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
-                <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 12l5-5m0 0l5 5m-5-5v12"></path>
-                </svg>
-                <p id="upload-text" class="text-gray-600 text-sm">Upload Images from four sides</p>
-                <p class="text-gray-500 text-xs">(Each from one side)</p>
-                <p id="file-name" class="text-green-600 text-xs mt-2 hidden"></p>
-                <input type="file" id="file-upload" class="hidden" accept="image/*">
-            </label>
-        </div>
+        
+        <div class="flex gap-2">
+                    <label for="file-upload"
+                        class="w-full h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
+                        <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 12l5-5m0 0l5 5m-5-5v12"></path>
+                        </svg>
+                        <p class="text-gray-600 text-sm">Upload Images from four sides</p>
+                        <p class="text-gray-500 text-xs">(Each from one side)</p>
+                        <input type="file" id="file-upload" name="proof_image" class="hidden" accept="image/*">
+                    </label>
+                    <div id="file-preview" class=" text-center max-w-[140px]"></div>
+                </div>  
+
+
         <textarea  name="details" id="details" className="border-[#C0C0C0] _textarea border flex items-center !p-3 text-[#70776F] outline-black rounded-[5px] w-full"
             style="padding:10px; border: 1px solid #C0C0C0; border-radius: 5px; height:130px "
             placeholder="Description *" required></textarea>
@@ -210,9 +216,9 @@ function report_stolen_watch() {
                     </div>
                 </div>
                 <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Watch Image</h4>
-                <div>
+                <div class="flex gap-2">
                     <label for="file-upload"
-                        class="w-full  h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
+                        class="w-full h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
                         <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -220,9 +226,10 @@ function report_stolen_watch() {
                         </svg>
                         <p class="text-gray-600 text-sm">Upload Images from four sides</p>
                         <p class="text-gray-500 text-xs">(Each from one side)</p>
-                        <input type="file" id="file-upload" name="proof_image" class="hidden" >
+                        <input type="file" id="file-upload" name="proof_image" class="hidden" accept="image/*">
                     </label>
-                </div>
+                    <div id="file-preview" class=" text-center max-w-[140px]"></div>
+                </div>              
                 <textarea id="details" name="details"
                     class="border-[#C0C0C0] _textarea border flex items-center p-3 text-[#70776F] outline-black rounded-[5px] w-full"
                     style="padding:10px; border: 1px solid #C0C0C0; border-radius: 5px; height:130px"
