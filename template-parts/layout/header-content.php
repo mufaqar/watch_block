@@ -18,7 +18,7 @@
         </a>
 
         <div
-            class="md:bg-[#F2F2F2] gap-2 flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
+            class="md:bg-[#F2F2F2] gap-2 nav-wrapper flex justify-end lg:justify-between items-center rounded-tl-[24px] rounded-bl-[24px] lg:flex-1 pl-[19px] py-3 pr-3 sm:pr-4 lg:pr-8 2xl:pr-[64px] ">
             <div class="hidden md:block">
                 <?php
                 wp_nav_menu( array( 
@@ -30,7 +30,7 @@
 				));?>
             </div>
             <div class="flex items-center gap-2">
-                <form role="search" method="get" class="" action="<?php echo esc_url(home_url('/')); ?>">
+                <form role="search" method="get" class="hide" id="header-search" action="<?php echo esc_url(home_url('/')); ?>">
                     <div class="px-4 md:flex hidden items-center gap-3 bg-white shadow-sm max-w-[260px] w-full rounded-full">
                         <label for="search-field" class="sr-only">Search Watches</label>
                         <input id="search-field" placeholder="Search Watches"
@@ -43,7 +43,13 @@
                     </div>
                 </form>
 
-                <div class="md:flex item-center gap-2 hidden">
+                <div class="md:flex item-center gap-2 hidden buttons">
+                    <button
+                        class="bg-white w-[48px] h-[48px] rounded-full hidden flex-col justify-center items-center shadow"
+                        id="tablet-search-icon">
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/svg/search-icon.svg" alt=""
+                            class="w-[17px] h-[17px]">
+                    </button>
                     <a href="<?php echo home_url('/wishlist'); ?>"
                         class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                         <img src="<?php echo get_template_directory_uri(); ?>/images/svg/save.svg" alt=""
@@ -66,7 +72,7 @@
                     </a>
                 </div>
                 <button id="menu-button"
-                    class="bg-white w-[48px] h-[48px] md:w-[66px] flex rounded-full lg:hidden flex-col justify-center items-center shadow">
+                    class="bg-white w-[48px] h-[48px] md:w-[66px] flex rounded-full md:hidden flex-col justify-center items-center shadow">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/svg/menu.svg" alt=""
                         class="w-[17px] h-[16px]">
                 </button>
@@ -77,8 +83,7 @@
 
 <!-- Mobile Header  -->
 
-<nav id="nav-menu" class="bg-black text-white hidden lg:hidden fixed md:sticky mt-[-2px] md:mt-0 w-full !z-[99]">
-   
+<nav id="nav-menu" class="bg-black text-white hidden lg:hidden fixed md:sticky mt-[-2px] !top-[72px] md:mt-0 w-full !z-[99999]">
     <div>
         <?php wp_nav_menu( array( 
 			'theme_location' => 'primary', 
@@ -105,7 +110,6 @@
                     class="w-[17px] h-[17px]">
 
             </a>
-
             <a href="<?php echo wc_get_page_permalink('myaccount'); ?>"
                 class="bg-white w-[48px] h-[48px] rounded-full flex flex-col justify-center items-center shadow">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/svg/person.svg" alt=""
@@ -143,5 +147,16 @@ window.addEventListener("scroll", function () {
         }
         searchInput.addEventListener("input", toggleButton);
         toggleButton(); // Initialize on page load
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchButton = document.getElementById("tablet-search-icon");
+        const searchForm = document.getElementById("header-search");
+
+        searchButton.addEventListener("click", function () {
+            searchForm.classList.toggle("hide");
+        });
     });
 </script>

@@ -18,7 +18,7 @@
 </div><!-- #page -->
 
 <div class="mini-cart-wrapper" >    
-    <div class="mini-cart pt-[50px] max-w-[771px] !w-full" id="mini-cart">
+    <div class="mini-cart pt-[50px] max-w-[771px] !w-full z-[99999999]" id="mini-cart">
         <button id="close-cart" class="close-cart absolute top-14 right-4 text-4xl w-fit left-auto">&times;</button>
         <h3 class="text-[50px] text-center font-medium">Cart</h3>
         <div class="widget_shopping_cart_content">
