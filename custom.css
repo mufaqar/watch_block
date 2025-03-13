@@ -1141,6 +1141,9 @@ legend {
   .form-row-last{
     width: 100% !important;
   }
+  .woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1{
+    padding-right: 0 !important;
+  }
 }
 
 
