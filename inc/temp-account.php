@@ -161,7 +161,7 @@ function report_stolen_watch() {
         </div>
         <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Upload Proof</h4>
         
-        <div class="flex gap-2">
+        <div class="sm:flex gap-2">
                     <label for="file-upload"
                         class="w-full h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
                         <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2"
@@ -216,7 +216,7 @@ function report_stolen_watch() {
                     </div>
                 </div>
                 <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Watch Image</h4>
-                <div class="flex gap-2">
+                <div class="sm:flex gap-2">
                     <label for="file-upload"
                         class="w-full h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
                         <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2"
