@@ -129,8 +129,7 @@ function get_Stolen_Watches() {
 }
 
 
-function report_stolen_watch() {
-    ?>
+function report_stolen_watch() { ?>
 <div class="box-content p-[25px] pt-3 md:pt-0">
     <h2 class="text-[34px] text-left font-semibold md:leading-[41px] !pt-[1rem] !px-0">Report a Lost or Stolen Watch
     </h2>
@@ -201,13 +200,9 @@ function report_stolen_watch() {
             class="font-bold text-2xl bg-[#B6E22E] w-full p-4 hover:bg-black hover:text-[#B6E22E]">Confirm</button>
     </form>
 </div>
-<?php
- }
- 
- 
-
+<?php }
  function add_my_watch() {
-    ?>
+?>
 <div class="box-content p-[25px]">
     <h2 class="text-[34px] font-semibold max-w-[410px] mx-auto md:leading-[41px]">Add New Watch Request </h2>
     <form class="mt-5 flex flex-col gap-5" id="add_new_watch">
@@ -256,7 +251,6 @@ function report_stolen_watch() {
             class="font-bold text-2xl bg-[#B6E22E] w-full p-4 hover:bg-black hover:text-[#B6E22E]">Submit Watch</button>
     </form>
 </div>
-<?php
- }
+<?php }
  
  
