@@ -1137,6 +1137,10 @@ legend {
     padding-right: 0 !important;
   }
   #profile_picture{ max-width: 186px !important;}
+  .form-row-first,
+  .form-row-last{
+    width: 100% !important;
+  }
 }
 
 
