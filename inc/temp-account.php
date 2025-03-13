@@ -161,8 +161,7 @@ function report_stolen_watch() {
         </div>
         <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Upload Proof</h4>
         
-
-        <div>
+        <div class="flex gap-2">
                     <label for="file-upload"
                         class="w-full h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
                         <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2"
@@ -174,8 +173,8 @@ function report_stolen_watch() {
                         <p class="text-gray-500 text-xs">(Each from one side)</p>
                         <input type="file" id="file-upload" name="proof_image" class="hidden" accept="image/*">
                     </label>
-                    <div id="file-preview" class="mt-3 text-center"></div>
-                </div> 
+                    <div id="file-preview" class=" text-center max-w-[140px]"></div>
+                </div>  
 
 
         <textarea  name="details" id="details" className="border-[#C0C0C0] _textarea border flex items-center !p-3 text-[#70776F] outline-black rounded-[5px] w-full"
@@ -217,7 +216,7 @@ function report_stolen_watch() {
                     </div>
                 </div>
                 <h4 class="text-[#2B2B2B] font-medium text-lg text-center">Watch Image</h4>
-                <div>
+                <div class="flex gap-2">
                     <label for="file-upload"
                         class="w-full h-36 border-2 border-dashed border-gray-400 bg-gray-50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 transition p-4 rounded-md">
                         <svg class="w-10 h-10 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2"
@@ -229,7 +228,7 @@ function report_stolen_watch() {
                         <p class="text-gray-500 text-xs">(Each from one side)</p>
                         <input type="file" id="file-upload" name="proof_image" class="hidden" accept="image/*">
                     </label>
-                    <div id="file-preview" class="mt-3 text-center"></div>
+                    <div id="file-preview" class=" text-center max-w-[140px]"></div>
                 </div>              
                 <textarea id="details" name="details"
                     class="border-[#C0C0C0] _textarea border flex items-center p-3 text-[#70776F] outline-black rounded-[5px] w-full"

@@ -1101,6 +1101,8 @@ legend {
   text-wrap: nowrap;
 }
 
+#file-preview img { margin-top: 0 !important;}
+
 @media (min-width:768px) {
   #customer_details {
     border-right: 1px solid #d5d5d5 !important;
