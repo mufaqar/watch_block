@@ -49,7 +49,7 @@ get_header(); ?>
     <div class="z-[2] relative mfont">
         <h2 class="font-semibold text-3xl lg:text-[64px] uppercase lg:leading-[78px]">Buyer & Seller Agreement</h2>
         <p class="text-lg font-medium text-[#676767] my-4">Start your deal with ease, whether you're buying or selling. Just register on WatchBlock, set the conditions, and both parties are ready to proceed.</p>
-        <a href="/contact-us" class="bg-[#B6E22E] text-[24px] mfont text-[#111111] font-semibold py-[10px] px-[9px] rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
+        <a href="/contact-us" class="bg-[#B6E22E] sm:text-[24px] mfont text-[#111111] font-semibold py-[10px] px-[9px] rounded-[12px] hover:scale-105 transition-all duration-200 ease-linear cursor-pointer">
             Available Escrow Services
         </a>
     </div>

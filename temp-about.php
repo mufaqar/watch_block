@@ -20,7 +20,7 @@ get_header();
 
     <!-- Content Section -->
     <div class="mt-10  ">
-        <div class="bg-[#F2F2F2] p-6 md:p-8">
+        <div class="bg-[#F2F2F2] px-2 py-6 md:p-8">
             <div class=" flex flex-col xl:flex-row gap-6 lg:gap-10 container mx-auto">
                 <!-- Image -->
                 <img src="<?php echo get_template_directory_uri(); ?>/images/Rectangle.jpg"
@@ -41,7 +41,7 @@ get_header();
 
     <section>
         <!-- Black Background Section -->
-        <div class="bg-black h-[321px] w-full flex items-center justify-center">
+        <div class="bg-black h-[230px] md:h-[321px] w-full flex items-center justify-center">
             <h1 class="text-center text-white text-[12vw] md:text-[115.42px] font-bold">
                 OUR MISSION
             </h1>
@@ -49,7 +49,7 @@ get_header();
 
         <!-- Overlapping Light Gray Content Section -->
         <div class="bg-[#F2F2F2] w-[1028px] max-w-full relative -mt-16 z-10 container mx-auto ">
-            <div class="p-6 md:p-8 w-[90%] lg:w-[1028px] mx-auto">
+            <div class="px-2 py-6 md:p-8 w-full lg:w-[1028px] mx-auto">
                 <div class="text-[4vw] md:text-[19.5px] text-[#2B2B2B] leading-relaxed">
                     <?php the_field('our_mission'); ?> </div>
             </div>
@@ -63,7 +63,7 @@ get_header();
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-[60px]">
             <!-- Card 1 -->
-            <div class="bg-[#F2F2F2] p-6 md:p-8 ">
+            <div class="bg-[#F2F2F2] px-2 py-6 md:p-8 ">
                 <div class="bg-white rounded-full w-12 h-12 mb-4 flex items-center justify-center"></div>
                 <p class="text-[4vw] md:text-[22px] font-[400] text-[#2B2B2B] leading-relaxed">
                     Blockchain Security
@@ -83,7 +83,7 @@ get_header();
                 </p>
             </div>
             <!-- Card 3 -->
-            <div class="bg-[#F2F2F2] p-6 md:p-8 ">
+            <div class="bg-[#F2F2F2] px-2 py-6 md:p-8 ">
                 <div class="bg-white rounded-full w-12 h-12 mb-4 flex items-center justify-center"></div>
                 <p class="text-[4vw] md:text-[22px] font-[400] text-[#2B2B2B] leading-relaxed">
                     Exclusive Perks
@@ -95,7 +95,7 @@ get_header();
         </div>
     </section>
 
-    <section class="container mx-auto px-4 pt-[150px]">
+    <section class="container mx-auto px-4 pt-[50px] md:pt-[150px]">
         <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center mb-[50px] text-black uppercase">OUR TEAM</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 items-center">
             <?php
@@ -137,7 +137,7 @@ get_header();
     </section>
 
 
-    <section class="container mx-auto px-4 mt-[106px] mb-[177px]" id="reviews">
+    <section class="container mx-auto px-4 md:mt-[106px] my-[50px] md:mb-[177px]" id="reviews">
         <h2 class="text-[8vw] md:text-[67.27px] font-[600] text-center mb-[50px] text-black uppercase">Testimonials</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:flex gap-6 items-center md:items-start">
             <!-- Testimonial Card -->

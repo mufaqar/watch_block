@@ -40,7 +40,7 @@ get_header(); ?>
 
     </div>
     <div class="flex flex-col gap-5">
-        <div class="bg-[#F2F2F2] py-8 px-16 flex-1">
+        <div class="bg-[#F2F2F2] py-8 px-8 md:px-16 flex-1">
             <h2 class="font-semibold text-[35px] mb-5">Contact us at</h2>
             <p class="text-xl font-light">We'd love to hear from you! Whether you have a question, feedback, or need
                 assistance, please don't hesitate to contact us.</p>
@@ -57,7 +57,7 @@ get_header(); ?>
                 </ul>
             </div>
         </div>
-        <div class="bg-[#F2F2F2] py-8 px-16 flex-1">
+        <div class="bg-[#F2F2F2] py-8 px-8 md:px-16 flex-1">
             <h2 class="font-semibold text-[35px] mb-5">Leave us some feedback</h2>
             <p class="text-xl font-light">Have a question or feedback? We're here to help! Contact us, and we'll respond
                 within one business day.</p>
