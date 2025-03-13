@@ -2910,6 +2910,14 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
+  .sm\:mt-0 {
+    margin-top: 0px;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -2920,6 +2928,10 @@ video {
 
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:max-w-\[140px\] {
+    max-width: 140px;
   }
 
   .sm\:grid-cols-2 {
