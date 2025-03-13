@@ -64,47 +64,47 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Select all input fields with class "input-text qty text"
-    document.querySelectorAll(".input-text.qty.text").forEach(input => {
-        input.value = 1; // Reset value to 1 on page load
+// document.addEventListener("DOMContentLoaded", function () {
+//     // Select all input fields with class "input-text qty text"
+//     document.querySelectorAll(".input-text.qty.text").forEach(input => {
+//         input.value = 1; // Reset value to 1 on page load
 
-        // Create a container div
-        let container = document.createElement("div");
-        container.classList.add("quantity-container");
+//         // Create a container div
+//         let container = document.createElement("div");
+//         container.classList.add("quantity-container");
 
-        // Create minus button
-        let minusBtn = document.createElement("button");
-        minusBtn.textContent = "-";
-        minusBtn.classList.add("qty-btn", "minus");
-        minusBtn.type = "button"; // Prevent form submission
+//         // Create minus button
+//         let minusBtn = document.createElement("button");
+//         minusBtn.textContent = "-";
+//         minusBtn.classList.add("qty-btn", "minus");
+//         minusBtn.type = "button"; // Prevent form submission
 
-        // Create plus button
-        let plusBtn = document.createElement("button");
-        plusBtn.textContent = "+";
-        plusBtn.classList.add("qty-btn", "plus");
-        plusBtn.type = "button"; // Prevent form submission
+//         // Create plus button
+//         let plusBtn = document.createElement("button");
+//         plusBtn.textContent = "+";
+//         plusBtn.classList.add("qty-btn", "plus");
+//         plusBtn.type = "button"; // Prevent form submission
 
-        // Insert the buttons around the input field
-        input.parentNode.insertBefore(container, input);
-        container.appendChild(minusBtn);
-        container.appendChild(input);
-        container.appendChild(plusBtn);
+//         // Insert the buttons around the input field
+//         input.parentNode.insertBefore(container, input);
+//         container.appendChild(minusBtn);
+//         container.appendChild(input);
+//         container.appendChild(plusBtn);
 
-        // Add event listeners
-        plusBtn.addEventListener("click", (event) => {
-            event.preventDefault(); // Prevent page reload
-            input.value = parseInt(input.value) + 1;
-        });
+//         // Add event listeners
+//         plusBtn.addEventListener("click", (event) => {
+//             event.preventDefault(); // Prevent page reload
+//             input.value = parseInt(input.value) + 1;
+//         });
 
-        minusBtn.addEventListener("click", (event) => {
-            event.preventDefault(); // Prevent page reload
-            if (parseInt(input.value) > parseInt(input.min || 1)) {
-                input.value = parseInt(input.value) - 1;
-            }
-        });
-    });
-});
+//         minusBtn.addEventListener("click", (event) => {
+//             event.preventDefault(); // Prevent page reload
+//             if (parseInt(input.value) > parseInt(input.min || 1)) {
+//                 input.value = parseInt(input.value) - 1;
+//             }
+//         });
+//     });
+// });
 </script>
 
 
