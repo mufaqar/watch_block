@@ -77,8 +77,7 @@
 
 <!-- Mobile Header  -->
 
-<nav id="nav-menu" class="bg-black text-white hidden lg:hidden fixed md:sticky mt-[-2px] md:mt-0 w-full !z-[99]">
-   
+<nav id="nav-menu" class="bg-black text-white hidden lg:hidden fixed md:sticky mt-[-2px] !top-[72px] md:mt-0 w-full !z-[99]">
     <div>
         <?php wp_nav_menu( array( 
 			'theme_location' => 'primary', 
