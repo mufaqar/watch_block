@@ -62,55 +62,55 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 	do_action( 'woocommerce_after_quantity_input_field' );
 	?>
 </div>
-
 <script>
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Select all input fields with class "input-text qty text"
-//     document.querySelectorAll(".input-text.qty.text").forEach(input => {
-//         input.value = 1; // Reset value to 1 on page load
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".input-text.qty.text").forEach(input => {
+        let currentQuantity = input.value; // Get current cart quantity
 
-//         // Create a container div
-//         let container = document.createElement("div");
-//         container.classList.add("quantity-container");
+        // Create a container div
+        let container = document.createElement("div");
+        container.classList.add("quantity-container");
 
-//         // Create minus button
-//         let minusBtn = document.createElement("button");
-//         minusBtn.textContent = "-";
-//         minusBtn.classList.add("qty-btn", "minus");
-//         minusBtn.type = "button"; // Prevent form submission
+        // Create minus button
+        let minusBtn = document.createElement("button");
+        minusBtn.textContent = "-";
+        minusBtn.classList.add("qty-btn", "minus");
+        minusBtn.type = "button"; // Prevent form submission
 
-//         // Create plus button
-//         let plusBtn = document.createElement("button");
-//         plusBtn.textContent = "+";
-//         plusBtn.classList.add("qty-btn", "plus");
-//         plusBtn.type = "button"; // Prevent form submission
+        // Create plus button
+        let plusBtn = document.createElement("button");
+        plusBtn.textContent = "+";
+        plusBtn.classList.add("qty-btn", "plus");
+        plusBtn.type = "button"; // Prevent form submission
 
-//         // Insert the buttons around the input field
-//         input.parentNode.insertBefore(container, input);
-//         container.appendChild(minusBtn);
-//         container.appendChild(input);
-//         container.appendChild(plusBtn);
+        // Insert the buttons around the input field
+        input.parentNode.insertBefore(container, input);
+        container.appendChild(minusBtn);
+        container.appendChild(input);
+        container.appendChild(plusBtn);
 
-//         // Add event listeners
-//         plusBtn.addEventListener("click", (event) => {
-//             event.preventDefault(); // Prevent page reload
-//             input.value = parseInt(input.value) + 1;
-//         });
+        // Set input value from cart quantity
+        input.value = currentQuantity;
 
-//         minusBtn.addEventListener("click", (event) => {
-//             event.preventDefault(); // Prevent page reload
-//             if (parseInt(input.value) > parseInt(input.min || 1)) {
-//                 input.value = parseInt(input.value) - 1;
-//             }
-//         });
-//     });
-// });
+        // Add event listeners
+        plusBtn.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent page reload
+            input.value = parseInt(input.value) + 1;
+            input.dispatchEvent(new Event('change', { bubbles: true })); // Trigger WooCommerce update
+        });
+
+        minusBtn.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent page reload
+            if (parseInt(input.value) > parseInt(input.min || 1)) {
+                input.value = parseInt(input.value) - 1;
+                input.dispatchEvent(new Event('change', { bubbles: true })); // Trigger WooCommerce update
+            }
+        });
+
+        // Ensure WooCommerce updates when manually entering values
+        input.addEventListener("change", function() {
+            jQuery(input).trigger("change");
+        });
+    });
+});
 </script>
-
-
-
-
-
-<?php
-
-
