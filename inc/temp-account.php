@@ -3,7 +3,7 @@
 
 function get_all_watches() {
     ?>
-    <div class="flex gap-3 items-center mt-5 md:mt-1">
+    <div class="flex flex-col sm:flex-row gap-3 items-center mt-5 md:mt-1">
         <div class="md:w-1/2 w-full">
             <h4 class="text-2xl font-bold">Listed Watches</h4>
         </div>
