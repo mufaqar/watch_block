@@ -1102,6 +1102,7 @@ legend {
 }
 
 #file-preview img { margin-top: 0 !important;}
+#profile_picture{ max-width: 110px !important;}
 
 @media (min-width:768px) {
   #customer_details {
