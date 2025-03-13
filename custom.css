@@ -1102,7 +1102,6 @@ legend {
 }
 
 #file-preview img { margin-top: 0 !important;}
-#profile_picture{ max-width: 126px !important;}
 
 @media (min-width:768px) {
   #customer_details {
@@ -1121,7 +1120,7 @@ legend {
     width: 100%;
     padding-bottom: 0 !important;
   }
-
+  
   [name*="apply_coupon"] {
     width: 100% !important;
   }
@@ -1137,6 +1136,7 @@ legend {
     padding-right: 0 !important;
     padding-right: 0 !important;
   }
+  #profile_picture{ max-width: 186px !important;}
 }
 
 
