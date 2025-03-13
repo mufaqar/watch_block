@@ -7,7 +7,7 @@ function get_all_watches() {
         <div class="md:w-1/2 w-full">
             <h4 class="text-2xl font-bold">Listed Watches</h4>
         </div>
-        <div class="md:w-1/2 w-full align-right flex items-center justify-end gap-5">
+        <div class="md:w-1/2 w-full align-right flex items-center sm:justify-end gap-5">
             <a href="<?php echo home_url('/my-account/add-my-watch'); ?>" class="text-xl bg-[#B6E22E] w-fit p-2 hover:bg-black hover:text-[#B6E22E] rounded-lg">Sell Watch</a>
         </div>
     </div>

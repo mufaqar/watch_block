@@ -2934,6 +2934,10 @@ video {
     align-items: center;
   }
 
+  .sm\:justify-end {
+    justify-content: flex-end;
+  }
+
   .sm\:gap-14 {
     gap: 3.5rem;
   }
