@@ -1135,3 +1135,36 @@ legend {
     padding-right: 0 !important;
   }
 }
+
+
+
+@media (min-width: 768px) and (max-width: 1210px) {
+    header #menu-main-menu{
+      font-size: 14px;
+      gap: 6px !important;
+    }
+    header .nav-wrapper{
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+    header #header-wrapper{
+      padding-left: 10px !important;
+      gap: 10px !important;
+    }
+    header .buttons a,
+    header .buttons button{
+      width: 40px;
+      height: 40px;
+    }
+    header #header-search.hide{
+      display: none;
+    }
+    header #header-search{
+      position: absolute;
+      top: 5.5rem;
+      right: 10px;
+    }
+    header #tablet-search-icon{
+      display: flex !important;
+    }
+}

@@ -732,6 +732,10 @@ video {
   z-index: 99999 !important;
 }
 
+.z-\[99999999\] {
+  z-index: 99999999;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -2993,6 +2997,10 @@ video {
 
   .md\:flex {
     display: flex;
+  }
+
+  .md\:hidden {
+    display: none;
   }
 
   .md\:h-\[300px\] {
