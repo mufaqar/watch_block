@@ -173,7 +173,7 @@ function report_stolen_watch() {
                         <p class="text-gray-500 text-xs">(Each from one side)</p>
                         <input type="file" id="file-upload" name="proof_image" class="hidden" accept="image/*">
                     </label>
-                    <div id="file-preview" class=" text-center max-w-[140px]"></div>
+                    <div id="file-preview" class=" text-center mt-2 sm:mt-0 sm:max-w-[140px]"></div>
                 </div>  
 
 
