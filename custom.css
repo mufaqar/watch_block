@@ -1120,7 +1120,7 @@ legend {
     width: 100%;
     padding-bottom: 0 !important;
   }
-
+  
   [name*="apply_coupon"] {
     width: 100% !important;
   }
@@ -1134,6 +1134,16 @@ legend {
     align-items: center;
     justify-content: space-between;
     padding-right: 0 !important;
+    padding-right: 0 !important;
+  }
+  #profile_picture{ max-width: 186px !important;}
+  .form-row-first,
+  .form-row-last{
+    width: 100% !important;
+  }
+  .woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
+  .woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2,
+  .woocommerce .col2-set, .woocommerce-page .col2-set{
     padding-right: 0 !important;
   }
 }
