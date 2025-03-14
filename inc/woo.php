@@ -241,16 +241,37 @@ add_action('init', 'add_custom_account_endpoints');
 function registries_content() {
     ?>
     <h2>Connect Your Wallet</h2>
-    <p>Click the button below to connect your wallet.</p>
+
     <button id="connectWallet" class="button">Connect Wallet</button>
     <p id="walletStatus"></p>
-    
+
     <script>
         document.getElementById('connectWallet').addEventListener('click', async () => {
             if (window.ethereum) {
                 try {
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    document.getElementById('walletStatus').innerText = "Connected: " + accounts[0];
+                    const walletAddress = accounts[0];
+
+                    document.getElementById('walletStatus').innerText = "Connected: " + walletAddress;
+
+                    // Send wallet address to external API
+                    fetch('https://watchblock-backend.onrender.com/api/user-registries', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ walletaddress: walletAddress })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('API Response:', data);
+                        alert('Wallet successfully registered!');
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Failed to register wallet.');
+                    });
+
                 } catch (error) {
                     console.error(error);
                 }
