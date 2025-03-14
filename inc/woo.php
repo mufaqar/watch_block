@@ -239,7 +239,7 @@ add_action('init', 'add_custom_account_endpoints');
 
 
 function registries_content() {
-    echo do_shortcode('[connect_wallet]');
+    echo do_shortcode('[ethpress_login_button]');
 }
 add_action('woocommerce_account_registries_endpoint', 'registries_content');
 
