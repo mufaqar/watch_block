@@ -239,7 +239,27 @@ add_action('init', 'add_custom_account_endpoints');
 
 
 function registries_content() {
-    echo do_shortcode('[ethpress_login_button]');
+    ?>
+    <h2>Connect Your Wallet</h2>
+    <p>Click the button below to connect your wallet.</p>
+    <button id="connectWallet" class="button">Connect Wallet</button>
+    <p id="walletStatus"></p>
+    
+    <script>
+        document.getElementById('connectWallet').addEventListener('click', async () => {
+            if (window.ethereum) {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    document.getElementById('walletStatus').innerText = "Connected: " + accounts[0];
+                } catch (error) {
+                    console.error(error);
+                }
+            } else {
+                document.getElementById('walletStatus').innerText = "MetaMask is not installed!";
+            }
+        });
+    </script>
+    <?php
 }
 add_action('woocommerce_account_registries_endpoint', 'registries_content');
 
