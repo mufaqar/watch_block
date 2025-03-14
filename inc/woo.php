@@ -207,6 +207,7 @@ function add_custom_menu_items($items) {
     $new_items = [        
         'sell-my-watch' => __('Sell My Watch', 'your-textdomain'),
         'stolen-watch' => __('Report lost/stolen Watch', 'your-textdomain'),
+        'registries' => __('Registries', 'your-textdomain'),
     ];
 
     // Move "Logout" to the end if it exists
@@ -231,8 +232,16 @@ function add_custom_account_endpoints() {
     add_rewrite_endpoint('stolen-watch', EP_PAGES);
     add_rewrite_endpoint('sell-my-watch', EP_PAGES);
     add_rewrite_endpoint('add-my-watch', EP_PAGES);
+    add_rewrite_endpoint('registries', EP_PAGES);
 }
 add_action('init', 'add_custom_account_endpoints');
+
+
+
+function registries_content() {
+    echo do_shortcode('[connect_wallet]');
+}
+add_action('woocommerce_account_registries_endpoint', 'registries_content');
 
 
 
