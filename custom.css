@@ -1010,7 +1010,9 @@ legend {
   color: #000 !important;
   border-radius: 8px !important;
 }
-.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea{
+
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea {
   border: 1px solid #cfcfcf !important;
 }
 
@@ -1037,7 +1039,8 @@ legend {
   color: #000 !important;
   border-radius: 8px !important;
 }
-.woocommerce-NoticeGroup.woocommerce-NoticeGroup-checkout{
+
+.woocommerce-NoticeGroup.woocommerce-NoticeGroup-checkout {
   grid-column: span 2 !important;
 }
 
@@ -1101,7 +1104,23 @@ legend {
   text-wrap: nowrap;
 }
 
-#file-preview img { margin-top: 0 !important;}
+#file-preview img {
+  margin-top: 0 !important;
+}
+
+.user_reg {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background: #fff;
+  align-items: center;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.user_reg div {
+  width: 30%;
+}
 
 @media (min-width:768px) {
   #customer_details {
@@ -1120,7 +1139,7 @@ legend {
     width: 100%;
     padding-bottom: 0 !important;
   }
-  
+
   [name*="apply_coupon"] {
     width: 100% !important;
   }
@@ -1136,14 +1155,22 @@ legend {
     padding-right: 0 !important;
     padding-right: 0 !important;
   }
-  #profile_picture{ max-width: 186px !important;}
+
+  #profile_picture {
+    max-width: 186px !important;
+  }
+
   .form-row-first,
-  .form-row-last{
+  .form-row-last {
     width: 100% !important;
   }
-  .woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
-  .woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2,
-  .woocommerce .col2-set, .woocommerce-page .col2-set{
+
+  .woocommerce .col2-set .col-1,
+  .woocommerce-page .col2-set .col-1,
+  .woocommerce .col2-set .col-2,
+  .woocommerce-page .col2-set .col-2,
+  .woocommerce .col2-set,
+  .woocommerce-page .col2-set {
     padding-right: 0 !important;
   }
 }
@@ -1151,32 +1178,38 @@ legend {
 
 
 @media (min-width: 768px) and (max-width: 1210px) {
-    header #menu-main-menu{
-      font-size: 14px;
-      gap: 6px !important;
-    }
-    header .nav-wrapper{
-      padding-left: 10px !important;
-      padding-right: 10px !important;
-    }
-    header #header-wrapper{
-      padding-left: 10px !important;
-      gap: 10px !important;
-    }
-    header .buttons a,
-    header .buttons button{
-      width: 40px;
-      height: 40px;
-    }
-    header #header-search.hide{
-      display: none;
-    }
-    header #header-search{
-      position: absolute;
-      top: 5.5rem;
-      right: 10px;
-    }
-    header #tablet-search-icon{
-      display: flex !important;
-    }
+  header #menu-main-menu {
+    font-size: 14px;
+    gap: 6px !important;
+  }
+
+  header .nav-wrapper {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  header #header-wrapper {
+    padding-left: 10px !important;
+    gap: 10px !important;
+  }
+
+  header .buttons a,
+  header .buttons button {
+    width: 40px;
+    height: 40px;
+  }
+
+  header #header-search.hide {
+    display: none;
+  }
+
+  header #header-search {
+    position: absolute;
+    top: 5.5rem;
+    right: 10px;
+  }
+
+  header #tablet-search-icon {
+    display: flex !important;
+  }
 }

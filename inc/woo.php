@@ -438,135 +438,175 @@ function display_user_registries() {
     $user_id = get_current_user_id();
     $registries = get_user_meta($user_id, '_user_registries', true);
 
+
+
     if ($registries) {
-        echo '<h3>Your Registries</h3><ul>';
+       
         foreach ($registries as $registry) {
+            // Get the product details
+            $registry_id = esc_html($registry['registry_id']);
+            $product_name = esc_html($registry['product_name']);
+            $registry_number = esc_html($registry['registry_number']);
+            $brand_name = esc_html($registry['brand_name']);
+            $image_url = esc_url($registry['image_url']); // Assuming 'image_url' is stored in the registry array
+
+            echo "<div>";
+             if ($image_url) {
+            
+                echo '<img src="' . $image_url . '" alt="' . $product_name . '" style="max-width: 200px; max-height: 200px;"/>';
+            }
+            echo '</div>';
+
+            echo "<ul>";
             echo '<li>';
-            echo '<strong>Registry ID:</strong> ' . esc_html($registry['registry_id']) . '<br>';
-            echo '<strong>Product Name:</strong> ' . esc_html($registry['product_name']) . '<br>';
-            echo '<strong>Registry Number:</strong> ' . esc_html($registry['registry_number']) . '<br>';
-            echo '<strong>Brand Name:</strong> ' . esc_html($registry['brand_name']) . '<br>';
-            echo '</li>';
+            echo '<strong>Registry ID:</strong> ' . $registry_id . '<br>';
+            echo '<strong>Product Name:</strong> ' . $product_name . '<br>';
+            echo '<strong>Registry Number:</strong> ' . $registry_number . '<br>';
+            echo '<strong>Brand Name:</strong> ' . $brand_name . '<br>';
+            echo "</li>";
+            echo '</ul>';
+            
+           
         }
-        echo '</ul>';
+       
     } else {
         echo '<p>No registries found.</p>';
     }
 }
 
+
 function registries_content() {
     // Display stored registries for the current user
-    
+   
 
     ?>
-    <h2>Wallet Info</h2>
+<h2 id="connectHeading">Connect Your Wallet</h2> <!-- ID added for the heading -->
+<button id="connectWallet" class="button">Connect Wallet</button>
+<div class="user_reg">
+    <?php  display_user_registries(); ?>
+</div>
+<p id="walletStatus"></p>
+<div id="registriesList"></div> <!-- New div to display the registries -->
 
-    <button id="connectWallet" class="button">Connect Wallet</button>
-    <?php display_user_registries(); ?>
-    <p id="walletStatus"></p>
-    <div id="registriesList"></div> <!-- New div to display the registries -->
+<script>
+document.getElementById('connectWallet').addEventListener('click', async () => {
+    if (window.ethereum) {
+        try {
+            const accounts = await window.ethereum.request({
+                method: 'eth_requestAccounts'
+            });
+            const walletAddress = accounts[0];
 
-    <script>
-        document.getElementById('connectWallet').addEventListener('click', async () => {
-            if (window.ethereum) {
-                try {
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    const walletAddress = accounts[0];
+            // Change the wallet status text
+            document.getElementById('walletStatus').innerText = "Connected: " + walletAddress;
 
-                    document.getElementById('walletStatus').innerText = "Connected: " + walletAddress;
+            // Change heading and hide the button after wallet is connected
+            document.getElementById('connectHeading').innerText = "Wallet Connected";
+            document.getElementById('connectWallet').style.display = 'none';
 
-                    // Send wallet address to external API
-                    fetch('https://watchblock-backend.onrender.com/api/user-registries', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ walletaddress: walletAddress })
+            // Send wallet address to external API
+            fetch('https://watchblock-backend.onrender.com/api/user-registries', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        walletaddress: walletAddress
                     })
-                    .then(response => response.json())
-                    .then(async data => {
-                        console.log('API Response:', data);
-                        if (data.status === "success" && data.registries.length > 0) {
-                            // Handle registries
-                            const registries = data.registries;
-                            let registriesHtml = "<h3>Registries</h3><ul>";
+                })
+                .then(response => response.json())
+                .then(async data => {
+                    console.log('API Response:', data);
+                    if (data.status === "success" && data.registries.length > 0) {
+                        // Handle registries
+                        const registries = data.registries;
+                        let registriesHtml = "<h3>Registries</h3><ul>";
 
-                            const userRegistries = []; // Array to store registry data to save in user meta
+                        const
+                    userRegistries = []; // Array to store registry data to save in user meta
 
-                            for (let registry of registries) {
-                                const registryId = registry.registry_id;
-                                const productUri = registry.product_uri;
+                        for (let registry of registries) {
+                            const registryId = registry.registry_id;
+                            const productUri = registry.product_uri;
 
-                                // Fetch the product details from the product URI
-                                try {
-                                    const productResponse = await fetch(productUri);
-                                    const productData = await productResponse.json();
+                            // Fetch the product details from the product URI
+                            try {
+                                const productResponse = await fetch(productUri);
+                                const productData = await productResponse.json();
 
-                                    const productName = productData.product_name || 'N/A';
-                                    const registryNumber = productData.registry_number || 'N/A';
-                                    const brandName = productData.brand_name || 'N/A';
+                                const productName = productData.product_name || 'N/A';
+                                const registryNumber = productData.registry_number || 'N/A';
+                                const brandName = productData.brand_name || 'N/A';
+                                const imageUrl = productData.image ||
+                                ''; // Assuming image URL is in the 'image' field
 
-                                    userRegistries.push({
-                                        registry_id: registryId,
-                                        product_name: productName,
-                                        registry_number: registryNumber,
-                                        brand_name: brandName
-                                    });
+                                userRegistries.push({
+                                    registry_id: registryId,
+                                    product_name: productName,
+                                    registry_number: registryNumber,
+                                    brand_name: brandName,
+                                    image_url: imageUrl
+                                });
 
-                                    registriesHtml += `
+                                // Add product details to the HTML
+                                registriesHtml += `
                                         <li>
                                             <strong>Registry ID:</strong> ${registryId}<br>
                                             <strong>Product Name:</strong> ${productName}<br>
                                             <strong>Registry Number:</strong> ${registryNumber}<br>
-                                            <strong>Brand Name:</strong> ${brandName}
+                                            <strong>Brand Name:</strong> ${brandName}<br>
+                                            ${imageUrl ? `<img src="${imageUrl}" alt="${productName}" style="max-width: 200px; max-height: 200px;"/>` : ''}
                                         </li>
                                     `;
-                                } catch (error) {
-                                    console.error('Error fetching product data:', error);
-                                    registriesHtml += `
+                            } catch (error) {
+                                console.error('Error fetching product data:', error);
+                                registriesHtml += `
                                         <li>
                                             <strong>Registry ID:</strong> ${registryId}<br>
                                             <strong>Error:</strong> Unable to fetch product details.
                                         </li>
                                     `;
-                                }
                             }
+                        }
 
-                            registriesHtml += "</ul>";
-                            document.getElementById('registriesList').innerHTML = registriesHtml;
+                        registriesHtml += "</ul>";
+                        document.getElementById('registriesList').innerHTML = registriesHtml;
 
-                            // Send the registries data to WordPress via AJAX
-                            const userData = {
-                                action: 'save_user_registries', // WordPress action
-                                nonce: '<?php echo wp_create_nonce('save_user_registries_nonce'); ?>', // Nonce for security
-                                registries: userRegistries
-                            };
+                        // Send the registries data to WordPress via AJAX
+                        const userData = {
+                            action: 'save_user_registries', // WordPress action
+                            nonce: '<?php echo wp_create_nonce('save_user_registries_nonce'); ?>', // Nonce for security
+                            registries: userRegistries
+                        };
 
-                            // Use AJAX to send the data to admin-ajax.php
-                            jQuery.post('<?php echo admin_url('admin-ajax.php'); ?>', userData, function(response) {
+                        // Use AJAX to send the data to admin-ajax.php
+                        jQuery.post('<?php echo admin_url('admin-ajax.php'); ?>', userData,
+                            function(response) {
                                 if (response.success) {
                                     alert('Registry information saved to your dashboard!');
                                 } else {
-                                    alert('Failed to save registry information: ' + response.data.message);
+                                    alert('Failed to save registry information: ' + response
+                                        .data.message);
                                 }
                             });
-                        } else {
-                            document.getElementById('registriesList').innerHTML = "<p>No registries found.</p>";
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Failed to register wallet.');
-                    });
+                    } else {
+                        document.getElementById('registriesList').innerHTML =
+                            "<p>No registries found.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to register wallet.');
+                });
 
-                } catch (error) {
-                    console.error(error);
-                }
-            } else {
-                document.getElementById('walletStatus').innerText = "MetaMask is not installed!";
-            }
-        });
-    </script>
-    <?php
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        document.getElementById('walletStatus').innerText = "MetaMask is not installed!";
+    }
+});
+</script>
+<?php
 }
 add_action('woocommerce_account_registries_endpoint', 'registries_content');
