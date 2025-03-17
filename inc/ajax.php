@@ -1,5 +1,44 @@
 <?php
 
+
+
+function handle_save_user_registries() {
+    // Check for nonce verification
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'save_user_registries_nonce')) {
+        wp_send_json_error(['message' => 'Nonce verification failed.']);
+        return;
+    }
+
+    // Ensure the user is logged in
+    if (!is_user_logged_in()) {
+        wp_send_json_error(['message' => 'User not logged in.']);
+        return;
+    }
+
+    $user_id = get_current_user_id();
+
+    // Get the registries from the POST data
+    if (isset($_POST['registries'])) {
+        $registries = $_POST['registries'];
+    } else {
+        wp_send_json_error(['message' => 'No registries provided.']);
+        return;
+    }
+
+    // Save the registries in user meta
+    update_user_meta($user_id, '_user_registries', $registries);
+
+    wp_send_json_success(['message' => 'Registries saved successfully.']);
+}
+
+// Hook the function to handle AJAX requests for logged-in users
+add_action('wp_ajax_save_user_registries', 'handle_save_user_registries');
+
+// Optionally, for non-logged-in users
+add_action('wp_ajax_nopriv_save_user_registries', 'handle_save_user_registries');
+
+
+
 function handle_stolen_watch_form() {
     // Verify nonce (add nonce to form if needed)
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'stolen_watch_nonce')) {
