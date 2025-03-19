@@ -4,6 +4,7 @@ include_once 'woo.php';
 include_once 'ajax.php';
 include_once 'temp-account.php';
 include_once 'shortcodes.php';
+include_once 'wallet.php';
 
 
 function add_menu_link_class($classes, $item, $args) {
