@@ -108,7 +108,7 @@ function save_custom_profile_picture($user_id) {
         if (isset($uploaded['file'])) {
             update_user_meta($user_id, 'profile_picture', $uploaded['url']);
         } else {
-            wc_add_notice(__('Error uploading profile picture.', 'your-textdomain'), 'error');
+            wc_add_notice(__('Error uploading profile picture.', 'watch_block'), 'error');
         }
     }
 }
